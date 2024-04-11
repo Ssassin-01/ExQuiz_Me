@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+}
+
+
+
+
+
+
+
+
+
+
+.login-signup-buttons button {
+  margin-left: 11px;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  width: 250px;
+  height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #333;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+}

@@ -1,0 +1,36 @@
+.make-section {
+  background-color: #4c4c4c;
+  color: white;
+  max-width: 600px;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.title-input,
+.description-input,
+.item input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: none;
+}
+
+.description-input {
+  height: 100px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-number {
+  margin-right: 10px;
+}
+
+.item button {
+  margin-left: 10px;
+}
