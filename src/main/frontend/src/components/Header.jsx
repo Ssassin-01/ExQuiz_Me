@@ -14,11 +14,9 @@ const Header = () => {
       <div className="login-signup-buttons">
         <Link to="/login">
           <button onClick={handleLoginClick}>Login</button>
-          <p>heheheheheheeh</p>
         </Link>
         <Link to="/signup">
           <button>Sign Up</button>
-          <p>heheheheheheeh</p>
         </Link>
       </div>
     </div>
