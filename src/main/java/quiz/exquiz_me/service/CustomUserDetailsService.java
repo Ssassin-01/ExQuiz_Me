@@ -1,5 +1,6 @@
 package quiz.exquiz_me.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,27 +10,21 @@ import quiz.exquiz_me.entity.UserEntity;
 import quiz.exquiz_me.repository.UserRepository;
 
 @Service
-public class CustomUserDetailService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
-
-    public CustomUserDetailService(UserRepository userRepository) {
-
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        //DB에서 조회
-        UserEntity userData = userRepository.findByUsername(username);
-
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserEntity userData = userRepository.findByEmail(email);
         if (userData != null) {
-
-            //UserDetails에 담아서 return하면 AutneticationManager가 검증 함
+            System.out.println("sucess");
             return new CustomUserDetails(userData);
-        }
 
-        return null;
+        } else {
+            System.out.println("fail");
+            throw new UsernameNotFoundException("User not found with email: " + email);
+        }
     }
 }

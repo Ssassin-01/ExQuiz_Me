@@ -1,26 +1,32 @@
 package quiz.exquiz_me.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import quiz.exquiz_me.dto.JoinDTO;
+import quiz.exquiz_me.dto.UserDTO;
 import quiz.exquiz_me.service.JoinService;
 
 @Controller
-@ResponseBody
 public class JoinController {
 
-    private final JoinService joinService;
+    @Autowired
+    private JoinService joinService;
 
-    public JoinController(JoinService joinService) {
-        this.joinService = joinService;
+
+    @GetMapping("/join")
+    public String joinP() {
+
+        return "join";
     }
 
-    @PostMapping("/join")
-    public String joinProcess(JoinDTO joinDTO) {
 
-        joinService.joinProcesss(joinDTO);
+    @PostMapping("/joinProc")
+    public String joinProcess(UserDTO userDTO) {
 
-        return "ok";
+        System.out.println(userDTO.getEmail());
+
+
+        return "redirect:/login";
     }
 }
