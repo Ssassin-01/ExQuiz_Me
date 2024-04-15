@@ -2,17 +2,8 @@
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
-  background-color: #f0f0f0;
+  background-color: #6c8776;
 }
-
-
-
-
-
-
-
-
-
 
 .login-signup-buttons button {
   margin-left: 11px;
@@ -26,8 +17,9 @@
   flex: 0 0 250px;
   width: 250px;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #45624e;
   padding: 20px;
+  font-weight: bold;
 }
 
 .main-content {
@@ -36,7 +28,7 @@
 }
 
 .sidebar h2 {
-  color: #333;
+  color: gray;
 }
 
 .sidebar ul {
@@ -50,5 +42,5 @@
 
 .sidebar ul li a {
   text-decoration: none;
-  color: #333;
+  color: gray;
 }
