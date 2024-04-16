@@ -9,7 +9,7 @@ const Header = () => {
     navigate("/login");
   };
   return (
-      <div className="header">
+    <div className="header">
         <div className="login-signup-buttons">
           <Link to="/login">
             <Button variant="outline-light" onClick={handleLoginClick}>Login</Button>{' '}

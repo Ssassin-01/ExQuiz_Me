@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+<h2>Membership Registration</h2>
+
+<form th:action="@{/register}" th:object="${userDto}" method="post">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" required>
+    </div>
+    <div>
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" th:field="*{nickname}" required>
+    </div>
+    <div>
+        <label for="telNumber">Phone Number:</label>
+        <input type="text" id="telNumber" th:field="*{telNumber}" required>
+    </div>
+    <div>
+        <label for="date">Date of Birth:</label>
+        <input type="date" id="date" th:field="*{date}" required>
+    </div>
+    <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" th:field="*{gender}">
+            <option value="">Select...</option>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+    <div>
+        <label for="signupPurpose">Signup Purpose:</label>
+        <input type="text" id="signupPurpose" th:field="*{signupPurpose}" required>
+    </div>
+    <div>
+        <label for="identity">Identity:</label>
+        <input type="text" id="identity" th:field="*{identity}" required>
+    </div>
+    <div>
+        <label for="oneLineResolution">One-line Resolution:</label>
+        <input type="text" id="oneLineResolution" th:field="*{oneLineResolution}" required>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>

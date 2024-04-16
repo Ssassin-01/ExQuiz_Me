@@ -21,7 +21,7 @@ public class JoinController {
     }
 
 
-    @PostMapping("/joinProc")
+    @PostMapping("/joinProc1")
     public String joinProcess(UserDTO userDTO) {
 
         System.out.println(userDTO.getEmail());

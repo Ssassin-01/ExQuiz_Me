@@ -1,6 +1,5 @@
 package quiz.exquiz_me.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

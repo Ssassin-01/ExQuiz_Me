@@ -17,7 +17,6 @@ public class CardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardNumber;
-
     private String email;
     private String title;
     private LocalDateTime writeDateTime;

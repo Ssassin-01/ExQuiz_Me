@@ -1,8 +1,35 @@
+:root {
+  /* Colors */
+  --color-green1: #e4e6d9;
+  --color-green2: #c0cfb2;
+  --color-green3: #6c8776;
+  --color-green4: #45624e;
+  --color-green5: #273526;
+}
 .header {
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
   background-color: #6c8776;
+}
+.side_head {
+  display: flex;
+  align-items: center;
+  gap:1rem;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+
+}
+
+.logo {
+
+  font-size: 23px;
+  font-weight: 600;
+  color: white;
+
 }
 
 .login-signup-buttons button {
@@ -24,7 +51,7 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+
 }
 
 .sidebar h2 {
