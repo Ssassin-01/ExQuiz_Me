@@ -1,11 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.png";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Menu</h2>
+      <a className="side_head" href="#">
+        <img className="logo-img" src={logo} alt="logo"/>
+        <p className="logo">ExQuiz me</p>
+      </a>
       <ul>
+
+
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -13,7 +19,7 @@ const Sidebar = () => {
           <Link to="/study">Study</Link>
         </li>
         <li>
-          <Link to="/make">Make</Link>
+        <Link to="/make">Make</Link>
         </li>
         <li>
           <Link to="/game">Game</Link>
