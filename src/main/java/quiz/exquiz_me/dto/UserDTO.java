@@ -13,11 +13,11 @@ public class UserDTO {
     private String email;
     private String password;
     private String nickname;
-    private String telNumber; // Use consistent naming with your entity
-    private LocalDate date; // Date of birth
+    private String telNumber;
+    private LocalDate date;
     private Integer gender;
     private String signupPurpose;
     private String identity;
     private String oneLineResolution;
-    // Any other fields needed for user registration
+
 }

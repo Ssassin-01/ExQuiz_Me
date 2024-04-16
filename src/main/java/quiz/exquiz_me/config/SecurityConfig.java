@@ -22,7 +22,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/", "/login", "/loginProc", "/join", "/joinProc").permitAll()
+                        .requestMatchers("/**", "/login", "/loginProc", "/join", "/joinProc").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
@@ -32,8 +32,6 @@ public class SecurityConfig {
         http
                 .formLogin((auth) -> auth.loginPage("/login")
                         .loginProcessingUrl("/loginProc")
-                        .usernameParameter("email") // 여기에서 변경합니다.
-                        .passwordParameter("password")
                         .permitAll()
                 );
 
