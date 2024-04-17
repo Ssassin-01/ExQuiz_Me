@@ -1,0 +1,18 @@
+package quiz.exquiz_me.entity.card;
+
+import jakarta.persistence.*;
+
+@Entity
+public class TrueFalseQuestion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long questionId;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id", referencedColumnName = "item_id")
+    private VocabularyItem vocabularyItem;
+
+    private Boolean isTrue;
+
+    // Getters and Setters
+}
