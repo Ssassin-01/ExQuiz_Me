@@ -1,9 +1,6 @@
 package quiz.exquiz_me.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +20,7 @@ public class CardBookmarksEntity {
     private Long cardNumber;
 
     private LocalDateTime bookmarkDate;
+
+
+
 }

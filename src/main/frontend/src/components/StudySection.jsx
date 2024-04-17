@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./css/Study.css";
+import {Tabs, Tab} from 'react-bootstrap';
 
 const StudySection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -62,13 +63,20 @@ const StudySection = () => {
   return (
     <div className="study-section">
       <div className="search-categories">
-        <button onClick={() => setSelectedCategory("overall")}>
-          Overall Results
-        </button>
-        <button onClick={() => setSelectedCategory("studySet")}>
-          Study Sets
-        </button>
-        <button onClick={() => setSelectedCategory("user")}>Users</button>
+        <Tabs
+            defaultActiveKey="overall"
+            id="fill-tab-example"
+            className="mb-3"
+            fill
+            onSelect={(selectedKey) => setSelectedCategory(selectedKey)}
+        >
+          <Tab eventKey="overall" title="Overall Results">
+          </Tab>
+          <Tab eventKey="studySet" title="Study Sets">
+          </Tab>
+          <Tab eventKey="user" title="Users">
+          </Tab>
+        </Tabs>
       </div>
       <div className="study-tools">
         <div className="search-box">

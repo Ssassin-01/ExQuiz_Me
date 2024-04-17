@@ -1,10 +1,7 @@
 package quiz.exquiz_me.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,4 +19,8 @@ public class CardEntity {
     private LocalDateTime writeDateTime;
     private String cardTitleImage;
     private Integer countView;
+
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email", insertable = false, updatable = false)
+    private UserEntity user;
 }

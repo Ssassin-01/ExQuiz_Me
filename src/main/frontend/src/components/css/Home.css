@@ -7,7 +7,6 @@
   --color-green5: #273526;
 }
 
-<<<<<<< HEAD
 .home-container {
   max-width: 1200px;
   margin: auto;
@@ -20,9 +19,7 @@ body{
 .card{
   background-color: var(--color-green3);
 }
-=======
 
->>>>>>> 1b74375cb25f3a52e6d4e9d92b4f6e3f6c91c8a3
 .home-container {
   max-width: 1200px;
   margin: auto;
