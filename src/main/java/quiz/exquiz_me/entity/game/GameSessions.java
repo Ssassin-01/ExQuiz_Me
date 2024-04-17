@@ -1,26 +1,26 @@
-package quiz.exquiz_me.entity;
+package quiz.exquiz_me.entity.game;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import quiz.exquiz_me.entity.card.Card;
+import quiz.exquiz_me.entity.user.User;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "game_sessions")
-@Getter
-@Setter
 public class GameSessions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "game_session_id")
     private Long gameSessionId;
 
-    @Column(name = "email")
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email")
+    private User user;
 
-    @Column(name = "card_number")
-    private Long cardNumber;
+    @ManyToOne
+    @JoinColumn(name = "card_number", referencedColumnName = "card_number")
+    private Card card;
 
     @Column(name = "player_count")
     private Integer playerCount;
@@ -32,23 +32,26 @@ public class GameSessions {
     private Integer timer;
 
     @Column(name = "include_tf")
-    private Boolean includeTF;
+    private Boolean includeTf;
 
     @Column(name = "include_mc")
-    private Boolean includeMC;
+    private Boolean includeMc;
 
     @Column(name = "include_sa")
-    private Boolean includeSA;
+    private Boolean includeSa;
 
     @Column(name = "language")
     private String language;
 
-    @Column(name = "qr_code")
+    @Column(name = "qr_code", columnDefinition = "TEXT")
     private String qrCode;
 
     @Column(name = "is_active")
     private Boolean isActive;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    // Getters and setters
 }

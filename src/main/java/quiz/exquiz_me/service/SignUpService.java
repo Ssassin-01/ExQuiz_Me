@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import quiz.exquiz_me.dto.UserDTO;
-import quiz.exquiz_me.entity.UserEntity;
+import quiz.exquiz_me.entity.user.User;
 import quiz.exquiz_me.repository.UserRepository;
 
 @Service
@@ -20,7 +20,7 @@ public class SignUpService {
             return false;
         }
 
-        UserEntity userEntity = new UserEntity();
+        User userEntity = new User();
         userEntity.setEmail(userDTO.getEmail());
         userEntity.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
         userEntity.setNickname(userDTO.getNickname());

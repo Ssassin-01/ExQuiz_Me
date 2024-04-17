@@ -1,19 +1,20 @@
-package quiz.exquiz_me.entity;
-
+package quiz.exquiz_me.entity.PracticeTest;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "test_questions")
-public class TestQuestionEntity {
+public class TestQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "test_question_id")
     private Long testQuestionId;
 
-    @Column(name = "test_session_id")
-    private Long testSessionId;
+    @ManyToOne
+    @JoinColumn(name = "test_session_id", referencedColumnName = "test_session_id")
+    private TestSession testSession;
 
     @Column(name = "question_type")
     private String questionType;
@@ -28,6 +29,8 @@ public class TestQuestionEntity {
     private Boolean isCorrect;
 
     @Column(name = "answered_time")
-    private LocalDateTime answeredTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date answeredTime;
 
+    // Getters and setters
 }

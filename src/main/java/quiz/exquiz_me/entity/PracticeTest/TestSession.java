@@ -1,22 +1,26 @@
-package quiz.exquiz_me.entity;
-
+package quiz.exquiz_me.entity.PracticeTest;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import quiz.exquiz_me.entity.card.Card;
+import quiz.exquiz_me.entity.user.User;
+
+import java.util.Date;
 
 @Entity
-@Table(name = "test_session")
-public class TestSessionEntity {
+@Table(name = "test_sessions")
+public class TestSession {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "test_session_id")
     private Long testSessionId;
 
-    @Column(name = "email")
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email")
+    private User user;
 
-    @Column(name = "card_number")
-    private Long cardNumber;
+    @ManyToOne
+    @JoinColumn(name = "card_number", referencedColumnName = "card_number")
+    private Card card;
 
     @Column(name = "language")
     private String language;
@@ -37,8 +41,12 @@ public class TestSessionEntity {
     private Integer timer;
 
     @Column(name = "start_time")
-    private LocalDateTime startTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startTime;
 
     @Column(name = "end_time")
-    private LocalDateTime endTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endTime;
+
+    // Getters and setters
 }

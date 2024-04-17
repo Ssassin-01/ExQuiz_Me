@@ -1,21 +1,18 @@
-package quiz.exquiz_me.entity;
+package quiz.exquiz_me.entity.card;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "multiple_choice_question")
-public class MultipleChoiceQuestionEntity {
+public class MultipleChoiceQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
     private Long questionId;
 
-    @Column(name = "item_id")
-    private Long itemId;
+    @ManyToOne
+    @JoinColumn(name = "item_id", referencedColumnName = "item_id")
+    private VocabularyItem vocabularyItem;
 
     @Column(name = "option_1")
     private String option1;
@@ -31,4 +28,6 @@ public class MultipleChoiceQuestionEntity {
 
     @Column(name = "correct_option")
     private Integer correctOption;
+
+    // Getters and setters
 }
