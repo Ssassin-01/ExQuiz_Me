@@ -7,6 +7,18 @@
   --color-green5: #273526;
 }
 
+.home-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+body{
+  background-color: var(--color-green2);
+}
+.card{
+  background-color: var(--color-green3);
+}
 
 .home-container {
   max-width: 1200px;

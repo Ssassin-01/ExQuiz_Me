@@ -1,10 +1,8 @@
 package quiz.exquiz_me.dto;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
-import quiz.exquiz_me.entity.UserEntity;
+import quiz.exquiz_me.entity.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,9 +10,9 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
-    private UserEntity userEntity;
+    private User userEntity;
 
-    public CustomUserDetails(UserEntity userEntity) {
+    public CustomUserDetails(User userEntity) {
 
         this.userEntity = userEntity;
     }

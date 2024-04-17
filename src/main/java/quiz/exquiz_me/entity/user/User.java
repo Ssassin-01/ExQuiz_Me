@@ -1,4 +1,4 @@
-package quiz.exquiz_me.entity;
+package quiz.exquiz_me.entity.user;
 
 
 import jakarta.persistence.*;
@@ -11,10 +11,13 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Table(name = "user")
-public class UserEntity {
+public class User {
 
     @Id
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
     @Column(unique = true)
@@ -23,17 +26,21 @@ public class UserEntity {
     @Column(unique = true)
     private String telNumber;
 
+    @Column(name = "date")
     private LocalDate date; // 사용자 생년월일
 
+    @Column(name = "gender")
     private Integer gender;
 
     @Column(name = "signup_purpose")
     private String signupPurpose;
 
+    @Column(name = "identity")
     private String identity = "";
 
     @Column(name = "one_line_resolution")
     private String oneLineResolution = "";
 
+    @Column(name = "permission")
     private String permission = "ROLE_ADMIN";
 }
