@@ -1,7 +1,6 @@
 // src/main/frontend/src/App.js
 
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
@@ -13,19 +12,11 @@ import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 
 function App() {
-  const [data, setData] = useState('')
 
-  useEffect(() => {
-    axios.get('/api/data')
-        .then(response => setData(response.data))
-        .catch(error => console.log(error))
-  }, []);
 
     return (
         <>
-            {/*<div>*/}
-            {/*    받아온 값 :{data}*/}
-            {/*</div>*/}
+
             <Router>
 
                 <div className="app">
