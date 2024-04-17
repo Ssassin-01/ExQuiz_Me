@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./css/Study.css";
-import { Tabs, Tab } from 'react-bootstrap';
+import {Tabs, Tab} from 'react-bootstrap';
 
 const StudySection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -90,35 +90,35 @@ const StudySection = () => {
               <button type="submit">Search</button>
             </form>
           </div>
-          {(selectedCategory === "overall" || selectedCategory === "studySet") && (
-              <>
-                <h3>Learning Card List</h3>
-                <div className="cards-list">
-                  {studyCards.map((card) => (
-                      <div key={card.id} className="card">
-                        <img src={card.imageUrl} alt={card.title} />
-                        <h4>{card.title}</h4>
-                        <p>{card.description}</p>
-                      </div>
-                  ))}
-                </div>
-              </>
-          )}
-          {(selectedCategory === "overall" || selectedCategory === "user") && (
-              <>
-                <h3>User Card List</h3>
-                <div className="cards-list">
-                  {userCards.map((user) => (
-                      <div key={user.id} className="card">
-                        <img src={user.imageUrl} alt={user.name} />
-                        <h4>{user.name}</h4>
-                        <p>{user.bio}</p>
-                      </div>
-                  ))}
-                </div>
-              </>
-          )}
         </div>
+        {selectedCategory === "overall" || selectedCategory === "studySet" ? (
+            <>
+              <h3>Learning Card List</h3>
+              <div className="cards-list">
+                {studyCards.map((card) => (
+                    <div key={card.id} className="card">
+                      <img src={card.imageUrl} alt={card.title} />
+                      <h4>{card.title}</h4>
+                      <p>{card.description}</p>
+                    </div>
+                ))}
+              </div>
+            </>
+        ) : null}
+        {selectedCategory === "overall" || selectedCategory === "user" ? (
+            <>
+              <h3>User Card List</h3>
+              <div className="cards-list">
+                {userCards.map((user) => (
+                    <div key={user.id} className="card">
+                      <img src={user.imageUrl} alt={user.name} />
+                      <h4>{user.name}</h4>
+                      <p>{user.bio}</p>
+                    </div>
+                ))}
+              </div>
+            </>
+        ) : null}
       </div>
   );
 };
