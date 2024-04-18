@@ -2,16 +2,18 @@ package quiz.exquiz_me.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import quiz.exquiz_me.entity.UserEntity;
+import quiz.exquiz_me.entity.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+
 public class CustomUserDetails implements UserDetails {
 
-    private final UserEntity userEntity;
+    private User userEntity;
 
-    public CustomUserDetails(UserEntity userEntity) {
+    public CustomUserDetails(User userEntity) {
+
         this.userEntity = userEntity;
     }
 
@@ -22,11 +24,14 @@ public class CustomUserDetails implements UserDetails {
         Collection<GrantedAuthority> collection = new ArrayList<>();
 
         collection.add(new GrantedAuthority() {
+
             @Override
             public String getAuthority() {
-                return null;
+
+                return userEntity.getPermission();
             }
         });
+
         return collection;
     }
 
@@ -37,7 +42,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userEntity.getUsername();
+        return userEntity.getEmail();
     }
 
     @Override
@@ -57,6 +62,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

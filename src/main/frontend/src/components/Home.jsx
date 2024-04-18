@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "./css/Home.css";
 
 const Home = () => {
+
+  const [userInfo, setUserInfo] = useState({
+    email: "Loading...",
+    role: "Loading...",
+  });
+
+  const [data, setData] = useState(''
+
+  )
+
+  useEffect(() => {
+    axios.get('/api/data')
+        .then(res => setData(res.data))
+        .catch(err => console.log(err))
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/userinfo", {
+          credentials: 'include',
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUserInfo({
+            email: data.email,
+            role: data.role,
+          });
+        }
+      } catch (error) {
+        console.error("Failed to fetch user info: ", error);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
+
+
   const studyCards = [
     {
       id: 1,
@@ -45,65 +81,77 @@ const Home = () => {
   ];
 
   return (
-    <div className="home-container">
-      <div className="main-image">
-        <img
-          src="https://via.placeholder.com/1200x300"
-          alt="Site Main"
-          style={{
-            width: "100%",
-            height: "auto",
-            borderRadius: "8px",
-            marginBottom: "20px",
-          }}
-        />
-      </div>
-      <div className="study-cards">
-        <h3>Recommended Study Cards</h3>
-        <div className="cards-list">
-          {studyCards.map((card) => (
-            <div key={card.id} className="card">
-              <img
-                src={card.imageUrl}
-                alt={card.title}
-                style={{
-                  width: "100%",
-                  height: "150px",
-                  objectFit: "cover",
-                  borderRadius: "4px",
-                  marginBottom: "10px",
-                }}
-              />
-              <h4>{card.title}</h4>
-              <p>{card.description}</p>
-            </div>
-          ))}
+      <div className="home-container">
+
+        <div className="main-image">
+          <img
+              src="https://via.placeholder.com/1200x300"
+              alt="Site Main"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "8px",
+                marginBottom: "20px",
+              }}
+          />
         </div>
-      </div>
-      <div className="user-cards">
-        <h3>Recommended User Cards</h3>
-        <div className="cards-list">
-          {userCards.map((user) => (
-            <div key={user.id} className="card">
-              <img
-                src={user.imageUrl}
-                alt={user.name}
-                style={{
-                  width: "100px",
-                  height: "100px",
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  margin: "0 auto",
-                  marginBottom: "10px",
-                }}
-              />
-              <h4>{user.name}</h4>
-              <p>{user.bio}</p>
-            </div>
-          ))}
+        <div className="study-cards">
+          <h3>Recommended Study Cards</h3>
+          <div className="cards-list">
+            {studyCards.map((card) => (
+                <div key={card.id} className="card">
+                  <img
+                      src={card.imageUrl}
+                      alt={card.title}
+                      style={{
+                        width: "100%",
+                        height: "150px",
+                        objectFit: "cover",
+                        borderRadius: "4px",
+                        marginBottom: "10px",
+                      }}
+                  />
+                  <h4>{card.title}</h4>
+                  <p>{card.description}</p>
+                </div>
+            ))}
+          </div>
         </div>
+        <div className="user-cards">
+          <h3>Recommended User Cards</h3>
+          <div className="cards-list">
+            {userCards.map((user) => (
+                <div key={user.id} className="card">
+                  <img
+                      src={user.imageUrl}
+                      alt={user.name}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        margin: "0 auto",
+                        marginBottom: "10px",
+                      }}
+                  />
+                  <h4>{user.name}</h4>
+                  <p>{user.bio}</p>
+                </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="user-info">
+          <h2>Logged in as: {userInfo.email}</h2>
+          <p>Role: {userInfo.role}</p>
+        </div>
+
+        <div>
+          data : {data}
+        </div>
+
+
       </div>
-    </div>
   );
 };
 
