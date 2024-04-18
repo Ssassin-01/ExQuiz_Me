@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -10,15 +11,19 @@ import SignUp from "./components/SignUp";
 import "./App.css";
 import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
+import MyComponent from './components/MyComponent';
 
 function App() {
 
 
     return (
         <>
-
+            <HelmetProvider>
+                <div>
+                    <MyComponent />
+                </div>
+            </HelmetProvider>
             <Router>
-
                 <div className="app">
 
                     <div className="content">
