@@ -30,6 +30,7 @@ const Login = () => {
 
             if (response.ok) {
                 console.log("Login Successful");
+                sessionStorage.setItem("useremail", credentials.email);
                 navigate("/"); // Redirect to the home page on successful login
             } else {
                 setLoginError('Login failed. Please check your email and password.');

@@ -3,41 +3,6 @@ import axios from 'axios';
 import "./css/Home.css";
 
 const Home = () => {
-
-  const [userInfo, setUserInfo] = useState({
-    email: "Loading...",
-    role: "Loading...",
-  });
-
-  const [data, setData] = useState(''
-
-  )
-
-  useEffect(() => {
-    axios.get('/api/data')
-        .then(res => setData(res.data))
-        .catch(err => console.log(err))
-    const fetchUserInfo = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/userinfo", {
-          credentials: 'include',
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setUserInfo({
-            email: data.email,
-            role: data.role,
-          });
-        }
-      } catch (error) {
-        console.error("Failed to fetch user info: ", error);
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
-
-
   const studyCards = [
     {
       id: 1,
@@ -140,17 +105,6 @@ const Home = () => {
             ))}
           </div>
         </div>
-
-        <div className="user-info">
-          <h2>Logged in as: {userInfo.email}</h2>
-          <p>Role: {userInfo.role}</p>
-        </div>
-
-        <div>
-          data : {data}
-        </div>
-
-
       </div>
   );
 };
