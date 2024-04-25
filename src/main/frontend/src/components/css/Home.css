@@ -1,11 +1,3 @@
-:root {
-  /* Colors */
-  --color-green1: #e4e6d9;
-  --color-green2: #c0cfb2;
-  --color-green3: #6c8776;
-  --color-green4: #45624e;
-  --color-green5: #273526;
-}
 
 .home-container {
   max-width: 1200px;

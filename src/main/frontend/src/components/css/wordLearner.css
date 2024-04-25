@@ -1,0 +1,148 @@
+.word-learner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* Use fixed to make it always in the center of the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.word-learner {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    max-width: 600px;
+    width: calc(100% - 80px); /* Accounting for arrow button width */
+    margin: auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.arrow-btn {
+    background: #e9ecef;
+    border: none;
+    font-size: 1.5em;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    position: absolute; /* Positioned absolutely within the flex container */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1; /* Lower z-index since it's an overlay */
+}
+
+.left-arrow {
+    left: 0;
+    margin-left: 500px;
+}
+
+.right-arrow {
+    right: 0;
+    margin-right: 500px;
+}
+
+.arrow-btn:hover {
+    background-color: #dde2e6; /* Lighter grey for hover state */
+}
+
+.arrow-btn:active {
+    transform: scale(0.95) translateY(-50%); /* Slight shrink effect for active state */
+}
+
+.learn__header {
+    color: #333;
+    background-color: #e9ecef;
+    padding: 15px;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+/*//////////////////////////////////////*/
+.learn__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.learn__word-counter {
+    font-size: 1em;
+    color: #666;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.learn__content {
+    margin: 30px 0;
+    padding: 30px 0;
+    background-color: #fff;
+    font-size: 3em;
+    color: #333;
+    font-weight: bold;
+    border-top: 3px solid #e9ecef;
+    border-bottom: 3px solid #e9ecef;
+}
+
+
+/*///////////////////////////*/
+
+
+
+.learn__footer {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    padding: 20px 0;
+}
+
+.learn__nav-btn {
+    background: #e9ecef;
+    border: none;
+    font-size: 1.5em;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.learn__nav-btn:hover {
+    background-color: #dde2e6; /* Lighter grey for hover state */
+}
+
+.learn__nav-btn:active {
+    transform: scale(0.95); /* Slight shrink effect for active state */
+}
+
+/* Optional: Add media queries for responsiveness */
+@media (max-width: 640px) {
+    .learn__navigation {
+        padding: 10px 20px;
+    }
+
+    .learn__footer {
+        padding: 10px 0;
+    }
+
+    .word-learner {
+        padding: 10px;
+        max-width: 90%;
+    }
+
+    .arrow-btn, .nav-btn {
+        font-size: 1.25em; /* Smaller buttons on smaller screens */
+        padding: 5px 10px;
+    }
+}

@@ -1,0 +1,165 @@
+a {
+    text-decoration: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 78px;
+    height: 100%;
+    background: var(--color-sidebar-bg);
+    padding: 8px 16px;
+    transition: var(--transition);
+}
+
+.sidebar.expand {
+    width: 250px;
+    transition: var(--transition);
+}
+
+/*로고쪽*/
+.nav-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-header__link {
+    display: flex;
+    align-items: center;
+}
+
+.nav-header .logo-img {
+    width: 36px;
+    height: 36px;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.nav-header .logo {
+    color: var(--color-sidebar-font);
+    font-size: 23px;
+    font-weight: 600;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.sidebar.expand .nav-header .logo {
+    opacity: 1;
+    transition: var(--transition);
+}
+
+.sidebar.expand .nav-header .logo-img {
+    opacity: 1;
+    transition: var(--transition);
+}
+
+.nav-header .btn-menu {
+    position: absolute;
+    color: var(--color-sidebar-font);
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 23px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.sidebar.expand .nav-header .btn-menu {
+    margin-right: 0;
+}
+
+
+
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    height: 100%;
+}
+
+.nav-link li {
+    position: relative;
+    margin: 8px 0;
+    list-style: none;
+}
+
+.nav-link .icon {
+    color: var(--color-sidebar-font);
+    height: 30px;
+    min-width: 50px;
+    font-size: 23px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.nav-link li a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 0;
+    gap: 10px;
+    background: var(--color-sidebar-bg);
+}
+
+.nav-link li:hover a {
+    background: var(--color-sidebar-font);
+}
+
+.nav-link li:hover .icon {
+    color: #fff;
+}
+
+.nav-link li a .title {
+    color: var(--color-sidebar-font);
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    display: none;
+    transition: var(--transition);
+}
+
+.sidebar.expand .nav-link li a .title {
+    display: block;
+    transition: var(--transition);
+}
+
+.nav-link li:hover a .title {
+    color: #fff;
+}
+
+.nav-link li .tooltip {
+    position: absolute;
+    top: -20px;
+    left: calc(100% + 15px);
+    z-index: 3;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 6px 14px;
+    font-size: 15px;
+    white-space: nowrap;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0s;
+}
+
+.sidebar li:hover .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transition: var(--transition);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sidebar.expand .tooltip {
+    display: none;
+}

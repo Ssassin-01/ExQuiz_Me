@@ -35,7 +35,7 @@ public class SecurityConfig {
                 )
                 .csrf(csrf -> csrf.disable()) // Typically disable CSRF for APIs
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/login", "/join", "/joinProc", "/").permitAll()
+                        .requestMatchers("/login", "/join", "/joinProc", "/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

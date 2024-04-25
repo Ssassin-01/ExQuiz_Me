@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/signUp.css"; // CSS 경로는 실제 구조에 맞게 조정해주세요.
+import "./css/signUp.css";
 
 const SignUp = () => {
   const [userData, setUserData] = useState({

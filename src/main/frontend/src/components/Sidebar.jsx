@@ -1,53 +1,76 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { FaHome, FaBookReader, FaFolderPlus, FaGamepad, FaDonate, FaIdCard, FaCog, FaBars } from 'react-icons/fa';
 import logo from "../images/logo.png";
-import {Modal, Button} from 'react-bootstrap';
+import "./css/SideBar.css";
 
 const Sidebar = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
-        <div className="sidebar">
-            <a className="side_head" href="#">
-                <img className="logo-img" src={logo} alt="logo"/>
-                <p className="logo">ExQuiz me</p>
-            </a>
-            <ul>
+        <div className={`sidebar ${isExpanded ? 'expand' : ''}`}>
+            <div className="nav-header">
+                <Link className="nav-header__link" to="/">
+                    <img className="logo-img" src={logo} alt="logo" />
+                    <p className="logo">ExQuiz me</p>
+                </Link>
+                <FaBars className="btn-menu" onClick={toggleSidebar} />
+            </div>
+            <ul className="nav-link">
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">
+                        <FaHome className="icon"/>
+                        <span className="title">Home</span>
+                    </Link>
+                    <span className="tooltip">Home</span>
                 </li>
                 <li>
-                    <Link to="/study">Study</Link>
+                    <Link to="/study">
+                        <FaBookReader className="icon"/>
+                        <span className="title">Learning</span>
+                    </Link>
+                    <span className="tooltip">Learning</span>
                 </li>
                 <li>
-                    <Link to="/make">Make</Link>
+                    <Link to="/make">
+                        <FaFolderPlus className="icon"/>
+                        <span className="title">Make</span>
+                    </Link>
+                    <span className="tooltip">Make</span>
                 </li>
                 <li>
-                    <Link to="/game">Game</Link>
+                    <Link to="/game">
+                        <FaGamepad className="icon"/>
+                        <span className="title">Game</span>
+                    </Link>
+                    <span className="tooltip">Game</span>
                 </li>
                 <li>
-                    <Link to="/settings">Settings</Link>
+                    <Link to="/subscribe">
+                        <FaDonate className="icon"/>
+                        <span className="title">SubScribe</span>
+                    </Link>
+                    <span className="tooltip">SubScribe</span>
                 </li>
                 <li>
-                    <Link to="/profile">Profile</Link>
+                    <Link to="profile">
+                        <FaIdCard className="icon"/>
+                        <span className="title">Profile</span>
+                    </Link>
+                    <span className="tooltip">Profile</span>
+                </li>
+                <li>
+                    <Link to="/settings">
+                        <FaCog className="icon"/>
+                        <span className="title">Setting</span>
+                    </Link>
+                    <span className="tooltip">Setting</span>
                 </li>
             </ul>
-            <div className="modal show"
-                 style={{display: 'block', position: 'initial', color: 'white'}}>
-                <Modal.Dialog>
-                    <Modal.Header style={{backgroundColor: '#6c8776', color: 'white'}}>
-                        <Modal.Title>내 라이브러리</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body style={{backgroundColor: '#6c8776'}}>
-                        <p>학습세트를 공유해보아요</p>
-                    </Modal.Body>
-
-                    <Modal.Footer style={{backgroundColor: '#6c8776'}}>
-                        <Button variant="secondary">Make Card</Button>
-                    </Modal.Footer>
-                </Modal.Dialog>
-            </div>
-            <div>
-            </div>
         </div>
     );
 };

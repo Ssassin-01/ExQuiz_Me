@@ -17,12 +17,6 @@ public class SignUpController {
     @PostMapping("/joinProc")
     public ResponseEntity<String> joinProcess(@RequestBody UserDTO userDTO) {
         boolean success = signUpService.joinProcess(userDTO);
-        System.out.println(userDTO.getEmail());
-        System.out.println(userDTO.getPassword());
-        System.out.println(userDTO.getDate());
-        System.out.println(userDTO.getNickname());
-        System.out.println(userDTO.getTelNumber());
-        System.out.println(userDTO.getEmail());
 
         if (!success) {
             return ResponseEntity.badRequest().body("Email already exists.");
