@@ -1,28 +1,38 @@
 import React, { useState } from "react";
 import "./css/Study.css";
-import {Tabs, Tab} from 'react-bootstrap';
+import Slider from "react-slick";
+import { Tabs, Tab } from 'react-bootstrap';
+import Card from './card/Card';  // Import the new Card component
+import UserCard from './card/UserCard';
 
 const StudySection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("overall");
-  const studyCards = [
+  const studyCards  = [
     {
       id: 1,
       title: "Study Card 1",
-      description: "Description for Study Card 1",
-      imageUrl: "https://via.placeholder.com/150",
+      description: "This is a description for Study Card 1.",
+      cardWriter: "Jeongmin",
+      cardDate: "2001-01-01",
+      cardImageUrl: "https://via.placeholder.com/350",
+      logoImageUrl: "https://via.placeholder.com/100",
     },
     {
       id: 2,
       title: "Study Card 2",
-      description: "Description for Study Card 2",
-      imageUrl: "https://via.placeholder.com/150",
+      cardWriter: "Seongmin",
+      cardDate: "2201-11-01",
+      cardImageUrl: "https://via.placeholder.com/350",
+      logoImageUrl: "https://via.placeholder.com/100",
     },
     {
       id: 3,
       title: "Study Card 3",
-      description: "Description for Study Card 3",
-      imageUrl: "https://via.placeholder.com/150",
+      cardWriter: "JoJu",
+      cardDate: "2021-11-01",
+      cardImageUrl: "https://via.placeholder.com/350",
+      logoImageUrl: "https://via.placeholder.com/100",
     },
   ];
 
@@ -31,19 +41,19 @@ const StudySection = () => {
       id: 1,
       name: "User 1",
       bio: "Bio of User 1",
-      imageUrl: "https://via.placeholder.com/100",
+      imageUrl: "https://via.placeholder.com/200",
     },
     {
       id: 2,
       name: "User 2",
       bio: "Bio of User 2",
-      imageUrl: "https://via.placeholder.com/100",
+      imageUrl: "https://via.placeholder.com/200",
     },
     {
       id: 3,
       name: "User 3",
       bio: "Bio of User 3",
-      imageUrl: "https://via.placeholder.com/100",
+      imageUrl: "https://via.placeholder.com/200",
     },
   ];
 
@@ -70,12 +80,9 @@ const StudySection = () => {
               fill
               onSelect={(selectedKey) => setSelectedCategory(selectedKey)}
           >
-            <Tab eventKey="overall" title="Overall Results">
-            </Tab>
-            <Tab eventKey="studySet" title="Study Sets">
-            </Tab>
-            <Tab eventKey="user" title="Users">
-            </Tab>
+            <Tab eventKey="overall" title="Overall Results"></Tab>
+            <Tab eventKey="studySet" title="Study Sets"></Tab>
+            <Tab eventKey="user" title="Users"></Tab>
           </Tabs>
         </div>
         <div className="study-tools">
@@ -94,13 +101,16 @@ const StudySection = () => {
         {selectedCategory === "overall" || selectedCategory === "studySet" ? (
             <>
               <h3>Learning Card List</h3>
-              <div className="cards-list">
+              <div className="study-cards-list">
                 {studyCards.map((card) => (
-                    <div key={card.id} className="card">
-                      <img src={card.imageUrl} alt={card.title} />
-                      <h4>{card.title}</h4>
-                      <p>{card.description}</p>
-                    </div>
+                    <Card
+                        key={card.id}
+                        cardTitle={card.title}
+                        cardWriter={card.cardWriter}
+                        cardDate={card.cardDate}
+                        cardImageUrl={card.cardImageUrl}
+                        logoImageUrl={card.logoImageUrl}
+                    />
                 ))}
               </div>
             </>
@@ -108,13 +118,14 @@ const StudySection = () => {
         {selectedCategory === "overall" || selectedCategory === "user" ? (
             <>
               <h3>User Card List</h3>
-              <div className="cards-list">
+              <div className="study-cards-list">
                 {userCards.map((user) => (
-                    <div key={user.id} className="card">
-                      <img src={user.imageUrl} alt={user.name} />
-                      <h4>{user.name}</h4>
-                      <p>{user.bio}</p>
-                    </div>
+                    <UserCard
+                        key={user.id}
+                        profileImageUrl={user.imageUrl}
+                        nickname={user.name}
+                        recommendations={user.bio}
+                    />
                 ))}
               </div>
             </>

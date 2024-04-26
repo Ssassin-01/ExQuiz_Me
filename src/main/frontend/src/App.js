@@ -11,10 +11,14 @@ import MakeComponent from "./components/MakeComponent";
 import MyComponent from './components/MyComponent';
 import SubScribe from "./components/SubScribe";
 import Game from "./components/Game";
-import Profile from "./components/Profile";
-
-import Study from "./components/card/study";
 import "./App.css";
+import MyPage from "./components/MyPage";
+import Learning from "./components/Learning";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import WordLearn from "./components/card/WordLearn";
+import Settings from "./components/Settings";
+
 
 function App() {
 
@@ -30,6 +34,7 @@ function App() {
 
                     <div className="content">
                         <Sidebar/>
+
                         <main className="main-content">
                             <Header/>
                             <Routes>
@@ -40,8 +45,11 @@ function App() {
                                 <Route path="/make" element={<MakeComponent/>}/>
                                 <Route path="/game" element={<Game/>}/>
                                 <Route path="/subscribe" element={<SubScribe/>}/>
-                                <Route path="/profile" element={<Profile/>}/>
-                                <Route path="/settings" element={<Study/>}/>
+                                <Route path="/profile" element={<MyPage/>}/>
+                                <Route path="/settings" element={<Settings/>}/>
+                                <Route path="/learn" element={<Learning/>}/>
+                                <Route path="/wordLearn" element={<WordLearn/>}/>
+
                             </Routes>
                         </main>
                     </div>
