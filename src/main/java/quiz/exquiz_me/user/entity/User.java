@@ -1,14 +1,21 @@
 package quiz.exquiz_me.entity.user;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import quiz.exquiz_me.entity.card.Card;
+
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user")
 public class User {
     @Id
@@ -41,4 +48,7 @@ public class User {
 
     @Column(name = "permission")
     private String permission = "ROLE_ADMIN";
+
+    @OneToMany(mappedBy = "user")
+    private List<Card> cards; // 사용자가 소유한 카드들
 }

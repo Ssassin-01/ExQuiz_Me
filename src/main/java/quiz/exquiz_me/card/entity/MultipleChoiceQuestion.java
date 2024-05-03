@@ -1,6 +1,7 @@
 package quiz.exquiz_me.entity.card;
 
 import jakarta.persistence.*;
+import quiz.exquiz_me.card.entity.VocabularyItem;
 
 @Entity
 @Table(name = "multiple_choice_question")

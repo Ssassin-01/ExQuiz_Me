@@ -2,15 +2,20 @@ package quiz.exquiz_me.entity.card;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import quiz.exquiz_me.entity.user.User;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "card")
 public class Card {
     @Id
@@ -32,8 +37,13 @@ public class Card {
     @Column(name = "card_titleImage")
     private String cardTitleImage;
 
+    @Column(name = "card_content")
+    private String cardContent;
+
     @Column(name = "countView")
     private Integer countView;
 
+    @OneToMany(mappedBy = "card")
+    private List<VocabularyItem> vocabularyItems; // 카드에 속한 어휘 아이템들
     // Getters and setters
 }

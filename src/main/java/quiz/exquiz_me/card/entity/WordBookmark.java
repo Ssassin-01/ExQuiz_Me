@@ -1,7 +1,8 @@
 package quiz.exquiz_me.entity.card;
 
 import jakarta.persistence.*;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.card.entity.VocabularyItem;
+import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
 

@@ -1,17 +1,19 @@
 package quiz.exquiz_me.entity.card;
 
+
 import jakarta.persistence.*;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.card.entity.Card;
+import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "card_bookmarks")
-public class CardBookmark {
+@Table(name = "card_access_logs")
+public class CardAccessLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bookmark_id")
-    private Long bookmarkId;
+    @Column(name = "log_id")
+    private Long logId;
 
     @ManyToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
@@ -21,9 +23,9 @@ public class CardBookmark {
     @JoinColumn(name = "card_number", referencedColumnName = "card_number")
     private Card card;
 
-    @Column(name = "bookmark_date")
+    @Column(name = "access_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date bookmarkDate;
+    private Date accessTime;
 
     // Getters and setters
 }
