@@ -1,4 +1,4 @@
-package quiz.exquiz_me.entity.game;
+package quiz.exquiz_me.game;
 
 import jakarta.persistence.*;
 import quiz.exquiz_me.user.entity.User;

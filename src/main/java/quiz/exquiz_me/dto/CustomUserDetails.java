@@ -2,7 +2,7 @@ package quiz.exquiz_me.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.user.entity.User;
 
 import java.util.ArrayList;
 import java.util.Collection;

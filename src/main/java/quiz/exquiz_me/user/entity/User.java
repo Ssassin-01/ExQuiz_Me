@@ -1,11 +1,11 @@
-package quiz.exquiz_me.entity.user;
+package quiz.exquiz_me.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import quiz.exquiz_me.entity.card.Card;
+import quiz.exquiz_me.card.entity.Card;
 
 import java.time.LocalDate;
 import java.util.List;

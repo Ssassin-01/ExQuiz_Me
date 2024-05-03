@@ -28,10 +28,15 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // JUnit Jupiter 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }
+

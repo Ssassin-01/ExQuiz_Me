@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .cors(cors -> cors
                         .configurationSource(request -> {
                             var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
-                            corsConfiguration.addAllowedOrigin("http://localhost:3000"); // Adjust as necessary
+                            corsConfiguration.addAllowedOrigin("http://localhost:3000");
                             corsConfiguration.addAllowedMethod("*");
                             corsConfiguration.addAllowedHeader("*");
                             corsConfiguration.setAllowCredentials(true);
@@ -35,7 +35,8 @@ public class SecurityConfig {
                 )
                 .csrf(csrf -> csrf.disable()) // Typically disable CSRF for APIs
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/login", "/join", "/joinProc", "/**").permitAll()
+                        .requestMatchers("/login", "/join", "/joinProc", "/").permitAll()
+                        .requestMatchers("/api/cards").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

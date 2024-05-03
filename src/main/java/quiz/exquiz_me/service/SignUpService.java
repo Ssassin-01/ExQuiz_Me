@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import quiz.exquiz_me.dto.UserDTO;
-import quiz.exquiz_me.entity.user.User;
-import quiz.exquiz_me.repository.UserRepository;
+import quiz.exquiz_me.user.entity.User;
+import quiz.exquiz_me.user.repository.UserRepository;
 
 @Service
 public class SignUpService {

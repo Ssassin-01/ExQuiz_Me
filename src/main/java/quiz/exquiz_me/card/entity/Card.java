@@ -1,4 +1,4 @@
-package quiz.exquiz_me.entity.card;
+package quiz.exquiz_me.card.entity;
 
 
 import jakarta.persistence.*;
@@ -6,8 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.user.entity.User;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,9 +42,9 @@ public class Card {
     private String cardContent;
 
     @Column(name = "countView")
-    private Integer countView;
+    private Integer countView = 0;
 
-    @OneToMany(mappedBy = "card")
-    private List<VocabularyItem> vocabularyItems; // 카드에 속한 어휘 아이템들
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VocabularyItem> vocabularyItems = new ArrayList<>();
     // Getters and setters
 }
