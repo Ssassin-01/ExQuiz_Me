@@ -1,13 +1,14 @@
-package quiz.exquiz_me.entity.card;
+package quiz.exquiz_me.card.entity;
 
 import jakarta.persistence.*;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.card.entity.VocabularyItem;
+import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "card_bookmarks")
-public class CardBookmark {
+@Table(name = "word_bookmarks")
+public class WordBookmark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bookmark_id")
@@ -18,8 +19,8 @@ public class CardBookmark {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "card_number", referencedColumnName = "card_number")
-    private Card card;
+    @JoinColumn(name = "item_id", referencedColumnName = "item_id")
+    private VocabularyItem vocabularyItem;
 
     @Column(name = "bookmark_date")
     @Temporal(TemporalType.TIMESTAMP)

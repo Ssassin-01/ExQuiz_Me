@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useUser } from './User/UserContext';
 import "./css/Login.css"; // Ensure the path matches your project structure
 
 const Login = () => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
+    const { login } = useUser();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -30,7 +32,7 @@ const Login = () => {
 
             if (response.ok) {
                 console.log("Login Successful");
-                sessionStorage.setItem("useremail", credentials.email);
+                login(credentials.email);
                 navigate("/"); // Redirect to the home page on successful login
             } else {
                 setLoginError('Login failed. Please check your email and password.');
@@ -56,11 +58,10 @@ const Login = () => {
                 <button type="submit" className="login-button">Login</button>
                 {loginError && <div className="login-error-message">{loginError}</div>}
             </form>
-            <p>
-                Not a member? <Link to="/signup">Register now</Link>
-            </p>
+            <p>Not a member? <Link to="/signup">Register now</Link></p>
         </div>
     );
 };
+
 
 export default Login;

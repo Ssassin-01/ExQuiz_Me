@@ -1,9 +1,18 @@
-package quiz.exquiz_me.entity.card;
+package quiz.exquiz_me.card.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import quiz.exquiz_me.card.entity.Card;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "vocabulary_item")
 public class VocabularyItem {
     @Id

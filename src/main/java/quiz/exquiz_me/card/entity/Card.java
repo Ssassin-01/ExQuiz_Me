@@ -1,16 +1,22 @@
-package quiz.exquiz_me.entity.card;
+package quiz.exquiz_me.card.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.user.entity.User;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "card")
 public class Card {
     @Id
@@ -32,8 +38,13 @@ public class Card {
     @Column(name = "card_titleImage")
     private String cardTitleImage;
 
-    @Column(name = "countView")
-    private Integer countView;
+    @Column(name = "card_content")
+    private String cardContent;
 
+    @Column(name = "countView")
+    private Integer countView = 0;
+
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VocabularyItem> vocabularyItems = new ArrayList<>();
     // Getters and setters
 }

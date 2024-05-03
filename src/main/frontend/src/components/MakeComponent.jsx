@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useUser } from './User/UserContext';
+import axios from 'axios';
 import "./css/Make.css";
 
 const MakeComponent = () => {
+    const { user } = useUser();
     const [entries, setEntries] = useState([
         { word: '', meaning: '' },
         { word: '', meaning: '' },
@@ -30,10 +33,35 @@ const MakeComponent = () => {
         );
         setEntries(updatedEntries);
     };
+    const handleSubmit = async () => {
+        const cardTitle = document.querySelector('.input-feed').value;
+        const cardContent = document.querySelector('.input-description').value;
 
-    const handleSubmit = () => {
-        // Submit logic goes here
-        alert('Form submitted with entries: ' + JSON.stringify(entries));
+        const cardDTO = {
+            userEmail: user?.email, // Assume logged-in user's email is known
+            title: cardTitle,
+            writeDateTime: new Date(), // Send current date or handle on the server side
+            cardTitleImage: 'http://example.com/image.jpg', // Update as necessary
+            cardContent: cardContent,
+            countView: 0, // Default initial view count
+            vocabularyItems: entries.map(entry => ({
+                englishWord: entry.word,
+                koreanWord: entry.meaning
+            }))
+        };
+
+        console.log('Submitting card:', cardDTO);
+
+        try {
+            const response = await axios.post('http://localhost:8080/api/cards', cardDTO, {
+                withCredentials: true
+            });
+            console.log('Card created:', response.data);
+            alert('Card created successfully!');
+        } catch (error) {
+            console.error('Failed to create card:', error);
+            alert('Failed to create card.');
+        }
     };
 
     return (

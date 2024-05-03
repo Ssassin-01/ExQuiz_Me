@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
+import { UserProvider } from './components/User/UserContext';
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -20,6 +21,7 @@ import WordLearn from "./components/card/WordLearn";
 import Settings from "./components/Settings";
 
 
+
 function App() {
 
     return (
@@ -29,6 +31,7 @@ function App() {
                     <MyComponent />
                 </div>
             </HelmetProvider>
+            <UserProvider>
             <Router>
                 <div className="app">
 
@@ -55,6 +58,7 @@ function App() {
                     </div>
                 </div>
             </Router>
+            </UserProvider>
         </>
     );
 }

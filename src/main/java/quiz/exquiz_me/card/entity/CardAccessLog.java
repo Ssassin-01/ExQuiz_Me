@@ -1,4 +1,5 @@
-package quiz.exquiz_me.entity.learning;
+package quiz.exquiz_me.card.entity;
+
 
 import jakarta.persistence.*;
 import quiz.exquiz_me.card.entity.Card;
@@ -7,12 +8,12 @@ import quiz.exquiz_me.user.entity.User;
 import java.util.Date;
 
 @Entity
-@Table(name = "learning_records")
-public class LearningRecord {
+@Table(name = "card_access_logs")
+public class CardAccessLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "record_id")
-    private Long recordId;
+    @Column(name = "log_id")
+    private Long logId;
 
     @ManyToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
@@ -22,15 +23,9 @@ public class LearningRecord {
     @JoinColumn(name = "card_number", referencedColumnName = "card_number")
     private Card card;
 
-    @Column(name = "learned")
-    private Boolean learned;
-
-    @Column(name = "timestamp")
+    @Column(name = "access_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
-
-    @Column(name = "language")
-    private String language;
+    private Date accessTime;
 
     // Getters and setters
 }
