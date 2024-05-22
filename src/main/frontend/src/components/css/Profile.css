@@ -1,0 +1,88 @@
+/* Profile.css */
+.myPage {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #e0f7fa;
+}
+
+.profile {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 900px;
+}
+
+.userImg {
+    float: left;
+}
+
+.userDetail {
+    float: left;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.profile h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.profile p {
+    text-align: left;
+    font-size: 14px;
+    color: #888;
+}
+
+.profile button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.profile button:hover {
+    background-color: #0056b3;
+}
+
+.calendar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item {
+   text-align: center;
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: -2px;
+    text-align: center;
+}
+
+.nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ddd #ddd #fff;
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
+}

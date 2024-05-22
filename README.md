@@ -11,3 +11,6 @@
 - npm 10.5.1
 - react-router-dom
 - tailwind css
+
+
+-- npm i react-calendar
