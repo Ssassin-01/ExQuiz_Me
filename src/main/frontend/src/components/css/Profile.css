@@ -86,3 +86,14 @@
     border-top: none;
     background-color: #fff;
 }
+
+.myBadges {
+    text-align: center;
+    display: table;
+}
+
+.BadgesObject {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
