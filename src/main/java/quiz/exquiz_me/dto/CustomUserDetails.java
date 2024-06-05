@@ -2,7 +2,7 @@ package quiz.exquiz_me.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import quiz.exquiz_me.entity.user.User;
+import quiz.exquiz_me.user.entity.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,6 +35,9 @@ public class CustomUserDetails implements UserDetails {
         return collection;
     }
 
+    public User getUser() {
+        return userEntity;
+    }
     @Override
     public String getPassword() {
         return userEntity.getPassword();

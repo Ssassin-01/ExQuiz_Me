@@ -1,0 +1,90 @@
+.my-page {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #cfe8a9;
+    padding: 20px;
+    width: 70%;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.my-page-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: red;
+    text-decoration: underline;
+}
+
+.settings-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-basis: 50%;
+    gap: 40px;
+}
+
+.profile-image {
+    background-color: red;
+    background-size: cover;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.edit-button {
+    background-color: #dddddd;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.profile-contents p{
+    padding-left: 20px;
+    text-align: left;
+}
+
+
+
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.nav-button {
+    background-color: #8FA862;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive adjustments and other styling as necessary */

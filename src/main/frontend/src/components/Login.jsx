@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./css/Login.css"; // Ensure the path matches your project structure
+import { useUser } from './User/UserContext';
+import "./css/Login.css";
 
 const Login = () => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
+    const { login } = useUser();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -15,23 +17,24 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new URLSearchParams();
-        formData.append('username', credentials.email); // Spring Security default parameter name
+        const apiUrl = process.env.REACT_APP_API_URL;
+        formData.append('username', credentials.email);
         formData.append('password', credentials.password);
 
         try {
-            const response = await fetch("http://localhost:8080/login", { // Ensure this matches your backend's expected login URL
+            const response = await fetch(`${apiUrl}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
                 body: formData.toString(),
-                credentials: 'include', // Necessary for cookies to be sent and session to be maintained
+                credentials: 'include',
             });
 
             if (response.ok) {
                 console.log("Login Successful");
-                sessionStorage.setItem("useremail", credentials.email);
-                navigate("/"); // Redirect to the home page on successful login
+                login(credentials.email);
+                navigate("/");
             } else {
                 setLoginError('Login failed. Please check your email and password.');
             }
@@ -56,9 +59,7 @@ const Login = () => {
                 <button type="submit" className="login-button">Login</button>
                 {loginError && <div className="login-error-message">{loginError}</div>}
             </form>
-            <p>
-                Not a member? <Link to="/signup">Register now</Link>
-            </p>
+            <p>Not a member? <Link to="/signup">Register now</Link></p>
         </div>
     );
 };

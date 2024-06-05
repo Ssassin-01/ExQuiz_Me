@@ -1,40 +1,113 @@
-.make-section {
-  background-color: #4c4c4c;
-  color: white;
-  max-width: 600px;
+.make-component {
+  font-family: 'Arial', sans-serif;
+  background-color: #e9f5e9;
   padding: 20px;
-  margin: 20px auto;
-  border-radius: 8px;
-  background-color: #45624e;
-  color: gray;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin: 200px auto;
+  position: relative;
 }
 
-.title-input,
-.description-input,
-.item input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: none;
-}
-
-.description-input {
-  height: 100px;
-}
-
-.item {
+.make-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  gap: 1rem;
+  margin-bottom: 20px;
+  position: relative;
+  color: #ff0000;
 }
 
-.item-number {
+.make-header::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, #ff0000 50%, #e9f5e9 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.5s ease-out;
+}
+
+.make-header:hover::after {
+  background-position: right bottom;
+}
+
+.volume-title {
+  font-size: 1.8em;
+  font-weight: bold;
   margin-right: 10px;
 }
 
-.item button {
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-feed, .input-description, .entry-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+}
+
+.input-description {
+  height: 80px;
+  resize: none;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.entry-number {
+  background-color: #d4d4d4;
+  padding: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.entry-word {
+  margin-right: 5px;
+  flex: 2;
+}
+.entry-input {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.entry-meaning {
+  flex: 3;
+}
+
+.delete-button {
+  background-color: #f44336;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
   margin-left: 10px;
 
+}
+
+.add-button, .submit-button {
+  background-color: #4caf50;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
 }

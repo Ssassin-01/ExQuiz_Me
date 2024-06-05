@@ -1,0 +1,124 @@
+.learning-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #dfe6e9;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+}
+
+.learning-header {
+    background-color: #2ecc71;
+    color: white;
+    padding: 1em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+}
+
+.volume-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.star-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.word-count {
+    margin-left: 10px;
+    font-size: 1.4em;
+}
+
+.header-buttons button {
+    margin-left: 0.5em;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header-buttons button:hover {
+    background-color: #2ecc71;
+}
+
+.word-list-container {
+    overflow: hidden;
+    margin: 1em;
+    max-height: 80vh;
+}
+
+.word-list {
+    padding-right: 1em;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.word-list::-webkit-scrollbar {
+    display: none;
+}
+
+.word-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.word-text {
+    margin-left: 1em;
+    font-weight: bold;
+}
+
+.filled {
+    color: #f1c40f;
+}
+
+.share-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.word-item:hover {
+    background-color: #ecf0f1;
+}
+
+@media (max-width: 768px) {
+    .learning-container {
+        width: 95%;
+    }
+}
