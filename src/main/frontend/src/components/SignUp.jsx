@@ -36,14 +36,14 @@ const SignUp = () => {
           ...userData,
           gender: genderValue,
         }),
-        credentials: 'include'
       });
 
       if (response.ok) {
         console.log("Sign Up Successful");
         navigate("/login"); // 회원가입 성공 후 로그인 페이지로 이동
       } else {
-        console.error("Sign Up Failed");
+        const errorMessage = await response.text();
+        alert(errorMessage); // 중복된 값에 대한 알림창 표시
       }
     } catch (error) {
       console.error("Error:", error);

@@ -3,6 +3,7 @@ package quiz.exquiz_me.game.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "game_question")
 public class GameQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
