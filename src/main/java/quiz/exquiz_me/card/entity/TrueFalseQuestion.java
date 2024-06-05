@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import quiz.exquiz_me.card.entity.VocabularyItem;
 
 @Entity
+@Table(name = "true_false_question")
 public class TrueFalseQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

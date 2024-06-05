@@ -2,6 +2,7 @@ package quiz.exquiz_me.user.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import quiz.exquiz_me.dto.UserDTO;
 import quiz.exquiz_me.user.entity.User;
@@ -12,13 +13,16 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //user 추가하기
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    // User 추가하기
     public UserDTO addUser(UserDTO userDTO) {
         User user = new User(
                 userDTO.getEmail(),
-                "defaultPass",
+                bCryptPasswordEncoder.encode(userDTO.getPassword()),
                 userDTO.getNickname(),
-                "000-0000-0000",
+                userDTO.getTelNumber(),
                 userDTO.getDate(),
                 userDTO.getGender(),
                 userDTO.getSignupPurpose(),
@@ -41,9 +45,14 @@ public class UserService {
         );
     }
 
-    //유저가 존재하는가??
-    public boolean userExists(String email) {
-        return userRepository.existsById(email);
+    // 이메일 중복 확인
+    public boolean emailExists(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    // 전화번호 중복 확인
+    public boolean telNumberExists(String telNumber) {
+        return userRepository.existsByTelNumber(telNumber);
     }
 
     public void deleteUser(String email) {

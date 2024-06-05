@@ -52,7 +52,7 @@ public class SecurityConfig {
                         .clearAuthentication(true)
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS) // 세션 정책 설정
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 세션 정책 설정
                         .invalidSessionUrl("/login") // 세션이 유효하지 않을 때 이동할 URL 설정
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling

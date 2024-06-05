@@ -1,12 +1,13 @@
 server:
-  address: ${SPRING_SERVER_ADDRESS}
+  address: ${SPRING_SERVER_ADDRESS:localhost}
   servlet:
     session:
       timeout: 90m
 
 security:
   cors:
-    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS}
+    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000}
+
 
 spring:
   web:
