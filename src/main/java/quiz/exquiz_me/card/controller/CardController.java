@@ -22,6 +22,7 @@ public class CardController {
 
     @PostMapping
     public ResponseEntity<?> createCard(@RequestBody CardDTO cardDTO) {
+        //ResponseEntity => HTTP 응답에 풍부한 정보를 반환할 수 있도록 하는 놈
         try {
             logger.info("Received card data: {}", cardDTO);
             System.out.println("Email: " + cardDTO.getUserEmail());

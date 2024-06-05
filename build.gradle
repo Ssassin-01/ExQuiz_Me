@@ -29,6 +29,15 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // ZXing Core
+    implementation 'com.google.zxing:core:3.4.1'
+
+    // ZXing JavaSE
+    implementation 'com.google.zxing:javase:3.4.1'
+
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+
     testImplementation 'org.springframework.security:spring-security-test'
 
     // JUnit Jupiter 의존성

@@ -1,19 +1,29 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const UserContext = createContext(null);
+const UserContext = createContext();
+
+export const useUser = () => {
+    return useContext(UserContext);
+};
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    const login = (userEmail) => {
-        // Here you might want to fetch user details or simply store the email
-        sessionStorage.setItem('useremail', userEmail);  // Optionally store user data in sessionStorage
-        setUser({ email: userEmail });
+    useEffect(() => {
+        const email = sessionStorage.getItem('useremail');
+        if (email) {
+            setUser({ email });
+        }
+    }, []);
+
+    const login = (email) => {
+        setUser({ email });
+        sessionStorage.setItem('useremail', email); // 세션 스토리지에 useremail 저장
     };
 
     const logout = () => {
-        sessionStorage.removeItem('useremail');
         setUser(null);
+        sessionStorage.removeItem('useremail'); // 세션 스토리지에서 useremail 제거
     };
 
     return (
@@ -22,5 +32,3 @@ export const UserProvider = ({ children }) => {
         </UserContext.Provider>
     );
 };
-
-export const useUser = () => useContext(UserContext);

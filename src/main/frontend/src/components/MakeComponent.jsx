@@ -36,14 +36,15 @@ const MakeComponent = () => {
     const handleSubmit = async () => {
         const cardTitle = document.querySelector('.input-feed').value;
         const cardContent = document.querySelector('.input-description').value;
+        const apiUrl = process.env.REACT_APP_API_URL;
 
         const cardDTO = {
-            userEmail: user?.email, // Assume logged-in user's email is known
+            userEmail: user?.email, // 옵셔널 체이닝 -> null이거나 undefined면 undefined로 반환
             title: cardTitle,
-            writeDateTime: new Date(), // Send current date or handle on the server side
-            cardTitleImage: 'http://example.com/image.jpg', // Update as necessary
+            writeDateTime: new Date(),
+            cardTitleImage: 'http://example.com/image.jpg',
             cardContent: cardContent,
-            countView: 0, // Default initial view count
+            countView: 0,
             vocabularyItems: entries.map(entry => ({
                 englishWord: entry.word,
                 koreanWord: entry.meaning
@@ -53,9 +54,13 @@ const MakeComponent = () => {
         console.log('Submitting card:', cardDTO);
 
         try {
-            const response = await axios.post('http://localhost:8080/api/cards', cardDTO, {
-                withCredentials: true
+            const response = await axios.post(`${apiUrl}/api/cards`, cardDTO, {
+                headers: {
+                    'Content-Type': 'application/json', // 콘텐츠 유형을 명시적으로 설정합니다.
+                },
+                withCredentials: true // 쿠키를 포함하여 요청을 보냅니다
             });
+
             console.log('Card created:', response.data);
             alert('Card created successfully!');
         } catch (error) {

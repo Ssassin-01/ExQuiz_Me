@@ -1,12 +1,18 @@
-package quiz.exquiz_me.game;
+package quiz.exquiz_me.game.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import quiz.exquiz_me.card.entity.Card;
 import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "game_sessions")
 public class GameSessions {
     @Id
@@ -53,5 +59,16 @@ public class GameSessions {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    // Getters and setters
+    @OneToMany(mappedBy = "gameSessions", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<GameParticipant> participants = new HashSet<>();
+
+    public void addParticipant(GameParticipant participant) {
+        participants.add(participant);
+        participant.setGameSessions(this);
+    }
+
+    public void removeParticipant(GameParticipant participant) {
+        participants.remove(participant);
+        participant.setGameSessions(null);
+    }
 }

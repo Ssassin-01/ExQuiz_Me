@@ -1,9 +1,15 @@
-package quiz.exquiz_me.game;
+package quiz.exquiz_me.game.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import quiz.exquiz_me.user.entity.User;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "game_participants")
 public class GameParticipant {
     @Id
