@@ -1,3 +1,9 @@
+frontend 파일 안에다 config.env파일 생성하고
+IP_ADDRESS=10.1.16.44
+이런식으로 작성해주세요!!! 
+ - cmd에 ipconfig입력 
+ - ipv4 주소입니다!
+
 ### 버전 및 의존성
 
 - Spring Boot 3.2.1.
