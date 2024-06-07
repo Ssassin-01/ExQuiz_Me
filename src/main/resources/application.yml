@@ -31,11 +31,13 @@ spring:
         format_sql: true
 
 logging:
+  file:
+    name: application.log
   level:
     org:
       springframework:
         web: DEBUG
-        security: DEBUG
+        websocket: DEBUG
 
     quiz:
       exquiz_me:

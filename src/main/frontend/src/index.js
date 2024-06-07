@@ -7,9 +7,9 @@ import reportWebVitals from './reportWebVitals';
 const container = document.getElementById('root');
 const root = createRoot(container); // root 생성
 root.render(
-    <React.StrictMode>
+   // <React.StrictMode>
         <App />
-    </React.StrictMode>
+    //</React.StrictMode>
 );
 
 reportWebVitals();

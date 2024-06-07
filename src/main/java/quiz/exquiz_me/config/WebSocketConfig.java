@@ -12,9 +12,6 @@ import org.springframework.web.socket.config.annotation.WebSocketTransportRegist
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    @Value("${security.cors.allowed-origins}")
-    private String allowedOrigins;
-
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic");
@@ -24,14 +21,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("*")
+                .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 
     @Override
     public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
-        registration.setSendTimeLimit(15 * 1000) // 메시지 전송 시간 제한 설정
-                .setSendBufferSizeLimit(512 * 1024) // 전송 버퍼 크기 설정
-                .setMessageSizeLimit(128 * 1024); // 메시지 크기 제한 설정
+        registration.setSendTimeLimit(15 * 1000)
+                .setSendBufferSizeLimit(512 * 1024)
+                .setMessageSizeLimit(128 * 1024);
     }
 }

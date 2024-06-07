@@ -1,30 +1,23 @@
 package quiz.exquiz_me.game.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Set;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ParticipantUpdate {
-
     private Long gameSessionId;
-    private Set<String> participants;  // 참가자 이름 또는 식별자를 담는 컬렉션
+    private String type;
+    private String nickname;
+    private Set<String> participants;
 
-    public ParticipantUpdate(Long gameSessionId, Set<String> participants) {
+    public ParticipantUpdate(Long gameSessionId, String type, Set<String> participants) {
         this.gameSessionId = gameSessionId;
-        this.participants = participants;
-    }
-
-    public Long getGameSessionId() {
-        return gameSessionId;
-    }
-
-    public void setGameSessionId(Long gameSessionId) {
-        this.gameSessionId = gameSessionId;
-    }
-
-    public Set<String> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(Set<String> participants) {
+        this.type = type;
         this.participants = participants;
     }
 }

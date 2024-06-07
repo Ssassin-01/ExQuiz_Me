@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import './css/Game.css';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import { Stomp } from '@stomp/stompjs';
+import './css/Game.css';
 
 function Game() {
     const [playerCount, setPlayerCount] = useState(6);
@@ -15,22 +15,47 @@ function Game() {
     const [languageToggle, setLanguageToggle] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState("");
     const [participants, setParticipants] = useState([]);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
+    const clientRef = useRef(null);
 
     useEffect(() => {
-        const sock = new SockJS(`${apiUrl}/ws`);
-        const client = Stomp.over(sock);
-        client.connect({}, () => {
-            client.subscribe('/topic/participants', (message) => {
-                const participantUpdate = JSON.parse(message.body);
-                if (participantUpdate && participantUpdate.participants) {
-                    setParticipants(participantUpdate.participants);
+        if (!clientRef.current) {
+            const client = new Client({
+                webSocketFactory: () => new SockJS(`${apiUrl}/ws`),
+                connectHeaders: {},
+                debug: function (str) {
+                    console.log(str);
+                },
+                reconnectDelay: 5000,
+                heartbeatIncoming: 4000,
+                heartbeatOutgoing: 4000,
+                onConnect: () => {
+                    console.log('Connected to WebSocket');
+                    client.subscribe('/topic/participants', (message) => {
+                        const participantUpdate = JSON.parse(message.body);
+                        if (participantUpdate && participantUpdate.participants) {
+                            setParticipants(participantUpdate.participants);
+                        }
+                    });
+                },
+                onStompError: (frame) => {
+                    console.error('Broker reported error: ' + frame.headers['message']);
+                    console.error('Additional details: ' + frame.body);
+                },
+                onWebSocketClose: () => {
+                    console.log('WebSocket connection closed');
                 }
             });
-        });
+            client.activate();
+            clientRef.current = client;
+        }
 
         return () => {
-            client.disconnect();
+            if (clientRef.current && clientRef.current.active) {
+                clientRef.current.deactivate(() => {
+                    console.log('Disconnected from WebSocket');
+                });
+            }
         };
     }, [apiUrl]);
 
@@ -50,7 +75,7 @@ function Game() {
         };
 
         try {
-            const response = await axios.post(`${apiUrl}/api/game-sessions`, config, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions`, config, {
                 withCredentials: true
             });
             setQrCodeUrl(response.data.qrCode);
