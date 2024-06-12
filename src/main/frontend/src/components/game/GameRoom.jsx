@@ -1,73 +1,52 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Client } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
+import React, { useState, useEffect } from 'react';
 import './css/GameRoom.css';
+import { useNavigate } from 'react-router-dom';
+import { useWebSocket } from './context/WebSocketContext';
+import { useNickname } from './context/NicknameContext';
 
 function GameRoom() {
-    const [isConnected, setIsConnected] = useState(false);
-    const [nickname, setNickname] = useState("");
+    const [nicknameInput, setNicknameInput] = useState("");
     const [joined, setJoined] = useState(false);
     const [error, setError] = useState(null);
-    const [participants, setParticipants] = useState([]);
-    const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
-    const clientRef = useRef(null);
+    const { participants, publishMessage, webSocketConnected, connectWebSocket, subscribeToChannel } = useWebSocket();
+    const { setNickname } = useNickname();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!clientRef.current) {
-            const client = new Client({
-                webSocketFactory: () => new SockJS(`${apiUrl}/ws`),
-                connectHeaders: {},
-                debug: function (str) {
-                    console.log(str);
-                },
-                reconnectDelay: 5000,
-                heartbeatIncoming: 4000,
-                heartbeatOutgoing: 4000,
-                onConnect: () => {
-                    console.log('Connected to WebSocket');
-                    setIsConnected(true);
-                    client.subscribe('/topic/participants', (message) => {
-                        const participantUpdate = JSON.parse(message.body);
-                        if (participantUpdate && participantUpdate.participants) {
-                            setParticipants(participantUpdate.participants);
-                        }
-                    });
-                },
-                onStompError: (frame) => {
-                    console.error('Broker reported error: ' + frame.headers['message']);
-                    console.error('Additional details: ' + frame.body);
-                },
-                onWebSocketClose: () => {
-                    console.log('WebSocket connection closed');
-                }
-            });
-            client.activate();
-            clientRef.current = client;
+        if (!webSocketConnected) {
+            connectWebSocket();
         }
+    }, [webSocketConnected, connectWebSocket]);
 
-        return () => {
-            if (clientRef.current && clientRef.current.active) {
-                clientRef.current.deactivate(() => {
-                    console.log('Disconnected from WebSocket');
-                });
-            }
-        };
-    }, [apiUrl]);
+    useEffect(() => {
+        if (webSocketConnected) {
+            const subscription = subscribeToChannel('/topic/game-start', () => {
+                navigate('/gameox');
+            });
+
+            return () => {
+                if (subscription) {
+                    subscription.unsubscribe();
+                }
+            };
+        }
+    }, [webSocketConnected, navigate, subscribeToChannel]);
 
     const joinGame = () => {
-        if (clientRef.current && clientRef.current.connected && nickname.trim() !== "") {
-            clientRef.current.publish({
-                destination: '/app/join',
-                body: JSON.stringify({
+        if (nicknameInput.trim() !== "") {
+            setNickname(nicknameInput);
+            if (webSocketConnected) {
+                publishMessage('/app/join', {
+                    gameSessionId: 1,
                     type: "join",
-                    nickname: nickname,
-                    gameSessionId: 1 // 임시로 설정한 gameSessionId, 필요에 따라 수정해야 함
-                })
-            });
-            setJoined(true);
+                    nickname: nicknameInput
+                });
+                setJoined(true);
+            } else {
+                setError("WebSocket is not connected.");
+            }
         } else {
-            console.error("WebSocket connection is not open or nickname is empty.");
-            setError("WebSocket connection is not open or nickname is empty.");
+            setError("Nickname cannot be empty.");
         }
     };
 
@@ -79,13 +58,13 @@ function GameRoom() {
                 <>
                     <input
                         type="text"
-                        value={nickname}
-                        onChange={(e) => setNickname(e.target.value)}
+                        value={nicknameInput}
+                        onChange={(e) => setNicknameInput(e.target.value)}
                         placeholder="Enter your nickname"
                         className="nickname-input"
                     />
-                    <button className="join-game-button" onClick={joinGame} disabled={!isConnected || nickname.trim() === ""}>
-                        {isConnected ? "Join Game" : "Connecting..."}
+                    <button className="join-game-button" onClick={joinGame} disabled={nicknameInput.trim() === ""}>
+                        Join Game
                     </button>
                 </>
             ) : (
@@ -106,4 +85,3 @@ function GameRoom() {
 }
 
 export default GameRoom;
-

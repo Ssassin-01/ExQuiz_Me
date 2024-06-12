@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/join", "/joinProc", "/images/**", "/js/**", "/css/**", "/img/**", "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions").permitAll() // 여기에 "/api/game-sessions" 추가
+                        .requestMatchers("/", "/login", "/join", "/joinProc", "/images/**", "/js/**", "/css/**", "/img/**", "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions", "/gaming", "/gameox").permitAll() // 여기에 "/api/game-sessions" 추가
                         .requestMatchers("/api/cards").authenticated()
                         .anyRequest().authenticated()
                 )

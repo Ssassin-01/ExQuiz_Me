@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Client } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
+import { useNavigate } from 'react-router-dom';
+import { useWebSocket } from './context/WebSocketContext';
 import './css/Game.css';
 
 function Game() {
@@ -14,50 +14,8 @@ function Game() {
     const [shortAnswerToggle, setShortAnswerToggle] = useState(false);
     const [languageToggle, setLanguageToggle] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState("");
-    const [participants, setParticipants] = useState([]);
-    const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
-    const clientRef = useRef(null);
-
-    useEffect(() => {
-        if (!clientRef.current) {
-            const client = new Client({
-                webSocketFactory: () => new SockJS(`${apiUrl}/ws`),
-                connectHeaders: {},
-                debug: function (str) {
-                    console.log(str);
-                },
-                reconnectDelay: 5000,
-                heartbeatIncoming: 4000,
-                heartbeatOutgoing: 4000,
-                onConnect: () => {
-                    console.log('Connected to WebSocket');
-                    client.subscribe('/topic/participants', (message) => {
-                        const participantUpdate = JSON.parse(message.body);
-                        if (participantUpdate && participantUpdate.participants) {
-                            setParticipants(participantUpdate.participants);
-                        }
-                    });
-                },
-                onStompError: (frame) => {
-                    console.error('Broker reported error: ' + frame.headers['message']);
-                    console.error('Additional details: ' + frame.body);
-                },
-                onWebSocketClose: () => {
-                    console.log('WebSocket connection closed');
-                }
-            });
-            client.activate();
-            clientRef.current = client;
-        }
-
-        return () => {
-            if (clientRef.current && clientRef.current.active) {
-                clientRef.current.deactivate(() => {
-                    console.log('Disconnected from WebSocket');
-                });
-            }
-        };
-    }, [apiUrl]);
+    const navigate = useNavigate();
+    const { connectWebSocket, publishMessage, participants, webSocketConnected } = useWebSocket();  // 추가
 
     const handleCreateGameSession = async () => {
         const [minutes, seconds] = timer.split(':').map(Number);
@@ -80,10 +38,21 @@ function Game() {
             });
             setQrCodeUrl(response.data.qrCode);
             console.log("QR Code URL:", response.data.qrCode);
+
+            if (!webSocketConnected) {  // 웹소켓이 연결되어 있지 않으면 연결
+                connectWebSocket();
+            }
         } catch (error) {
             console.error('Error creating game session:', error.response ? error.response.data : error.message);
             setQrCodeUrl("");
         }
+    };
+
+    const handleStartGame = () => {
+        if (webSocketConnected) {
+            publishMessage('/app/start', { message: 'start' });
+        }
+        navigate('/gaming');
     };
 
     return (
@@ -121,28 +90,28 @@ function Game() {
                         <div className="settings-row">
                             <span className="label">O/X</span>
                             <label className="switch">
-                                <input type="checkbox" checked={oxToggle} onChange={() => setOxToggle(!oxToggle)}/>
+                                <input type="checkbox" checked={oxToggle} onChange={() => setOxToggle(!oxToggle)} />
                                 <span className="slider"></span>
                             </label>
                         </div>
                         <div className="settings-row">
                             <span className="label">4지선단</span>
                             <label className="switch">
-                                <input type="checkbox" checked={fourToggle} onChange={() => setFourToggle(!fourToggle)}/>
+                                <input type="checkbox" checked={fourToggle} onChange={() => setFourToggle(!fourToggle)} />
                                 <span className="slider"></span>
                             </label>
                         </div>
                         <div className="settings-row">
                             <span className="label">주관식</span>
                             <label className="switch">
-                                <input type="checkbox" checked={shortAnswerToggle} onChange={() => setShortAnswerToggle(!shortAnswerToggle)}/>
+                                <input type="checkbox" checked={shortAnswerToggle} onChange={() => setShortAnswerToggle(!shortAnswerToggle)} />
                                 <span className="slider"></span>
                             </label>
                         </div>
                         <div className="settings-row">
                             <span className="label">영어/한국어</span>
                             <label className="switch">
-                                <input type="checkbox" checked={languageToggle} onChange={() => setLanguageToggle(!languageToggle)}/>
+                                <input type="checkbox" checked={languageToggle} onChange={() => setLanguageToggle(!languageToggle)} />
                                 <span className="slider"></span>
                             </label>
                         </div>
@@ -150,10 +119,13 @@ function Game() {
                     <div className="button-row">
                         <button className="qr-code-button" onClick={handleCreateGameSession}>방 만들기</button>
                         {qrCodeUrl ? (
-                            <img src={qrCodeUrl} alt="Game Room QR Code" onError={() => setQrCodeUrl('이미지를 불러올 수 없습니다.')}/>
+                            <img src={qrCodeUrl} alt="Game Room QR Code" onError={() => setQrCodeUrl('이미지를 불러올 수 없습니다.')} />
                         ) : (
                             <p>QR 코드가 생성되지 않았습니다.</p>
                         )}
+                    </div>
+                    <div className="button-row">
+                        <button className="start-game-button" onClick={handleStartGame}>게임 시작</button>
                     </div>
                 </div>
             </div>
