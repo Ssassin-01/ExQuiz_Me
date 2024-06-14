@@ -1,0 +1,1033 @@
+2024-06-12T00:07:56.315+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h29s909ms).
+2024-06-12T01:05:00.289+09:00  INFO 21194 --- [MessageBroker-4] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 7600]
+2024-06-12T01:05:04.725+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57m8s410ms).
+2024-06-12T01:09:35.006+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:09:35.010+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:09:35.011+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:09:35.016+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:09:35.016+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:09:35.022+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:09:35.023+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:09:35 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:09:35.026+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T01:10:25.019+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T01:10:25.028+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T01:10:25.055+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=안녕단어, writeDateTime=Wed Jun 12 01:10:24 (truncated)...]
+2024-06-12T01:10:25.062+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-9] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=안녕단어, writeDateTime=Wed Jun 12 01:10:24 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=안녕, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=hello, koreanWord=안녕), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=hi, koreanWord=안녕)])
+2024-06-12T01:10:25.136+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:10:25.137+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=8, userEmail=asdf1234@gmail.com, title=안녕단어, writeDateTime=Wed Jun 12 01:10:25 KS (truncated)...]
+2024-06-12T01:10:25.152+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T01:10:28.065+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:10:28.066+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:10:28.066+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:10:28.068+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:10:28.068+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:10:28.069+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:10:28.069+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:10:28 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:10:28.071+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T01:13:40.072+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:13:40.078+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:13:40.079+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:13:40.092+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:13:40.093+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:13:40.113+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:13:40.116+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:13:40 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:13:40.128+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T01:13:42.656+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:13:42.656+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:13:42.657+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:13:42.658+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:13:42.658+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:13:42.659+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:13:42.660+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:13:42 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:13:42.661+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T01:25:39.743+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:25:39.755+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:25:39.755+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:25:39.768+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:25:39.769+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:25:39.807+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:25:39.810+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:25:39 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:25:39.820+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T01:32:03.484+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T01:32:03.488+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T01:32:03.510+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=null, title=hi, writeDateTime=Wed Jun 12 01:32:03 KST 2024, cardT (truncated)...]
+2024-06-12T01:32:03.516+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-1] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=null, title=hi, writeDateTime=Wed Jun 12 01:32:03 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=hihi, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=hi, koreanWord=안녕), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=hello, koreanWord=안녕)])
+2024-06-12T01:32:03.702+09:00 ERROR 21194 --- [http-nio-192.0.0.2-8080-exec-1] q.e.card.controller.CardController       : Error creating card: 
+
+org.springframework.dao.InvalidDataAccessApiUsageException: The given id must not be null
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:371) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:246) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:164) ~[spring-data-jpa-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:220) ~[spring-aop-6.1.5.jar:6.1.5]
+	at jdk.proxy2/jdk.proxy2.$Proxy124.findById(Unknown Source) ~[na:na]
+	at quiz.exquiz_me.card.service.VocaCardService.createCard(VocaCardService.java:53) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.5.jar:6.1.5]
+	at quiz.exquiz_me.card.service.VocaCardService$$SpringCGLIB$$0.createCard(<generated>) ~[main/:na]
+	at quiz.exquiz_me.card.controller.CardController.createCard(CardController.java:32) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.ForceEagerSessionCreationFilter.doFilterInternal(ForceEagerSessionCreationFilter.java:45) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.IllegalArgumentException: The given id must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:172) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById(SimpleJpaRepository.java:302) ~[spring-data-jpa-3.2.4.jar:3.2.4]
+	at jdk.internal.reflect.GeneratedMethodAccessor40.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.1.5.jar:6.1.5]
+	... 131 common frames omitted
+
+2024-06-12T01:32:03.749+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-06-12T01:32:03.749+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Error creating card"]
+2024-06-12T01:32:03.751+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-06-12T01:33:08.133+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T01:33:08.137+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T01:33:08.161+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=null, title=hi, writeDateTime=Wed Jun 12 01:33:08 KST 2024, cardT (truncated)...]
+2024-06-12T01:33:08.162+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-4] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=null, title=hi, writeDateTime=Wed Jun 12 01:33:08 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=hihi, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=hi, koreanWord=안녕), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=hello, koreanWord=안녕)])
+2024-06-12T01:33:08.167+09:00 ERROR 21194 --- [http-nio-192.0.0.2-8080-exec-4] q.e.card.controller.CardController       : Error creating card: 
+
+org.springframework.dao.InvalidDataAccessApiUsageException: The given id must not be null
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:371) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:246) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:164) ~[spring-data-jpa-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:220) ~[spring-aop-6.1.5.jar:6.1.5]
+	at jdk.proxy2/jdk.proxy2.$Proxy124.findById(Unknown Source) ~[na:na]
+	at quiz.exquiz_me.card.service.VocaCardService.createCard(VocaCardService.java:53) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.5.jar:6.1.5]
+	at quiz.exquiz_me.card.service.VocaCardService$$SpringCGLIB$$0.createCard(<generated>) ~[main/:na]
+	at quiz.exquiz_me.card.controller.CardController.createCard(CardController.java:32) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.ForceEagerSessionCreationFilter.doFilterInternal(ForceEagerSessionCreationFilter.java:45) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.IllegalArgumentException: The given id must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:172) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById(SimpleJpaRepository.java:302) ~[spring-data-jpa-3.2.4.jar:3.2.4]
+	at jdk.internal.reflect.GeneratedMethodAccessor40.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.1.5.jar:6.1.5]
+	... 131 common frames omitted
+
+2024-06-12T01:33:08.180+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-06-12T01:33:08.254+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Error creating card"]
+2024-06-12T01:33:08.255+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-06-12T01:33:47.370+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:33:47.373+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:33:47.373+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:33:47.376+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:33:47.376+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:33:47.381+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:33:47.384+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:33:47 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:33:47.389+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T01:34:06.072+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T01:34:06.073+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T01:34:06.076+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=dk, writeDateTime=Wed Jun 12 01:34:06 K (truncated)...]
+2024-06-12T01:34:06.077+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-1] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=dk, writeDateTime=Wed Jun 12 01:34:06 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=dkdk, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=dkdk, koreanWord=아아), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=eiei, koreanWord=댜댜)])
+2024-06-12T01:34:06.152+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:34:06.153+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=9, userEmail=asdf1234@gmail.com, title=dk, writeDateTime=Wed Jun 12 01:34:06 KST  (truncated)...]
+2024-06-12T01:34:06.154+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T01:34:13.856+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T01:34:13.857+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T01:34:13.857+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T01:34:13.858+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T01:34:13.858+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T01:34:13.859+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T01:34:13.859+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 01:34:13 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T01:34:13.860+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T03:35:48.038+09:00  INFO 21194 --- [MessageBroker-8] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 7961]
+2024-06-12T03:35:52.811+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h1m17s736ms).
+2024-06-12T09:06:09.559+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h30m16s748ms).
+2024-06-12T09:19:15.731+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m6s145ms).
+2024-06-12T09:35:56.025+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m40s294ms).
+2024-06-12T09:37:55.932+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m59s907ms).
+2024-06-12T09:40:20.296+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m24s363ms).
+2024-06-12T09:41:48.077+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m27s782ms).
+2024-06-12T09:42:59.546+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s469ms).
+2024-06-12T09:43:49.038+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=49s491ms).
+2024-06-12T09:44:47.965+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s927ms).
+2024-06-12T09:45:40.123+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52s159ms).
+2024-06-12T09:46:28.211+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48s87ms).
+2024-06-12T09:47:35.732+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m7s521ms).
+2024-06-12T09:49:31.818+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m56s87ms).
+2024-06-12T09:50:44.550+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s731ms).
+2024-06-12T09:51:43.274+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=28s718ms), soft-evicting connections from pool.
+2024-06-12T10:08:38.300+09:00  INFO 21194 --- [MessageBroker-8] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 8322]
+2024-06-12T10:38:38.218+09:00  INFO 21194 --- [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 8683]
+2024-06-12T10:45:41.619+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=28s164ms), soft-evicting connections from pool.
+2024-06-12T11:00:05.566+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m23s666ms).
+2024-06-12T11:08:41.215+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m5s636ms).
+2024-06-12T11:17:05.779+09:00  INFO 21194 --- [MessageBroker-6] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 9044]
+2024-06-12T11:36:01.683+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50s359ms).
+2024-06-12T11:47:26.049+09:00  INFO 21194 --- [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 9405]
+2024-06-12T12:43:38.648+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=44m2s518ms).
+2024-06-12T13:48:14.962+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50m36s264ms).
+2024-06-12T13:51:09.077+09:00  INFO 21194 --- [MessageBroker-4] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 9766]
+2024-06-12T14:21:09.324+09:00  INFO 21194 --- [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 10127]
+2024-06-12T14:51:17.378+09:00  INFO 21194 --- [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 10488]
+2024-06-12T14:53:53.857+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m232ms).
+2024-06-12T14:57:02.999+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s125ms).
+2024-06-12T15:00:25.363+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m52s351ms).
+2024-06-12T15:15:09.965+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m14s541ms).
+2024-06-12T15:25:09.903+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s871ms), soft-evicting connections from pool.
+2024-06-12T15:38:37.798+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m19s34ms).
+2024-06-12T15:44:09.302+09:00  INFO 21194 --- [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 10849]
+2024-06-12T16:00:15.813+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s840ms), soft-evicting connections from pool.
+2024-06-12T16:03:58.912+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T16:03:58.918+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T16:03:58.941+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=test1, writeDateTime=Wed Jun 12 16:03:5 (truncated)...]
+2024-06-12T16:03:58.944+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-9] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=test1, writeDateTime=Wed Jun 12 16:03:58 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=test1, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=test, koreanWord=test), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=app, koreanWord=app)])
+2024-06-12T16:03:59.010+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:03:59.010+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=10, userEmail=asdf1234@gmail.com, title=test1, writeDateTime=Wed Jun 12 16:03:58  (truncated)...]
+2024-06-12T16:03:59.015+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T16:04:38.402+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:04:38.406+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:04:38.407+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:04:38.415+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:04:38.416+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:04:38.422+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:04:38.424+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:04:38 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:04:38.429+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:11:40.026+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:11:40.037+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:11:40.038+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:11:40.051+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:11:40.051+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:11:40.062+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:11:40.063+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:11:40 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:11:40.069+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:11:44.351+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:11:44.352+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:11:44.352+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:11:44.354+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:11:44.355+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:11:44.356+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:11:44.357+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:11:44 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:11:44.358+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:11:58.587+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:11:58.588+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:11:58.589+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:11:58.591+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:11:58.591+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:11:58.595+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:11:58.598+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:11:58 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:11:58.612+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:14:09.068+09:00  INFO 21194 --- [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(7)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 111], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 11210]
+2024-06-12T16:14:12.127+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:14:12.130+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:14:12.131+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:14:12.139+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:14:12.139+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:14:12.143+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:14:12.143+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:14:12 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:14:12.148+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:16:40.637+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:16:40.645+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:16:40.646+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:16:40.655+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:16:40.658+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:16:40.670+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:16:40.673+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:16:40 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:16:40.680+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:16:45.276+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:16:45.303+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:16:45.303+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:16:45.306+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:16:45.308+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:16:45.313+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:16:45.314+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:16:45 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:16:45.317+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:16:52.124+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/ws/info?t=1718176612113", parameters={masked}
+2024-06-12T16:16:52.125+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@201f0e84
+2024-06-12T16:16:52.127+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://192.0.0.2:8080/ws/info?t=1718176612113
+2024-06-12T16:16:52.130+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T16:16:52.137+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/ws/779/cfvtdv03/websocket", parameters={}
+2024-06-12T16:16:52.137+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@201f0e84
+2024-06-12T16:16:52.140+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://192.0.0.2:8080/ws/779/cfvtdv03/websocket
+2024-06-12T16:16:52.180+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2024-06-12T16:16:52.187+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=cfvtdv03]
+2024-06-12T16:16:52.205+09:00 DEBUG 21194 --- [clientInboundChannel-106] org.springframework.web.SimpLogging      : Processing CONNECT user=asdf1234@gmail.com session=cfvtdv03
+2024-06-12T16:16:52.213+09:00 DEBUG 21194 --- [clientInboundChannel-109] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/participants id=sub-0 session=cfvtdv03
+2024-06-12T16:16:52.622+09:00 DEBUG 21194 --- [clientInboundChannel-112] org.springframework.web.SimpLogging      : Processing DISCONNECT receipt=close-1 session=cfvtdv03
+2024-06-12T16:16:52.627+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=cfvtdv03] closed with CloseStatus[code=1000, reason=null]
+2024-06-12T16:16:52.628+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session cfvtdv03
+2024-06-12T16:16:52.628+09:00 DEBUG 21194 --- [clientInboundChannel-115] org.springframework.web.SimpLogging      : Processing DISCONNECT session=cfvtdv03
+2024-06-12T16:16:52.629+09:00 DEBUG 21194 --- [clientOutboundChannel-30] o.s.w.s.m.SubProtocolWebSocketHandler    : No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpUser=UsernamePasswordAuthenticationToken [Principal=quiz.exquiz_me.dto.CustomUserDetails@79d7edb9, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.0.0.2, SessionId=53D940F102E1C08C83CDDCCF9C5072DE], Granted Authorities=[quiz.exquiz_me.dto.CustomUserDetails$1@77101cf3]], simpSessionId=cfvtdv03}], simpUser=UsernamePasswordAuthenticationToken [Principal=quiz.exquiz_me.dto.CustomUserDetails@79d7edb9, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.0.0.2, SessionId=53D940F102E1C08C83CDDCCF9C5072DE], Granted Authorities=[quiz.exquiz_me.dto.CustomUserDetails$1@77101cf3]], simpSessionId=cfvtdv03}]
+2024-06-12T16:16:53.370+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:16:53.371+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:16:53.371+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:16:53.376+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:16:53.376+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:16:53.378+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:16:53.378+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:16:53 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:16:53.379+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:16:59.696+09:00 DEBUG 21194 --- [MessageBroker-6] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [cfvtdv03]
+2024-06-12T16:22:15.891+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:22:15.902+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:22:15.903+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:22:15.913+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:22:15.913+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:22:15.919+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:22:15.920+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:22:15 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:22:15.924+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:22:18.026+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:22:18.029+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:22:18.030+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:22:18.032+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:22:18.032+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:22:18.035+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:22:18.036+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:22:18 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:22:18.038+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:31:00.733+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:31:00.735+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:31:00.735+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:31:00.736+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:31:00.736+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:31:00.738+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:31:00.738+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:31:00 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:31:00.751+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:31:04.035+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:31:04.036+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:31:04.036+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:31:04.037+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:31:04.039+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:31:04.041+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:31:04.041+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:31:04 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:31:04.043+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:37:44.572+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:37:44.574+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:37:44.575+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:37:44.576+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:37:44.576+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:37:44.578+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:37:44.580+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:37:44 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:37:44.582+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:44:08.945+09:00  INFO 21194 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 11 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(11)-CONNECTED(11)-DISCONNECT(8)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 123], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 30], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 11571]
+2024-06-12T16:44:29.533+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:44:29.538+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:44:29.538+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:44:29.541+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:44:29.541+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:44:29.548+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:44:29.549+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:44:29 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:44:29.553+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:46:53.719+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T16:46:53.724+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T16:46:53.724+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T16:46:53.726+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T16:46:53.727+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T16:46:53.731+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T16:46:53.733+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 16:46:53 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T16:46:53.736+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T16:55:15.524+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s527ms), soft-evicting connections from pool.
+2024-06-12T17:06:45.697+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m118ms).
+2024-06-12T17:08:56.042+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m40s337ms).
+2024-06-12T17:09:42.994+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46s952ms).
+2024-06-12T17:12:02.643+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s180ms).
+2024-06-12T17:15:58.278+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T17:15:58.281+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T17:15:58.311+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=dfdf, writeDateTime=Wed Jun 12 17:15:58 (truncated)...]
+2024-06-12T17:15:58.317+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-2] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=dfdf, writeDateTime=Wed Jun 12 17:15:58 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=dfdfdf, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=dfdf, koreanWord=dfdfdf), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=dfdf, koreanWord=dfdf), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=ssss, koreanWord=ssss)])
+2024-06-12T17:15:58.542+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T17:15:58.543+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=11, userEmail=asdf1234@gmail.com, title=dfdf, writeDateTime=Wed Jun 12 17:15:58 K (truncated)...]
+2024-06-12T17:15:58.546+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T17:16:01.461+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T17:16:01.462+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T17:16:01.462+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T17:16:01.464+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T17:16:01.464+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T17:16:01.465+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T17:16:01.465+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 17:16:01 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T17:16:01.467+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T17:16:04.100+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T17:16:04.101+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T17:16:04.102+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T17:16:04.106+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T17:16:04.107+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T17:16:04.108+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T17:16:04.109+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 17:16:04 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T17:16:04.113+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T17:18:13.040+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s750ms), soft-evicting connections from pool.
+2024-06-12T17:38:51.789+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m38s749ms).
+2024-06-12T17:39:27.146+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T17:39:27.153+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T17:39:27.153+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T17:39:27.159+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T17:39:27.159+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T17:39:27.176+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T17:39:27.180+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 17:39:27 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T17:39:27.188+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T17:41:14.499+09:00  INFO 21194 --- [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 11 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(11)-CONNECTED(11)-DISCONNECT(8)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 123], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 30], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 11932]
+2024-06-12T17:46:51.016+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m59s189ms).
+2024-06-12T18:02:00.307+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m37s625ms).
+2024-06-12T18:03:29.948+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m29s643ms).
+2024-06-12T18:13:20.377+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:13:20.382+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:13:20.383+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:13:20.389+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:13:20.389+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:13:20.403+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:13:20.408+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:13:20 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:13:20.428+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:13:20.878+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/ws/info?t=1718183600858", parameters={masked}
+2024-06-12T18:13:20.906+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@201f0e84
+2024-06-12T18:13:20.910+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://192.0.0.2:8080/ws/info?t=1718183600858
+2024-06-12T18:13:20.915+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T18:13:20.923+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/ws/216/nzdvupdo/websocket", parameters={}
+2024-06-12T18:13:20.924+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@201f0e84
+2024-06-12T18:13:20.929+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://192.0.0.2:8080/ws/216/nzdvupdo/websocket
+2024-06-12T18:13:20.951+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2024-06-12T18:13:20.958+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=nzdvupdo]
+2024-06-12T18:13:20.996+09:00 DEBUG 21194 --- [clientInboundChannel-118] org.springframework.web.SimpLogging      : Processing CONNECT user=asdf1234@gmail.com session=nzdvupdo
+2024-06-12T18:13:21.011+09:00 DEBUG 21194 --- [clientInboundChannel-121] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/participants id=sub-0 session=nzdvupdo
+2024-06-12T18:13:23.729+09:00 DEBUG 21194 --- [clientInboundChannel-124] org.springframework.web.SimpLogging      : Processing DISCONNECT receipt=close-1 session=nzdvupdo
+2024-06-12T18:13:23.737+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=nzdvupdo] closed with CloseStatus[code=1000, reason=null]
+2024-06-12T18:13:23.737+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session nzdvupdo
+2024-06-12T18:13:23.739+09:00 DEBUG 21194 --- [clientInboundChannel-127] org.springframework.web.SimpLogging      : Processing DISCONNECT session=nzdvupdo
+2024-06-12T18:13:23.740+09:00 DEBUG 21194 --- [clientOutboundChannel-33] o.s.w.s.m.SubProtocolWebSocketHandler    : No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpUser=UsernamePasswordAuthenticationToken [Principal=quiz.exquiz_me.dto.CustomUserDetails@14eb52a0, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.0.0.2, SessionId=2D3BF21AE2791A4A6E5698BEFAE9FFF7], Granted Authorities=[quiz.exquiz_me.dto.CustomUserDetails$1@1a2cae4d]], simpSessionId=nzdvupdo}], simpUser=UsernamePasswordAuthenticationToken [Principal=quiz.exquiz_me.dto.CustomUserDetails@14eb52a0, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.0.0.2, SessionId=2D3BF21AE2791A4A6E5698BEFAE9FFF7], Granted Authorities=[quiz.exquiz_me.dto.CustomUserDetails$1@1a2cae4d]], simpSessionId=nzdvupdo}]
+2024-06-12T18:13:32.943+09:00 DEBUG 21194 --- [MessageBroker-7] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [nzdvupdo]
+2024-06-12T18:16:52.324+09:00  INFO 21194 --- [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(9)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 135], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 12293]
+2024-06-12T18:19:19.622+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:19:19.625+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:19:19.626+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:19:19.628+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:19:19.628+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:19:19.634+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:19:19.635+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:19:19 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:19:19.640+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:19:57.698+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:19:57.700+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:19:57.701+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:19:57.703+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:19:57.703+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:19:57.707+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:19:57.709+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:19:57 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:19:57.711+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:20:20.687+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/%E3%84%B4", parameters={}
+2024-06-12T18:20:20.694+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2024-06-12T18:20:20.733+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-06-12T18:20:20.736+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/%E3%84%B4.]
+2024-06-12T18:20:20.736+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-06-12T18:20:20.739+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:20:20.739+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:20:20.741+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:20:20.743+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:20:20 KST 2024, status=404, error=Not Found, path=/api/%E3%84%B4}]
+2024-06-12T18:20:20.746+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2024-06-12T18:21:07.334+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/%E3%84%B4", parameters={}
+2024-06-12T18:21:07.336+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2024-06-12T18:21:07.341+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-06-12T18:21:07.343+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/%E3%84%B4.]
+2024-06-12T18:21:07.343+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-06-12T18:21:07.346+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:21:07.346+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:21:07.348+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:21:07.348+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:21:07 KST 2024, status=404, error=Not Found, path=/api/%E3%84%B4}]
+2024-06-12T18:21:07.351+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2024-06-12T18:27:04.265+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:27:04.272+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:27:04.273+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:27:04.276+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:27:04.277+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:27:04.293+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:27:04.294+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:27:04 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:27:04.299+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:35:24.779+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:35:24.783+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:35:24.784+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:35:24.787+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:35:24.788+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:35:24.798+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:35:24.801+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:35:24 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:35:24.807+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:35:41.968+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:35:41.976+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:35:41.976+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:35:41.980+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:35:41.981+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:35:41.985+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:35:41.986+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:35:41 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:35:41.990+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:35:59.961+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:35:59.963+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:35:59.963+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:35:59.965+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:35:59.965+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:35:59.972+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:35:59.974+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:35:59 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:35:59.978+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:36:49.155+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:36:49.165+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:36:49.166+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:36:49.172+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:36:49.172+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:36:49.178+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:36:49.180+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:36:49 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:36:49.187+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:38:02.172+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:38:02.184+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:38:02.185+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:38:02.187+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:38:02.187+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:38:02.190+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:38:02.191+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:38:02 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:38:02.193+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:38:08.475+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/ws/info?t=1718185088466", parameters={masked}
+2024-06-12T18:38:08.476+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@201f0e84
+2024-06-12T18:38:08.479+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://192.0.0.2:8080/ws/info?t=1718185088466
+2024-06-12T18:38:08.483+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T18:38:08.488+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/ws/716/15tigakx/websocket", parameters={}
+2024-06-12T18:38:08.489+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@201f0e84
+2024-06-12T18:38:08.493+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://192.0.0.2:8080/ws/716/15tigakx/websocket
+2024-06-12T18:38:08.517+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2024-06-12T18:38:08.524+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=15tigakx]
+2024-06-12T18:38:08.552+09:00 DEBUG 21194 --- [clientInboundChannel-130] org.springframework.web.SimpLogging      : Processing CONNECT user=asdf1234@gmail.com session=15tigakx
+2024-06-12T18:38:08.560+09:00 DEBUG 21194 --- [clientInboundChannel-133] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/participants id=sub-0 session=15tigakx
+2024-06-12T18:38:09.106+09:00 DEBUG 21194 --- [clientInboundChannel-136] org.springframework.web.SimpLogging      : Processing DISCONNECT receipt=close-1 session=15tigakx
+2024-06-12T18:38:09.113+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=15tigakx] closed with CloseStatus[code=1000, reason=null]
+2024-06-12T18:38:09.114+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-8] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session 15tigakx
+2024-06-12T18:38:09.115+09:00 DEBUG 21194 --- [clientInboundChannel-139] org.springframework.web.SimpLogging      : Processing DISCONNECT session=15tigakx
+2024-06-12T18:38:09.116+09:00 DEBUG 21194 --- [clientOutboundChannel-36] o.s.w.s.m.SubProtocolWebSocketHandler    : No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpUser=UsernamePasswordAuthenticationToken [Principal=quiz.exquiz_me.dto.CustomUserDetails@330a7544, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.0.0.2, SessionId=A00A6C44B97BFB3A75E80603E51C207C], Granted Authorities=[quiz.exquiz_me.dto.CustomUserDetails$1@3dcd8d55]], simpSessionId=15tigakx}], simpUser=UsernamePasswordAuthenticationToken [Principal=quiz.exquiz_me.dto.CustomUserDetails@330a7544, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.0.0.2, SessionId=A00A6C44B97BFB3A75E80603E51C207C], Granted Authorities=[quiz.exquiz_me.dto.CustomUserDetails$1@3dcd8d55]], simpSessionId=15tigakx}]
+2024-06-12T18:38:09.813+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:38:09.813+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:38:09.814+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:38:09.815+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:38:09.815+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:38:09.817+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:38:09.818+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:38:09 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:38:09.819+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:38:17.953+09:00 DEBUG 21194 --- [MessageBroker-3] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [15tigakx]
+2024-06-12T18:42:41.460+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:42:41.465+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:42:41.465+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:42:41.469+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:42:41.470+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:42:41.487+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:42:41.490+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:42:41 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:42:41.498+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:43:11.177+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T18:43:11.178+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T18:43:11.221+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=null, title=안dd, writeDateTime=Wed Jun 12 18:43:11 KST 2024, card (truncated)...]
+2024-06-12T18:43:11.235+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-2] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=null, title=안dd, writeDateTime=Wed Jun 12 18:43:11 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=ddd, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=dkdk, koreanWord=dkdkdkdkdkdkdkd), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=dkddkdddkkddk, koreanWord=dkdkdkdkddkdkkdd)])
+2024-06-12T18:43:11.299+09:00 ERROR 21194 --- [http-nio-192.0.0.2-8080-exec-2] q.e.card.controller.CardController       : Error creating card: 
+
+org.springframework.dao.InvalidDataAccessApiUsageException: The given id must not be null
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:371) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:246) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:164) ~[spring-data-jpa-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:220) ~[spring-aop-6.1.5.jar:6.1.5]
+	at jdk.proxy2/jdk.proxy2.$Proxy124.findById(Unknown Source) ~[na:na]
+	at quiz.exquiz_me.card.service.VocaCardService.createCard(VocaCardService.java:53) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.5.jar:6.1.5]
+	at quiz.exquiz_me.card.service.VocaCardService$$SpringCGLIB$$0.createCard(<generated>) ~[main/:na]
+	at quiz.exquiz_me.card.controller.CardController.createCard(CardController.java:32) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.19.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.ForceEagerSessionCreationFilter.doFilterInternal(ForceEagerSessionCreationFilter.java:45) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.IllegalArgumentException: The given id must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:172) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById(SimpleJpaRepository.java:302) ~[spring-data-jpa-3.2.4.jar:3.2.4]
+	at jdk.internal.reflect.GeneratedMethodAccessor40.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:351) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.2.4.jar:3.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.5.jar:6.1.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.5.jar:6.1.5]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.1.5.jar:6.1.5]
+	... 131 common frames omitted
+
+2024-06-12T18:43:11.398+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-06-12T18:43:11.398+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Error creating card"]
+2024-06-12T18:43:11.399+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-06-12T18:44:04.315+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T18:44:04.318+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T18:44:04.318+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T18:44:04.321+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T18:44:04.321+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T18:44:04.324+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T18:44:04.325+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 18:44:04 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T18:44:04.328+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T18:46:52.368+09:00  INFO 21194 --- [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 13 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(13)-CONNECTED(13)-DISCONNECT(10)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 147], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 12654]
+2024-06-12T19:15:12.727+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/cards", parameters={}
+2024-06-12T19:15:12.732+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#createCard(CardDTO)
+2024-06-12T19:15:12.754+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=zz, writeDateTime=Wed Jun 12 19:15:12 K (truncated)...]
+2024-06-12T19:15:12.759+09:00  INFO 21194 --- [http-nio-192.0.0.2-8080-exec-1] q.e.card.controller.CardController       : Received card data: CardDTO(cardNumber=null, userEmail=asdf1234@gmail.com, title=zz, writeDateTime=Wed Jun 12 19:15:12 KST 2024, cardTitleImage=http://example.com/image.jpg, cardContent=zz, countView=0, vocabularyItems=[VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=z, koreanWord=ㅋ), VocabularyItemDTO(itemId=null, cardNumber=null, englishWord=s, koreanWord=ㄴ)])
+2024-06-12T19:15:12.999+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T19:15:13.000+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=12, userEmail=asdf1234@gmail.com, title=zz, writeDateTime=Wed Jun 12 19:15:12 KST (truncated)...]
+2024-06-12T19:15:13.007+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-12T19:15:16.662+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T19:15:16.665+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T19:15:16.665+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T19:15:16.668+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T19:15:16.669+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T19:15:16.673+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T19:15:16.674+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 19:15:16 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T19:15:16.677+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T19:16:52.406+09:00  INFO 21194 --- [MessageBroker-3] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 13 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(13)-CONNECTED(13)-DISCONNECT(10)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 147], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 13015]
+2024-06-12T19:29:10.142+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T19:29:10.172+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T19:29:10.173+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T19:29:10.182+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T19:29:10.182+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T19:29:10.206+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T19:29:10.246+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 19:29:10 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T19:29:10.298+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T19:29:27.435+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T19:29:27.438+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T19:29:27.438+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T19:29:27.440+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T19:29:27.441+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T19:29:27.446+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T19:29:27.448+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 19:29:27 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T19:29:27.455+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T19:36:29.286+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m58s743ms).
+2024-06-12T19:39:29.875+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m436ms).
+2024-06-12T19:40:13.079+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T19:40:13.085+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T19:40:13.086+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T19:40:13.100+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T19:40:13.100+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T19:40:13.149+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T19:40:13.153+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 19:40:13 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T19:40:13.165+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T19:46:24.603+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m24s690ms).
+2024-06-12T19:53:46.354+09:00  INFO 21194 --- [MessageBroker-7] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 13 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(13)-CONNECTED(13)-DISCONNECT(10)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 147], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 13376]
+2024-06-12T20:08:09.184+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m14s447ms).
+2024-06-12T20:10:26.132+09:00  WARN 21194 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m46s929ms).
+2024-06-12T20:14:54.106+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T20:14:54.112+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T20:14:54.113+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T20:14:54.118+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T20:14:54.120+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T20:14:54.143+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T20:14:54.146+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 20:14:54 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T20:14:54.154+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T20:25:27.208+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-12T20:25:27.211+09:00  WARN 21194 --- [http-nio-192.0.0.2-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-06-12T20:25:27.211+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 405 METHOD_NOT_ALLOWED
+2024-06-12T20:25:27.214+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-06-12T20:25:27.214+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-06-12T20:25:27.223+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-12T20:25:27.225+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jun 12 20:25:27 KST 2024, status=405, error=Method Not Allowed, path=/api/cards}]
+2024-06-12T20:25:27.232+09:00 DEBUG 21194 --- [http-nio-192.0.0.2-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 405
+2024-06-12T20:30:47.745+09:00  INFO 21194 --- [MessageBroker-5] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 13 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(13)-CONNECTED(13)-DISCONNECT(10)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 147], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 13737]

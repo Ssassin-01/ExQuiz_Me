@@ -5,10 +5,8 @@
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 600px;
-  margin: auto;
+  margin: 200px auto;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .make-header {

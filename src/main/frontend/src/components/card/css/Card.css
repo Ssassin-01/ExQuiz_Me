@@ -103,3 +103,17 @@
     top: 5px;
     right: 5px;
 }
+
+/*.card__views {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    margin-top: 10px;*/
+/*    font-size: 1.2em;*/
+/*    color: #2d3436;*/
+/*}*/
+
+.card__views svg {
+    margin-right: 80px;
+    margin-right: 5px;
+    font-size: 1.5em;
+}

@@ -1,0 +1,44 @@
+server:
+  address: ${SPRING_SERVER_ADDRESS:localhost}
+  servlet:
+    session:
+      timeout: 90m
+
+security:
+  cors:
+    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000}
+
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 3730
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  file:
+    name: application.log
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        websocket: DEBUG
+
+    quiz:
+      exquiz_me:
+        card: DEBUG

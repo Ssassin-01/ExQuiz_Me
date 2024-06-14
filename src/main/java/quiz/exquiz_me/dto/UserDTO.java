@@ -5,8 +5,6 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
