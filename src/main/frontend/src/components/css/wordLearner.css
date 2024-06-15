@@ -1,132 +1,135 @@
+/* 카드 컨테이너 */
 .word-learner-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed; /* Use fixed to make it always in the center of the screen */
+    height: 100vh;
+}
+
+.word-learner {
+    background-color: #dfe6e9;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.learn__header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.learn__nav {
+    margin-bottom: 20px;
+}
+
+.learn__content {
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card_container {
+    width: 400px;
+    height: 300px;
+    margin: 10px auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card_container.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.0em;
+    border-radius: 10px;
+}
+
+.card-front {
+    background-color: #f1f2f6;
+    color: #2d3436;
+}
+
+.card-back {
+    background-color: #2ecc71;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.learn__footer {
+    margin-top: 20px;
+}
+
+.arrow-btn {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.learn__nav-btn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.learn__nav-btn:hover {
+    background-color: #2ecc71;
+}
+
+/* 모달 창 스타일 */
+.modal {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.word-learner {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    max-width: 600px;
-    width: calc(100% - 80px); /* Accounting for arrow button width */
-    margin: auto;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 2;
-}
-
-.arrow-btn {
-    background: #e9ecef;
-    border: none;
-    font-size: 1.5em;
-    color: #333;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    position: absolute; /* Positioned absolutely within the flex container */
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1; /* Lower z-index since it's an overlay */
-}
-
-.left-arrow {
-    left: 0;
-    margin-left: 500px;
-}
-
-.right-arrow {
-    right: 0;
-    margin-right: 500px;
-}
-
-.arrow-btn:hover {
-    background-color: #dde2e6; /* Lighter grey for hover state */
-}
-
-.arrow-btn:active {
-    transform: scale(0.95) translateY(-50%); /* Slight shrink effect for active state */
-}
-
-.learn__header {
-    color: #333;
-    background-color: #e9ecef;
-    padding: 15px;
-    font-size: 1.25em;
-    font-weight: bold;
-}
-/*//////////////////////////////////////*/
-.learn__nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 50px;
-    background-color: #fff;
-    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* 다른 요소보다 위에 표시 */
 }
 
-.learn__word-counter {
-    font-size: 1em;
-    color: #666;
-    background-color: #e9ecef;
-    padding: 5px 10px;
-    border-radius: 15px;
-    margin: 0;
+.modal-content {
+    background-color: white;
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.learn__content {
-    margin: 30px 0;
-    padding: 30px 0;
-    background-color: #fff;
-    font-size: 3em;
-    color: #333;
-    font-weight: bold;
-    border-top: 3px solid #e9ecef;
-    border-bottom: 3px solid #e9ecef;
-}
-
-
-/*///////////////////////////*/
-
-
-
-.learn__footer {
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-    padding: 20px 0;
-}
-
-.learn__nav-btn {
-    background: #e9ecef;
+.modal-btn {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
     border: none;
-    font-size: 1.5em;
-    color: #333;
-    padding: 10px 15px;
-    border-radius: 50%;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    transition: background-color 0.3s;
 }
 
-.learn__nav-btn:hover {
-    background-color: #dde2e6; /* Lighter grey for hover state */
+.modal-btn:hover {
+    background-color: #2ecc71;
 }
 
-.learn__nav-btn:active {
-    transform: scale(0.95); /* Slight shrink effect for active state */
-}
-
-/* Optional: Add media queries for responsiveness */
 @media (max-width: 640px) {
     .learn__navigation {
         padding: 10px 20px;

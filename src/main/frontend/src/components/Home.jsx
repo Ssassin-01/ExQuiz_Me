@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "./css/Home.css";
 import Card from "./card/Card";
 import UserCard from "./card/UserCard";
+import mainImg from "./../images/main_img.png"
 const Home = () => {
   const studyCards = [
     {
@@ -85,15 +86,16 @@ const Home = () => {
     ]
   };
 
+
   return (
       <div className="home-container">
         <div className="main-image">
           <img
-              src="https://via.placeholder.com/1200x300"
+              src={mainImg}
               alt="Site Main"
               style={{
                 width: "100%",
-                height: "auto",
+                height: "400px",
                 borderRadius: "8px",
                 marginBottom: "20px",
               }}

@@ -1,5 +1,6 @@
 package quiz.exquiz_me.config;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,11 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +34,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/join", "/joinProc", "/images/**", "/js/**", "/css/**", "/img/**", "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions").permitAll() // 여기에 "/api/game-sessions" 추가
+                        .requestMatchers("/", "/login", "/join", "/joinProc", "/images/**", "/js/**", "/css/**", "/img/**", "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions", "/gaming", "/gameox", "/api/game/card/**").permitAll() // 여기에 "/api/game-sessions" 추가
                         .requestMatchers("/api/cards").authenticated()
                         .anyRequest().authenticated()
                 )
@@ -53,7 +59,6 @@ public class SecurityConfig {
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint((request, response, authException) -> response.setStatus(HttpServletResponse.SC_UNAUTHORIZED))
                 );
-
         return http.build();
     }
 }

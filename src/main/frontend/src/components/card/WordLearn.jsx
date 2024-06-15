@@ -1,38 +1,71 @@
-import React, { useState } from 'react';
-import "../css/wordLearner.css"
-
-const words = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-
-];
-
+import React, { useState, useEffect } from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
+import "../css/wordLearner.css";
 
 export default function WordLearn() {
-
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { vocabularyItems } = location.state || { vocabularyItems: [] }; // 상태로 전달된 vocabularyItems 사용
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
+    const [isFlipped, setIsFlipped] = useState(false); // 카드가 뒤집혔는지 여부를 저장하는 상태
+    const [missedWords, setMissedWords] = useState([]); // X 버튼을 누른 단어들 저장
+    const [showModal, setShowModal] = useState(false); // 모달 표시 상태
+    const [learningItems, setLearningItems] = useState(vocabularyItems); // 현재 학습 항목
+
+    useEffect(() => {
+        // currentWordIndex가 마지막 단어일 때
+        if (currentWordIndex >= learningItems.length && learningItems.length > 0) {
+            setShowModal(true);
+        }
+    }, [currentWordIndex, learningItems.length]);
+
     const goToNextWord = () => {
-        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-    };
-    const goToPreviousWord = () => {
+        setIsFlipped(false); // 다음 단어로 넘어갈 때는 초기 상태로 설정
         setCurrentWordIndex((prevIndex) => {
-            if (prevIndex === 0) return words.length - 1;
+            const nextIndex = prevIndex + 1;
+            if (nextIndex >= learningItems.length) {
+                setShowModal(true); // 마지막 단어 이후 모달 표시
+            }
+            return nextIndex;
+        });
+    };
+
+    const goToPreviousWord = () => {
+        setIsFlipped(false); // 이전 단어로 돌아갈 때는 초기 상태로 설정
+        setCurrentWordIndex((prevIndex) => {
+            if (prevIndex === 0) return learningItems.length - 1;
             return prevIndex - 1;
         });
+    };
+
+    const handleCardClick = () => {
+        setIsFlipped(!isFlipped); // 클릭할 때마다 카드의 상태를 뒤집음
+    };
+
+    const handleMissedWord = () => {
+        // 현재 단어가 missedWords에 이미 있는지 확인하고 없으면 추가
+        const currentWord = learningItems[currentWordIndex];
+        setMissedWords((prevMissedWords) => {
+            if (!prevMissedWords.includes(currentWord)) {
+                return [...prevMissedWords, currentWord];
+            }
+            return prevMissedWords;
+        });
+        goToNextWord(); // X 버튼 클릭 후 다음 단어로 이동
+    };
+
+    const handleRestartMissedWords = () => {
+        setShowModal(false);
+        if (missedWords.length > 0) {
+            // 틀린 단어가 있는 경우 그 단어들만으로 학습 목록 재설정
+            setLearningItems(missedWords);
+            setMissedWords([]); // 초기화
+        }
+        setCurrentWordIndex(0); // 첫 번째 단어로 이동
+    };
+    const handleCancel = () => {
+        setShowModal(false);
+        navigate('/study'); // "취소" 버튼을 클릭하면 Learn 페이지로 이동
     };
 
     return (
@@ -43,17 +76,37 @@ export default function WordLearn() {
                     MVP-Vol1 - 학습하기
                 </header>
                 <div className="learn__nav">
-                    <div className="learn__word-counter">{`${currentWordIndex + 1} / ${words.length}`}</div>
+                    <div className="learn__word-counter">{`${Math.min(currentWordIndex + 1, learningItems.length)} / ${learningItems.length}`}</div>
                 </div>
-                <div className="learn__content">
-                    {words[currentWordIndex]}
+                <div className="learn__content" onClick={handleCardClick}>
+                    <div className={`card_container ${isFlipped ? "flipped" : ""}`}>
+                        <div className="card-face card-front">
+                            {/* 영어 단어 표시 */}
+                            {learningItems[currentWordIndex]?.englishWord}
+                        </div>
+                        <div className="card-face card-back">
+                            {/* 한국어 단어 표시 */}
+                            {learningItems[currentWordIndex]?.koreanWord}
+                        </div>
+                    </div>
                 </div>
                 <footer className="learn__footer">
                     <button className="learn__nav-btn" onClick={goToNextWord}>O</button>
-                    <button className="learn__nav-btn" onClick={goToNextWord}>X</button>
+                    <button className="learn__nav-btn" onClick={handleMissedWord}>X</button>
                 </footer>
             </div>
             <button className="arrow-btn right-arrow" onClick={goToNextWord}>{">"}</button>
+
+            {/* 모달 창 */}
+            {showModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <p>틀린 단어를 다시 학습하시겠습니까?</p>
+                        <button className="modal-btn" onClick={handleRestartMissedWords}>확인</button>
+                        <button className="modal-btn" onClick={handleCancel}>취소</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

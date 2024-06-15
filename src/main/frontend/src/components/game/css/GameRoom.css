@@ -6,7 +6,6 @@
     height: 100vh;
     background-color: #f0f0f0;
     padding: 20px;
-    box-sizing: border-box;
     font-family: 'Arial', sans-serif;
 }
 
@@ -16,14 +15,14 @@
     margin-bottom: 20px;
 }
 
-.game-room-instruction {
-    font-size: 1.25rem;
-    color: #666;
-    margin-bottom: 40px;
-    text-align: center;
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 .nickname-input {
+    width: 80%;
     padding: 10px;
     font-size: 1rem;
     margin-bottom: 20px;
@@ -31,22 +30,47 @@
     border-radius: 5px;
 }
 
-.start-game-button {
-    background-color: #4CAF50;
+.join-game-button {
+    width: 80%;
+    padding: 10px;
+    background-color: #4caf50;
     color: white;
-    padding: 15px 30px;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.start-game-button:hover {
+.join-game-button:hover {
     background-color: #45a049;
 }
 
-.start-game-button:disabled {
+.join-game-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+.participants-list {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.participants-list h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.participants-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.participants-list li {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
