@@ -15,6 +15,7 @@ import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -79,16 +80,34 @@ public class VocaCardService {
                 .map(this::convertToCardDTO)
                 .collect(Collectors.toList());
     }
-
     // 조회수 증가 메서드
     @Transactional
-    public CardDTO increaseViewCount(Long cardNumber) {
-        Card card = cardRepository.findById(cardNumber)
-                .orElseThrow(() -> new RuntimeException("Card not found"));
-        card.setCountView(card.getCountView() + 1);
-        cardRepository.save(card);
-
-        return convertToCardDTO(card);
+    public void incrementCardView(Long cardNumber) {
+        Optional<Card> cardOptional = cardRepository.findById(cardNumber);
+        if (cardOptional.isPresent()) {
+            Card card = cardOptional.get();
+            card.setCountView(card.getCountView() + 1); // 조회 수 증가
+            cardRepository.save(card);
+        } else {
+            throw new IllegalArgumentException("Card with ID " + cardNumber + " not found.");
+        }
+    }
+    // 조회수가 높은 순으로 카드 반환
+    @Transactional
+    public List<CardDTO> getPopularCards() {
+        List<Card> cards = cardRepository.findAll();
+        return cards.stream()
+                .sorted((c1, c2) -> c2.getCountView().compareTo(c1.getCountView()))
+                .map(this::convertToCardDTO)
+                .collect(Collectors.toList());
+    }
+    // 카드 title로 검색
+    @Transactional
+    public List<CardDTO> getCardsByTitle(String title) {
+        List<Card> cards = cardRepository.findByTitleContaining(title);
+        return cards.stream()
+                .map(this::convertToCardDTO)
+                .collect(Collectors.toList());
     }
     @Transactional
     public List<CardDTO> getUserCardsByEmail(String email) {

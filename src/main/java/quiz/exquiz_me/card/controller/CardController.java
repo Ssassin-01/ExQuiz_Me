@@ -44,15 +44,28 @@ public class CardController {
     }
     // 조회수 증가 엔드포인트
     @PostMapping("/{cardNumber}/view")
-    public ResponseEntity<CardDTO> increaseViewCount(@PathVariable Long cardNumber) {
+    public ResponseEntity<?> increaseViewCount(@PathVariable Long cardNumber) {
         try {
-            CardDTO updateCard = cardService.increaseViewCount(cardNumber);
-            return ResponseEntity.ok(updateCard);
+            cardService.incrementCardView(cardNumber);
+            return ResponseEntity.ok().build(); // 조회수만 증가시키므로 빈 응답 반환
         } catch (Exception e) {
-            logger.error("count view error: ", e);
+            logger.error("Error increasing view count: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error increasing view count");
+        }
+    }
+    // 조회수가 높은 순으로 카드 반환 엔드포인트
+    @GetMapping("/popular")
+    public ResponseEntity<List<CardDTO>> getPopularCards() {
+        try {
+            List<CardDTO> popularCards = cardService.getPopularCards();
+            return ResponseEntity.ok(popularCards);
+        } catch (Exception e) {
+            logger.error("Error retrieving popular cards: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+
     @GetMapping("/user")
     public ResponseEntity<List<CardDTO>> getUserCards() {
         try {

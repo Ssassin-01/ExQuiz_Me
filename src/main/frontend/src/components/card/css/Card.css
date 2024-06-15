@@ -20,16 +20,15 @@
     background-position: center; /* Center the background image */
 }
 
-
-
 .card__text {
-    background-image: linear-gradient(0deg, #3f5efb, #fc466b);
+    background-image: linear-gradient(0deg, #3f5efb, #65b0aa);
     border-radius: 30px;
     position: absolute;
     top: 55%;
     left: -5px;
     height: 65%;
     width: 108%;
+    z-index: 0;
     transform: skew(19deg, -9deg);
 }
 
@@ -91,6 +90,14 @@
     left: 30px;
     bottom: 7%;
 }
+.cardImg {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    border-radius: 30px;
+}
 
 .btn i:before {
     width: 14px;
@@ -104,16 +111,23 @@
     right: 5px;
 }
 
-/*.card__views {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    margin-top: 10px;*/
-/*    font-size: 1.2em;*/
-/*    color: #2d3436;*/
-/*}*/
+.card__views {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #2d3436;
+    margin-left: 140px;
+    margin-bottom: 100px;
+    position: absolute;
+    bottom: -80px;
+    color: white;
+    padding: 2px 5px;
+
+}
 
 .card__views svg {
-    margin-right: 80px;
-    margin-right: 5px;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    z-index: 3;
+
 }
