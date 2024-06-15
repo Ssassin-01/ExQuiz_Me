@@ -1,0 +1,33 @@
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+}
+
+.slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 반투명 블랙 오버레이 */
+}
+
+.slick-slide {
+    transition: transform 1s ease-in-out; /* 책 넘기듯이 보이는 효과 */
+}
+
+.slick-prev, .slick-next {
+    z-index: 1;
+}
