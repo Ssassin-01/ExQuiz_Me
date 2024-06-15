@@ -25,6 +25,10 @@ import { NicknameProvider } from './components/game/context/NicknameContext';
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Counter from "./components/pra/Counter";
+import TextInputWithFocusButton from "./components/pra/TextInputWithFocusButton";
+import PreviousValue from "./components/pra/PreviousValue";
+import Slideshow from "./components/pra/SlidShow";
 
 function App() {
     return (
@@ -46,6 +50,12 @@ function App() {
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
                                     <Route path="wordLearn" element={<WordLearn />} />
+
+
+                                    <Route path="counter" element={<Counter />} />
+                                    <Route path="textinput" element={<TextInputWithFocusButton />} />
+                                    <Route path="previousValue" element={<PreviousValue />} />
+
                                 </Route>
                                 <Route path="gameroom" element={<GameRoom />} />
                                 <Route path="gaming" element={<Gaming />} />

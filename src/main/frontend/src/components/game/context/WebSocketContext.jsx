@@ -39,6 +39,7 @@ export const WebSocketProvider = ({ children }) => {
                 onWebSocketClose: () => {
                     console.log('WebSocket connection closed');
                     setWebSocketConnected(false);
+                    setParticipants([]); // Clear participants on disconnect
                 }
             });
             client.activate();
@@ -50,6 +51,7 @@ export const WebSocketProvider = ({ children }) => {
         if (clientRef.current && clientRef.current.active) {
             clientRef.current.deactivate(() => {
                 console.log('Disconnected from WebSocket');
+                setParticipants([]); // Clear participants on manual disconnect
             });
         }
     };
