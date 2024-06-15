@@ -1,73 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/Study.css";
-import Slider from "react-slick";
 import { Tabs, Tab } from 'react-bootstrap';
-import Card from './card/Card';  // Import the new Card component
-import UserCard from './card/UserCard';
+import Card from './card/Card';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { GrView } from "react-icons/gr"; // 조회수 아이콘 추가
+import { useUser } from './User/UserContext'; // 사용자 정보를 가져오기 위한 훅
 
 const StudySection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("overall");
-  const studyCards  = [
-    {
-      id: 1,
-      title: "Study Card 1",
-      description: "This is a description for Study Card 1.",
-      cardWriter: "Jeongmin",
-      cardDate: "2001-01-01",
-      cardImageUrl: "https://via.placeholder.com/350",
-      logoImageUrl: "https://via.placeholder.com/100",
-    },
-    {
-      id: 2,
-      title: "Study Card 2",
-      cardWriter: "Seongmin",
-      cardDate: "2201-11-01",
-      cardImageUrl: "https://via.placeholder.com/350",
-      logoImageUrl: "https://via.placeholder.com/100",
-    },
-    {
-      id: 3,
-      title: "Study Card 3",
-      cardWriter: "JoJu",
-      cardDate: "2021-11-01",
-      cardImageUrl: "https://via.placeholder.com/350",
-      logoImageUrl: "https://via.placeholder.com/100",
-    },
-  ];
+  const [studyCards, setStudyCards] = useState([]);
+  const [userCards, setUserCards] = useState([]); // 사용자별 카드 상태 추가
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
+  const [viewCount, setviewCount] = useState(0);
+  const { user } = useUser(); // 현재 사용자 정보 가져오기
 
-  const userCards = [
-    {
-      id: 1,
-      name: "User 1",
-      bio: "Bio of User 1",
-      imageUrl: "https://via.placeholder.com/200",
-    },
-    {
-      id: 2,
-      name: "User 2",
-      bio: "Bio of User 2",
-      imageUrl: "https://via.placeholder.com/200",
-    },
-    {
-      id: 3,
-      name: "User 3",
-      bio: "Bio of User 3",
-      imageUrl: "https://via.placeholder.com/200",
-    },
-  ];
+  useEffect(() => {
+    const fetchStudyCards = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/api/cards`, {
+          withCredentials: true
+        });
+        setStudyCards(response.data);
+      } catch (error) {
+        console.error('Failed to fetch study cards:', error);
+      }
+    };
+    const fetchUserCards = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/api/cards/user`, {
+          withCredentials: true
+        });
+        setUserCards(response.data);
+      } catch (error) {
+        console.error('Failed to fetch user cards:', error);
+      }
+    };
 
-  const getFilteredCards = (category) => {
-    if (category === "studySet") {
-      return studyCards;
-    } else if (category === "user") {
-      return userCards;
-    }
-    return [];
-  };
+    fetchStudyCards();
+    fetchUserCards();
+  }, [apiUrl]);
 
   const handleSearch = (e) => {
     e.preventDefault();
+  };
+
+  const handleCardClick = (card) => {
+    navigate('/learn', { state: { vocabularyItems: card.vocabularyItems } });
   };
 
   return (
@@ -102,29 +83,35 @@ const StudySection = () => {
             <>
               <h3>Learning Card List</h3>
               <div className="study-cards-list">
-                {studyCards.map((card) => (
-                    <Card
-                        key={card.id}
-                        cardTitle={card.title}
-                        cardWriter={card.cardWriter}
-                        cardDate={card.cardDate}
-                        cardImageUrl={card.cardImageUrl}
-                        logoImageUrl={card.logoImageUrl}
-                    />
-                ))}
+                  {studyCards.map((card) => (
+                      <Card
+                          key={card.cardNumber}
+                          cardNumber={card.cardNumber} // cardNumber 전달
+                          cardTitle={card.title}
+                          cardWriter={card.userEmail}
+                          cardDate={card.writeDateTime}
+                          cardImageUrl={card.cardTitleImage}
+                          logoImageUrl={card.cardTitleImage}
+                          onLearnClick={() => handleCardClick(card)} // Pass the click handler function
+                      />
+                  ))}
               </div>
             </>
         ) : null}
         {selectedCategory === "overall" || selectedCategory === "user" ? (
             <>
-              <h3>User Card List</h3>
-              <div className="study-cards-list">
-                {userCards.map((user) => (
-                    <UserCard
-                        key={user.id}
-                        profileImageUrl={user.imageUrl}
-                        nickname={user.name}
-                        recommendations={user.bio}
+              <h3>Your Cards</h3>
+              <div className="user-cards-list">
+                {userCards.map((card) => (
+                    <Card
+                        key={card.cardNumber}
+                        cardNumber={card.cardNumber} // cardNumber 전달
+                        cardTitle={card.title}
+                        cardWriter={card.userEmail}
+                        cardDate={card.writeDateTime}
+                        cardImageUrl={card.cardTitleImage}
+                        logoImageUrl={card.cardTitleImage}
+                        onLearnClick={() => handleCardClick(card)} // Pass the click handler function
                     />
                 ))}
               </div>
