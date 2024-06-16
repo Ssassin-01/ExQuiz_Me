@@ -892,3 +892,224 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2024-06-16T04:20:29.335+09:00 DEBUG 86219 --- [http-nio-172.30.1.76-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
 2024-06-16T04:20:29.337+09:00 DEBUG 86219 --- [http-nio-172.30.1.76-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
 2024-06-16T04:20:29.339+09:00 DEBUG 86219 --- [http-nio-172.30.1.76-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:33:18.795+09:00  INFO 94176 --- [main] quiz.exquiz_me.ExQuizMeApplication       : Starting ExQuizMeApplication using Java 17 with PID 94176 (/Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me/build/classes/java/main started by ijeong-eun in /Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me)
+2024-06-16T17:33:18.799+09:00  INFO 94176 --- [main] quiz.exquiz_me.ExQuizMeApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-06-16T17:33:20.251+09:00  INFO 94176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-16T17:33:20.333+09:00  INFO 94176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 8 JPA repository interfaces.
+2024-06-16T17:33:21.381+09:00  INFO 94176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-16T17:33:21.402+09:00  INFO 94176 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-16T17:33:21.402+09:00  INFO 94176 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-16T17:33:21.550+09:00  INFO 94176 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-16T17:33:21.551+09:00  INFO 94176 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2648 ms
+2024-06-16T17:33:21.654+09:00 DEBUG 94176 --- [main] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2024-06-16T17:33:21.890+09:00  INFO 94176 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-16T17:33:22.029+09:00  INFO 94176 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-16T17:33:22.150+09:00  INFO 94176 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-16T17:33:22.675+09:00  INFO 94176 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-16T17:33:22.732+09:00  INFO 94176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-16T17:33:23.208+09:00  INFO 94176 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@15e08615
+2024-06-16T17:33:23.211+09:00  INFO 94176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-16T17:33:25.939+09:00  INFO 94176 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-16T17:33:27.166+09:00  INFO 94176 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-16T17:33:27.936+09:00  INFO 94176 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-16T17:33:28.725+09:00  WARN 94176 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-16T17:33:28.907+09:00 DEBUG 94176 --- [main] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/ws/**] in 'stompWebSocketHandlerMapping'
+2024-06-16T17:33:28.986+09:00 DEBUG 94176 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 14 mappings in 'requestMappingHandlerMapping'
+2024-06-16T17:33:29.033+09:00 DEBUG 94176 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-06-16T17:33:29.112+09:00  INFO 94176 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@627222d8, org.springframework.security.web.session.ForceEagerSessionCreationFilter@68330024, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@425a3af5, org.springframework.security.web.context.SecurityContextHolderFilter@6979e9b8, org.springframework.security.web.header.HeaderWriterFilter@7aa4ef24, org.springframework.web.filter.CorsFilter@726934e2, org.springframework.security.web.authentication.logout.LogoutFilter@34fe89a5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@12d76643, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@345effd7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b9750f0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c5eb88c, org.springframework.security.web.session.SessionManagementFilter@46ebd87a, org.springframework.security.web.access.ExceptionTranslationFilter@31b11287, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5c452e69]
+2024-06-16T17:33:29.161+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.c.CardController:
+	
+2024-06-16T17:33:29.161+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.BoardController:
+	
+2024-06-16T17:33:29.161+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.LoginController:
+	
+2024-06-16T17:33:29.161+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.MainController:
+	
+2024-06-16T17:33:29.161+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.SignUpController:
+	
+2024-06-16T17:33:29.162+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.UserController:
+	
+2024-06-16T17:33:29.165+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.WebSocketController:
+	{[MESSAGE],[/join]}: joinGame(ParticipantUpdate)
+	{[MESSAGE],[/start]}: startGame()
+	{[MESSAGE],[/answer]}: receiveAnswer(Answer)
+2024-06-16T17:33:29.165+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameCardController:
+	
+2024-06-16T17:33:29.166+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameController:
+	{[MESSAGE],[/game]}: handleGameMessage(GameMessage)
+2024-06-16T17:33:29.166+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameSessionController:
+	
+2024-06-16T17:33:29.167+09:00 DEBUG 94176 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+2024-06-16T17:33:29.231+09:00 DEBUG 94176 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-16T17:33:29.280+09:00 DEBUG 94176 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-16T17:33:29.619+09:00  INFO 94176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-06-16T17:33:29.622+09:00 DEBUG 94176 --- [main] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2024-06-16T17:33:29.623+09:00 DEBUG 94176 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2024-06-16T17:33:29.623+09:00  INFO 94176 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-06-16T17:33:29.623+09:00 DEBUG 94176 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7668edd7]
+2024-06-16T17:33:29.623+09:00 DEBUG 94176 --- [main] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7668edd7]
+2024-06-16T17:33:29.624+09:00  INFO 94176 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7668edd7]]
+2024-06-16T17:33:29.624+09:00  INFO 94176 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-06-16T17:33:29.624+09:00 DEBUG 94176 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2024-06-16T17:33:29.625+09:00 DEBUG 94176 --- [main] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2024-06-16T17:33:29.640+09:00  INFO 94176 --- [main] quiz.exquiz_me.ExQuizMeApplication       : Started ExQuizMeApplication in 11.728 seconds (process running for 12.342)
+2024-06-16T17:33:42.596+09:00  INFO 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-16T17:33:42.597+09:00  INFO 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-16T17:33:42.598+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-06-16T17:33:42.598+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-06-16T17:33:42.598+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-06-16T17:33:42.601+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7ecf001f
+2024-06-16T17:33:42.602+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@314e240c
+2024-06-16T17:33:42.602+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-16T17:33:42.602+09:00  INFO 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-06-16T17:33:43.115+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-06-16T17:33:43.116+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-06-16T17:33:43.313+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:33:43.318+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, title=중등 영단어, writeDateTime=2024-06-14 09:28:32 (truncated)...]
+2024-06-16T17:33:43.387+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:33:57.656+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-06-16T17:33:57.656+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-16T17:33:57.658+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-06-16T17:33:57.659+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-06-16T17:33:57.703+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:33:57.704+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
+2024-06-16T17:33:57.706+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:33:57.707+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:33:57.708+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
+2024-06-16T17:33:57.712+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:34:00.679+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-06-16T17:34:00.680+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-06-16T17:34:00.717+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:34:00.718+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, title=중등 영단어, writeDateTime=2024-06-14 09:28:32 (truncated)...]
+2024-06-16T17:34:00.720+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:34:06.332+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-06-16T17:34:06.333+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-06-16T17:34:06.369+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:34:06.370+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, title=중등 영단어, writeDateTime=2024-06-14 09:28:32 (truncated)...]
+2024-06-16T17:34:06.372+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:34:29.607+09:00  INFO 94176 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-06-16T17:39:45.187+09:00  INFO 94407 --- [main] quiz.exquiz_me.ExQuizMeApplication       : Starting ExQuizMeApplication using Java 17 with PID 94407 (/Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me/build/classes/java/main started by ijeong-eun in /Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me)
+2024-06-16T17:39:45.189+09:00  INFO 94407 --- [main] quiz.exquiz_me.ExQuizMeApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-06-16T17:39:45.967+09:00  INFO 94407 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-16T17:39:46.169+09:00  INFO 94407 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 190 ms. Found 8 JPA repository interfaces.
+2024-06-16T17:39:46.898+09:00  INFO 94407 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-16T17:39:46.927+09:00  INFO 94407 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-16T17:39:46.927+09:00  INFO 94407 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-16T17:39:47.030+09:00  INFO 94407 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-16T17:39:47.031+09:00  INFO 94407 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1797 ms
+2024-06-16T17:39:47.178+09:00 DEBUG 94407 --- [main] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2024-06-16T17:39:47.289+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-06-16T17:39:47.297+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-06-16T17:39:47.422+09:00  INFO 94407 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-16T17:39:47.484+09:00  INFO 94407 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-16T17:39:47.524+09:00  INFO 94407 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-16T17:39:47.834+09:00  INFO 94407 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-16T17:39:47.875+09:00  INFO 94407 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-16T17:39:48.151+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:39:48.171+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, title=중등 영단어, writeDateTime=2024-06-14 09:28:32 (truncated)...]
+2024-06-16T17:39:48.208+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:39:48.367+09:00  INFO 94407 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@bd4ee01
+2024-06-16T17:39:48.370+09:00  INFO 94407 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-16T17:39:49.289+09:00  INFO 94407 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-16T17:39:49.637+09:00  INFO 94407 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-16T17:39:49.924+09:00  INFO 94407 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-16T17:39:50.292+09:00  WARN 94407 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-16T17:39:50.389+09:00 DEBUG 94407 --- [main] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/ws/**] in 'stompWebSocketHandlerMapping'
+2024-06-16T17:39:50.475+09:00 DEBUG 94407 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 14 mappings in 'requestMappingHandlerMapping'
+2024-06-16T17:39:50.518+09:00 DEBUG 94407 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-06-16T17:39:50.565+09:00  INFO 94407 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@65067d90, org.springframework.security.web.session.ForceEagerSessionCreationFilter@2380e8d4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53b5356, org.springframework.security.web.context.SecurityContextHolderFilter@47b5c247, org.springframework.security.web.header.HeaderWriterFilter@771deee6, org.springframework.web.filter.CorsFilter@6968c1d6, org.springframework.security.web.authentication.logout.LogoutFilter@3de8e614, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7c5eb88c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ac64dc2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c61011b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@407956a5, org.springframework.security.web.session.SessionManagementFilter@b9750f0, org.springframework.security.web.access.ExceptionTranslationFilter@71c9c7f3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@19266ca3]
+2024-06-16T17:39:50.591+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.c.CardController:
+	
+2024-06-16T17:39:50.592+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.BoardController:
+	
+2024-06-16T17:39:50.592+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.LoginController:
+	
+2024-06-16T17:39:50.592+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.MainController:
+	
+2024-06-16T17:39:50.592+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.SignUpController:
+	
+2024-06-16T17:39:50.592+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.UserController:
+	
+2024-06-16T17:39:50.595+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.WebSocketController:
+	{[MESSAGE],[/answer]}: receiveAnswer(Answer)
+	{[MESSAGE],[/join]}: joinGame(ParticipantUpdate)
+	{[MESSAGE],[/start]}: startGame()
+2024-06-16T17:39:50.595+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameCardController:
+	
+2024-06-16T17:39:50.595+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameController:
+	{[MESSAGE],[/game]}: handleGameMessage(GameMessage)
+2024-06-16T17:39:50.595+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameSessionController:
+	
+2024-06-16T17:39:50.596+09:00 DEBUG 94407 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+2024-06-16T17:39:50.632+09:00 DEBUG 94407 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-16T17:39:50.653+09:00 DEBUG 94407 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-16T17:39:50.783+09:00  WARN 94407 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-06-16T17:39:50.785+09:00  INFO 94407 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-16T17:39:50.787+09:00  INFO 94407 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-16T17:39:50.792+09:00  INFO 94407 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-16T17:39:50.802+09:00  INFO 94407 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-06-16T17:39:50.813+09:00 ERROR 94407 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-06-16T17:40:12.286+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-06-16T17:40:12.286+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-16T17:40:12.288+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-06-16T17:40:12.288+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-06-16T17:40:12.324+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:40:12.327+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
+2024-06-16T17:40:12.329+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:40:12.389+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:40:12.391+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
+2024-06-16T17:40:12.393+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:40:14.079+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-06-16T17:40:14.079+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-06-16T17:40:14.101+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:40:14.104+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, title=중등 영단어, writeDateTime=2024-06-14 09:28:32 (truncated)...]
+2024-06-16T17:40:14.105+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:40:25.021+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-06-16T17:40:25.021+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-06-16T17:40:25.029+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-06-16T17:40:25.029+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-06-16T17:40:25.065+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:40:25.065+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-06-16T17:40:25.066+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
+2024-06-16T17:40:25.066+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, title=고등 영단어, writeDateTime=2024-06-13 19:27:55 (truncated)...]
+2024-06-16T17:40:25.068+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-06-16T17:40:25.069+09:00 DEBUG 94176 --- [http-nio-172.30.1.79-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
