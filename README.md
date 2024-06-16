@@ -1,8 +1,6 @@
-frontend 파일 안에다 config.env파일 생성하고
-IP_ADDRESS=10.1.16.44
-이런식으로 작성해주세요!!! 
- - cmd에 ipconfig입력 
- - ipv4 주소입니다!
+Ssasin@DESKTOP-U7K0GDA MINGW64 /c/spring/ExQuiz_Me
+이 경로에서 ./start.sh 실행하시면 됩니다!
+
 
 ### 버전 및 의존성
 
