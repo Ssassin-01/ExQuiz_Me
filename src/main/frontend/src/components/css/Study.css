@@ -9,11 +9,12 @@
 .study-cards-list {
   display: flex;
   flex-direction: row;
-
   justify-content: space-around;
   gap: 20px;
   margin-bottom: 20px;
 }
+
+.study
 .search-categories {
   display: flex;
   margin-bottom: 20px;

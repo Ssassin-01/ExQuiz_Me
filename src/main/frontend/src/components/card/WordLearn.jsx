@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "../css/wordLearner.css";
 
 export default function WordLearn() {
@@ -9,6 +9,7 @@ export default function WordLearn() {
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false); // 카드가 뒤집혔는지 여부를 저장하는 상태
     const [missedWords, setMissedWords] = useState([]); // X 버튼을 누른 단어들 저장
+    const [okWords, setOkWords] = useState([]); // O 버튼을 누른 단어를 저장
     const [showModal, setShowModal] = useState(false); // 모달 표시 상태
     const [learningItems, setLearningItems] = useState(vocabularyItems); // 현재 학습 항목
 
@@ -43,7 +44,6 @@ export default function WordLearn() {
     };
 
     const handleMissedWord = () => {
-        // 현재 단어가 missedWords에 이미 있는지 확인하고 없으면 추가
         const currentWord = learningItems[currentWordIndex];
         setMissedWords((prevMissedWords) => {
             if (!prevMissedWords.includes(currentWord)) {
@@ -54,18 +54,34 @@ export default function WordLearn() {
         goToNextWord(); // X 버튼 클릭 후 다음 단어로 이동
     };
 
+    const handleOkWord = () => {
+        const currentWord = learningItems[currentWordIndex];
+        setOkWords((prevOkWords) => {
+            if (!prevOkWords.includes(currentWord)) {
+                return [...prevOkWords, currentWord];
+            }
+            return prevOkWords;
+        });
+        goToNextWord(); // O 버튼 클릭 후 다음 단어로 이동
+    };
+
     const handleRestartMissedWords = () => {
         setShowModal(false);
         if (missedWords.length > 0) {
             // 틀린 단어가 있는 경우 그 단어들만으로 학습 목록 재설정
             setLearningItems(missedWords);
             setMissedWords([]); // 초기화
+            setOkWords([]); // 초기화
+        } else {
+            // 모든 단어를 맞춘 경우
+            navigate('/study');
         }
         setCurrentWordIndex(0); // 첫 번째 단어로 이동
     };
+
     const handleCancel = () => {
         setShowModal(false);
-        navigate('/study'); // "취소" 버튼을 클릭하면 Learn 페이지로 이동
+        navigate('/study'); // "취소" 버튼을 클릭하면 Study 페이지로 이동
     };
 
     return (
@@ -91,7 +107,7 @@ export default function WordLearn() {
                     </div>
                 </div>
                 <footer className="learn__footer">
-                    <button className="learn__nav-btn" onClick={goToNextWord}>O</button>
+                    <button className="learn__nav-btn" onClick={handleOkWord}>O</button>
                     <button className="learn__nav-btn" onClick={handleMissedWord}>X</button>
                 </footer>
             </div>
@@ -101,9 +117,19 @@ export default function WordLearn() {
             {showModal && (
                 <div className="modal">
                     <div className="modal-content">
-                        <p>틀린 단어를 다시 학습하시겠습니까?</p>
-                        <button className="modal-btn" onClick={handleRestartMissedWords}>확인</button>
-                        <button className="modal-btn" onClick={handleCancel}>취소</button>
+                        {missedWords.length === 0 ? (
+                            <div>
+                            <p>학습이 끝났습니다 수고하셨습니다😊</p>
+                            <button className="modal-btn" onClick={handleCancel}> 확인 </button>
+                            </div>
+                        ) : (
+                            <>
+                                <p>정답: {okWords.length}개, 오답: {missedWords.length}개</p>
+                                <p>틀린 단어를 다시 학습하시겠습니까?</p>
+                                <button className="modal-btn" onClick={handleRestartMissedWords}>확인</button>
+                                <button className="modal-btn" onClick={handleCancel}>취소</button>
+                            </>
+                        )}
                     </div>
                 </div>
             )}

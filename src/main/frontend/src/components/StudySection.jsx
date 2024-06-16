@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/Study.css";
 import { Tabs, Tab } from 'react-bootstrap';
 import Card from './card/Card';
@@ -14,7 +14,6 @@ const StudySection = () => {
   const [userCards, setUserCards] = useState([]); // 사용자별 카드 상태 추가
   const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
-  const [viewCount, setviewCount] = useState(0);
   const { user } = useUser(); // 현재 사용자 정보 가져오기
 
   useEffect(() => {
@@ -83,25 +82,24 @@ const StudySection = () => {
             <>
               <h3>Learning Card List</h3>
               <div className="study-cards-list">
-                  {studyCards.map((card) => (
-                      <Card
-                          key={card.cardNumber}
-                          cardNumber={card.cardNumber} // cardNumber 전달
-                          cardTitle={card.title}
-                          cardWriter={card.userEmail}
-                          cardDate={card.writeDateTime}
-                          cardImageUrl={card.cardTitleImage}
-                          logoImageUrl={card.cardTitleImage}
-                          onLearnClick={() => handleCardClick(card)} // Pass the click handler function
-                      />
-                  ))}
+                {studyCards.map((card) => (
+                    <Card
+                        key={card.cardNumber}
+                        cardNumber={card.cardNumber} // cardNumber 전달
+                        cardTitle={card.title}
+                        cardWriter={card.userEmail}
+                        cardDate={card.writeDateTime}
+                        initialViewCount={card.countView} // 초기 조회수를 전달
+                        onLearnClick={() => handleCardClick(card)} // 클릭 핸들러 함수 전달
+                    />
+                ))}
               </div>
             </>
         ) : null}
         {selectedCategory === "overall" || selectedCategory === "user" ? (
             <>
               <h3>Your Cards</h3>
-              <div className="user-cards-list">
+              <div className="study-cards-list">
                 {userCards.map((card) => (
                     <Card
                         key={card.cardNumber}
@@ -109,9 +107,8 @@ const StudySection = () => {
                         cardTitle={card.title}
                         cardWriter={card.userEmail}
                         cardDate={card.writeDateTime}
-                        cardImageUrl={card.cardTitleImage}
-                        logoImageUrl={card.cardTitleImage}
-                        onLearnClick={() => handleCardClick(card)} // Pass the click handler function
+                        initialViewCount={card.countView} // 초기 조회수를 전달
+                        onLearnClick={() => handleCardClick(card)} // 클릭 핸들러 함수 전달
                     />
                 ))}
               </div>
