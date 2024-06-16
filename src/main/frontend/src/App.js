@@ -25,7 +25,6 @@ import { NicknameProvider } from './components/game/context/NicknameContext';
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 function App() {
     return (
         <HelmetProvider>
@@ -45,7 +44,7 @@ function App() {
                                     <Route path="profile" element={<MyPage />} />
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
-                                    <Route path="wordLearn" element={<WordLearn />} />
+                                    <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
                                 </Route>
                                 <Route path="gameroom" element={<GameRoom />} />
                                 <Route path="gaming" element={<Gaming />} />

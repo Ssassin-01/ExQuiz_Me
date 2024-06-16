@@ -10,8 +10,10 @@
     justify-content: center; /* Center vertically */
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-
+    position: fixed; /* 변경된 부분 */
+    top: 50%; /* 예시로 수직 가운데 정렬 */
+    left: 50%; /* 예시로 수평 가운데 정렬 */
+    transform: translate(-50%, -50%); /* 화면 중앙 정렬을 위한 트랜스폼 */
 }
 
 .learning-header {
@@ -23,8 +25,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute; /* 절대 위치 설정 */
+    top: 0; /* 상단에 위치 */
+    left: 0;
+    right: 0;
 }
-
 .title-section {
     display: flex;
     align-items: center;
