@@ -5,11 +5,13 @@ import Card from "./card/Card";
 import UserCard from "./card/UserCard";
 import mainImg from "./../images/main_img.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // useNavigate 추가
 
 const Home = () => {
   const [popularCards, setPopularCards] = useState([]);
   const [userCards, setUserCards] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
     const fetchPopularCards = async () => {
@@ -49,6 +51,11 @@ const Home = () => {
     fetchPopularCards();
     fetchUserCards();
   }, [apiUrl]);
+
+  const handleLearnClick = (card) => {
+    console.log("Navigating to Learn page with card:", card);
+    navigate('/learn', { state: { vocabularyItems: card.vocabularyItems } });
+  };
 
   const settings = {
     dots: true,
@@ -99,6 +106,7 @@ const Home = () => {
                     cardWriter={card.userEmail}
                     cardDate={card.writeDateTime}
                     initialViewCount={card.countView}
+                    onLearnClick={() => handleLearnClick(card)} // Learn 버튼 클릭 시 handleLearnClick 호출
                 />
             ))}
           </Slider>
