@@ -1,12 +1,35 @@
 .my-page {
     display: flex;
     flex-direction: column;
-
+    justify-content: space-between;
     background-color: #cfe8a9;
     padding: 20px;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     font-family: 'Arial', sans-serif;
+}
+
+.sub-my-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #cfe8a9;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.UsingFlex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.MyCalender{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .my-page-header {
