@@ -63,13 +63,7 @@ const Sidebar = () => {
                     </Link>
                     <span className="tooltip">Profile</span>
                 </li>
-                <li>
-                    <Link to="/settings">
-                        <FaCog className="icon"/>
-                        <span className="title">Setting</span>
-                    </Link>
-                    <span className="tooltip">Setting</span>
-                </li>
+
             </ul>
         </div>
     );

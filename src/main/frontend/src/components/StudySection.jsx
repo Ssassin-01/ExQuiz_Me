@@ -60,9 +60,9 @@ const StudySection = () => {
               fill
               onSelect={(selectedKey) => setSelectedCategory(selectedKey)}
           >
-            <Tab eventKey="overall" title="Overall Results"></Tab>
-            <Tab eventKey="studySet" title="Study Sets"></Tab>
-            <Tab eventKey="user" title="Users"></Tab>
+            <Tab eventKey="overall" title="전부"></Tab>
+            <Tab eventKey="studySet" title="카드"></Tab>
+            <Tab eventKey="user" title="유저"></Tab>
           </Tabs>
         </div>
         <div className="study-tools">
@@ -70,17 +70,17 @@ const StudySection = () => {
             <form onSubmit={handleSearch}>
               <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder="검색..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <button type="submit">Search</button>
+              <button type="submit">검색</button>
             </form>
           </div>
         </div>
         {selectedCategory === "overall" || selectedCategory === "studySet" ? (
             <>
-              <h3>Learning Card List</h3>
+              <h3>학습카드리스트</h3>
               <div className="study-cards-list">
                 {studyCards.map((card) => (
                     <Card
@@ -98,7 +98,7 @@ const StudySection = () => {
         ) : null}
         {selectedCategory === "overall" || selectedCategory === "user" ? (
             <>
-              <h3>Your Cards</h3>
+              <h3>카드</h3>
               <div className="study-cards-list">
                 {userCards.map((card) => (
                     <Card

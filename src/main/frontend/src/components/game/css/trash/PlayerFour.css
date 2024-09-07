@@ -1,0 +1,48 @@
+/*!* PlayerFour.css - 디버깅용 임시 스타일 *!*/
+/*.game-four-container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100vh;*/
+/*    background-color: #ffdddd; !* 강렬한 배경색 *!*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+
+/*.game-four-content {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    background-color: #ddffdd; !* 강렬한 배경색 *!*/
+/*    padding: 20px;*/
+/*    border-radius: 15px;*/
+/*    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+/*    width: 90%;*/
+/*    max-width: 400px;*/
+/*    border: 2px solid #00f; !* 파란 테두리 *!*/
+/*}*/
+
+/*.button-group {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(2, 1fr);*/
+/*    gap: 10px;*/
+/*    width: 100%;*/
+/*    border: 2px solid #f00; !* 빨간 테두리 *!*/
+/*}*/
+
+/*.option-button {*/
+/*    background-color: #4caf50;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    padding: 15px;*/
+/*    cursor: pointer;*/
+/*    font-size: 1.2em;*/
+/*    transition: background-color 0.3s ease;*/
+/*    width: 100%;*/
+/*    height: 50px;*/
+/*    border: 2px solid #000; !* 검은 테두리 *!*/
+/*}*/
+
+/*.option-button:hover {*/
+/*    background-color: #388e3c;*/
+/*}*/

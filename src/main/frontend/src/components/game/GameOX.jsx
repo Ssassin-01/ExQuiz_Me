@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import './css/GameOX.css';
+import './player/css/GameOX.css';
 import { useNickname } from './context/NicknameContext';
 
 function GameOX() {
