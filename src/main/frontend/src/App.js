@@ -32,6 +32,8 @@ import PlayerOX from "./components/game/player/PlayerOX";
 import PlayerFour from "./components/game/player/PlayerFour";
 import PlayerShortAnswer from "./components/game/player/PlayerShortAnswer";
 import GameShortAnswer from "./components/game/GameShortAnswer";
+import SuccessPage from "./components/SuccessPage";
+import FailPage from "./components/FailPage";
 function App() {
     return (
         <HelmetProvider>
@@ -48,6 +50,8 @@ function App() {
                                     <Route path="make" element={<MakeComponent />} />
                                     <Route path="game" element={<Game />} />
                                     <Route path="subscribe" element={<SubScribe />} />
+                                    <Route path="/success" element={<SuccessPage />} />
+                                    <Route path="/fail" element={<FailPage />} />
                                     <Route path="profile" element={<MyPage />} />
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
