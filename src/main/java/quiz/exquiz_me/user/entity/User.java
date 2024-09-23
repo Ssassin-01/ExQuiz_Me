@@ -1,5 +1,6 @@
 package quiz.exquiz_me.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,5 +51,8 @@ public class User {
     private String permission = "ROLE_ADMIN";
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference // 직렬화에서 부모 역할을 설정하여 무한 재귀를 방지
     private List<Card> cards; // 사용자가 소유한 카드들
+
+
 }

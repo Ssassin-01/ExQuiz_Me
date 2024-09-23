@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import quiz.exquiz_me.card.dto.CardAccessLogDTO;
 import quiz.exquiz_me.card.dto.CardDTO;
 import quiz.exquiz_me.card.service.VocaCardService;
 
@@ -44,13 +45,15 @@ public class CardController {
     }
     // 조회수 증가 엔드포인트
     @PostMapping("/{cardNumber}/view")
-    public ResponseEntity<?> increaseViewCount(@PathVariable Long cardNumber) {
+    public ResponseEntity<?> increaseViewCountAndLogAccess(@PathVariable Long cardNumber) {
         try {
-            cardService.incrementCardView(cardNumber);
-            return ResponseEntity.ok().build(); // 조회수만 증가시키므로 빈 응답 반환
+            String email = getCurrentUserEmail(); // 현재 사용자 이메일 가져오기
+            cardService.incrementCardView(cardNumber); // 조회수 증가
+            cardService.logCardAccess(email, cardNumber); // 카드 열람 기록 저장
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            logger.error("Error increasing view count: ", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error increasing view count");
+            logger.error("Error increasing view count or logging card access: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error increasing view count or logging card access");
         }
     }
     // 조회수가 높은 순으로 카드 반환 엔드포인트
@@ -85,6 +88,19 @@ public class CardController {
             return ((UserDetails) principal).getUsername();
         } else {
             return principal.toString();
+        }
+    }
+
+    //최근학습
+    @GetMapping("/recent")
+    public ResponseEntity<List<CardAccessLogDTO>> getRecentAccessedCards() {
+        try {
+            String email = getCurrentUserEmail();
+            List<CardAccessLogDTO> recentCards = cardService.getRecentAccessedCardsByUserEmail(email);
+            return ResponseEntity.ok(recentCards);
+        } catch (Exception e) {
+            logger.error("Error retrieving recent accessed cards: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }

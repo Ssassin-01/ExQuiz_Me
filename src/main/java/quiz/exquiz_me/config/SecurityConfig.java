@@ -34,8 +34,8 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/join", "/joinProc", "/images/**", "/js/**", "/css/**", "/img/**", "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions", "/gaming", "/gameox", "/api/game/card/**").permitAll() // 여기에 "/api/game-sessions" 추가
-                        .requestMatchers("/api/cards").authenticated()
+                        .requestMatchers("/", "/login", "/join", "/joinProc", "/images/**", "/js/**", "/css/**", "/img/**", "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions", "/gaming", "/gameox", "/api/game/card/**",  "/api/user/**").permitAll() // 여기에 "/api/game-sessions" 추가
+                        .requestMatchers("/api/cards/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

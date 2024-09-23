@@ -73,4 +73,36 @@ public class UserService {
                         user.getOneLineResolution()))
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
+
+    public UserDTO updateUser(UserDTO userDTO) {
+        User existingUser = userRepository.findByEmail(userDTO.getEmail());
+
+        if (existingUser == null) {
+            throw new RuntimeException("User not found with email: " + userDTO.getEmail());
+        }
+
+        // 비밀번호는 사용자가 입력했을 때만 업데이트 (빈 값일 경우 기존 비밀번호 유지)
+        if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
+            existingUser.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+        }
+
+        existingUser.setNickname(userDTO.getNickname());
+        existingUser.setTelNumber(userDTO.getTelNumber());
+        existingUser.setDate(userDTO.getDate());
+        existingUser.setGender(userDTO.getGender());
+        existingUser.setSignupPurpose(userDTO.getSignupPurpose());
+
+        userRepository.save(existingUser);
+        return new UserDTO(
+                existingUser.getEmail(),
+                existingUser.getPassword(),
+                existingUser.getNickname(),
+                existingUser.getTelNumber(),
+                existingUser.getDate(),
+                existingUser.getGender(),
+                existingUser.getSignupPurpose(),
+                existingUser.getIdentity(),
+                existingUser.getOneLineResolution()
+        );
+    }
 }

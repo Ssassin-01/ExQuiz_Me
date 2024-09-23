@@ -1,9 +1,9 @@
 .make-component {
   font-family: 'Arial', sans-serif;
-  background-color: #e9f5e9;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   width: 600px;
   margin: 200px auto;
   position: relative;
@@ -15,7 +15,7 @@
   align-items: center;
   margin-bottom: 20px;
   position: relative;
-  color: #ff0000;
+  color: #333333;
 }
 
 .make-header::after {
@@ -25,7 +25,7 @@
   bottom: -10px;
   left: 0;
   right: 0;
-  background: linear-gradient(to right, #ff0000 50%, #e9f5e9 50%);
+  background: linear-gradient(to right, #000000 50%, #ffffff 50%);
   background-size: 200% 100%;
   background-position: left bottom;
   transition: all 0.5s ease-out;
@@ -36,55 +36,74 @@
 }
 
 .volume-title {
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: bold;
   margin-right: 10px;
+  color: #000000;
 }
 
 .input-group {
   margin-bottom: 20px;
 }
 
-.input-feed, .input-description, .entry-input {
+.input-feed,
+.input-description,
+.input-purpose,
+.entry-input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 2px solid #cccccc;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #d1d1d1;
   border-radius: 10px;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 1.1em;
 }
 
 .input-description {
-  height: 80px;
+  height: 100px;
   resize: none;
+}
+
+.input-purpose {
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  color: #333333;
+  font-size: 1.1em;
 }
 
 .entry {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .entry-number {
-  background-color: #d4d4d4;
+  background-color: #333333;
+  color: #ffffff;
   padding: 10px;
   border-radius: 50%;
   margin-right: 10px;
   text-align: center;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 
 .entry-word {
-  margin-right: 5px;
+  margin-right: 10px;
   flex: 2;
 }
+
 .entry-input {
   margin-top: 0;
   margin-bottom: 0;
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
 }
 
 .entry-meaning {
@@ -92,22 +111,28 @@
 }
 
 .delete-button {
-  background-color: #f44336;
+  background-color: #ff4d4d;
   border: none;
   padding: 5px 10px;
   color: white;
   cursor: pointer;
   border-radius: 5px;
   margin-left: 10px;
-
 }
 
-.add-button, .submit-button {
-  background-color: #4caf50;
+.add-button,
+.submit-button {
+  background-color: #333333;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 18px;
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+.add-button:hover,
+.submit-button:hover {
+  background-color: #000000;
 }

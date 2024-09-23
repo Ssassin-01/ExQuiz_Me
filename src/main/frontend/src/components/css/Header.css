@@ -2,5 +2,9 @@
     display: flex;
     justify-content: flex-end;
     padding: 10px 20px;
-    background-color: #6c8776;
+    background-color: #333333;
+}
+
+.me-2 {
+    color: #ffffff;
 }
