@@ -33,6 +33,7 @@ import PlayerFour from "./components/game/player/PlayerFour";
 import PlayerShortAnswer from "./components/game/player/PlayerShortAnswer";
 import GameShortAnswer from "./components/game/GameShortAnswer";
 import EditProfile from "./components/User/EditProfile";
+import TimeTracker from "./components/utility/TimeTracker";
 function App() {
     return (
         <HelmetProvider>
@@ -40,6 +41,7 @@ function App() {
                 <WebSocketProvider>
                     <NicknameProvider>
                         <Router>
+                            <TimeTracker />
                             <Routes>
                                 <Route path="/" element={<LayoutWithSidebar />}>
                                     <Route index element={<Home />} />

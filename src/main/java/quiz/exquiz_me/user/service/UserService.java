@@ -1,15 +1,21 @@
 package quiz.exquiz_me.user.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import quiz.exquiz_me.dto.UserDTO;
+import quiz.exquiz_me.user.dto.UserActivityDTO;
 import quiz.exquiz_me.user.entity.User;
+import quiz.exquiz_me.user.entity.UserActivity;
 import quiz.exquiz_me.user.repository.UserRepository;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -17,10 +23,11 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // User 추가하기
+    // UserService.java
     public UserDTO addUser(UserDTO userDTO) {
         User user = new User(
                 userDTO.getEmail(),
-                bCryptPasswordEncoder.encode(userDTO.getPassword()),
+                bCryptPasswordEncoder.encode(userDTO.getPassword()),  // 비밀번호 암호화
                 userDTO.getNickname(),
                 userDTO.getTelNumber(),
                 userDTO.getDate(),
@@ -28,10 +35,14 @@ public class UserService {
                 userDTO.getSignupPurpose(),
                 userDTO.getIdentity(),
                 userDTO.getOneLineResolution(),
-                "ROLE_USER",
-                null
+                "ROLE_USER"
         );
+
         user = userRepository.save(user);
+
+        // 유저 생성 후 activities 필드를 따로 설정 (빈 리스트로 설정)
+        user.setActivities(Collections.emptyList());
+
         return new UserDTO(
                 user.getEmail(),
                 user.getPassword(),
@@ -41,9 +52,11 @@ public class UserService {
                 user.getGender(),
                 user.getSignupPurpose(),
                 user.getIdentity(),
-                user.getOneLineResolution()
+                user.getOneLineResolution(),
+                Collections.emptyList()  // 새 유저의 활동 기록은 처음엔 빈 리스트
         );
     }
+
 
     // 이메일 중복 확인
     public boolean emailExists(String email) {
@@ -55,10 +68,12 @@ public class UserService {
         return userRepository.existsByTelNumber(telNumber);
     }
 
+    // User 삭제
     public void deleteUser(String email) {
         userRepository.deleteById(email);
     }
 
+    // 이메일로 사용자 찾기 (활동 기록 포함)
     public UserDTO findUserByEmail(String email) {
         return userRepository.findById(email)
                 .map(user -> new UserDTO(
@@ -70,10 +85,15 @@ public class UserService {
                         user.getGender(),
                         user.getSignupPurpose(),
                         user.getIdentity(),
-                        user.getOneLineResolution()))
+                        user.getOneLineResolution(),
+                        user.getActivities().stream()
+                                .map(activity -> new UserActivityDTO(activity.getLoginDate(), activity.getTimeSpent()))
+                                .collect(Collectors.toList())  // 활동 기록을 DTO로 변환하여 반환
+                ))
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
+    // User 업데이트
     public UserDTO updateUser(UserDTO userDTO) {
         User existingUser = userRepository.findByEmail(userDTO.getEmail());
 
@@ -93,6 +113,7 @@ public class UserService {
         existingUser.setSignupPurpose(userDTO.getSignupPurpose());
 
         userRepository.save(existingUser);
+
         return new UserDTO(
                 existingUser.getEmail(),
                 existingUser.getPassword(),
@@ -102,7 +123,10 @@ public class UserService {
                 existingUser.getGender(),
                 existingUser.getSignupPurpose(),
                 existingUser.getIdentity(),
-                existingUser.getOneLineResolution()
+                existingUser.getOneLineResolution(),
+                existingUser.getActivities().stream()
+                        .map(activity -> new UserActivityDTO(activity.getLoginDate(), activity.getTimeSpent()))
+                        .collect(Collectors.toList())  // 활동 기록을 DTO로 변환하여 반환
         );
     }
 }

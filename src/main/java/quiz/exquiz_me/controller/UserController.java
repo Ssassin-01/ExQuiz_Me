@@ -30,6 +30,7 @@ public class UserController {
     }
 
     // 현재 사용자 정보 조회 API
+    // 사용자의 전체 프로필과 활동 기록을 조회하는 API
     @GetMapping("/profile/{email}")
     public ResponseEntity<UserDTO> getUserProfile(@PathVariable String email) {
         try {
