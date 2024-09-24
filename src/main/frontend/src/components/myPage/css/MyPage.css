@@ -1,0 +1,452 @@
+.mypage {
+    font-family: 'Roboto', sans-serif;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 5%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mypage-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mypage-profile, .mypage-story {
+    width: 48%;
+}
+
+.mypage-profile-content, .mypage-story-content {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: auto;
+}
+
+/* 스토리 패딩 줄이기 */
+.mypage-story-content {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 연속 출석 문구 */
+.mypage-streak-text {
+    color: #27ae60;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 잔디밭 그리드 */
+.mypage-attendance-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mypage-grid-item {
+    width: 25px;
+    height: 25px;
+    background-color: #ebedf0;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.mypage-grid-item.mypage-active {
+    background-color: #216e39;
+}
+
+.mypage-grid-item.mypage-semi-active {
+    background-color: #30a14e;
+}
+
+.mypage-grid-item.mypage-low-active {
+    background-color: #9be9a8;
+}
+
+.mypage-grid-item:hover {
+    background-color: #1b5e33;
+    transform: scale(1.1);
+}
+
+.mypage-profile-details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.mypage-profile-img {
+    font-size: 48px;
+}
+
+.mypage-profile-info {
+    margin-left: 15px;
+    flex: 1;
+}
+
+.mypage-nickname {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+}
+
+.mypage-email {
+    color: #777;
+    font-size: 14px;
+    text-align: left;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 10px 0;
+}
+
+.mypage-profile-extra p {
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+.mypage-edit-btn {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mypage-edit-btn:hover {
+    background-color: #f0f0f0;
+}
+
+
+/*잔디밭설정*/
+.mypage-attendance-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 일주일은 7일 */
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.mypage-grid-item {
+    width: 30px;
+    height: 30px;
+    background-color: #ebedf0; /* 기본 회색 */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.mypage-grid-item.high {
+    background-color: #216e39; /* 높은 활동량 (깃허브 잔디 초록색) */
+}
+
+.mypage-grid-item:hover {
+    background-color: #1b5e33; /* 호버 시 더 어두운 초록색 */
+}
+
+/* 상태에 따라 색상이 다르게 표시될 수 있도록 추가 */
+.mypage-grid-item.medium {
+    background-color: #30a14e; /* 중간 활동량 */
+}
+
+.mypage-grid-item.low {
+    background-color: #9be9a8; /* 낮은 활동량 */
+}
+
+.mypage-streak-text {
+    color: #27ae60;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.mypage-story h4 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+/* 내 활동 그리드 레이아웃 */
+.mypage-activity-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mypage-activity-posts {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.mypage-activity-posts h4 {
+    margin-bottom: 10px;
+}
+
+.mypage-post-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.mypage-post-item {
+    flex: 0 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    width: 220px;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.mypage-post-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mypage-post-item h5 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.mypage-post-item p {
+    font-size: 14px;
+    color: #666;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* 우측 상단: 내 뱃지 */
+.mypage-activity-badges {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.mypage-activity-badges h4 {
+    margin-bottom: 10px;
+}
+
+.mypage-badge-items {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.mypage-badge-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 하단: 막대 그래프 */
+.mypage-activity-graph {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.mypage-bar-graph {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.mypage-bar {
+    width: 30px;
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.mypage-bar-1 { height: 60px; }
+.mypage-bar-2 { height: 100px; }
+.mypage-bar-3 { height: 120px; }
+.mypage-bar-4 { height: 80px; }
+.mypage-bar-5 { height: 50px; }
+
+.mypage-card_bookmark-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/*최근학습*/
+
+.mypage-recent-cards-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.mypage-recent-cards-list .mypage-post-item {
+    width: 30%; /* 카드의 가로 크기를 적절히 설정 */
+}
+
+
+
+
+/*최근 학습 카드 스타일*/
+.mypage-post-items.recent {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+/* 단어 즐겨찾기 */
+.mypage-word-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.mypage-word-table th, .mypage-word-table td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+    width: 20%;
+}
+
+.mypage-word-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.mypage-word-table td {
+    background-color: #fff;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.word-bookmark-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFD700;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.word-bookmark-icon.bookmarked {
+    color: #FFD700;
+}
+
+.word-bookmark-icon:hover {
+    color: #FFCC00;
+}
+
+.bookmark-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.bookmark-icon.bookmarked {
+    color: #FFD700;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-btn:hover {
+    color: #c0392b;
+}
+
+.mypage-tabs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mypage-tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mypage-tabs button.mypage-active {
+    background-color: #b3b3b3;
+    color: white;
+}
+
+.mypage-tabs button:hover {
+    background-color: #ddd;
+}

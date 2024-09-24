@@ -7,13 +7,14 @@
     height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
+    justify-content: flex-start; /* 변경된 부분: 중앙 정렬 대신 상단 정렬 */
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed; /* 변경된 부분 */
     top: 50%; /* 예시로 수직 가운데 정렬 */
     left: 50%; /* 예시로 수평 가운데 정렬 */
     transform: translate(-50%, -50%); /* 화면 중앙 정렬을 위한 트랜스폼 */
+    overflow: hidden; /* 추가: 전체 컨테이너의 오버플로우 숨기기 */
 }
 
 .learning-header {
@@ -25,11 +26,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute; /* 절대 위치 설정 */
-    top: 0; /* 상단에 위치 */
-    left: 0;
-    right: 0;
+    position: relative; /* 변경된 부분: 절대 위치 설정 제거 */
 }
+
 .title-section {
     display: flex;
     align-items: center;
@@ -70,24 +69,23 @@
 }
 
 .word-list-container {
-    overflow: hidden;
     margin: 1em;
-    max-height: 80vh;
+    flex-grow: 1; /* 추가: 컨테이너가 남은 공간을 차지하도록 설정 */
+    overflow-y: scroll; /* 변경된 부분: Y축 스크롤 활성화 */
 }
 
 .word-list {
     padding-right: 1em;
     height: 100%;
-    overflow-y: scroll;
 }
 
 .word-list::-webkit-scrollbar {
-    display: none;
+    display: none; /* 웹킷 기반 브라우저에서 스크롤바 숨기기 */
 }
 
 .word-list {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE 및 Edge에서 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
 }
 
 .word-item {

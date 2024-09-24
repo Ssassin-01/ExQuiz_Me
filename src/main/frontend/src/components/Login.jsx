@@ -49,11 +49,11 @@ const Login = () => {
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email">이메일:</label>
                     <input type="email" id="email" name="email" value={credentials.email} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">패스워드:</label>
                     <input type="password" id="password" name="password" value={credentials.password} onChange={handleChange} required />
                 </div>
                 <button type="submit" className="login-button">Login</button>

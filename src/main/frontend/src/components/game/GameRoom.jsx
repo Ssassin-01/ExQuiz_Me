@@ -8,7 +8,7 @@ function GameRoom() {
     const [nicknameInput, setNicknameInput] = useState("");
     const [joined, setJoined] = useState(false);
     const [error, setError] = useState(null);
-    const { participants, publishMessage, webSocketConnected, connectWebSocket, subscribeToChannel } = useWebSocket();
+    const { participants, publishMessage, webSocketConnected, connectWebSocket, subscribeToChannel, resetParticipants } = useWebSocket();
     const { setNickname } = useNickname();
     const navigate = useNavigate();
 
@@ -16,43 +16,67 @@ function GameRoom() {
         if (!webSocketConnected) {
             connectWebSocket();
         }
-    }, [webSocketConnected, connectWebSocket]);
 
-    useEffect(() => {
+        let subscription;
+
         if (webSocketConnected) {
-            const subscription = subscribeToChannel('/topic/game-start', () => {
-                navigate('/gameox');
-            });
+            subscription = subscribeToChannel('/topic/game-start', (message) => {
+                try {
+                    const parsedMessage = JSON.parse(message.body);
 
-            return () => {
-                if (subscription) {
-                    subscription.unsubscribe();
+                    if (parsedMessage.questionType) {
+                        // 게임 유형에 따라 다른 화면으로 이동
+                        if (parsedMessage.questionType === 'ox') {
+                            navigate('/player/ox');
+                        } else if (parsedMessage.questionType === 'four') {
+                            navigate('/player/four');
+                        } else if (parsedMessage.questionType === 'shortAnswer') {
+                            navigate('/player/short-answer');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error parsing message:', error);
                 }
-            };
+            });
         }
-    }, [webSocketConnected, navigate, subscribeToChannel]);
+
+        return () => {
+            if (subscription) {
+                subscription.unsubscribe();
+            }
+        };
+    }, [webSocketConnected, subscribeToChannel, navigate]);
+
+    const canJoinGame = () => {
+        return participants.length < 6; // 예시로 6명으로 제한, 실제로는 서버에서 전달된 최대 인원으로 확인
+    };
 
     const joinGame = () => {
         if (nicknameInput.trim() !== "") {
-            setNickname(nicknameInput);
-            if (webSocketConnected) {
-                publishMessage('/app/join', {
-                    gameSessionId: 1,
-                    type: "join",
-                    nickname: nicknameInput
-                });
-                setJoined(true);
+            if (canJoinGame()) {
+                setNickname(nicknameInput);
+                if (webSocketConnected) {
+                    resetParticipants();
+                    publishMessage('/app/join', {
+                        gameSessionId: 1,  // 적절한 게임 세션 ID
+                        type: "join",
+                        nickname: nicknameInput
+                    });
+                    setJoined(true);
+                } else {
+                    setError("웹소켓이 연결되지 않았습니다.");
+                }
             } else {
-                setError("WebSocket is not connected.");
+                setError("참가자 수가 최대 인원에 도달했습니다.");
             }
         } else {
-            setError("Nickname cannot be empty.");
+            setError("닉네임을 입력해주세요.");
         }
     };
 
     return (
         <div className="game-room-container">
-            <h1 className="game-room-title">Welcome to the Game Room</h1>
+            <h1 className="game-room-title">오신 것을 환영합니다</h1>
             {error && <p className="error-message">{error}</p>}
             {!joined ? (
                 <>
@@ -60,7 +84,7 @@ function GameRoom() {
                         type="text"
                         value={nicknameInput}
                         onChange={(e) => setNicknameInput(e.target.value)}
-                        placeholder="Enter your nickname"
+                        placeholder="닉네임을 입력하세요"
                         className="nickname-input"
                     />
                     <button className="join-game-button" onClick={joinGame} disabled={nicknameInput.trim() === ""}>
@@ -69,9 +93,9 @@ function GameRoom() {
                 </>
             ) : (
                 <div>
-                    <p>You have joined the game.</p>
+                    <p>게임에 접속되었습니다!</p>
                     <div className="participants-list">
-                        <h2>Participants:</h2>
+                        <h2>참여자:</h2>
                         <ul>
                             {participants.map((participant, index) => (
                                 <li key={index}>{participant}</li>

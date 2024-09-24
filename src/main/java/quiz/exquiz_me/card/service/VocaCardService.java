@@ -2,10 +2,13 @@ package quiz.exquiz_me.card.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import quiz.exquiz_me.card.dto.CardAccessLogDTO;
 import quiz.exquiz_me.card.dto.CardDTO;
 import quiz.exquiz_me.card.dto.VocabularyItemDTO;
 import quiz.exquiz_me.card.entity.Card;
+import quiz.exquiz_me.card.entity.CardAccessLog;
 import quiz.exquiz_me.card.entity.VocabularyItem;
+import quiz.exquiz_me.card.repository.CardAccessLogRepository;
 import quiz.exquiz_me.card.repository.CardRepository;
 import quiz.exquiz_me.user.entity.User;
 import quiz.exquiz_me.user.repository.UserRepository;
@@ -23,6 +26,7 @@ import java.util.stream.Collectors;
 public class VocaCardService {
     private final CardRepository cardRepository;
     private final UserRepository userRepository;
+    private final CardAccessLogRepository cardAccessLogRepository;
 
     private CardDTO convertToCardDTO(Card card) {
         List<VocabularyItemDTO> vocabDTOs = card.getVocabularyItems().stream()
@@ -36,9 +40,11 @@ public class VocaCardService {
         return new CardDTO(
                 card.getCardNumber(),
                 card.getUser().getEmail(),
+                card.getUser().getNickname(),  // 닉네임 추가
                 card.getTitle(),
                 card.getWriteDateTime(),
                 card.getCardTitleImage(),
+                card.getPurpose(),
                 card.getCardContent(),
                 card.getCountView(),
                 vocabDTOs
@@ -55,6 +61,7 @@ public class VocaCardService {
         card.setTitle(cardDTO.getTitle());
         card.setWriteDateTime(new Date());
         card.setCardTitleImage(cardDTO.getCardTitleImage());
+        card.setPurpose(cardDTO.getPurpose());
         card.setCardContent(cardDTO.getCardContent());
         card.setCountView(cardDTO.getCountView());
 
@@ -115,5 +122,48 @@ public class VocaCardService {
         return userCards.stream()
                 .map(this::convertToCardDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<CardAccessLogDTO> getRecentAccessedCardsByUserEmail(String email) {
+        List<CardAccessLog> accessLogs = cardAccessLogRepository.findTop5ByUser_EmailOrderByAccessTimeDesc(email);
+
+        return accessLogs.stream()
+                .map(log -> new CardAccessLogDTO(
+                        log.getLogId(),
+                        log.getUser().getEmail(),
+                        log.getCard().getCardNumber(),
+                        log.getCard().getTitle(),
+                        log.getCard().getPurpose(),
+                        log.getAccessTime(),
+                        log.getCard().getUser().getNickname(),  // 작성자 닉네임
+                        log.getCard().getWriteDateTime()
+                ))
+                .collect(Collectors.toList());
+    }
+    //카드 열람
+    @Transactional
+    public void logCardAccess(String email, Long cardNumber) {
+        User user = userRepository.findById(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Card card = cardRepository.findById(cardNumber)
+                .orElseThrow(() -> new RuntimeException("Card not found"));
+
+        // 이미 동일한 카드 열람 기록이 있는지 확인
+        Optional<CardAccessLog> existingLog = cardAccessLogRepository.findByUser_EmailAndCard_CardNumber(email, cardNumber);
+
+        if (existingLog.isPresent()) {
+            // 동일한 기록이 있으면 열람 시간을 업데이트
+            CardAccessLog log = existingLog.get();
+            log.setAccessTime(new Date()); // 최신 열람 시간으로 업데이트
+            cardAccessLogRepository.save(log); // 업데이트된 열람 기록 저장
+        } else {
+            // 동일한 기록이 없으면 새로운 기록 추가
+            CardAccessLog log = new CardAccessLog();
+            log.setUser(user);
+            log.setCard(card);
+            log.setAccessTime(new Date());
+            cardAccessLogRepository.save(log);
+        }
     }
 }

@@ -1,0 +1,122 @@
+/* CardItem.css */
+.mypage-post-item {
+    background-color: #f9f9f9; /* 기본 배경색 */
+    padding: 20px;
+    border-radius: 12px;
+    width: 220px;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* 더 부드러운 그림자 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.mypage-post-item:hover {
+    transform: translateY(-8px); /* 살짝 위로 올라가는 효과 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 호버 시 더 진한 그림자 */
+}
+
+.mypage-post-item .post-type {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: white;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.bookmark-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.bookmark-icon.bookmarked {
+    color: #FFD700; /* 북마크된 상태는 황금색 */
+}
+
+.post-info {
+    font-size: 12px;
+    color: #999; /* 연한 색상으로 부가 정보 */
+    margin-bottom: 15px;
+}
+
+/* purpose별 스타일 정의 */
+.purpose-elementary {
+    background-color: #4CAF50; /* 초록색 */
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.purpose-middle {
+    background-color: #FFEB3B; /* 노란색 */
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.purpose-high {
+    background-color: #FF9800; /* 주황색 */
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.purpose-exam {
+    background-color: #F44336; /* 빨간색 */
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.purpose-toeic {
+    background-color: #2196F3; /* 파란색 */
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.purpose-default {
+    background-color: #9E9E9E; /* 회색 */
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* 단어장 하단에 있는 버튼 */
+.mypage-post-item .view-more-btn {
+    display: block;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #3498db; /* 파란색 버튼 */
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.mypage-post-item .view-more-btn:hover {
+    background-color: #2980b9; /* 호버 시 더 진한 파란색 */
+}

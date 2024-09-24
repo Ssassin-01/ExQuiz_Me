@@ -29,20 +29,20 @@ const Home = () => {
       setUserCards([
         {
           id: 1,
-          name: "User 1",
-          bio: "Bio of User 1",
+          name: "테스터",
+          bio: "유저 1",
           imageUrl: "https://via.placeholder.com/200",
         },
         {
           id: 2,
-          name: "User 2",
-          bio: "Bio of User 2",
+          name: "길동이",
+          bio: "유저 2",
           imageUrl: "https://via.placeholder.com/200",
         },
         {
           id: 3,
-          name: "User 3",
-          bio: "Bio of User 3",
+          name: "홍길동",
+          bio: "유저 3",
           imageUrl: "https://via.placeholder.com/200",
         },
       ]);
@@ -96,7 +96,7 @@ const Home = () => {
           />
         </div>
         <div className="study-cards">
-          <h3>Best Top3 Study Cards</h3>
+          <h3>배스트 top3</h3>
           <Slider {...settings}>
             {popularCards.map((card) => (
                 <Card
@@ -112,7 +112,7 @@ const Home = () => {
           </Slider>
         </div>
         <div className="user-cards">
-          <h3>Recommended User Cards</h3>
+          <h3>추천 유저 카드</h3>
           <Slider {...settings}>
             {userCards.map((user) => (
                 <UserCard
