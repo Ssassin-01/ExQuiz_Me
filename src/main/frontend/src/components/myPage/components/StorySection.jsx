@@ -95,7 +95,6 @@ const StorySection = () => {
     return (
         <div className="mypage-story">
             <h3>내 스토리</h3>
-
             <div className="mypage-story-content">
                 <p className="mypage-streak-text">{streak > 0 ? `${streak}일 연속 출석중!` : `오늘 첫 출석!`}</p>
                 <div className="mypage-attendance-grid">

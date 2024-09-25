@@ -49,6 +49,7 @@ public class UserActivityController {
         return ResponseEntity.ok("User activity logged for today.");
     }
 
+    // 오늘 날짜의 사용자 활동 기록 조회 API
     @GetMapping("/today")
     public ResponseEntity<UserActivityDTO> getTodayActivity(Authentication authentication) {
         String userEmail = authentication.getName();  // 로그인된 사용자의 이메일 가져오기
