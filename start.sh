@@ -28,10 +28,10 @@ if [ -z "$IP_ADDRESS" ]; then
   exit 1
 fi
 
-# Set environment variables for React
+# Set environment variables for React and Backend
 export REACT_APP_API_URL="http://$IP_ADDRESS:8080"
+export REACT_APP_SPRING_SECURITY_ALLOWED_ORIGINS="http://$IP_ADDRESS:3000"
 
-# Set environment variables for Backend
 export SPRING_SERVER_ADDRESS=$IP_ADDRESS
 export SPRING_SECURITY_ALLOWED_ORIGINS="http://$IP_ADDRESS:3000"
 
@@ -39,6 +39,7 @@ export SPRING_SECURITY_ALLOWED_ORIGINS="http://$IP_ADDRESS:3000"
 echo "SPRING_SERVER_ADDRESS=$SPRING_SERVER_ADDRESS"
 echo "SPRING_SECURITY_ALLOWED_ORIGINS=$SPRING_SECURITY_ALLOWED_ORIGINS"
 echo "REACT_APP_API_URL=$REACT_APP_API_URL"
+echo "REACT_APP_SPRING_SECURITY_ALLOWED_ORIGINS=$REACT_APP_SPRING_SECURITY_ALLOWED_ORIGINS"
 
 # Start Backend app
 ./gradlew bootRun &
