@@ -5,10 +5,7 @@ import CardItem from "./components/CardItem";
 import TableItem from "./components/TableItem";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../User/UserContext";
-
 import axios from 'axios';
-
-
 import ProfileSection from './components/ProfileSection';
 import StorySection from './components/StorySection';
 import ActivitySection from './components/ActivitySection';
@@ -178,13 +175,6 @@ const MyPage = () => {
             console.error('Failed to fetch bookmarked cards:', error);
         }
     };
-
-
-
-
-
-
-
 // 컴포넌트가 로드될 때마다 북마크된 카드 목록을 가져옴
     useEffect(() => {
         if (!user || !user.email) {
