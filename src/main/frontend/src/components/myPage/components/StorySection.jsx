@@ -95,14 +95,14 @@ const StorySection = () => {
     return (
         <div className="mypage-story">
             <h3>내 스토리</h3>
-            <p className="mypage-streak-text">{streak > 0 ? `${streak}일 연속 출석중!` : `오늘 첫 출석!`}</p>
             <div className="mypage-story-content">
+                <p className="mypage-streak-text">{streak > 0 ? `${streak}일 연속 출석중!` : `오늘 첫 출석!`}</p>
                 <div className="mypage-attendance-grid">
                     {[...Array(daysInMonth)].map((_, index) => renderDay(index + 1))}
                 </div>
             </div>
             {/* TimeTracker 컴포넌트 추가 */}
-            <TimeTracker />
+            <TimeTracker/>
         </div>
     );
 };

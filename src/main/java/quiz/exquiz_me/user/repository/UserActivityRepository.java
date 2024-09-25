@@ -19,14 +19,13 @@ public interface UserActivityRepository extends JpaRepository<UserActivity, Long
     @Query("SELECT ua FROM UserActivity ua WHERE ua.user.email = :email AND MONTH(ua.loginDate) = :month")
     List<UserActivity> findUserActivityByMonth(@Param("email") String email, @Param("month") int month);
 
-    @Query("SELECT ua FROM UserActivity ua WHERE ua.user = :user AND ua.loginDate = :loginDate ORDER BY ua.id DESC")
-    List<UserActivity> findUserActivitiesByUserAndLoginDate(@Param("user") User user, @Param("loginDate") LocalDate loginDate);
-
-
-    // 오늘 날짜의 기록을 조회하는 쿼리 추가
-    @Query("SELECT ua FROM UserActivity ua WHERE ua.user = :user AND ua.loginDate = :today")
+    // 오늘 날짜의 기록을 조회하는 쿼리 수정 (중복된 데이터 처리, 최신 기록 반환)
+    @Query("SELECT ua FROM UserActivity ua WHERE ua.user = :user AND ua.loginDate = :today ORDER BY ua.id DESC")
     Optional<UserActivity> findTopByUserAndLoginDate(@Param("user") User user, @Param("today") LocalDate today);
 
     // 특정 유저의 특정 날짜 활동 기록 조회
+    List<UserActivity> findUserActivitiesByUserAndLoginDate(@Param("user") User user, @Param("loginDate") LocalDate loginDate);
+
+    // 특정 유저의 특정 날짜 활동 기록 조회 (Optional 사용)
     Optional<UserActivity> findByUserAndLoginDate(User user, LocalDate loginDate);
 }

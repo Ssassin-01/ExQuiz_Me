@@ -9,6 +9,5 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UserActivityDTO {
     private LocalDate loginDate;
-
     private int timeSpent; // 로그인 시간 (분 단위)
 }

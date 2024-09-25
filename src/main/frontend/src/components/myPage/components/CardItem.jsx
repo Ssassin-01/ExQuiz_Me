@@ -1,9 +1,8 @@
-// CardItem.jsx
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import './css/CardItem.css';
 
-const CardItem = ({ title, description, author, date, purpose, isBookmarked, onBookmarkToggle, onCardClick, timeAgo }) => {
+const CardItem = ({ title, description, author, date, purpose, isBookmarked, onBookmarkToggle, onCardClick }) => {
     const [bookmarked, setBookmarked] = useState(isBookmarked);
     const [isLoading, setIsLoading] = useState(false); // 서버 요청 중 상태 관리
 
@@ -14,17 +13,28 @@ const CardItem = ({ title, description, author, date, purpose, isBookmarked, onB
 
     // 북마크 토글 함수
     const handleBookmarkToggle = async () => {
+        setIsLoading(true); // 로딩 상태로 전환
         try {
             const response = await onBookmarkToggle();  // 부모 컴포넌트에서 전달된 함수 호출
-            if (typeof response === 'string') {
-                setBookmarked(response === "Bookmarked");  // 서버 응답에 따라 상태 업데이트
-            } else if (response && response.data) {
-                setBookmarked(response.data === "Bookmarked");
+            console.log("onBookmarkToggle response:", response);  // 반환값을 확인하는 로그 추가
+
+            if (!response) {
+                console.error("Received undefined response from onBookmarkToggle");
+                return;
+            }
+
+            // response가 명확히 "Bookmarked" 또는 "Unbookmarked"인 경우 처리
+            if (response === "Bookmarked") {
+                setBookmarked(true);  // 북마크 상태 업데이트
+            } else if (response === "Unbookmarked") {
+                setBookmarked(false);  // 북마크 상태 업데이트
             } else {
-                console.error("Unexpected response structure:", response);
+                console.error("Unexpected response structure:", response);  // 예상치 못한 응답 구조 처리
             }
         } catch (error) {
             console.error("Error toggling bookmark:", error);
+        } finally {
+            setIsLoading(false); // 로딩 상태 해제
         }
     };
 
@@ -36,10 +46,8 @@ const CardItem = ({ title, description, author, date, purpose, isBookmarked, onB
 
     // 날짜 포맷팅 함수 (moment 사용)
     const formatDate = (dateString) => {
-        if (!dateString) {
-            return 'Invalid Date';
-        }
-        return moment(dateString).format('YYYY-MM-DD HH:mm'); // 원하는 형식으로 포맷
+        // 입력된 날짜가 ISO 또는 RFC2822 형식이 아니라면 적절히 변환
+        return moment(dateString, "YYYY-MM-DD").format("YYYY.MM.DD");
     };
 
     // 카드 용도(purpose)에 따라 다른 스타일과 텍스트 적용
@@ -90,11 +98,6 @@ const CardItem = ({ title, description, author, date, purpose, isBookmarked, onB
                 작성자: {author} |
                 작성일: {formatDate(date)}
             </div>
-            {timeAgo && (  // timeAgo 값이 있을 때만 경과 시간 표시
-                <div className="time-ago">
-                    {timeAgo}
-                </div>
-            )}
             {renderPurposeTag(purpose)}
             <a href="#" className="view-more-btn" onClick={handleCardClick}>자세히 보기</a>
         </div>

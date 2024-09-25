@@ -4,7 +4,7 @@ import Graph from "./Graph";
 import BadgeItem from "./BageItem";
 
 
-const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardClick, handleBookmarkToggle, activityData, activityOptions }) => {
+const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardClick, handleBookmarkToggle }) => {
 
     // userCards와 bookmarkedCards를 비교하여 북마크 상태를 설정
     const updatedUserCards = userCards.map(card => {
@@ -21,11 +21,11 @@ const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardCli
                         <CardItem
                             key={card.cardNumber}
                             title={card.title}
-                            description={card.cardContent}  // 카드 내용을 보여주기 위한 필드
+                            description={card.cardContent}
                             author={card.nickname}
                             date={formatDate(card.writeDateTime)}
-                            isBookmarked={card.isBookmarked} // 동적으로 설정된 북마크 상태 전달
-                            onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)}  // 서버와 통신하는 함수 전달
+                            isBookmarked={card.isBookmarked}
+                            onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)} // handleBookmarkToggle 전달
                             purpose={card.purpose}
                             onCardClick={() => handleCardClick(card.cardNumber)}
                         />
@@ -40,7 +40,8 @@ const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardCli
                     ))}
                 </div>
             </div>
-            <Graph data={activityData} options={activityOptions} />
+            {/* Graph는 activityData와 activityOptions를 내부에서 처리 */}
+            <Graph />
         </div>
     );
 };
