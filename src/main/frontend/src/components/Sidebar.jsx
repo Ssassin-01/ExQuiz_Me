@@ -57,11 +57,11 @@ const Sidebar = () => {
                     <span className="tooltip">SubScribe</span>
                 </li>
                 <li>
-                    <Link to="profile">
+                    <Link to="/mypage">
                         <FaIdCard className="icon"/>
-                        <span className="title">Profile</span>
+                        <span className="title">MyPage</span>
                     </Link>
-                    <span className="tooltip">Profile</span>
+                    <span className="tooltip">MyPage</span>
                 </li>
 
             </ul>

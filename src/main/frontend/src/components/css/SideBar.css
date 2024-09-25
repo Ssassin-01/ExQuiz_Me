@@ -111,7 +111,7 @@ a {
 }
 
 .nav-link li:hover a {
-    background: var(--color-sidebar-font);
+    background: #A6A6A6;
 }
 
 .nav-link li:hover .icon {

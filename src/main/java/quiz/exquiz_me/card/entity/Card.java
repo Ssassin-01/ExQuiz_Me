@@ -1,6 +1,8 @@
 package quiz.exquiz_me.card.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +19,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"vocabularyItems"})  // vocabularyItems 필드를 직렬화할 때 무시
 @Table(name = "card")
 public class Card {
     @Id
@@ -26,6 +29,7 @@ public class Card {
 
     @ManyToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
+    @JsonBackReference // 직렬화에서 자식 역할을 설정하여 무한 재귀를 방지
     private User user;
 
     @Column(name = "title")
@@ -38,6 +42,9 @@ public class Card {
     @Column(name = "card_titleImage")
     private String cardTitleImage;
 
+    @Column(name = "purpose")
+    private String purpose;
+
     @Column(name = "card_content")
     private String cardContent;
 
@@ -45,6 +52,7 @@ public class Card {
     private Integer countView = 0;
 
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("card")  // card 필드를 직렬화할 때 무시
     private List<VocabularyItem> vocabularyItems = new ArrayList<>();
     // Getters and setters
 }

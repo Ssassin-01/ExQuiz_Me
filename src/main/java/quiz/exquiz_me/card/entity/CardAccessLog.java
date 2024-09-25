@@ -2,11 +2,13 @@ package quiz.exquiz_me.card.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 import quiz.exquiz_me.card.entity.Card;
 import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "card_access_logs")
 public class CardAccessLog {

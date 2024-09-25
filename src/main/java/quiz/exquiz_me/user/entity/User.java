@@ -1,5 +1,6 @@
 package quiz.exquiz_me.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,14 +9,15 @@ import lombok.Setter;
 import quiz.exquiz_me.card.entity.Card;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
-
+// User.java
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "user")
 public class User {
     @Id
@@ -49,6 +51,29 @@ public class User {
     @Column(name = "permission")
     private String permission = "ROLE_ADMIN";
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<UserActivity> activities; // 활동 기록 필드 추가
+
     @OneToMany(mappedBy = "user")
-    private List<Card> cards; // 사용자가 소유한 카드들
+    @JsonManagedReference
+    private List<Card> cards;
+
+    // 필요한 필드를 포함한 생성자 (activities 포함)
+
+    public User(String email, String encode, String nickname, String telNumber, LocalDate date, Integer gender, String signupPurpose, String identity, String oneLineResolution, String roleUser) {
+        this.email = email;
+        this.password = encode;
+        this.nickname = nickname;
+        this.telNumber = telNumber;
+        this.date = date;
+        this.gender = gender;
+        this.signupPurpose = signupPurpose;
+        this.identity = identity;
+        this.oneLineResolution = oneLineResolution;
+        this.permission = roleUser;
+        this.activities = Collections.emptyList();  // activities 필드를 빈 리스트로 초기화
+        this.cards = Collections.emptyList();  // cards 필드를 빈 리스트로 초기화
+    }
+
 }

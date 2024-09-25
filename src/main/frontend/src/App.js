@@ -11,7 +11,7 @@ import SignUp from "./components/SignUp";
 import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 import SubScribe from "./components/SubScribe";
-import MyPage from "./components/MyPage";
+import MyPage from "./components/myPage/MyPage";
 import Learning from "./components/Learning";
 import WordLearn from "./components/card/WordLearn";
 import Settings from "./components/Settings";
@@ -34,6 +34,8 @@ import PlayerShortAnswer from "./components/game/player/PlayerShortAnswer";
 import GameShortAnswer from "./components/game/GameShortAnswer";
 import SuccessPage from "./components/SuccessPage";
 import FailPage from "./components/FailPage";
+import EditProfile from "./components/User/EditProfile";
+import TimeTracker from "./components/utility/TimeTracker";
 function App() {
     return (
         <HelmetProvider>
@@ -41,6 +43,7 @@ function App() {
                 <WebSocketProvider>
                     <NicknameProvider>
                         <Router>
+                            <TimeTracker />
                             <Routes>
                                 <Route path="/" element={<LayoutWithSidebar />}>
                                     <Route index element={<Home />} />
@@ -53,6 +56,8 @@ function App() {
                                     <Route path="/success" element={<SuccessPage />} />
                                     <Route path="/fail" element={<FailPage />} />
                                     <Route path="profile" element={<MyPage />} />
+                                    <Route path="/mypage" element={<MyPage />} />
+                                    <Route path="/edit-profile" element={<EditProfile />} />
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
                                     <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
