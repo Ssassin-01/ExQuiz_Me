@@ -2,10 +2,7 @@ package quiz.exquiz_me.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import quiz.exquiz_me.card.entity.Card;
 
 import java.time.LocalDate;
@@ -49,7 +46,7 @@ public class User {
     private String oneLineResolution = "";
 
     @Column(name = "permission")
-    private String permission = "ROLE_ADMIN";
+    private String permission = "ROLE_USER";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

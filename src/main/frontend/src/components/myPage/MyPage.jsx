@@ -10,6 +10,7 @@ import CardBookmarkSection from './components/CardBookmarkSection';
 import WordBookmarkSection from './components/WordBookmarkSection';
 import { fetchUserProfile, fetchUserCards, fetchRecentCards, fetchBookmarkedCards } from './components/api/apiService';
 import { handleBookmarkToggle, handleCardClick, formatDate } from './components/utility/utility';
+import axios from "axios";
 
 const MyPage = () => {
     const { user } = useUser();
@@ -43,6 +44,7 @@ const MyPage = () => {
             console.error("최근 학습 목록 갱신 실패:", error);
         }
     };
+
 // 즐겨찾기된 카드 목록을 불러오는 함수 (최신순 정렬)
     const fetchBookmarkedCards = async () => {
         try {
@@ -84,31 +86,29 @@ const MyPage = () => {
     }, [user]);
 
 
-    // 프로필 정보 불러오기
     useEffect(() => {
         if (!user || !user.email) return;
 
         const loadData = async () => {
-            setLoading(true);  // 로딩 시작
+            setLoading(true);
             try {
                 const profile = await fetchUserProfile(user.email, apiUrl);
                 setProfileData(profile);
 
                 const cards = await fetchUserCards(apiUrl);
-                setUserCards(cards);
+                setUserCards(cards || []);  // 빈 배열로 기본값 설정
 
-                await refreshRecentCards();  // 처음에 최근 학습 목록 로드
-                await refreshBookmarkedCards();  // 처음에 북마크 목록 로드
+                await refreshRecentCards();
+                await refreshBookmarkedCards();
             } catch (error) {
                 console.error("데이터 로드 실패:", error);
             } finally {
-                setLoading(false);  // 로딩 종료
+                setLoading(false);
             }
         };
 
         loadData();
     }, [user, apiUrl]);
-
     // 북마크 토글 후 북마크 목록 새로고침
     const handleBookmarkToggleAndUpdate = async (cardNumber) => {
         const result = await handleBookmarkToggle(cardNumber, apiUrl);  // 북마크 토글 호출 후 결과 반환

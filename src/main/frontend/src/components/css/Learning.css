@@ -1,6 +1,6 @@
 .learning-container {
     font-family: 'Arial', sans-serif;
-    background-color: #dfe6e9;
+    background-color: #f1f1f1;
     width: 80%;
     max-width: 900px;
     margin: auto;
@@ -18,7 +18,7 @@
 }
 
 .learning-header {
-    background-color: #2ecc71;
+    background-color: #8fafdc;
     color: white;
     padding: 1em;
     border-top-left-radius: 20px;
@@ -26,6 +26,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 200px;
     position: relative; /* 변경된 부분: 절대 위치 설정 제거 */
 }
 
@@ -53,19 +54,20 @@
     font-size: 1.4em;
 }
 
-.header-buttons button {
-    margin-left: 0.5em;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+/*.header-buttons button {*/
+/*    margin-left: 0.5em;*/
+/*    background-color: #6f95cb;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    height: 30px;*/
+/*    padding: 10px 15px;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s;*/
+/*}*/
 
 .header-buttons button:hover {
-    background-color: #2ecc71;
+    background-color: #3d5e8d;
 }
 
 .word-list-container {
