@@ -1,5 +1,6 @@
 import React from 'react';
 import CardItem from './CardItem';
+import "./css/RecentCardsSection.css";
 
 const RecentCardsSection = ({ recentCards, bookmarkedCards, handleCardClick, handleBookmarkToggle }) => {
     if (!recentCards || recentCards.length === 0) {

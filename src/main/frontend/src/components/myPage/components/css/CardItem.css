@@ -1,24 +1,24 @@
 /* CardItem.css */
 .mypage-post-items {
     display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow-x: auto;
-    gap: 15px;
-    justify-content: center;
+    flex-wrap: wrap; /* 여러 줄로 카드 배치 */
+    gap: 20px; /* 카드 간격 */
+    justify-content: space-around; /* 카드들이 중앙에 정렬되도록 */
     margin-top: 20px;
+    padding: 10px;
 }
 
 .mypage-post-item {
-    flex: 0 0 auto;
+    flex: 0 0 30%; /* 카드가 한 줄에 3개씩 배치되도록 설정 */
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
-    width: 220px;
     text-align: left;
     font-size: 14px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    box-sizing: border-box; /* 패딩과 border 크기까지 포함 */
 }
 
 .mypage-post-item:hover {
@@ -50,6 +50,7 @@
 .bookmark-icon.bookmarked {
     color: #FFD700; /* 북마크된 상태는 황금색 */
 }
+
 .mypage-post-item h5 {
     font-weight: bold;
     font-size: 18px;
@@ -141,4 +142,39 @@
 
 .mypage-post-item .view-more-btn:hover {
     background-color: #2980b9; /* 호버 시 더 진한 파란색 */
+}
+
+/* 반응형 레이아웃 조정 */
+@media (max-width: 768px) {
+    .mypage-post-item {
+        width: 180px; /* 태블릿에서는 카드 크기를 더 작게 */
+        padding: 15px;
+    }
+
+    .mypage-post-items {
+        gap: 10px;
+    }
+
+    .bookmark-icon {
+        font-size: 18px; /* 태블릿에서는 북마크 아이콘 크기 조정 */
+        top: 8px; /* 위치 조정 */
+        right: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mypage-post-item {
+        width: 150px; /* 모바일에서는 카드 크기를 더 작게 */
+        padding: 10px;
+    }
+
+    .mypage-post-items {
+        gap: 8px;
+    }
+
+    .bookmark-icon {
+        font-size: 16px; /* 모바일에서 북마크 아이콘 크기 조정 */
+        top: 6px; /* 위치 조정 */
+        right: 6px;
+    }
 }

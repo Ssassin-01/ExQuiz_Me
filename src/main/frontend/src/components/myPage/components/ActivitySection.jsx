@@ -1,15 +1,20 @@
 import React from 'react';
 import CardItem from "./CardItem";
 import Graph from "./Graph";
+
+import "./css/ActivitySection.css";
 import BadgeItem from "./BageItem";
 
-
-const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardClick, handleBookmarkToggle }) => {
-
-    // userCards와 bookmarkedCards를 비교하여 북마크 상태를 설정
+const ActivitySection = ({
+                             userCards = [],  // 기본값: 빈 배열
+                             bookmarkedCards = [],  // 기본값: 빈 배열
+                             formatDate,
+                             handleCardClick,
+                             handleBookmarkToggle
+                         }) => {
     const updatedUserCards = userCards.map(card => {
         const isBookmarked = bookmarkedCards.some(bookmarkedCard => bookmarkedCard.cardNumber === card.cardNumber);
-        return { ...card, isBookmarked }; // 북마크 상태를 각 카드에 추가
+        return { ...card, isBookmarked };
     });
 
     return (
@@ -25,7 +30,7 @@ const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardCli
                             author={card.nickname}
                             date={formatDate(card.writeDateTime)}
                             isBookmarked={card.isBookmarked}
-                            onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)} // handleBookmarkToggle 전달
+                            onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)}
                             purpose={card.purpose}
                             onCardClick={() => handleCardClick(card.cardNumber)}
                         />
@@ -35,12 +40,11 @@ const ActivitySection = ({ userCards, bookmarkedCards, formatDate, handleCardCli
             <div className="mypage-activity-badges">
                 <h4>내 뱃지</h4>
                 <div className="mypage-badge-items">
-                    {['🏆', '🥇', '💎', '🚀', '🎯', '🛡️'].map((badge, index) => (
+                    {['🏆', '🥇', '💎', '🚀', '🎯', '🛡️'].slice(0, window.innerWidth < 768 ? 4 : 6).map((badge, index) => (
                         <BadgeItem key={index} badge={badge} />
                     ))}
                 </div>
             </div>
-            {/* Graph는 activityData와 activityOptions를 내부에서 처리 */}
             <Graph />
         </div>
     );

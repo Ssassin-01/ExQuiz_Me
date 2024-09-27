@@ -49,25 +49,25 @@ const MyPage = () => {
         if (!user || !user.email) return;
 
         const loadData = async () => {
-            setLoading(true);  // 로딩 시작
+            setLoading(true);
             try {
                 const profile = await fetchUserProfile(user.email, apiUrl);
                 setProfileData(profile);
 
                 const cards = await fetchUserCards(apiUrl);
-                setUserCards(cards);
+                setUserCards(cards || []);
 
-                await refreshRecentCards();  // 처음에 최근 학습 목록 로드
-                await refreshBookmarkedCards();  // 처음에 북마크 목록 로드
+                await refreshRecentCards();
+                await refreshBookmarkedCards();
             } catch (error) {
                 console.error("데이터 로드 실패:", error);
             } finally {
-                setLoading(false);  // 로딩 종료
+                setLoading(false);
             }
         };
 
         loadData();
-    }, [user, apiUrl]);
+    }, [user, apiUrl]); // <- 의존성 배열에 주의
 
     // 북마크 토글 후 북마크 목록 새로고침
     const handleBookmarkToggleAndUpdate = async (cardNumber) => {

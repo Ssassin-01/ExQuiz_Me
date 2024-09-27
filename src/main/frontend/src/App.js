@@ -27,7 +27,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GameTrueOrFalse from "./components/game/GameTrueOrFalse";
 import GameFour from "./components/game/GameFour";
-import GameQuestion from "./components/game/GameQuestion";
 import PlayerOX from "./components/game/player/PlayerOX";
 import PlayerFour from "./components/game/player/PlayerFour";
 import PlayerShortAnswer from "./components/game/player/PlayerShortAnswer";
@@ -68,9 +67,9 @@ function App() {
                                 <Route path="/player/ox" element={<PlayerOX />} /> {/* OX 플레이어 */}
                                 <Route path="/player/four" element={<PlayerFour />} /> {/* 4지선다 플레이어 */}
                                 <Route path="/player/short-answer" element={<PlayerShortAnswer />} /> {/* 주관식 플레이어 */}
-                                <Route path="game/true-or-false" element={<GameTrueOrFalse />} />
-                                <Route path="game/four" element={<GameFour />} />
-                                <Route path="game/question" element={<GameShortAnswer />} />
+                                <Route path="game/true-or-false" element={<GameTrueOrFalse />} /> {/* 게임화면 O / X */}
+                                <Route path="game/four" element={<GameFour />} /> {/* 게임화면 4지선단 */}
+                                <Route path="game/question" element={<GameShortAnswer />} /> {/* 게임화면 단답형 */}
                             </Routes>
                         </Router>
                     </NicknameProvider>

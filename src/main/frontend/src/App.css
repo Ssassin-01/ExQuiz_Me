@@ -20,6 +20,10 @@
     --transition: all 0.2s ease;
 }
 
+
+body {
+    overflow: scroll;
+}
 .content {
     display: flex;
     position: relative;

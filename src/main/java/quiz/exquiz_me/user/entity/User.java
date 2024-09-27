@@ -2,10 +2,7 @@ package quiz.exquiz_me.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import quiz.exquiz_me.card.entity.Card;
 
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.util.List;
 // User.java
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Getter
 @Setter

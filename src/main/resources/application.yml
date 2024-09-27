@@ -6,7 +6,8 @@ server:
 
 security:
   cors:
-    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000},https://tosspayments.com
+    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000}
+#    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000},https://tosspayments.com
 
 
 spring:
@@ -16,7 +17,7 @@ spring:
 
   datasource:
     url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: sgg
+    username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
