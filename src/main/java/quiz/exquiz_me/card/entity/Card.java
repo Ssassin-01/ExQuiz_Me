@@ -54,5 +54,5 @@ public class Card {
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("card")  // card 필드를 직렬화할 때 무시
     private List<VocabularyItem> vocabularyItems = new ArrayList<>();
-    // Getters and setters
+
 }

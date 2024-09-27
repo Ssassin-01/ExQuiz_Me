@@ -7,7 +7,6 @@ server:
 security:
   cors:
     allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000}
-#    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000},https://tosspayments.com
 
 
 spring:

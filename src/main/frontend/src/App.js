@@ -12,7 +12,7 @@ import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 import SubScribe from "./components/SubScribe";
 import MyPage from "./components/myPage/MyPage";
-import Learning from "./components/Learning";
+import Learning from "./components/card/Learning";
 import WordLearn from "./components/card/WordLearn";
 import Settings from "./components/Settings";
 import Game from "./components/game/Game";
@@ -35,6 +35,7 @@ import SuccessPage from "./components/SuccessPage";
 import FailPage from "./components/FailPage";
 import EditProfile from "./components/User/EditProfile";
 import TimeTracker from "./components/utility/TimeTracker";
+import LearningTest from "./components/card/LearningTest";
 function App() {
     return (
         <HelmetProvider>
@@ -60,6 +61,7 @@ function App() {
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
                                     <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
+                                    <Route path="/learn-test" element={<LearningTest />} />
                                 </Route>
                                 <Route path="gameroom" element={<GameRoom />} />
                                 <Route path="gaming" element={<Gaming />} />

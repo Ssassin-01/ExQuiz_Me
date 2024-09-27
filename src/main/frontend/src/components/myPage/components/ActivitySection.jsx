@@ -17,6 +17,7 @@ const ActivitySection = ({
         return { ...card, isBookmarked };
     });
 
+
     return (
         <div className="mypage-activity-content">
             <div className="mypage-activity-posts">

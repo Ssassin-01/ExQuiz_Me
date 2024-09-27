@@ -47,7 +47,7 @@ public class User {
     private String oneLineResolution = "";
 
     @Column(name = "permission")
-    private String permission = "ROLE_ADMIN";
+    private String permission = "ROLE_USER";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

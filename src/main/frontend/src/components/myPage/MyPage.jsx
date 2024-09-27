@@ -10,6 +10,7 @@ import CardBookmarkSection from './components/CardBookmarkSection';
 import WordBookmarkSection from './components/WordBookmarkSection';
 import { fetchUserProfile, fetchUserCards, fetchRecentCards, fetchBookmarkedCards } from './components/api/apiService';
 import { handleBookmarkToggle, handleCardClick, formatDate } from './components/utility/utility';
+import axios from "axios";
 
 const MyPage = () => {
     const { user } = useUser();
@@ -44,7 +45,47 @@ const MyPage = () => {
         }
     };
 
-    // 데이터 로드
+// 즐겨찾기된 카드 목록을 불러오는 함수 (최신순 정렬)
+    const fetchBookmarkedCards = async () => {
+        try {
+            const userEmail = sessionStorage.getItem('useremail'); // 사용자 이메일을 세션에서 가져옴
+
+            if (!userEmail) {
+                console.error('User email is null or undefined');
+                return;
+            }
+
+            const response = await axios.get(`${apiUrl}/api/bookmarks/user/${userEmail}`, {
+                withCredentials: true
+            });
+
+            if (response.status === 200) {
+                const bookmarkedCards = response.data.map(card => ({
+                    ...card,
+                    isBookmarked: true // 북마크된 카드로 표시
+                }));
+
+                // 데이터가 제대로 최신순으로 정렬되고 있는지 콘솔에 출력
+                const sortedBookmarkedCards = bookmarkedCards.sort((a, b) => new Date(b.writeDateTime) - new Date(a.writeDateTime));
+                console.log('Sorted Bookmarked Cards:', sortedBookmarkedCards);
+
+                setBookmarkedCards(sortedBookmarkedCards); // 최신순으로 정렬된 북마크 카드 상태 저장
+            }
+        } catch (error) {
+            console.error('Failed to fetch bookmarked cards:', error);
+        }
+    };
+// 컴포넌트가 로드될 때마다 북마크된 카드 목록을 가져옴
+    useEffect(() => {
+        if (!user || !user.email) {
+            console.error("User not logged in or email missing");
+            return;
+        }
+
+        fetchBookmarkedCards(); // 로그인된 사용자의 이메일을 기반으로 북마크된 카드 불러오기
+    }, [user]);
+
+
     useEffect(() => {
         if (!user || !user.email) return;
 
