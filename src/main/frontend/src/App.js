@@ -11,8 +11,8 @@ import SignUp from "./components/SignUp";
 import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 import SubScribe from "./components/SubScribe";
-import MyPage from "./components/MyPage";
-import Learning from "./components/Learning";
+import MyPage from "./components/myPage/MyPage";
+import Learning from "./components/card/Learning";
 import WordLearn from "./components/card/WordLearn";
 import Settings from "./components/Settings";
 import Game from "./components/game/Game";
@@ -27,11 +27,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GameTrueOrFalse from "./components/game/GameTrueOrFalse";
 import GameFour from "./components/game/GameFour";
-import GameQuestion from "./components/game/GameQuestion";
 import PlayerOX from "./components/game/player/PlayerOX";
 import PlayerFour from "./components/game/player/PlayerFour";
 import PlayerShortAnswer from "./components/game/player/PlayerShortAnswer";
 import GameShortAnswer from "./components/game/GameShortAnswer";
+import SuccessPage from "./components/SuccessPage";
+import FailPage from "./components/FailPage";
+import EditProfile from "./components/User/EditProfile";
+import TimeTracker from "./components/utility/TimeTracker";
+import LearningTest from "./components/card/LearningTest";
 function App() {
     return (
         <HelmetProvider>
@@ -39,6 +43,7 @@ function App() {
                 <WebSocketProvider>
                     <NicknameProvider>
                         <Router>
+                            <TimeTracker />
                             <Routes>
                                 <Route path="/" element={<LayoutWithSidebar />}>
                                     <Route index element={<Home />} />
@@ -48,10 +53,15 @@ function App() {
                                     <Route path="make" element={<MakeComponent />} />
                                     <Route path="game" element={<Game />} />
                                     <Route path="subscribe" element={<SubScribe />} />
+                                    <Route path="/success" element={<SuccessPage />} />
+                                    <Route path="/fail" element={<FailPage />} />
                                     <Route path="profile" element={<MyPage />} />
+                                    <Route path="/mypage" element={<MyPage />} />
+                                    <Route path="/edit-profile" element={<EditProfile />} />
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
                                     <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
+                                    <Route path="/learn-test" element={<LearningTest />} />
                                 </Route>
                                 <Route path="gameroom" element={<GameRoom />} />
                                 <Route path="gaming" element={<Gaming />} />
@@ -59,9 +69,9 @@ function App() {
                                 <Route path="/player/ox" element={<PlayerOX />} /> {/* OX 플레이어 */}
                                 <Route path="/player/four" element={<PlayerFour />} /> {/* 4지선다 플레이어 */}
                                 <Route path="/player/short-answer" element={<PlayerShortAnswer />} /> {/* 주관식 플레이어 */}
-                                <Route path="game/true-or-false" element={<GameTrueOrFalse />} />
-                                <Route path="game/four" element={<GameFour />} />
-                                <Route path="game/question" element={<GameShortAnswer />} />
+                                <Route path="game/true-or-false" element={<GameTrueOrFalse />} /> {/* 게임화면 O / X */}
+                                <Route path="game/four" element={<GameFour />} /> {/* 게임화면 4지선단 */}
+                                <Route path="game/question" element={<GameShortAnswer />} /> {/* 게임화면 단답형 */}
                             </Routes>
                         </Router>
                     </NicknameProvider>

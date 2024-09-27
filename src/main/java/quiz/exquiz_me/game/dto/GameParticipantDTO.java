@@ -1,8 +1,12 @@
 package quiz.exquiz_me.game.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class GameParticipantDTO {
     private Long participantId;
     private Long sessionId;

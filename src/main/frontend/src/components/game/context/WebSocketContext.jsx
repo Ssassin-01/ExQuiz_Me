@@ -11,6 +11,7 @@ export const WebSocketProvider = ({ children }) => {
     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false); // 중복 호출 방지용 플래그
 
+
     // 웹소켓 연결 함수
     const connectWebSocket = () => {
         if (!clientRef.current) {

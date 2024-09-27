@@ -108,6 +108,19 @@ function GameFour() {
         }
     };
 
+    useEffect(() => {
+        if (webSocketConnected) {
+            const subscription = subscribeToChannel('/topic/answers', (message) => {
+                const receivedMessage = JSON.parse(message.body);
+                checkAnswer(receivedMessage.nickname, parseInt(receivedMessage.text));
+            });
+
+            return () => {
+                if (subscription) subscription.unsubscribe();
+            };
+        }
+    }, [webSocketConnected, subscribeToChannel, currentQuestion]);
+
     const nextQuestion = () => {
         if (currentQuestionIndex.current < questions.length - 1) {
             currentQuestionIndex.current++;
@@ -133,7 +146,6 @@ function GameFour() {
             setIsQuestionTransitioning(false);
         }, 1000);
     };
-
 
     const endGame = () => {
         setGameEnded(true);

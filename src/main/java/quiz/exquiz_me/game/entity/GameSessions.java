@@ -3,6 +3,7 @@ package quiz.exquiz_me.game.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import quiz.exquiz_me.card.entity.Card;
+import quiz.exquiz_me.game.dto.GameParticipantDTO;
 import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
@@ -59,16 +60,22 @@ public class GameSessions {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    // 참가자 목록을 메모리에서 관리하기 위해 Set으로 변경
+    // 참가자 목록을 데이터베이스와 연동하여 관리
     @OneToMany(mappedBy = "gameSessions", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<GameParticipant> participants = new HashSet<>();
 
     public void addParticipant(GameParticipant participant) {
         participants.add(participant);
-        participant.setGameSessions(this);
+        participant.setGameSessions(this); // 양방향 관계 설정
     }
 
     public void removeParticipant(GameParticipant participant) {
         participants.remove(participant);
         participant.setGameSessions(null);
+    }
+
+    public int getParticipantCount() {
+        return participants.size();
     }
 }

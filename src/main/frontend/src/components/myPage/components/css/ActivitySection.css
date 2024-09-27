@@ -1,0 +1,157 @@
+.mypage-activity-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    width: 100%;
+    margin-top: 1px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+    .mypage-activity-content {
+        grid-template-columns: 1fr; /* 화면이 작아지면 세로로 배치 */
+    }
+}
+
+/* 게시물 부분 */
+.mypage-activity-posts {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mypage-post-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mypage-post-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.mypage-post-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .mypage-post-items {
+        grid-template-columns: repeat(2, 1fr); /* 태블릿에서는 2개 */
+    }
+
+    .mypage-post-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mypage-post-items {
+        grid-template-columns: 1fr; /* 모바일에서는 1개 */
+    }
+
+    .mypage-post-item {
+        padding: 10px;
+    }
+}
+
+/* 뱃지 부분 */
+.mypage-activity-badges {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.mypage-badge-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .mypage-activity-badges {
+        grid-column: 1 / -1; /* 화면이 줄어들면 게시물 아래로 이동 */
+        flex-wrap: nowrap; /* 가로 배열 */
+        overflow-x: auto; /* 필요시 스크롤 가능하게 설정 */
+    }
+}
+
+@media (max-width: 768px) {
+    .mypage-badge-item {
+        padding: 8px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mypage-badge-item {
+        padding: 6px;
+        font-size: 18px;
+    }
+}
+
+/* 막대 그래프 */
+.mypage-activity-graph {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 반응형 막대 그래프 */
+.mypage-bar-graph {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.mypage-bar {
+    width: 30px;
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .mypage-bar-graph {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 480px) {
+    .mypage-bar {
+        width: 20px;
+    }
+}

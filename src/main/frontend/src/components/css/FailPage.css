@@ -1,0 +1,59 @@
+/* General container for success page */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures it fits the entire view height */
+    background-color: #c5d0b5; /* Light green */
+    overflow: hidden; /* Prevents scrolling */
+}
+
+.success-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 400px; /* Increased the width */
+    height: 300px; /* Increased the height */
+    text-align: center;
+    border: 2px solid #dee2e6;
+    transition: transform 0.3s ease;
+}
+
+.success-title {
+    font-size: 1.75rem;
+    color: #28a745; /* Green for success */
+    margin-bottom: 20px;
+}
+
+.success-message {
+    font-size: 1.2rem;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.success-description {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+.success-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.success-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Remove scrollbar */
+html, body {
+    height: 100%;
+    overflow: auto;
+}

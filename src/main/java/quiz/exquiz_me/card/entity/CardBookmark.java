@@ -1,12 +1,20 @@
 package quiz.exquiz_me.card.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import quiz.exquiz_me.card.entity.Card;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "card_bookmarks")
 public class CardBookmark {
     @Id
@@ -16,6 +24,7 @@ public class CardBookmark {
 
     @ManyToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
+    @JsonIgnore // 순환 참조 방지를 위해 User 직렬화에서 제외
     private User user;
 
     @ManyToOne
@@ -26,5 +35,9 @@ public class CardBookmark {
     @Temporal(TemporalType.TIMESTAMP)
     private Date bookmarkDate;
 
-    // Getters and setters
+    public CardBookmark(User user, Card card) {
+        this.user = user;
+        this.card = card;
+        this.bookmarkDate = new Date();
+    }
 }

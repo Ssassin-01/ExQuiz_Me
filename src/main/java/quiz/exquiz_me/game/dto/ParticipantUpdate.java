@@ -14,6 +14,7 @@ public class ParticipantUpdate {
     private String type;
     private String nickname;
     private Set<String> participants;
+    private String email; // 이메일을 사용해 참가자를 추가
 
     // 추가: 필요한 생성자
     public ParticipantUpdate(Long gameSessionId, String type, Set<String> participants) {

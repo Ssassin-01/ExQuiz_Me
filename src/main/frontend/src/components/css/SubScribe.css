@@ -1,84 +1,86 @@
 .subscribe-container {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    text-align: center;
-    background-color: #f8f9fa;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-plans-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
     color: #333;
-    margin-bottom: 30px;
 }
 
 .plans-container {
     display: flex;
-    justify-content: space-evenly;
-}
-
-.plan-card {
-    width: 300px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 10px;
-    display: flex;
-    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
     align-items: center;
 }
 
+.plan-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+}
+
 .plan-title {
-    color: #333;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
 .plan-price {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.plan-description {
-    font-size: 14px;
-    color: #6c757d;
+    font-size: 1.25rem;
+    color: #28a745;
     margin-bottom: 20px;
 }
 
+.plan-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
 .plan-features {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     margin-bottom: 20px;
 }
 
-.feature {
-    font-size: 14px;
-    color: #6c757d;
+.plan-features .feature {
+    font-size: 0.9rem;
     margin-bottom: 5px;
 }
 
 .choose-plan-button {
-    border: none;
     background-color: #007bff;
-    color: #ffffff;
+    color: white;
+    border: none;
     padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    border-radius: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .choose-plan-button:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 960px) {
-    .plans-container {
-        flex-direction: column;
-        align-items: center;
-    }
+.choose-plan-button.disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
 
-    .plan-card {
-        margin-bottom: 20px;
-    }
+.choose-plan-button.disabled:hover {
+    background-color: #6c757d;
 }

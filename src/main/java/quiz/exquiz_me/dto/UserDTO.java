@@ -1,8 +1,10 @@
 package quiz.exquiz_me.dto;
 
 import lombok.*;
+import quiz.exquiz_me.user.dto.UserActivityDTO;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,5 +19,8 @@ public class UserDTO {
     private String signupPurpose;
     private String identity;
     private String oneLineResolution;
+
+    // 추가: User의 활동 기록
+    private List<UserActivityDTO> activities;  // 활동 기록을 포함
 
 }

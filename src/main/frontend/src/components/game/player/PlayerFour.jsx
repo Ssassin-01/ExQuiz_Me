@@ -5,7 +5,6 @@ import './css/GameOX.css';
 import { useNickname } from '../context/NicknameContext';
 
 function PlayerFour() {
-    const [message, setMessage] = useState("");
     const { nickname } = useNickname();
     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
     const clientRef = useRef(null);
@@ -72,7 +71,7 @@ function PlayerFour() {
     }, [apiUrl]);
 
     const handleOptionSend = (index) => {
-        sendMessage(index + 1);  // 클릭한 버튼의 인덱스를 전송 (1부터 시작)
+        sendMessage(index);  // 클릭한 버튼의 인덱스를 전송 (0부터 시작)
     };
 
     if (gameEnded) {
@@ -86,14 +85,6 @@ function PlayerFour() {
     return (
         <div className="game-ox-container">
             <div className="game-ox-content">
-                <input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="정답 날리기"
-                    className="message-input"
-                />
-                <button onClick={handleOptionSend} className="send-button">보내기</button>
                 <div className="button-group">
                     {[1, 2, 3, 4].map(num => (
                         <button key={num} onClick={() => handleOptionSend(num - 1)} className="option-button">
@@ -101,11 +92,6 @@ function PlayerFour() {
                         </button>
                     ))}
                 </div>
-                {gameEnded && (
-                    <div className="game-ended-overlay">
-                        <div className="game-ended-message">게임이 종료되었습니다.</div>
-                    </div>
-                )}
             </div>
         </div>
     );
