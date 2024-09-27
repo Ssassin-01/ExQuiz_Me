@@ -52,7 +52,7 @@ const MyPage = () => {
 
             if (!userEmail) {
                 console.error('User email is null or undefined');
-                return;
+                return [];
             }
 
             const response = await axios.get(`${apiUrl}/api/bookmarks/user/${userEmail}`, {
@@ -69,12 +69,16 @@ const MyPage = () => {
                 const sortedBookmarkedCards = bookmarkedCards.sort((a, b) => new Date(b.writeDateTime) - new Date(a.writeDateTime));
                 console.log('Sorted Bookmarked Cards:', sortedBookmarkedCards);
 
-                setBookmarkedCards(sortedBookmarkedCards); // 최신순으로 정렬된 북마크 카드 상태 저장
+                return sortedBookmarkedCards;
+            } else {
+                return [];
             }
         } catch (error) {
             console.error('Failed to fetch bookmarked cards:', error);
+            return [];  // 오류 발생 시 빈 배열 반환
         }
     };
+
 // 컴포넌트가 로드될 때마다 북마크된 카드 목록을 가져옴
     useEffect(() => {
         if (!user || !user.email) {

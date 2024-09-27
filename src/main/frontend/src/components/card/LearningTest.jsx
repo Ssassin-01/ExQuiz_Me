@@ -236,6 +236,7 @@ const LearningTest = () => {
                                     </label>
 
                                     <input
+                                        className="test-input-box"
                                         type="text"
                                         value={answers[index] || ''}
                                         onChange={(e) => handleChange(index, e.target.value)}

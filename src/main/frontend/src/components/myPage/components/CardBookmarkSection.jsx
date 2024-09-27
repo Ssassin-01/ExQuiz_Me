@@ -1,7 +1,7 @@
 import React from 'react';
 import CardItem from './CardItem';
 
-const CardBookmarkSection = ({ bookmarkedCards, handleCardClick, handleBookmarkToggle }) => {
+const CardBookmarkSection = ({ bookmarkedCards = [], handleCardClick, handleBookmarkToggle }) => {
 
     // 최신순으로 정렬된 북마크된 카드 리스트
     const sortedBookmarkedCards = [...bookmarkedCards].sort((a, b) => new Date(b.bookmarkDate) - new Date(a.bookmarkDate));
@@ -35,5 +35,6 @@ const CardBookmarkSection = ({ bookmarkedCards, handleCardClick, handleBookmarkT
         </div>
     );
 };
+
 
 export default CardBookmarkSection;

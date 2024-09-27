@@ -2,7 +2,7 @@ import React from 'react';
 import CardItem from './CardItem';
 import "./css/RecentCardsSection.css";
 
-const RecentCardsSection = ({ recentCards, bookmarkedCards, handleCardClick, handleBookmarkToggle }) => {
+const RecentCardsSection = ({ recentCards = [], bookmarkedCards = [], handleCardClick, handleBookmarkToggle }) => {
     if (!recentCards || recentCards.length === 0) {
         return <p>최근 학습한 카드가 없습니다.</p>;
     }
