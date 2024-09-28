@@ -87,6 +87,17 @@ public class VocaCardService {
                 .map(this::convertToCardDTO)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public CardDTO getCardByNumber(Long cardNumber) {
+        Optional<Card> cardOptional = cardRepository.findById(cardNumber);
+        if (cardOptional.isPresent()) {
+            return convertToCardDTO(cardOptional.get()); // Card 엔티티를 CardDTO로 변환하여 반환
+        } else {
+            throw new IllegalArgumentException("Card with ID " + cardNumber + " not found.");
+        }
+    }
+
     // 조회수 증가 메서드
     @Transactional
     public void incrementCardView(Long cardNumber) {
@@ -125,20 +136,33 @@ public class VocaCardService {
     }
 
     @Transactional
-    public List<CardAccessLogDTO> getRecentAccessedCardsByUserEmail(String email) {
+    public List<CardDTO> getRecentAccessedCardsByUserEmail(String email) {
         List<CardAccessLog> accessLogs = cardAccessLogRepository.findTop5ByUser_EmailOrderByAccessTimeDesc(email);
 
         return accessLogs.stream()
-                .map(log -> new CardAccessLogDTO(
-                        log.getLogId(),
-                        log.getUser().getEmail(),
-                        log.getCard().getCardNumber(),
-                        log.getCard().getTitle(),
-                        log.getCard().getPurpose(),
-                        log.getAccessTime(),
-                        log.getCard().getUser().getNickname(),  // 작성자 닉네임
-                        log.getCard().getWriteDateTime()
-                ))
+                .map(log -> {
+                    Card card = log.getCard();
+                    List<VocabularyItemDTO> vocabDTOs = card.getVocabularyItems().stream()
+                            .map(vocabularyItem -> new VocabularyItemDTO(
+                                    vocabularyItem.getItemId(),
+                                    vocabularyItem.getCard().getCardNumber(),
+                                    vocabularyItem.getEnglishWord(),
+                                    vocabularyItem.getKoreanWord())
+                            ).collect(Collectors.toList());
+
+                    return new CardDTO(
+                            card.getCardNumber(),
+                            card.getUser().getEmail(),
+                            card.getUser().getNickname(),
+                            card.getTitle(),
+                            card.getWriteDateTime(),
+                            card.getCardTitleImage(),
+                            card.getPurpose(),
+                            card.getCardContent(),
+                            card.getCountView(),
+                            vocabDTOs // Vocabulary items added here
+                    );
+                })
                 .collect(Collectors.toList());
     }
     //카드 열람

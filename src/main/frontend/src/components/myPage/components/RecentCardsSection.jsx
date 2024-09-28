@@ -2,7 +2,7 @@ import React from 'react';
 import CardItem from './CardItem';
 import "./css/RecentCardsSection.css";
 
-const RecentCardsSection = ({ recentCards = [], bookmarkedCards = [], handleCardClick, handleBookmarkToggle }) => {
+const   RecentCardsSection = ({ recentCards = [], bookmarkedCards = [], handleCardClick, handleBookmarkToggle }) => {
     if (!recentCards || recentCards.length === 0) {
         return <p>최근 학습한 카드가 없습니다.</p>;
     }
@@ -20,10 +20,13 @@ const RecentCardsSection = ({ recentCards = [], bookmarkedCards = [], handleCard
                 {updatedRecentCards.map((card) => (
                     <CardItem
                         key={card.cardNumber}
-                        title={card.cardTitle || '제목 없음'}
+                        title={card.title || '제목 없음'}
                         author={card.nickname || 'Unknown'}
                         date={card.writeDateTime}
                         purpose={card.purpose || '기타'}
+                        cardNumber={card.cardNumber}  // cardNumber 전달
+                        vocabularyItems={card.vocabularyItems}  // 단어 목록 전달
+                        initialViewCount={card.countView}
                         isBookmarked={card.isBookmarked || false}
                         onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)} // handleBookmarkToggle 전달
                         onCardClick={() => handleCardClick(card.cardNumber)}

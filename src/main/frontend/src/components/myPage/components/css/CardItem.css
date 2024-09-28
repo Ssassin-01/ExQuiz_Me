@@ -1,15 +1,6 @@
-/* CardItem.css */
-.mypage-post-items {
-    display: flex;
-    flex-wrap: wrap; /* 여러 줄로 카드 배치 */
-    gap: 20px; /* 카드 간격 */
-    justify-content: space-around; /* 카드들이 중앙에 정렬되도록 */
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.mypage-post-item {
-    flex: 0 0 30%; /* 카드가 한 줄에 3개씩 배치되도록 설정 */
+/* 기본 데스크탑 스타일 */
+.card-item-post {
+    flex: 0 0 40%; /* 카드 가로 길이를 기본 30%로 설정 */
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
@@ -18,163 +9,180 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    box-sizing: border-box; /* 패딩과 border 크기까지 포함 */
+    box-sizing: border-box;
 }
 
-.mypage-post-item:hover {
-    transform: translateY(-8px); /* 살짝 위로 올라가는 효과 */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 호버 시 더 진한 그림자 */
+.card-item-post:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.mypage-post-item .post-type {
-    display: inline-block;
-    padding: 5px 10px;
-    font-size: 12px;
-    color: white;
-    border-radius: 20px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s;
+/* 제목과 즐겨찾기 아이콘 동일한 높이에 배치 */
+.card-item-post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
-.bookmark-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.card-item-bookmark-icon {
     cursor: pointer;
     font-size: 20px;
     color: #ccc;
     transition: color 0.3s ease;
 }
 
-.bookmark-icon.bookmarked {
-    color: #FFD700; /* 북마크된 상태는 황금색 */
+.card-item-bookmark-icon.bookmarked {
+    color: #FFD700;
 }
 
-.mypage-post-item h5 {
+.card-item-post h5 {
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     color: #333;
+    line-height: 1.2;
 }
 
-.mypage-post-item p {
-    font-size: 14px;
-    color: #666;
+.card-item-post p {
     text-align: left;
-    margin-bottom: 10px;
 }
 
-.post-info {
+.card-item-post-info {
+    display: flex;
+    flex-direction: column;
     font-size: 12px;
-    color: #999; /* 연한 색상으로 부가 정보 */
-    margin-bottom: 15px;
+    color: #999;
+    margin-bottom: 5px;
 }
 
-/* purpose별 스타일 정의 */
-.purpose-elementary {
-    background-color: #4CAF50; /* 초록색 */
+.card-item-author {
+    margin-bottom: 4px;
+}
+
+.card-item-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 20px;
+}
+
+/* Purpose styles */
+.card-item-purpose-elementary {
+    background-color: #4CAF50;
+}
+
+.card-item-purpose-middle {
+    background-color: #FFEB3B;
+}
+
+.card-item-purpose-high {
+    background-color: #FF9800;
+}
+
+.card-item-purpose-exam {
+    background-color: #F44336;
+}
+
+.card-item-purpose-toeic {
+    background-color: #2196F3;
+}
+
+.card-item-purpose-default {
+    background-color: #9E9E9E;
+}
+
+.card-item-post-type {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
     color: white;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 5px;
+    border-radius: 20px;
+    margin-right: 10px;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    overflow: hidden;    /* 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 말줄임(...) 표시 */
 }
 
-.purpose-middle {
-    background-color: #FFEB3B; /* 노란색 */
-    color: black;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 5px;
+
+.card-item-post-views {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #888;
+    margin-left: auto; /* countView를 우측 끝에 배치 */
 }
 
-.purpose-high {
-    background-color: #FF9800; /* 주황색 */
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 5px;
+.card-item-post-views svg {
+    margin-right: 5px;
 }
 
-.purpose-exam {
-    background-color: #F44336; /* 빨간색 */
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 5px;
-}
-
-.purpose-toeic {
-    background-color: #2196F3; /* 파란색 */
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 5px;
-}
-
-.purpose-default {
-    background-color: #9E9E9E; /* 회색 */
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 5px;
-}
-
-/* 단어장 하단에 있는 버튼 */
-.mypage-post-item .view-more-btn {
+/* View More button */
+.card-item-view-more-btn {
     display: block;
     padding: 8px;
     font-size: 14px;
     text-align: center;
-    background-color: #3498db; /* 파란색 버튼 */
+    background-color: #3498db;
     color: white;
     border-radius: 6px;
     text-decoration: none;
-    transition: background-color 0.3s;
     margin-top: 10px;
+    transition: background-color 0.3s;
+    width: 100%; /* 버튼 가로 길이를 카드의 전체 가로 길이에 맞춤 */
 }
 
-.mypage-post-item .view-more-btn:hover {
-    background-color: #2980b9; /* 호버 시 더 진한 파란색 */
+.card-item-view-more-btn:hover {
+    background-color: #2980b9;
 }
 
-/* 반응형 레이아웃 조정 */
+/* 태블릿용 미디어 쿼리 (화면 너비 768px 이하) */
 @media (max-width: 768px) {
-    .mypage-post-item {
-        width: 180px; /* 태블릿에서는 카드 크기를 더 작게 */
-        padding: 15px;
+    .card-item-post {
+        flex: 0 0 45%; /* 카드 가로 길이를 45%로 줄임 */
+        padding: 15px; /* 패딩을 줄여 카드 크기 조정 */
     }
 
-    .mypage-post-items {
-        gap: 10px;
+    .card-item-bookmark-icon {
+        font-size: 18px;
     }
 
-    .bookmark-icon {
-        font-size: 18px; /* 태블릿에서는 북마크 아이콘 크기 조정 */
-        top: 8px; /* 위치 조정 */
-        right: 8px;
+    .card-item-view-more-btn {
+        font-size: 12px; /* 버튼 글꼴 크기를 줄임 */
+        padding: 6px;
+    }
+
+    .card-item-post h5 {
+        font-size: 16px; /* 제목 크기 줄임 */
     }
 }
 
+/* 모바일용 미디어 쿼리 (화면 너비 480px 이하) */
 @media (max-width: 480px) {
-    .mypage-post-item {
-        width: 150px; /* 모바일에서는 카드 크기를 더 작게 */
-        padding: 10px;
+    .card-item-post {
+        flex: 0 0 100%; /* 카드가 한 줄에 하나씩 배치되도록 설정 */
+        padding: 10px; /* 패딩을 더 줄여 카드 크기 조정 */
     }
 
-    .mypage-post-items {
-        gap: 8px;
+    .card-item-bookmark-icon {
+        font-size: 16px;
     }
 
-    .bookmark-icon {
-        font-size: 16px; /* 모바일에서 북마크 아이콘 크기 조정 */
-        top: 6px; /* 위치 조정 */
-        right: 6px;
+    .card-item-view-more-btn {
+        font-size: 10px; /* 버튼 글꼴 크기를 더 줄임 */
+        padding: 5px;
+    }
+
+    .card-item-post h5 {
+        font-size: 14px; /* 제목 크기를 더 줄임 */
+    }
+
+    .card-item-post-type {
+        font-size: 10px; /* post-type 텍스트 크기 줄임 */
+    }
+
+    .card-item-post-views {
+        font-size: 11px; /* 조회수 텍스트 크기 줄임 */
     }
 }

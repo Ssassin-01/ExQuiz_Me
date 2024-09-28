@@ -55,11 +55,11 @@ function App() {
                                     <Route path="subscribe" element={<SubScribe />} />
                                     <Route path="/success" element={<SuccessPage />} />
                                     <Route path="/fail" element={<FailPage />} />
-                                    <Route path="profile" element={<MyPage />} />
                                     <Route path="/mypage" element={<MyPage />} />
                                     <Route path="/edit-profile" element={<EditProfile />} />
                                     <Route path="settings" element={<Settings />} />
                                     <Route path="learn" element={<Learning />} />
+                                    <Route path="/learning/:cardNumber" element={<Learning />} /> {/* Learning 경로 추가 */}
                                     <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
                                     <Route path="/learn-test" element={<LearningTest />} />
                                 </Route>

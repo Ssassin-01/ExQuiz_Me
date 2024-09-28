@@ -22,6 +22,9 @@ const CardBookmarkSection = ({ bookmarkedCards = [], handleCardClick, handleBook
                                 author={card.nickname || 'Unknown'}
                                 purpose={card.purpose || '기타'}
                                 date={card.writeDateTime}
+                                cardNumber={card.cardNumber}  // cardNumber 전달
+                                vocabularyItems={card.vocabularyItems}  // 단어 목록 전달
+                                initialViewCount={card.countView}
                                 isBookmarked={true}  // 북마크된 상태를 유지
                                 onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)}  // 북마크 토글 핸들러
                                 onCardClick={() => handleCardClick(card.cardNumber)}

@@ -11,12 +11,6 @@
     box-sizing: border-box;
 }
 
-@media (max-width: 1024px) {
-    .mypage-activity-content {
-        grid-template-columns: 1fr; /* 화면이 작아지면 세로로 배치 */
-    }
-}
-
 /* 게시물 부분 */
 .mypage-activity-posts {
     background-color: #f9f9f9;
@@ -49,43 +43,35 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 768px) {
-    .mypage-post-items {
-        grid-template-columns: repeat(2, 1fr); /* 태블릿에서는 2개 */
-    }
-
-    .mypage-post-item {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .mypage-post-items {
-        grid-template-columns: 1fr; /* 모바일에서는 1개 */
-    }
-
-    .mypage-post-item {
-        padding: 10px;
-    }
-}
-
 /* 뱃지 부분 */
 .mypage-activity-badges {
     background-color: #f9f9f9;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
     max-width: 100%;
+    display: flex;
+    flex-direction: column;  /* 세로 방향으로 배치 (제목 위, 뱃지 아래) */
+    gap: 15px;  /* 제목과 뱃지 사이의 간격 */
+}
+
+.mypage-activity-badges h4 {
+    text-align: center; /* 제목을 가운데 정렬 */
+    margin: 0;
+}
+
+.mypage-badge-items {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* 뱃지들을 가로로 가운데 정렬 */
+    flex-wrap: wrap; /* 필요시 줄 바꿈 */
 }
 
 .mypage-badge-item {
     background-color: #fff;
-    padding: 10px;
-    border-radius: 50%;
+    width: 50px;  /* 원형을 유지하도록 너비와 높이를 같게 설정 */
+    height: 50px;
+    border-radius: 50%; /* 원형 모양 */
     font-size: 24px;
     display: flex;
     align-items: center;
@@ -93,27 +79,22 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 1024px) {
-    .mypage-activity-badges {
-        grid-column: 1 / -1; /* 화면이 줄어들면 게시물 아래로 이동 */
-        flex-wrap: nowrap; /* 가로 배열 */
-        overflow-x: auto; /* 필요시 스크롤 가능하게 설정 */
-    }
-}
-
 @media (max-width: 768px) {
     .mypage-badge-item {
-        padding: 8px;
+        width: 40px;  /* 작은 화면에서 크기 줄이기 */
+        height: 40px;
         font-size: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .mypage-badge-item {
-        padding: 6px;
+        width: 30px;  /* 더 작은 화면에서 크기 줄이기 */
+        height: 30px;
         font-size: 18px;
     }
 }
+
 
 /* 막대 그래프 */
 .mypage-activity-graph {
@@ -123,6 +104,9 @@
     border-radius: 8px;
     text-align: center;
     margin-top: 20px;
+    grid-column: 1 / -1; /* 가로 전체 차지 */
+    width: 100%;         /* 가로 전체를 차지하게 설정 */
+    box-sizing: border-box; /* 여백 포함한 가로 길이 */
 }
 
 /* 반응형 막대 그래프 */
@@ -144,14 +128,49 @@
     font-size: 12px;
 }
 
+/* 반응형 스타일 */
+@media (max-width: 1024px) {
+    .mypage-activity-content {
+        grid-template-columns: 1fr; /* 화면이 작아지면 세로로 배치 */
+    }
+
+    .mypage-activity-badges {
+        flex-wrap: nowrap; /* 가로로 배치하고 스크롤 가능하게 설정 */
+        overflow-x: auto;
+    }
+
+    .mypage-activity-graph {
+        grid-column: 1 / -1; /* 그래프를 가로 전체로 차지 */
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
-    .mypage-bar-graph {
-        justify-content: space-around;
+    .mypage-post-items {
+        grid-template-columns: repeat(2, 1fr); /* 태블릿에서는 2개 */
+    }
+
+    .mypage-post-item {
+        padding: 15px;
+    }
+
+    .mypage-badge-item {
+        padding: 8px;
+        font-size: 20px;
     }
 }
 
 @media (max-width: 480px) {
-    .mypage-bar {
-        width: 20px;
+    .mypage-post-items {
+        grid-template-columns: 1fr; /* 모바일에서는 1개 */
+    }
+
+    .mypage-post-item {
+        padding: 10px;
+    }
+
+    .mypage-badge-item {
+        padding: 6px;
+        font-size: 18px;
     }
 }

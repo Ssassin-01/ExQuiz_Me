@@ -1,13 +1,12 @@
 import React from 'react';
 import CardItem from "./CardItem";
 import Graph from "./Graph";
-
 import "./css/ActivitySection.css";
 import BadgeItem from "./BageItem";
 
 const ActivitySection = ({
-                             userCards = [],  // 기본값: 빈 배열
-                             bookmarkedCards = [],  // 기본값: 빈 배열
+                             userCards = [],
+                             bookmarkedCards = [],
                              formatDate,
                              handleCardClick,
                              handleBookmarkToggle
@@ -31,6 +30,9 @@ const ActivitySection = ({
                             author={card.nickname}
                             date={formatDate(card.writeDateTime)}
                             isBookmarked={card.isBookmarked}
+                            cardNumber={card.cardNumber}  // cardNumber 전달
+                            vocabularyItems={card.vocabularyItems}  // 단어 목록 전달
+                            initialViewCount={card.countView}
                             onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)}
                             purpose={card.purpose}
                             onCardClick={() => handleCardClick(card.cardNumber)}
