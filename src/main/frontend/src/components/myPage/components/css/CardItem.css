@@ -1,6 +1,5 @@
 /* 기본 데스크탑 스타일 */
 .card-item-post {
-    flex: 0 0 40%; /* 카드 가로 길이를 기본 30%로 설정 */
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
@@ -10,7 +9,21 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     box-sizing: border-box;
+    width: 100%; /* 가로 길이를 100%로 설정 */
 }
+
+/*.card-item-post {*/
+/*    flex: 0 0 40%; !* 카드 가로 길이를 기본 30%로 설정 *!*/
+/*    background-color: #f9f9f9;*/
+/*    padding: 20px;*/
+/*    border-radius: 12px;*/
+/*    text-align: left;*/
+/*    font-size: 14px;*/
+/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);*/
+/*    transition: transform 0.3s ease, box-shadow 0.3s ease;*/
+/*    position: relative;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 .card-item-post:hover {
     transform: translateY(-8px);

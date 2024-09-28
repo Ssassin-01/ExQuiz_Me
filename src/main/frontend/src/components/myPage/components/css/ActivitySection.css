@@ -174,3 +174,27 @@
         font-size: 18px;
     }
 }
+
+
+
+.mypage-add-btn {
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mypage-add-btn:hover {
+    background-color: #b3b3b3;
+}
+
+.mypage-activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

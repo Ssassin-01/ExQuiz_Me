@@ -81,8 +81,17 @@ const MyPage = () => {
     // 카드 클릭 후 최근 학습 목록 업데이트
     const handleCardClickAndUpdate = async (cardNumber) => {
         try {
-            await handleCardClick(cardNumber, userCards, recentCards, setRecentCards, apiUrl);
-            await refreshRecentCards();
+            // 이미 최근 학습에 추가된 카드인지 확인
+            const isAlreadyInRecent = recentCards.some(card => card.cardNumber === cardNumber);
+
+            if (!isAlreadyInRecent) {
+                console.log('카드가 이미 최근 학습에 존재하지 않음, 추가 진행');
+                // 중복된 카드가 없을 때만 처리
+                await handleCardClick(cardNumber, userCards, recentCards, setRecentCards, apiUrl);
+                await refreshRecentCards();  // 최근 학습 목록 갱신
+            } else {
+                console.log('이미 최근 학습 목록에 존재하는 카드, 추가하지 않음');
+            }
         } catch (error) {
             console.error("카드 클릭 및 업데이트 중 오류 발생:", error);
         }

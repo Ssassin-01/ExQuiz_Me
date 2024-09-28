@@ -190,4 +190,5 @@ public class VocaCardService {
             cardAccessLogRepository.save(log);
         }
     }
+
 }

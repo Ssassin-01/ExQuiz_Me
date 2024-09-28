@@ -3,7 +3,8 @@ import moment from 'moment';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/CardItem.css';
-import { FaEye } from 'react-icons/fa'; // 조회수 이모지 사용
+import { FaEye } from 'react-icons/fa';
+import { handleCardClick as utilityHandleCardClick } from './utility/utility'; // utility의 handleCardClick 불러오기
 
 const CardItem = ({
                       title,
@@ -13,10 +14,12 @@ const CardItem = ({
                       purpose,
                       isBookmarked,
                       onBookmarkToggle,
-                      onCardClick,
                       cardNumber,
                       initialViewCount,
-                      vocabularyItems
+                      vocabularyItems,
+                      userCards,
+                      recentCards,
+                      setRecentCards
                   }) => {
     const [bookmarked, setBookmarked] = useState(isBookmarked);
     const [isLoading, setIsLoading] = useState(false);
@@ -28,23 +31,10 @@ const CardItem = ({
         setBookmarked(isBookmarked);
     }, [isBookmarked]);
 
-    const handleCardClick = async (e) => {
+    // 기존 handleCardClick 제거
+    const handleCardClick = (e) => {
         e.preventDefault();
-        onCardClick(); // 부모 컴포넌트에서 전달된 카드 클릭 함수 호출
-
-        try {
-            const response = await axios.post(`${apiUrl}/api/cards/${cardNumber}/view`, {}, { withCredentials: true });
-            if (response.data) {
-                const updatedCard = response.data;
-                setViewCount(updatedCard.countView);
-                setBookmarked(updatedCard.bookmarked);
-            } else {
-                console.error("Unexpected response structure:", response.data);
-            }
-        } catch (error) {
-            console.error('조회수 증가 오류:', error);
-        }
-
+        utilityHandleCardClick(cardNumber, userCards, recentCards, setRecentCards, apiUrl); // utility 함수 사용
         navigate(`/learning/${cardNumber}`, {
             state: { vocabularyItems }
         });

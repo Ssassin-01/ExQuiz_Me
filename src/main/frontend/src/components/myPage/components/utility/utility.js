@@ -8,26 +8,33 @@ export const formatDate = (dateString) => {
 };
 
 // 카드 클릭 핸들러 함수
-export const handleCardClick = async (cardNumber, userCards, recentCards, setRecentCards, apiUrl) => {
+export const handleCardClick = async (cardNumber, userCards = [], recentCards = [], setRecentCards, apiUrl) => {
     try {
         await axios.post(`${apiUrl}/api/cards/${cardNumber}/view`, {}, { withCredentials: true });
 
-        const cardIndex = recentCards.findIndex(card => card.cardNumber === cardNumber);
+        // recentCards가 null 또는 undefined일 경우 빈 배열로 처리
+        if (!recentCards) recentCards = [];
 
-        if (cardIndex === -1) {
+        // userCards가 null 또는 undefined일 경우 빈 배열로 처리
+        if (!userCards) userCards = [];
+
+        // 중복 카드 체크
+        const isAlreadyInRecent = recentCards.some(card => card.cardNumber === cardNumber);
+
+        if (!isAlreadyInRecent) {
             const newRecentCard = userCards.find(card => card.cardNumber === cardNumber);
             if (newRecentCard) {
+                // 새로운 카드를 추가할 때 중복 확인 후 5개까지만 유지
                 setRecentCards((prevCards) => [newRecentCard, ...prevCards.slice(0, 4)]);
             }
-        } else {
-            const updatedCards = [...recentCards];
-            const [movedCard] = updatedCards.splice(cardIndex, 1);
-            setRecentCards([movedCard, ...updatedCards]);
         }
     } catch (error) {
         console.error('Error logging card view:', error);
     }
 };
+
+
+
 
 // 북마크 토글 함수
 // 북마크 토글 함수

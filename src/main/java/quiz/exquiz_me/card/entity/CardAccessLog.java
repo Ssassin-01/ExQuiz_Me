@@ -1,6 +1,5 @@
 package quiz.exquiz_me.card.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import quiz.exquiz_me.card.entity.Card;
@@ -10,7 +9,9 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "card_access_logs")
+@Table(name = "card_access_logs", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"email", "card_number"}) // Unique constraint 추가
+})
 public class CardAccessLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
