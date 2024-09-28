@@ -42,7 +42,7 @@ public class SecurityConfig {
                                 "/images/**", "/js/**",
                                 "/css/**", "/img/**",
                                 "/qrCodes/**", "/ws/**",
-                                "/gameroom/**", "/api/game-sessions",
+                                "/gameroom/**", "/api/game-sessions/**",
                                 "/gaming", "/gameox",
                                 "/api/game/card/**", "/api/user/**"
                                 , "/payment/**").permitAll()

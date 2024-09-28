@@ -8,7 +8,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 const Learning = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { vocabularyItems } = location.state || { vocabularyItems: [] };
+    const { vocabularyItems = [] } = location.state || {};  // 빈 배열을 기본값으로 설정
+
 
     const [testOption, setTestOption] = useState('korean'); // 기본 선택은 한국어
 
@@ -46,7 +47,7 @@ const Learning = () => {
                     <button className="share-button">✈</button>
                 </div>
             </div>
-            <div className="word-list-container">
+            {vocabularyItems.length > 0 ? (
                 <div className="word-list">
                     {vocabularyItems.map((wordPair, index) => (
                         <div className="word-item" key={index}>
@@ -56,71 +57,11 @@ const Learning = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            ) : (
+                <p>단어 목록이 없습니다.</p>
+            )}
         </div>
     );
 };
 
 export default Learning;
-// import React, { useState } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
-// import '../css/Learning.css';
-// import {Button} from "react-bootstrap";
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
-//
-// const Learning = () => {
-//     const navigate = useNavigate();
-//     const location = useLocation();
-//     const { vocabularyItems } = location.state || { vocabularyItems: [] };
-//
-//     const [testOption, setTestOption] = useState('korean'); // 기본 선택은 한국어
-//
-//     const handleLearningClick = () => {
-//         navigate('/word-learn', { state: { vocabularyItems } });
-//     };
-//
-//     const handleTestClick = () => {
-//         // test 버튼 클릭 시 시험지로 이동하고 상태 전달
-//         navigate('/learn-test', { state: { vocabularyItems, testOption } });
-//     };
-//
-//     return (
-//         <div className="learning-container">
-//             <div className="learning-header">
-//                 <div className="title-section">
-//                     <span className="volume-title">Learning</span>
-//                     <span className="word-count">{vocabularyItems.length} Words</span>
-//                 </div>
-//                 <div className="header-buttons">
-//                     {/*<button onClick={handleLearningClick}>Learning</button>*/}
-//                     <Button variant="outline-primary" onClick={handleLearningClick}>Learning</Button>{' '}
-//                     <Button variant="outline-primary">Practice</Button>{' '}
-//                     <div>
-//
-//                         <select value={testOption} onChange={(e) => setTestOption(e.target.value)}>
-//                             <option value="korean">한국어 단어 보기</option>
-//                             <option value="english">영어 단어 보기</option>
-//                         </select>
-//                         <Button variant="outline-primary" onClick={handleTestClick}>Test</Button>{' '}
-//                         {/*<button onClick={handleTestClick}>Test</button>*/}
-//                     </div>
-//                     <button className="share-button">✈</button>
-//                 </div>
-//             </div>
-//             <div className="word-list-container">
-//                 <div className="word-list">
-//                     {vocabularyItems.map((wordPair, index) => (
-//                         <div className="word-item" key={index}>
-//                             <div className="word-text">
-//                                 {wordPair.englishWord} | {wordPair.koreanWord}
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-//
-// export default Learning;

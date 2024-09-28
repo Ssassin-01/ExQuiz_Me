@@ -1,0 +1,49 @@
+/* 최근 학습 섹션 */
+.mypage-recent-cards {
+    width: 100%; /* mypage의 가로 길이만큼 확장 */
+    box-sizing: border-box; /* 패딩과 간격을 포함하여 크기 조정 */
+    padding: 10px; /* 여백 추가 */
+}
+
+/* 최근 학습 카드 리스트 */
+.mypage-recent-cards-list {
+    display: grid; /* 그리드 레이아웃 사용 */
+    grid-template-columns: repeat(4, 1fr); /* 처음 보이는 페이지에서 카드 4개를 가로로 배치 */
+    gap: 15px; /* 카드 간 간격 조정 */
+    justify-content: center; /* 카드들을 중앙 정렬 */
+    margin-top: 20px;
+    width: 100%; /* mypage의 가로 길이를 차지하도록 설정 */
+    box-sizing: border-box; /* 패딩과 간격을 포함하여 가로 길이 유지 */
+    grid-auto-flow: dense; /* 아래로 내려갈 때 좌측 하단부터 채움 */
+}
+
+.mypage-recent-card-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box; /* 패딩과 간격을 포함하여 크기 조정 */
+}
+
+.mypage-recent-card-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 태블릿 크기에서 카드 크기 조정 */
+@media (max-width: 1024px) {
+    .mypage-recent-cards-list {
+        grid-template-columns: repeat(2, 1fr); /* 태블릿에서는 카드 2개 */
+    }
+}
+
+/* 모바일 크기에서 카드 크기 조정 */
+@media (max-width: 768px) {
+    .mypage-recent-cards-list {
+        grid-template-columns: 1fr; /* 모바일에서는 카드 1개 */
+    }
+}

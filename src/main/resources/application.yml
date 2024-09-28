@@ -6,7 +6,7 @@ server:
 
 security:
   cors:
-    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000},https://tosspayments.com
+    allowed-origins: ${SPRING_SECURITY_ALLOWED_ORIGINS:http://localhost:3000}
 
 
 spring:
@@ -15,7 +15,7 @@ spring:
       static-locations: classpath:/static/
 
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: 3730
     driver-class-name: com.mysql.cj.jdbc.Driver

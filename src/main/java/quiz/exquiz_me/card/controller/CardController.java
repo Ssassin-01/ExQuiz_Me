@@ -50,7 +50,10 @@ public class CardController {
             String email = getCurrentUserEmail(); // 현재 사용자 이메일 가져오기
             cardService.incrementCardView(cardNumber); // 조회수 증가
             cardService.logCardAccess(email, cardNumber); // 카드 열람 기록 저장
-            return ResponseEntity.ok().build();
+
+            // 증가된 조회수와 최신 카드 데이터 반환
+            CardDTO updatedCard = cardService.getCardByNumber(cardNumber); // 조회수 업데이트 후 카드 정보 가져오기
+            return ResponseEntity.ok(updatedCard); // 최신 카드 정보 반환
         } catch (Exception e) {
             logger.error("Error increasing view count or logging card access: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error increasing view count or logging card access");
@@ -93,14 +96,16 @@ public class CardController {
 
     //최근학습
     @GetMapping("/recent")
-    public ResponseEntity<List<CardAccessLogDTO>> getRecentAccessedCards() {
+    public ResponseEntity<List<CardDTO>> getRecentAccessedCards() {
         try {
             String email = getCurrentUserEmail();
-            List<CardAccessLogDTO> recentCards = cardService.getRecentAccessedCardsByUserEmail(email);
+            // CardAccessLogDTO 대신 CardDTO로 변경하여 최근 카드 데이터를 반환
+            List<CardDTO> recentCards = cardService.getRecentAccessedCardsByUserEmail(email);
             return ResponseEntity.ok(recentCards);
         } catch (Exception e) {
             logger.error("Error retrieving recent accessed cards: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
 }

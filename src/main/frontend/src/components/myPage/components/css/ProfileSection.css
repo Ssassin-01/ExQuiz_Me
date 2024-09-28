@@ -1,0 +1,35 @@
+.mypage-profile {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.mypage-profile-content {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    .mypage-profile {
+        width: 100%;
+    }
+}
+
+.mypage-profile-img {
+    font-size: 48px;
+}
+
+.mypage-profile-info {
+    margin-left: 15px;
+}
+
+.mypage-nickname {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.mypage-email {
+    color: #777;
+    font-size: 14px;
+}

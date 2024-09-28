@@ -43,7 +43,7 @@
 
 }
 
-input[type="text"] {
+.test-input-box {
     margin-left: 50px;
     width: 60%; /* 입력 필드의 너비 설정 */
     padding: 5px; /* 내부 여백 */

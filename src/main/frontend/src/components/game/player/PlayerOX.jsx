@@ -3,12 +3,15 @@ import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import './css/GameOX.css'; // 기존의 GameOX.css를 재사용합니다.
 import { useNickname } from '../context/NicknameContext';
+import axios from 'axios';  // Axios 추가
 
 function PlayerOX() {
     const { nickname } = useNickname();
     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
     const clientRef = useRef(null);
     const [gameEnded, setGameEnded] = useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(false); // 버튼 비활성화 상태 추가
+    const [gameSessionId, setGameSessionId] = useState(null);
 
     const sendMessage = (text) => {
         if (clientRef.current && clientRef.current.connected) {
@@ -20,6 +23,14 @@ function PlayerOX() {
                 })
             });
             console.log(`Sent message: ${text} from nickname: ${nickname}`);
+        }
+    };
+
+    // 클릭 후 버튼 비활성화 및 정답 전송
+    const handleOXClick = (choice) => {
+        if (!buttonDisabled) {
+            sendMessage(choice);
+            setButtonDisabled(true); // 클릭 후 버튼 비활성화
         }
     };
 
@@ -36,8 +47,20 @@ function PlayerOX() {
                 heartbeatOutgoing: 4000,
                 onConnect: () => {
                     console.log('Connected to WebSocket');
-                    client.subscribe('/topic/game-end', () => {
+
+                    // 새로운 문제 시작 시 버튼 활성화
+                    client.subscribe('/topic/new-question', (message) => {
+                        setButtonDisabled(false);  // 새로운 문제가 나오면 버튼 다시 활성화
+                    });
+
+                    client.subscribe('/topic/game-end', async () => {
                         setGameEnded(true);
+                        try {
+                            await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
+                            console.log("Game session deleted successfully.");
+                        } catch (error) {
+                            console.error("Error deleting game session:", error);
+                        }
                         client.deactivate(() => {
                             console.log('Disconnected from WebSocket');
                         });
@@ -62,11 +85,7 @@ function PlayerOX() {
                 });
             }
         };
-    }, [apiUrl]);
-
-    const handleOXClick = (choice) => {
-        sendMessage(choice);
-    };
+    }, [apiUrl, gameSessionId]);
 
     if (gameEnded) {
         return (

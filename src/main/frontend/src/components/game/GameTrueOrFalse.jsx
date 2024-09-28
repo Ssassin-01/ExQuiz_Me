@@ -7,18 +7,20 @@ import './css/Game1.css';
 
 function GameTrueOrFalse() {
     const location = useLocation();
+    const initialGameSessionId = location.state?.gameSessionId || localStorage.getItem('gameSessionId'); // 로컬스토리지에서 가져오기
+    const [gameSessionId, setGameSessionId] = useState(initialGameSessionId); // 초기값 설정
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 'all';
     const initialTimer = location.state?.timer || 10;
-    const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
+    const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket, connectWebSocket } = useWebSocket();
 
     const [questions, setQuestions] = useState([]);
     const currentQuestionIndex = useRef(0);
     const [currentQuestion, setCurrentQuestion] = useState(null);
     const [usedEnglishWords, setUsedEnglishWords] = useState(new Set());
-    const [messages, setMessages] = useState({});
+    const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || {}); // 메시지 복원
     const [feedback, setFeedback] = useState("");
-    const [scores, setScores] = useState({});
+    const [scores, setScores] = useState(JSON.parse(localStorage.getItem('scores')) || {}); // 점수 복원
     const [gameEnded, setGameEnded] = useState(false);
     const [results, setResults] = useState([]);
     const [timer, setTimer] = useState(initialTimer); // 타이머 초기화
@@ -76,10 +78,14 @@ function GameTrueOrFalse() {
             const subscription = subscribeToChannel('/topic/answers', (message) => {
                 const receivedMessage = JSON.parse(message.body);
                 checkAnswer(receivedMessage.nickname, receivedMessage.text);
-                setMessages((prevMessages) => ({
-                    ...prevMessages,
-                    [receivedMessage.nickname]: receivedMessage.text
-                }));
+                setMessages((prevMessages) => {
+                    const updatedMessages = {
+                        ...prevMessages,
+                        [receivedMessage.nickname]: receivedMessage.text
+                    };
+                    localStorage.setItem('messages', JSON.stringify(updatedMessages)); // 메시지 저장
+                    return updatedMessages;
+                });
             });
 
             return () => {
@@ -87,6 +93,34 @@ function GameTrueOrFalse() {
             };
         }
     }, [webSocketConnected, subscribeToChannel, currentQuestion]);
+
+    // 새로고침 시 게임 세션 정보 복원
+    useEffect(() => {
+        if (!gameSessionId) {
+            const savedSessionId = localStorage.getItem('gameSessionId');
+            if (savedSessionId) {
+                setGameSessionId(savedSessionId);
+            }
+        }
+
+        if (gameSessionId && !webSocketConnected) {
+            connectWebSocket();
+        }
+    }, [gameSessionId, webSocketConnected, connectWebSocket]);
+
+    // 참가자 정보 복원
+    useEffect(() => {
+        const savedParticipants = JSON.parse(localStorage.getItem('participants'));
+        if (savedParticipants && savedParticipants.length > 0) {
+            // 참가자 리스트 복원 로직 추가
+        }
+    }, []);
+
+    useEffect(() => {
+        if (participants.length > 0) {
+            localStorage.setItem('participants', JSON.stringify(participants)); // 참가자 저장
+        }
+    }, [participants]);
 
     const generateRandomQuestion = (items, usedEnglishWords) => {
         let englishWord;
@@ -122,10 +156,14 @@ function GameTrueOrFalse() {
 
         if (isCorrect) {
             setFeedback("정답!");
-            setScores((prevScores) => ({
-                ...prevScores,
-                [nickname]: (prevScores[nickname] || 0) + 1
-            }));
+            setScores((prevScores) => {
+                const updatedScores = {
+                    ...prevScores,
+                    [nickname]: (prevScores[nickname] || 0) + 1
+                };
+                localStorage.setItem('scores', JSON.stringify(updatedScores)); // 점수 저장
+                return updatedScores;
+            });
             setTimeout(() => {
                 setFeedback("");
                 nextQuestion();
@@ -138,6 +176,7 @@ function GameTrueOrFalse() {
         }
     };
 
+    // GameTrueOrFalse.jsx에서 추가
     const nextQuestion = () => {
         if (currentQuestionIndex.current < questions.length - 1) {
             currentQuestionIndex.current++;
@@ -146,11 +185,13 @@ function GameTrueOrFalse() {
             setTimer(initialTimer);  // 타이머 초기화
             setIsTimerRunning(true);  // 타이머 재시작
             setFeedback(""); // 피드백 초기화
+
+            // 새로운 문제로 넘어갈 때 'new-question' 주제로 메시지 전송
+            publishMessage('/topic/new-question', { questionIndex: currentQuestionIndex.current });
         } else {
             endGame();  // 마지막 질문이면 게임 종료
         }
     };
-
 
     const handleTimeOver = () => {
         if (!isQuestionTransitioning) {
@@ -165,17 +206,44 @@ function GameTrueOrFalse() {
         }
     };
 
-
-    const endGame = () => {
+    const endGame = async () => {
         setGameEnded(true);
         const resultsArray = Object.keys(scores).map(nickname => ({
             nickname,
             score: scores[nickname]
         })).sort((a, b) => b.score - a.score);
         setResults(resultsArray);
+
+        // 게임 종료 후 세션 삭제 요청
+        try {
+            await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
+            console.log("Game session deleted successfully.");
+        } catch (error) {
+            console.error("Error deleting game session:", error);
+        }
     };
 
-    const handleExit = () => {
+    const handleExit = async () => {
+        try {
+            // 게임 세션 삭제 요청 (withCredentials로 인증 정보 포함)
+            if (gameSessionId) {
+                await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`, {
+                    withCredentials: true // 인증 정보를 포함
+                });
+                console.log("Game session deleted successfully.");
+            } else {
+                console.error("Game session ID is undefined.");
+            }
+        } catch (error) {
+            console.error("Error deleting game session:", error);
+        }
+
+        // 참가자 정보 및 메시지 초기화
+        localStorage.removeItem('participants');
+        localStorage.removeItem('messages');
+        localStorage.removeItem('scores');
+
+        // 웹소켓 연결 종료 및 리다이렉트
         publishMessage('/topic/game-end', { message: 'Game has ended' });
         disconnectWebSocket();
         navigate('/');
@@ -189,16 +257,13 @@ function GameTrueOrFalse() {
                 <div className="gaming-results-container">
                     {results.map((result, index) => (
                         <div key={index} className="gaming-result-item">
-                            {/* 순위 트로피 표시 */}
                             <div className="gaming-result-rank">
                                 {index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}등`}
                             </div>
-                            {/* 프로필 이모지 및 닉네임 표시 */}
                             <div className="gaming-result-profile">
                                 <span className="profile-emoji">👤</span>
                                 <span className="gaming-result-name">{result.nickname}</span>
                             </div>
-                            {/* 맞춘 갯수 표시 */}
                             <span className="gaming-result-score">맞춘 갯수: {result.score}개</span>
                         </div>
                     ))}
@@ -207,7 +272,6 @@ function GameTrueOrFalse() {
             </div>
         );
     }
-
 
     return (
         <div className="gaming-container">
