@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/SuccessPage.css';
+import '../css/SuccessPage.css';
 import { Link } from 'react-router-dom';
 
 const SuccessPage = () => {

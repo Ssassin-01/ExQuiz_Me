@@ -11,15 +11,13 @@ import quiz.exquiz_me.card.repository.CardRepository;
 import quiz.exquiz_me.dto.CustomUserDetails;
 import quiz.exquiz_me.game.dto.GameParticipantDTO;
 import quiz.exquiz_me.game.dto.GameSessionDTO;
-import quiz.exquiz_me.game.entity.GameParticipant;
 import quiz.exquiz_me.game.entity.GameSessions;
-import quiz.exquiz_me.game.repository.GameParticipantRepository;
 import quiz.exquiz_me.game.repository.GameSessionRepository;
 import quiz.exquiz_me.game.utlity.QRCodeGenerator;
 import quiz.exquiz_me.user.entity.User;
-import quiz.exquiz_me.user.repository.UserRepository;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class GameSessionService {
@@ -29,12 +27,6 @@ public class GameSessionService {
 
     @Autowired
     private CardRepository cardRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private GameParticipantRepository gameParticipantRepository;
 
     @Autowired
     private QRCodeGenerator qrCodeGenerator;
@@ -80,24 +72,32 @@ public class GameSessionService {
     }
 
 
+    // 게임 세션의 참가자 목록 반환
+    public List<String> getParticipants(Long gameSessionId) {
+        Set<GameParticipantDTO> participants = sessionParticipants.getOrDefault(gameSessionId, new HashSet<>());
+        return participants.stream()
+                .map(GameParticipantDTO::getNickname)
+                .collect(Collectors.toList());
+    }
+
     public GameParticipantDTO addParticipant(Long gameSessionId, String nickname) {
         GameSessions gameSession = gameSessionRepository.findById(gameSessionId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid game session ID: " + gameSessionId));
 
         Set<GameParticipantDTO> participants = sessionParticipants.getOrDefault(gameSessionId, new HashSet<>());
 
-        // Check for duplicate nickname in this session only
+        // 닉네임 중복 체크
         boolean duplicateNickname = participants.stream()
-                .anyMatch(participant -> participant.getUserId().equals(nickname));
+                .anyMatch(participant -> participant.getNickname().equals(nickname));
         if (duplicateNickname) {
-            throw new IllegalStateException("중복된 닉네임 : " + nickname + ". 다른 닉네임을 사용해주세요");
+            throw new IllegalStateException("중복된 닉네임: " + nickname + ". 다른 닉네임을 사용해주세요.");
         }
 
         if (participants.size() >= MAX_PARTICIPANTS) {
             throw new IllegalStateException("최대 참가자 수에 도달했습니다.");
         }
 
-        GameParticipantDTO participantDTO = new GameParticipantDTO(null, gameSessionId, nickname, 0, 0);
+        GameParticipantDTO participantDTO = new GameParticipantDTO(null, gameSessionId, null, nickname, 0, 0);
         participants.add(participantDTO);
         sessionParticipants.put(gameSessionId, participants);  // 참가자 목록을 메모리에 저장
 
@@ -105,23 +105,62 @@ public class GameSessionService {
     }
 
 
+
     public int getParticipantCount(Long gameSessionId) {
         return sessionParticipants.getOrDefault(gameSessionId, new HashSet<>()).size();
     }
 
     // 게임 세션 삭제 메소드
+    // 게임 세션 삭제 메소드
     @Transactional
-    public void deleteGameSession(Long gameSessionId) {
-        GameSessions gameSession = gameSessionRepository.findById(gameSessionId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid game session ID: " + gameSessionId));
+    public boolean deleteGameSession(Long gameSessionId) {
+        if (gameSessionId == null) {
+            throw new IllegalArgumentException("Invalid game session ID: null");
+        }
 
-        // 참가자 목록도 삭제
-        sessionParticipants.remove(gameSessionId);
+        Optional<GameSessions> gameSessionOptional = gameSessionRepository.findById(gameSessionId);
 
-        // 게임 세션 삭제
-        gameSessionRepository.delete(gameSession);
-        System.out.println("Game session with ID " + gameSessionId + " has been deleted.");
+        if (gameSessionOptional.isPresent()) {
+            GameSessions gameSession = gameSessionOptional.get();
+
+            // 참가자 목록을 삭제 (메모리에서)
+            System.out.println("Participants before removal: " + sessionParticipants.get(gameSessionId));
+            sessionParticipants.remove(gameSessionId); // 참가자 목록 삭제
+            System.out.println("Participants after removal: " + sessionParticipants.get(gameSessionId));
+
+            // 게임 세션 삭제 (DB에서)
+            gameSessionRepository.delete(gameSession); // 게임 세션 삭제
+            System.out.println("Game session with ID " + gameSessionId + " has been deleted.");
+            return true; // 삭제 성공 시 true 반환
+        } else {
+            System.out.println("Game session with ID " + gameSessionId + " does not exist.");
+            return false; // 세션이 존재하지 않으면 false 반환
+        }
     }
+
+    @Transactional
+    public boolean handleExit(Long gameSessionId) {
+        if (gameSessionId == null) {
+            throw new IllegalArgumentException("Invalid game session ID: null");
+        }
+
+        // 참가자 목록 삭제
+        sessionParticipants.remove(gameSessionId);
+        System.out.println("Participants for game session ID " + gameSessionId + " have been cleared.");
+
+        // 게임 세션이 아직 존재하면 삭제
+        Optional<GameSessions> gameSessionOptional = gameSessionRepository.findById(gameSessionId);
+        if (gameSessionOptional.isPresent()) {
+            GameSessions gameSession = gameSessionOptional.get();
+            gameSessionRepository.delete(gameSession); // 게임 세션 삭제
+            System.out.println("Game session with ID " + gameSessionId + " has been deleted.");
+            return true;
+        } else {
+            System.out.println("Game session with ID " + gameSessionId + " does not exist.");
+            return false;
+        }
+    }
+
 
     private GameSessions mapDtoToEntity(GameSessionDTO dto) {
         GameSessions entity = new GameSessions();

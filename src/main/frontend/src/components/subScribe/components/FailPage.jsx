@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/FailPage.css';
+import '../css/FailPage.css';
 import { Link } from 'react-router-dom';
 
 const FailPage = () => {

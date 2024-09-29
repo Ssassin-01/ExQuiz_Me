@@ -13,12 +13,12 @@ function Game() {
     const [questionType, setQuestionType] = useState('ox');
     const [languageToggle, setLanguageToggle] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState("");
-    const [gameSessionId, setGameSessionId] = useState(null);  // 새로운 상태 추가
+    const [gameSessionId, setGameSessionId] = useState(null);  // 게임 세션 ID 상태
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const { connectWebSocket, publishMessage, participants, webSocketConnected, resetParticipants } = useWebSocket();
 
-    // Fetch max questions when card number changes
+    // 카드 번호에 따라 최대 문제 수를 가져오는 함수
     const fetchMaxQuestions = async (cardId) => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/game/card/${cardId}/items`);
@@ -32,9 +32,9 @@ function Game() {
         fetchMaxQuestions(cardNumber);
     }, [cardNumber]);
 
-    // Create a new game session and reset the previous participants
+    // 게임 세션 생성 및 QR 코드 생성
     const handleCreateGameSession = async () => {
-        resetParticipants(); // Reset participants before creating a new session
+        resetParticipants(); // 게임 세션 생성 전에 참가자 목록 초기화
 
         const [minutes, seconds] = timer.split(':').map(Number);
         const totalSeconds = (minutes * 60) + seconds;
@@ -49,28 +49,28 @@ function Game() {
             includeTf: questionType === 'ox',
             includeMc: questionType === 'four',
             includeSa: questionType === 'shortAnswer',
-            language: languageToggle ? "Korean" : "English",
-            maxPlayerCount: playerCount // Set the max player count
+            language: languageToggle ? "Korean" : "English"
         };
 
         try {
+            // QR 코드 생성하는 API 호출
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions`, config, {
                 withCredentials: true
             });
-            setQrCodeUrl(response.data.qrCode);
-            setGameSessionId(response.data.gameSessionId);  // 서버로부터 gameSessionId 받아와서 저장
+            setQrCodeUrl(response.data.qrCode); // QR 코드 URL 설정
+            setGameSessionId(response.data.gameSessionId);  // 서버에서 받은 gameSessionId 저장
 
+            // WebSocket 연결
             if (!webSocketConnected) {
-                connectWebSocket();
+                connectWebSocket();  // WebSocket 연결 시도
             }
         } catch (error) {
             console.error('Error creating game session:', error.response ? error.response.data : error.message);
             setQrCodeUrl("");
-            setError('게임 방을 생성하는 데 실패했습니다.'); // Show error message on failure
+            setError('게임 방을 생성하는 데 실패했습니다.');
         }
     };
 
-    // Start the game
     const handleStartGame = () => {
         if (webSocketConnected) {
             const message = {
@@ -102,7 +102,6 @@ function Game() {
         <div className="game-container">
             <header className="game-header">Game - 설정</header>
             <div className="game-contents">
-                {/* Left content */}
                 <div className="game-content game-content-left">
                     {/* Card Selection */}
                     <div className="settings-row">
@@ -134,9 +133,7 @@ function Game() {
                     </div>
                 </div>
 
-                {/* Right content */}
                 <div className="game-content">
-                    {/* Question Type */}
                     <div className="settings-row">
                         <span className="label">질문 유형</span>
                         <div className="radio-group">
@@ -173,7 +170,6 @@ function Game() {
                         </div>
                     </div>
 
-                    {/* Language Toggle */}
                     <div className="settings-row">
                         <span className="label">언어</span>
                         <div className="toggle-switch">
@@ -190,7 +186,6 @@ function Game() {
                 </div>
             </div>
 
-            {/* QR Code Section */}
             <div className="qr-section">
                 <button className="qr-code-button" onClick={handleCreateGameSession}>방 만들기</button>
                 {qrCodeUrl ? (
@@ -204,7 +199,6 @@ function Game() {
                 )}
             </div>
 
-            {/* Participants Section */}
             <div className="participants-section">
                 <h2>참가자 목록 ({participants.length}/10)</h2>
                 <ul className="participants-list">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './css/GameRoom.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useWebSocket } from './context/WebSocketContext';
 import { useNickname } from './context/NicknameContext';
 import axios from 'axios';
@@ -9,11 +9,27 @@ function GameRoom() {
     const [nicknameInput, setNicknameInput] = useState('');
     const [joined, setJoined] = useState(false);
     const [error, setError] = useState(null);
-    const { participants, publishMessage, webSocketConnected, connectWebSocket, subscribeToChannel, resetParticipants } = useWebSocket();
+    const { participants, publishMessage, webSocketConnected, connectWebSocket, subscribeToChannel } = useWebSocket();
     const { setNickname } = useNickname();
     const navigate = useNavigate();
-    const maxParticipants = 10;
+    const location = useLocation();
 
+    // URL의 쿼리 파라미터에서 gameSessionId(roomId)를 추출
+    const getGameSessionIdFromQuery = () => {
+        const params = new URLSearchParams(location.search);
+        return params.get('roomId'); // roomId로 전달된 값 사용
+    };
+
+    const [gameSessionId, setGameSessionId] = useState(getGameSessionIdFromQuery());
+
+    // 유효한 gameSessionId가 없으면 에러 처리
+    useEffect(() => {
+        if (!gameSessionId) {
+            setError("유효한 게임 세션 ID가 없습니다. 다시 게임을 생성해주세요.");
+        }
+    }, [gameSessionId]);
+
+    // WebSocket 연결 및 구독 설정
     useEffect(() => {
         if (!webSocketConnected) {
             connectWebSocket();
@@ -53,58 +69,42 @@ function GameRoom() {
         };
     }, [webSocketConnected, subscribeToChannel, navigate]);
 
-    const canJoinGame = () => participants.length < maxParticipants;
-
-    const joinGame = () => {
+    // 게임 참가 함수
+    const joinGame = async () => {
         if (nicknameInput.trim() !== "") {
-            if (!checkNicknameDuplicate()) {
-                return;  // 닉네임 중복이면 게임에 참가하지 않음
-            }
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/game-sessions/${gameSessionId}/participants`);
+                const participants = response.data;
 
-            if (participants.length < maxParticipants) {
-                setNickname(nicknameInput);
-                if (webSocketConnected) {
-                    // API 요청을 보냄
-                    axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions/add-participant`, {
-                        gameSessionId: 1,  // 실제 게임 세션 ID 사용
-                        nickname: nicknameInput  // 닉네임을 전달
-                    })
-                        .then((response) => {
-                            // 참가자 추가 성공 처리
-                            publishMessage('/app/join', {
-                                gameSessionId: 1,
-                                type: "join",
-                                nickname: nicknameInput
-                            });
-                            setJoined(true);
-                            setError(null); // 성공 시 에러 메시지 초기화
-                        })
-                        .catch((error) => {
-                            // 에러 처리 (예: 인원 제한 또는 중복 닉네임)
-                            if (error.response && error.response.status === 400) {
-                                setError(error.response.data); // 서버에서 오는 에러 메시지를 그대로 출력
-                            } else {
-                                setError("게임 참가에 실패했습니다.");
-                            }
-                        });
+                if (participants.includes(nicknameInput)) {
+                    setError("닉네임이 이미 사용 중입니다.");
+                } else if (participants.length < 10) {
+                    setNickname(nicknameInput);
+
+                    await axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions/${gameSessionId}/add-participant`, {
+                        nickname: nicknameInput
+                    });
+
+                    // WebSocket을 통해 참가자 목록 전송
+                    publishMessage('/app/join', { gameSessionId, nickname: nicknameInput });
+
+                    // 참가자 목록 업데이트 알림 (참가자 목록을 WebSocket을 통해 다른 클라이언트에게도 전송)
+                    publishMessage('/topic/participants', { participants: [...participants, nicknameInput] });
+
+                    setJoined(true);
+                    setError(null);
                 } else {
-                    setError("웹소켓이 연결되지 않았습니다.");
+                    setError("참가자 수가 최대 인원에 도달했습니다.");
                 }
-            } else {
-                setError("참가자 수가 최대 인원에 도달했습니다.");
+            } catch (error) {
+                setError("게임 세션에 참가하는 중 오류가 발생했습니다.");
+                console.error(error);
             }
         } else {
             setError("닉네임을 입력해주세요.");
         }
     };
 
-    const checkNicknameDuplicate = () => {
-        if (participants.includes(nicknameInput)) {
-            setError("닉네임이 이미 사용 중입니다.");
-            return false;
-        }
-        return true;
-    };
 
     return (
         <div className="game-room-container">
@@ -128,7 +128,7 @@ function GameRoom() {
                     <div className="participants-section">
                         <p>게임 시작 대기중</p>
                         <div className="participants-list">
-                            <h2>Participants ({participants.length}/{maxParticipants})</h2>
+                            <h2>Participants ({participants.length}/10)</h2>
                             <div className="participants-grid">
                                 {participants.map((participant, index) => (
                                     <div key={index} className="participant-card">
@@ -143,4 +143,5 @@ function GameRoom() {
         </div>
     );
 }
+
 export default GameRoom;

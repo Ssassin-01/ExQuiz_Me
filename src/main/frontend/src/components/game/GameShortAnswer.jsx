@@ -8,8 +8,8 @@ import './css/Game1.css';
 function GameShortAnswer() {
     const location = useLocation();
     const languageToggle = location.state?.languageToggle || false;
-    const questionCount = location.state?.questionCount || 10;  // 전달받은 questionCount 설정
-    const initialTimer = location.state?.timer || 10;  // 타이머 값 전달
+    const questionCount = location.state?.questionCount || 10;
+    const initialTimer = location.state?.timer || 10;
 
     const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
     const [questions, setQuestions] = useState([]);
@@ -23,11 +23,14 @@ function GameShortAnswer() {
     const [timer, setTimer] = useState(initialTimer);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [isSessionDeleted, setIsSessionDeleted] = useState(false);
     const navigate = useNavigate();
 
     const apiUrl = process.env.REACT_APP_API_URL;
+    const gameSessionId = location.state?.gameSessionId;
 
-    // 타이머 핸들링
+    // 타이머 관리
     useEffect(() => {
         if (isTimerRunning && timer > 0) {
             const intervalId = setInterval(() => {
@@ -44,7 +47,6 @@ function GameShortAnswer() {
             const response = await axios.get(`${apiUrl}/api/game/card/1/items`);
             let fetchedQuestions = response.data;
 
-            // questionCount 적용: 선택된 문제 수만큼 잘라서 사용
             if (fetchedQuestions.length > questionCount) {
                 fetchedQuestions = fetchedQuestions.slice(0, questionCount);
             }
@@ -83,10 +85,12 @@ function GameShortAnswer() {
     }, [webSocketConnected, subscribeToChannel, currentQuestion]);
 
     const checkAnswer = (nickname, answer) => {
-        if (!currentQuestion) return;
+        if (!currentQuestion || buttonDisabled) return;
 
         const correctAnswer = languageToggle ? currentQuestion.koreanWord : currentQuestion.englishWord;
         const isCorrect = answer.toLowerCase() === correctAnswer.toLowerCase();
+
+        setButtonDisabled(true);
 
         if (isCorrect) {
             setFeedback("정답!");
@@ -104,11 +108,13 @@ function GameShortAnswer() {
             setTimeout(() => {
                 setFeedback("");
                 nextQuestion();
+                setButtonDisabled(false);
             }, 1000);
         } else {
             setFeedback("틀림!");
             setTimeout(() => {
                 setFeedback("");
+                setButtonDisabled(false);
             }, 1000);
         }
     };
@@ -121,6 +127,7 @@ function GameShortAnswer() {
             setMessages({});
             setIsTimerRunning(true);
             setTimer(initialTimer);
+            publishMessage('/topic/new-question', { message: 'Next question' });
         } else {
             endGame();
         }
@@ -131,12 +138,11 @@ function GameShortAnswer() {
         setIsTimerRunning(false);
         setIsQuestionTransitioning(true);
         setTimeout(() => {
-            setFeedback(""); // 다음 문항으로 넘어가기 전에 feedback 초기화
+            setFeedback("");
             nextQuestion();
             setIsQuestionTransitioning(false);
         }, 1000);
     };
-
 
     const endGame = () => {
         setGameEnded(true);
@@ -145,11 +151,21 @@ function GameShortAnswer() {
             score: scores[nickname]
         })).sort((a, b) => b.score - a.score);
         setResults(resultsArray);
-        publishMessage('/app/end', { message: 'Game has ended', gameSessionId: 1 });
+        publishMessage('/app/end', { message: 'Game has ended', gameSessionId });
     };
 
-    const handleExit = () => {
-        publishMessage('/app/end', { message: 'Game has ended', gameSessionId: 1 });
+    const handleExit = async () => {
+        if (!isSessionDeleted) {
+            try {
+                await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
+                console.log("Game session deleted successfully.");
+                setIsSessionDeleted(true);
+            } catch (error) {
+                console.error("Error deleting game session:", error);
+            }
+        }
+
+        publishMessage('/app/end', { message: 'Game has ended', gameSessionId });
         disconnectWebSocket();
         navigate('/');
         window.location.reload();
@@ -162,7 +178,14 @@ function GameShortAnswer() {
                 <div className="gaming-results-container">
                     {results.map((result, index) => (
                         <div key={index} className="gaming-result-item">
-                            <span>{index + 1}등: {result.nickname}, 맞춘 갯수: {result.score}개</span>
+                            <div className="gaming-result-rank">
+                                {index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}등`}
+                            </div>
+                            <div className="gaming-result-profile">
+                                <span className="profile-emoji">👤</span>
+                                <span className="gaming-result-name">{result.nickname}</span>
+                            </div>
+                            <span className="gaming-result-score">맞춘 갯수: {result.score}개</span>
                         </div>
                     ))}
                 </div>
