@@ -1,7 +1,6 @@
 :root {
-    /* Colors */
     --color-green1: #e4e6d9;
-    --color-green2: #F9F9F9; /*배경색 F5F5F5*/
+    --color-green2: #F9F9F9;
     --color-green3: #999999;
     --color-green4: #333333;
     --color-green5: #273526;
@@ -31,16 +30,9 @@ body {
 
 .main-content {
     position: relative;
-    top: 0;
-    left: 78px;
-    width: calc(100% - 78px);
+    padding-top: 60px;
     min-height: 100vh;
     z-index: 6;
     transition: var(--transition);
 }
 
-.sidebar.expand ~ .main-content {
-    left: 250px;
-    width: calc(100% - 250px);
-    transition: var(--transition);
-}

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/CardItem.css';
 import { FaEye } from 'react-icons/fa';
-import { handleCardClick as utilityHandleCardClick } from './utility/utility'; // utility의 handleCardClick 불러오기
+import { handleCardClick as utilityHandleCardClick } from '../utility/utility'; // utility의 handleCardClick 불러오기
 
 const CardItem = ({
                       title,

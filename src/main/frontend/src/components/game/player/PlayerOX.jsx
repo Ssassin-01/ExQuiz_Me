@@ -11,7 +11,7 @@ function PlayerOX() {
     const clientRef = useRef(null);
     const [gameEnded, setGameEnded] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(false); // 버튼 비활성화 상태 추가
-    const [gameSessionId, setGameSessionId] = useState(null);
+    const [gameSessionId, setGameSessionId] = useState(localStorage.getItem('gameSessionId')); // 로컬스토리지에서 gameSessionId 가져오기
 
     const sendMessage = (text) => {
         if (clientRef.current && clientRef.current.connected) {
@@ -56,8 +56,16 @@ function PlayerOX() {
                     client.subscribe('/topic/game-end', async () => {
                         setGameEnded(true);
                         try {
-                            await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
-                            console.log("Game session deleted successfully.");
+                            if (gameSessionId) {
+                                await axios.post(`${apiUrl}/api/game-sessions/exit`, { gameSessionId });
+                                console.log("Game session deleted successfully.");
+
+                                // 세션 종료 후 로컬스토리지 및 상태 클리어
+                                localStorage.removeItem('gameSessionId');
+                                setGameSessionId(null);
+                            } else {
+                                console.error("Game session ID is missing.");
+                            }
                         } catch (error) {
                             console.error("Error deleting game session:", error);
                         }
@@ -99,10 +107,10 @@ function PlayerOX() {
         <div className="game-ox-container">
             <div className="game-ox-content">
                 <div className="button-group">
-                    <button onClick={() => handleOXClick('O')} className="option-button">
+                    <button onClick={() => handleOXClick('O')} className="option-button" disabled={buttonDisabled}>
                         ⭕ O
                     </button>
-                    <button onClick={() => handleOXClick('X')} className="option-button">
+                    <button onClick={() => handleOXClick('X')} className="option-button" disabled={buttonDisabled}>
                         ❌ X
                     </button>
                 </div>

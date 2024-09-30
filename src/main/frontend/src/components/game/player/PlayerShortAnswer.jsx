@@ -10,6 +10,7 @@ function PlayerShortAnswer() {
     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
     const clientRef = useRef(null);
     const [gameEnded, setGameEnded] = useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
 
     const sendMessage = (text) => {
         if (clientRef.current && clientRef.current.connected) {
@@ -37,6 +38,9 @@ function PlayerShortAnswer() {
                 heartbeatOutgoing: 4000,
                 onConnect: () => {
                     console.log('Connected to WebSocket');
+                    client.subscribe('/topic/new-question', () => {
+                        setButtonDisabled(false);
+                    });
                     client.subscribe('/topic/game-end', () => {
                         setGameEnded(true);
                         client.deactivate(() => {
@@ -66,8 +70,11 @@ function PlayerShortAnswer() {
     }, [apiUrl]);
 
     const handleSendAnswer = () => {
-        sendMessage(answer);
-        setAnswer(""); // 답을 보낸 후 입력란 초기화
+        if (!buttonDisabled) {
+            sendMessage(answer);
+            setButtonDisabled(true);
+            setAnswer("");
+        }
     };
 
     if (gameEnded) {
@@ -87,8 +94,9 @@ function PlayerShortAnswer() {
                     onChange={(e) => setAnswer(e.target.value)}
                     placeholder="영어 답을 입력하세요"
                     className="message-input"
+                    disabled={buttonDisabled}
                 />
-                <button onClick={handleSendAnswer} className="send-button">보내기</button>
+                <button onClick={handleSendAnswer} className="send-button" disabled={buttonDisabled}>보내기</button>
             </div>
         </div>
     );

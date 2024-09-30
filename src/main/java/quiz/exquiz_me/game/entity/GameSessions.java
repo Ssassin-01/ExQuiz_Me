@@ -60,22 +60,23 @@ public class GameSessions {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    // 참가자 목록을 메모리에서 관리하기 위해 Set으로 변경
-    // 참가자 목록을 데이터베이스와 연동하여 관리
-    @OneToMany(mappedBy = "gameSessions", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<GameParticipant> participants = new HashSet<>();
+    // 이 필드는 JPA에서 관리되지 않으며, 메모리에서만 관리됩니다.
+    @Transient // JPA가 관리하지 않는 필드임을 명시
+    private Set<GameParticipantDTO> participants = new HashSet<>();
 
-    public void addParticipant(GameParticipant participant) {
+    // 참가자 추가 메서드
+    public void addParticipant(GameParticipantDTO participant) {
         participants.add(participant);
-        participant.setGameSessions(this); // 양방향 관계 설정
     }
 
-    public void removeParticipant(GameParticipant participant) {
+    // 참가자 삭제 메서드
+    public void removeParticipant(GameParticipantDTO participant) {
         participants.remove(participant);
-        participant.setGameSessions(null);
     }
 
+    // 참가자 수 반환
     public int getParticipantCount() {
         return participants.size();
     }
 }
+

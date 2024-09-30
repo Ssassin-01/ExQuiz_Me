@@ -8,8 +8,8 @@ import ActivitySection from './components/ActivitySection';
 import RecentCardsSection from './components/RecentCardsSection';
 import CardBookmarkSection from './components/CardBookmarkSection';
 import WordBookmarkSection from './components/WordBookmarkSection';
-import { fetchUserProfile, fetchUserCards, fetchRecentCards, fetchBookmarkedCards } from './components/api/apiService';  // apiService.js에서 불러옴
-import { handleBookmarkToggle, handleCardClick, formatDate } from './components/utility/utility';
+import { fetchUserProfile, fetchUserCards, fetchRecentCards, fetchBookmarkedCards } from './api/apiService';  // apiService.js에서 불러옴
+import { handleBookmarkToggle, handleCardClick, formatDate } from './utility/utility';
 
 const MyPage = () => {
     const { user } = useUser();

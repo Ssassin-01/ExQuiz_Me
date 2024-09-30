@@ -4,8 +4,8 @@ import { Tabs, Tab } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import { useUser } from './User/UserContext';
 import CardItem from "./myPage/components/CardItem";
-import { fetchUserCards, fetchRecentCards, fetchBookmarkedCards, fetchStudyCards } from './myPage/components/api/apiService'; // 전체 카드 불러오기 추가
-import { handleCardClick, handleBookmarkToggle, formatDate } from './myPage/components/utility/utility';
+import { fetchUserCards, fetchRecentCards, fetchBookmarkedCards, fetchStudyCards } from './myPage/api/apiService'; // 전체 카드 불러오기 추가
+import { handleCardClick, handleBookmarkToggle, formatDate } from './myPage/utility/utility';
 
 const StudySection = () => {
   const [searchTerm, setSearchTerm] = useState("");
