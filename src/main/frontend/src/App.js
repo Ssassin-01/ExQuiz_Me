@@ -33,6 +33,7 @@ import TimeTracker from "./components/utility/TimeTracker";
 import LearningTest from "./components/card/LearningTest";
 import SuccessPage from "./components/subScribe/components/SuccessPage";
 import FailPage from "./components/subScribe/components/FailPage";
+import LearningTestResult from "./components/card/LearningTestResult";
 function App() {
     return (
         <HelmetProvider>
@@ -58,6 +59,7 @@ function App() {
                                     <Route path="/learning/:cardNumber" element={<Learning />} /> {/* Learning 경로 추가 */}
                                     <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
                                     <Route path="/learn-test" element={<LearningTest />} />
+                                    <Route path="/learn-test-result" element={<LearningTestResult />} />
                                 </Route>
                                 <Route path="gameroom" element={<GameRoom />} />
                                 <Route path="/player/ox" element={<PlayerOX />} /> {/* OX 플레이어 */}

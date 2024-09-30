@@ -1,0 +1,759 @@
+2024-09-29T01:55:00.024+09:00  INFO 81111 --- [main] quiz.exquiz_me.ExQuizMeApplication       : Starting ExQuizMeApplication using Java 17 with PID 81111 (/Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me/build/classes/java/main started by ijeong-eun in /Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me)
+2024-09-29T01:55:00.026+09:00  INFO 81111 --- [main] quiz.exquiz_me.ExQuizMeApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-09-29T01:55:00.687+09:00  INFO 81111 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29T01:55:00.746+09:00  INFO 81111 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 12 JPA repository interfaces.
+2024-09-29T01:55:01.116+09:00  INFO 81111 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-29T01:55:01.125+09:00  INFO 81111 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-29T01:55:01.126+09:00  INFO 81111 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-09-29T01:55:01.219+09:00  INFO 81111 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-29T01:55:01.220+09:00  INFO 81111 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1156 ms
+2024-09-29T01:55:01.278+09:00 DEBUG 81111 --- [main] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2024-09-29T01:55:01.366+09:00  INFO 81111 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29T01:55:01.407+09:00  INFO 81111 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-09-29T01:55:01.434+09:00  INFO 81111 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-29T01:55:01.600+09:00  INFO 81111 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-29T01:55:01.619+09:00  INFO 81111 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-29T01:55:02.907+09:00 ERROR 81111 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:428) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:276) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:107) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:223) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at quiz.exquiz_me.ExQuizMeApplication.main(ExQuizMeApplication.java:10) ~[main/:na]
+
+2024-09-29T01:55:02.929+09:00  WARN 81111 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:276) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:107) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:223) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at quiz.exquiz_me.ExQuizMeApplication.main(ExQuizMeApplication.java:10) ~[main/:na]
+
+2024-09-29T01:55:02.949+09:00  WARN 81111 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-29T01:55:03.778+09:00  INFO 81111 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-29T01:55:03.795+09:00  INFO 81111 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-29T01:55:04.817+09:00 ERROR 81111 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:428) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcDatabaseMetaData(ImprovedExtractionContextImpl.java:70) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.processTableResultSet(InformationExtractorJdbcDatabaseMetaDataImpl.java:64) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.extract.internal.AbstractInformationExtractorImpl.getTables(AbstractInformationExtractorImpl.java:570) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.getTablesInformation(DatabaseInformationImpl.java:122) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:72) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1420) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at quiz.exquiz_me.ExQuizMeApplication.main(ExQuizMeApplication.java:10) ~[main/:na]
+
+2024-09-29T01:55:04.822+09:00  WARN 81111 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1045, SQLState: 28000
+2024-09-29T01:55:04.823+09:00 ERROR 81111 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Access denied for user 'root'@'localhost' (using password: YES)
+2024-09-29T01:55:04.834+09:00 ERROR 81111 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+2024-09-29T01:55:04.835+09:00  WARN 81111 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+2024-09-29T01:55:04.837+09:00  INFO 81111 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-29T01:55:04.858+09:00  INFO 81111 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-29T01:55:04.877+09:00 ERROR 81111 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at quiz.exquiz_me.ExQuizMeApplication.main(ExQuizMeApplication.java:10) ~[main/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 16 common frames omitted
+Caused by: org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:63) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcDatabaseMetaData(ImprovedExtractionContextImpl.java:70) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.processTableResultSet(InformationExtractorJdbcDatabaseMetaDataImpl.java:64) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.extract.internal.AbstractInformationExtractorImpl.getTables(AbstractInformationExtractorImpl.java:570) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.getTablesInformation(DatabaseInformationImpl.java:122) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:72) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1420) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.5.jar:6.1.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.5.jar:6.1.5]
+	... 20 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:428) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 41 common frames omitted
+
+2024-09-29T01:57:27.449+09:00  INFO 81497 --- [main] quiz.exquiz_me.ExQuizMeApplication       : Starting ExQuizMeApplication using Java 17 with PID 81497 (/Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me/build/classes/java/main started by ijeong-eun in /Users/ijeong-eun/Desktop/ExQuiz_Me/ExQuiz_Me)
+2024-09-29T01:57:27.452+09:00  INFO 81497 --- [main] quiz.exquiz_me.ExQuizMeApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-09-29T01:57:27.943+09:00  INFO 81497 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29T01:57:27.995+09:00  INFO 81497 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 12 JPA repository interfaces.
+2024-09-29T01:57:28.367+09:00  INFO 81497 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-29T01:57:28.376+09:00  INFO 81497 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-29T01:57:28.376+09:00  INFO 81497 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-09-29T01:57:28.430+09:00  INFO 81497 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-29T01:57:28.430+09:00  INFO 81497 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 949 ms
+2024-09-29T01:57:28.474+09:00 DEBUG 81497 --- [main] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2024-09-29T01:57:28.551+09:00  INFO 81497 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29T01:57:28.602+09:00  INFO 81497 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-09-29T01:57:28.637+09:00  INFO 81497 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-29T01:57:29.269+09:00  INFO 81497 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-29T01:57:29.320+09:00  INFO 81497 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-29T01:57:29.725+09:00  INFO 81497 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33a47707
+2024-09-29T01:57:29.728+09:00  INFO 81497 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-29T01:57:29.880+09:00  WARN 81497 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-29T01:57:31.871+09:00  INFO 81497 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-29T01:57:32.505+09:00  INFO 81497 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29T01:57:32.864+09:00  INFO 81497 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-29T01:57:33.334+09:00  WARN 81497 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-29T01:57:33.436+09:00 DEBUG 81497 --- [main] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/ws/**] in 'stompWebSocketHandlerMapping'
+2024-09-29T01:57:33.484+09:00 DEBUG 81497 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 33 mappings in 'requestMappingHandlerMapping'
+2024-09-29T01:57:33.506+09:00 DEBUG 81497 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-09-29T01:57:33.553+09:00  INFO 81497 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@30d4d6fb, org.springframework.security.web.session.ForceEagerSessionCreationFilter@3fb8e8cf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4483e237, org.springframework.security.web.context.SecurityContextHolderFilter@54980154, org.springframework.security.web.header.HeaderWriterFilter@74c74c99, org.springframework.web.filter.CorsFilter@f0020b1, org.springframework.security.web.authentication.logout.LogoutFilter@5ec10ab1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@411c5fa2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7335414e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@274f51ad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6466e599, org.springframework.security.web.session.SessionManagementFilter@56f1db5f, org.springframework.security.web.access.ExceptionTranslationFilter@22d82fe8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@361d56a3]
+2024-09-29T01:57:33.580+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.a.c.AdminController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.c.CardBookmarkController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.c.CardController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.BoardController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.LoginController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.MainController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.SignUpController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.SubscribeController:
+	
+2024-09-29T01:57:33.581+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.UserController:
+	
+2024-09-29T01:57:33.583+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.c.WebSocketController:
+	{[MESSAGE],[/answer]}: receiveAnswer(GameMessage)
+	{[MESSAGE],[/join]}: joinGame(ParticipantUpdate)
+	{[MESSAGE],[/start]}: startGame(GameMessage)
+	{[MESSAGE],[/end]}: endGame(GameMessage)
+2024-09-29T01:57:33.584+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameCardController:
+	
+2024-09-29T01:57:33.584+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameController:
+	{[MESSAGE],[/game]}: handleGameMessage(GameMessage)
+2024-09-29T01:57:33.584+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.g.c.GameSessionController:
+	
+2024-09-29T01:57:33.584+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	q.e.u.c.UserActivityController:
+	
+2024-09-29T01:57:33.585+09:00 DEBUG 81497 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+2024-09-29T01:57:33.620+09:00 DEBUG 81497 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-09-29T01:57:33.641+09:00 DEBUG 81497 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-09-29T01:57:33.746+09:00  INFO 81497 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-09-29T01:57:33.747+09:00 DEBUG 81497 --- [main] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2024-09-29T01:57:33.747+09:00 DEBUG 81497 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2024-09-29T01:57:33.747+09:00  INFO 81497 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-09-29T01:57:33.747+09:00 DEBUG 81497 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@776e4088]
+2024-09-29T01:57:33.747+09:00 DEBUG 81497 --- [main] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@776e4088]
+2024-09-29T01:57:33.748+09:00  INFO 81497 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@776e4088]]
+2024-09-29T01:57:33.748+09:00  INFO 81497 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-09-29T01:57:33.748+09:00 DEBUG 81497 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2024-09-29T01:57:33.748+09:00 DEBUG 81497 --- [main] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2024-09-29T01:57:33.755+09:00  INFO 81497 --- [main] quiz.exquiz_me.ExQuizMeApplication       : Started ExQuizMeApplication in 6.604 seconds (process running for 6.849)
+2024-09-29T01:57:41.109+09:00  INFO 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-29T01:57:41.109+09:00  INFO 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-29T01:57:41.110+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-09-29T01:57:41.110+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-09-29T01:57:41.110+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-09-29T01:57:41.114+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3eea7c4b
+2024-09-29T01:57:41.114+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@34a8a5ad
+2024-09-29T01:57:41.115+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-09-29T01:57:41.115+09:00  INFO 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-09-29T01:57:41.563+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/today", parameters={}
+2024-09-29T01:57:41.563+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-09-29T01:57:41.564+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-09-29T01:57:41.564+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getTodayActivity(Authentication)
+2024-09-29T01:57:41.629+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:41.630+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserActivityDTO(loginDate=2024-09-29, timeSpent=0)]
+2024-09-29T01:57:41.644+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:41.656+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:41.661+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=중등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:57:41.668+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:44.416+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:57:44.417+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:57:44.448+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:44.448+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:57:44.450+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:44.454+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:57:44.454+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:57:44.462+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:44.462+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:57:44.463+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:44.467+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:57:44.467+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:57:44.481+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:44.481+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-09-29T01:57:44.484+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:44.488+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:57:44.488+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:57:44.505+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:44.505+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=3, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=토익 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:57:44.506+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:51.259+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-09-29T01:57:51.261+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-09-29T01:57:51.294+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:51.296+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=중등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:57:51.301+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:56.725+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:57:56.726+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:57:56.755+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:56.756+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:57:56.758+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:56.762+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:57:56.763+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:57:56.771+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:56.772+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:57:56.773+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:56.777+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:57:56.777+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:57:56.780+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:56.780+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-09-29T01:57:56.781+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:56.784+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:57:56.784+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:57:56.798+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:57:56.798+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=3, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=토익 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:57:56.799+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:57:59.204+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/bookmarks/toggle", parameters={}
+2024-09-29T01:57:59.205+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#toggleBookmark(BookmarkRequest)
+2024-09-29T01:57:59.258+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [quiz.exquiz_me.card.dto.BookmarkRequest@1ffe27a7]
+2024-09-29T01:57:59.286+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-09-29T01:57:59.286+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Bookmarked"]
+2024-09-29T01:57:59.287+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:01.019+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/cards/1/view", parameters={}
+2024-09-29T01:58:01.020+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#increaseViewCountAndLogAccess(Long)
+2024-09-29T01:58:01.070+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:01.071+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime=2 (truncated)...]
+2024-09-29T01:58:01.072+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:02.373+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:58:02.374+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:58:02.403+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:02.404+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:02.406+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:02.410+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:58:02.411+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:58:02.423+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:02.424+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:58:02.425+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:02.430+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:58:02.431+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:58:02.445+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:02.445+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:02.446+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:02.450+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:58:02.450+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:58:02.465+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:02.466+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:02.467+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:14.259+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/game/card/1/items", parameters={}
+2024-09-29T01:58:14.260+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.game.controller.GameCardController#getCardItems(Long)
+2024-09-29T01:58:14.276+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:14.276+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [[quiz.exquiz_me.game.controller.GameCardController$VocabularyItemDTO@53019f75, quiz.exquiz_me.game.c (truncated)...]
+2024-09-29T01:58:14.279+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:16.224+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/today", parameters={}
+2024-09-29T01:58:16.224+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/user/profile/simple/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:58:16.224+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/9", parameters={}
+2024-09-29T01:58:16.224+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getTodayActivity(Authentication)
+2024-09-29T01:58:16.224+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.controller.UserController#getSimpleUserProfile(String)
+2024-09-29T01:58:16.224+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getUserActivityByMonth(int, Authentication)
+2024-09-29T01:58:16.235+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:16.236+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserActivityDTO(loginDate=2024-09-29, timeSpent=0)]
+2024-09-29T01:58:16.237+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:16.244+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:16.245+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserDTO(email=kkkk1234@gmail.com, password=$2a$10$sRil7eEEvZcB3UdiIO8SOOSPvyxCghtfeJBtEv4NbXOFWq2w/D (truncated)...]
+2024-09-29T01:58:16.247+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:16.247+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:16.248+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[UserActivityDTO(loginDate=2024-09-25, timeSpent=199), UserActivityDTO(loginDate=2024-09-26, timeSpe (truncated)...]
+2024-09-29T01:58:16.249+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:16.252+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:58:16.253+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:58:16.259+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:16.259+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:58:16.260+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:16.264+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:58:16.264+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:58:16.275+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:16.275+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:16.276+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:16.280+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:58:16.281+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:58:16.285+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:16.285+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:16.286+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:21.661+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:58:21.661+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:58:21.679+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:21.680+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:21.682+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:21.686+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:58:21.686+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:58:21.694+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:21.694+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:58:21.696+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:21.700+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:58:21.700+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:58:21.706+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:21.706+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:21.707+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:21.710+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:58:21.710+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:58:21.722+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:21.722+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:58:21.723+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:33.754+09:00  INFO 81497 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2024-09-29T01:58:41.769+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/api/user-activity/update-time", parameters={}
+2024-09-29T01:58:41.770+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#updateTimeSpent(UserActivityDTO, Authentication)
+2024-09-29T01:58:41.785+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserActivityDTO(loginDate=null, timeSpent=1)]
+2024-09-29T01:58:41.818+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-09-29T01:58:41.818+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Time spent updated"]
+2024-09-29T01:58:41.819+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:58:59.614+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/cards/5/view", parameters={}
+2024-09-29T01:58:59.617+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#increaseViewCountAndLogAccess(Long)
+2024-09-29T01:58:59.687+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:58:59.688+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-09 (truncated)...]
+2024-09-29T01:58:59.689+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:00.808+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:59:00.809+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:59:00.831+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:00.832+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:00.837+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:00.845+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:00.845+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:00.860+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:00.860+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:00.861+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:00.865+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:00.865+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:00.872+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:00.872+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:00.873+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:00.876+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:00.876+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:00.886+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:00.887+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:00.887+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:03.469+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/cards/5/view", parameters={}
+2024-09-29T01:59:03.472+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#increaseViewCountAndLogAccess(Long)
+2024-09-29T01:59:03.581+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:03.582+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-09 (truncated)...]
+2024-09-29T01:59:03.584+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:04.303+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:59:04.304+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:59:04.322+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:04.322+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:04.324+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:04.328+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:04.328+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:04.347+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:04.348+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:04.349+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:04.354+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:04.355+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:04.360+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:04.361+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:04.362+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:04.365+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:04.365+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:04.379+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:04.379+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:04.380+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:06.312+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/today", parameters={}
+2024-09-29T01:59:06.312+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/user/profile/simple/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:06.312+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/9", parameters={}
+2024-09-29T01:59:06.314+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getTodayActivity(Authentication)
+2024-09-29T01:59:06.314+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getUserActivityByMonth(int, Authentication)
+2024-09-29T01:59:06.314+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.controller.UserController#getSimpleUserProfile(String)
+2024-09-29T01:59:06.368+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:06.369+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:06.369+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[UserActivityDTO(loginDate=2024-09-25, timeSpent=199), UserActivityDTO(loginDate=2024-09-26, timeSpe (truncated)...]
+2024-09-29T01:59:06.369+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserActivityDTO(loginDate=2024-09-29, timeSpent=1)]
+2024-09-29T01:59:06.370+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:06.371+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserDTO(email=kkkk1234@gmail.com, password=$2a$10$sRil7eEEvZcB3UdiIO8SOOSPvyxCghtfeJBtEv4NbXOFWq2w/D (truncated)...]
+2024-09-29T01:59:06.375+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:06.375+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:06.375+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:06.387+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:06.388+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:06.408+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:06.409+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:06.409+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:06.414+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:06.414+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:06.426+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:06.426+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:06.427+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:06.432+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:06.432+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:06.442+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:06.442+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:06.447+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:07.417+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/today", parameters={}
+2024-09-29T01:59:07.417+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getTodayActivity(Authentication)
+2024-09-29T01:59:07.422+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/9", parameters={}
+2024-09-29T01:59:07.422+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/user/profile/simple/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:07.423+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getUserActivityByMonth(int, Authentication)
+2024-09-29T01:59:07.424+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.controller.UserController#getSimpleUserProfile(String)
+2024-09-29T01:59:07.427+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:07.427+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:07.428+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserActivityDTO(loginDate=2024-09-29, timeSpent=1)]
+2024-09-29T01:59:07.428+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[UserActivityDTO(loginDate=2024-09-25, timeSpent=199), UserActivityDTO(loginDate=2024-09-26, timeSpe (truncated)...]
+2024-09-29T01:59:07.428+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:07.428+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:07.432+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:07.432+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserDTO(email=kkkk1234@gmail.com, password=$2a$10$sRil7eEEvZcB3UdiIO8SOOSPvyxCghtfeJBtEv4NbXOFWq2w/D (truncated)...]
+2024-09-29T01:59:07.433+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:07.436+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:07.437+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:07.447+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:07.447+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:07.448+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:07.452+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:07.452+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:07.466+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:07.467+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:07.468+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:07.473+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:07.473+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:07.480+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:07.480+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:07.481+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:09.319+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/game/card/1/items", parameters={}
+2024-09-29T01:59:09.319+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.game.controller.GameCardController#getCardItems(Long)
+2024-09-29T01:59:09.325+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:09.326+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [[quiz.exquiz_me.game.controller.GameCardController$VocabularyItemDTO@457fb93, quiz.exquiz_me.game.co (truncated)...]
+2024-09-29T01:59:09.327+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:10.943+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:59:10.943+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:59:10.971+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:10.972+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:10.973+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:10.975+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:10.976+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:10.988+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:10.988+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:10.989+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:10.992+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:10.992+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:10.996+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:10.996+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:10.997+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:11.000+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:11.000+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:11.008+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:11.008+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:11.008+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:17.062+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/popular", parameters={}
+2024-09-29T01:59:17.063+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getPopularCards()
+2024-09-29T01:59:17.095+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:17.096+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=2, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=중등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:17.097+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:22.727+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/9", parameters={}
+2024-09-29T01:59:22.727+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/user-activity/today", parameters={}
+2024-09-29T01:59:22.728+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getTodayActivity(Authentication)
+2024-09-29T01:59:22.728+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#getUserActivityByMonth(int, Authentication)
+2024-09-29T01:59:22.727+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/user/profile/simple/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:22.729+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.controller.UserController#getSimpleUserProfile(String)
+2024-09-29T01:59:22.733+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:22.734+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[UserActivityDTO(loginDate=2024-09-25, timeSpent=199), UserActivityDTO(loginDate=2024-09-26, timeSpe (truncated)...]
+2024-09-29T01:59:22.735+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:22.737+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:22.738+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserActivityDTO(loginDate=2024-09-29, timeSpent=1)]
+2024-09-29T01:59:22.739+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:22.741+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:22.741+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserDTO(email=kkkk1234@gmail.com, password=$2a$10$sRil7eEEvZcB3UdiIO8SOOSPvyxCghtfeJBtEv4NbXOFWq2w/D (truncated)...]
+2024-09-29T01:59:22.742+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:22.745+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:22.745+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:22.753+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:22.753+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:22.754+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:22.757+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:22.757+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:22.767+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:22.767+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:22.768+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:22.771+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:22.772+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:22.779+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:22.779+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:22.780+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:35.657+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:59:35.657+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:59:35.674+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:35.675+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:35.677+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:35.680+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:35.681+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:35.687+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:35.688+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:35.688+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:35.692+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:35.692+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:35.698+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:35.699+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:35.699+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:35.703+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:35.703+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:35.731+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:35.732+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:35.732+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:41.557+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/api/user-activity/update-time", parameters={}
+2024-09-29T01:59:41.558+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#updateTimeSpent(UserActivityDTO, Authentication)
+2024-09-29T01:59:41.563+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserActivityDTO(loginDate=null, timeSpent=2)]
+2024-09-29T01:59:41.609+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-09-29T01:59:41.609+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Time spent updated"]
+2024-09-29T01:59:41.609+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:43.833+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/bookmarks/toggle", parameters={}
+2024-09-29T01:59:43.834+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#toggleBookmark(BookmarkRequest)
+2024-09-29T01:59:43.834+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [quiz.exquiz_me.card.dto.BookmarkRequest@667498f3]
+2024-09-29T01:59:43.852+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-09-29T01:59:43.852+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Bookmarked"]
+2024-09-29T01:59:43.853+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:44.801+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/api/cards/5/view", parameters={}
+2024-09-29T01:59:44.801+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#increaseViewCountAndLogAccess(Long)
+2024-09-29T01:59:44.826+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:44.827+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-09 (truncated)...]
+2024-09-29T01:59:44.828+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:45.735+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T01:59:45.735+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T01:59:45.750+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:45.750+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:45.752+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:45.756+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T01:59:45.756+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T01:59:45.762+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:45.763+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:45.763+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:45.767+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T01:59:45.767+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T01:59:45.780+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:45.780+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T01:59:45.781+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:45.785+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T01:59:45.785+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T01:59:45.797+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:45.798+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T01:59:45.798+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T01:59:46.749+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/cards/3/view", parameters={}
+2024-09-29T01:59:46.750+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#increaseViewCountAndLogAccess(Long)
+2024-09-29T01:59:46.770+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T01:59:46.770+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CardDTO(cardNumber=3, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=토익 영단어, writeDateTime=2 (truncated)...]
+2024-09-29T01:59:46.771+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T02:00:07.598+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cards", parameters={}
+2024-09-29T02:00:07.599+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getAllCards()
+2024-09-29T02:00:07.631+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T02:00:07.633+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T02:00:07.635+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T02:00:07.638+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/user", parameters={}
+2024-09-29T02:00:07.638+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getUserCards()
+2024-09-29T02:00:07.647+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T02:00:07.647+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=5, userEmail=kkkk1234@gmail.com, nickname=kkkk1234, title=, writeDateTime=2024-0 (truncated)...]
+2024-09-29T02:00:07.648+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T02:00:07.652+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/bookmarks/user/kkkk1234@gmail.com", parameters={}
+2024-09-29T02:00:07.652+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardBookmarkController#getUserBookmarks(String)
+2024-09-29T02:00:07.660+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T02:00:07.661+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=1, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=고등 영단어, writeDateTime= (truncated)...]
+2024-09-29T02:00:07.662+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T02:00:07.665+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cards/recent", parameters={}
+2024-09-29T02:00:07.665+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.card.controller.CardController#getRecentAccessedCards()
+2024-09-29T02:00:07.676+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-09-29T02:00:07.676+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CardDTO(cardNumber=3, userEmail=asdf1234@gmail.com, nickname=asdf1234, title=토익 영단어, writeDateTime= (truncated)...]
+2024-09-29T02:00:07.676+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-09-29T02:00:41.761+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/user-activity/update-time", parameters={}
+2024-09-29T02:00:41.763+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to quiz.exquiz_me.user.controller.UserActivityController#updateTimeSpent(UserActivityDTO, Authentication)
+2024-09-29T02:00:41.769+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserActivityDTO(loginDate=null, timeSpent=3)]
+2024-09-29T02:00:41.798+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2024-09-29T02:00:41.798+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Time spent updated"]
+2024-09-29T02:00:41.799+09:00 DEBUG 81497 --- [http-nio-172.30.1.55-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
