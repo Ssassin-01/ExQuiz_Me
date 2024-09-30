@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useWebSocket } from './context/WebSocketContext';
 import './css/Game.css';
+import {isDisabled} from "bootstrap/js/src/util";
 
 function Game() {
     const [playerCount, setPlayerCount] = useState(6);
     const [cardNumber, setCardNumber] = useState(1);
     const [questionCount, setQuestionCount] = useState('10');
     const [maxQuestions, setMaxQuestions] = useState(10);
-    const [timer, setTimer] = useState("00:10");
+    const [timer, setTimer] = useState("00:05");
     const [questionType, setQuestionType] = useState('ox');
     const [languageToggle, setLanguageToggle] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState("");
@@ -103,28 +104,24 @@ function Game() {
             <header className="game-header">Game - 설정</header>
             <div className="game-contents">
                 <div className="game-content game-content-left">
-                    {/* Card Selection */}
                     <div className="settings-row">
                         <span className="label">카드</span>
-                        <select value={cardNumber} onChange={e => setCardNumber(e.target.value)} className="select">
+                        <select value={cardNumber} onChange={e => setCardNumber(e.target.value)} className="select" disabled>
                             {[...Array(10).keys()].map(n => <option key={n} value={n + 1}>{n + 1}</option>)}
                         </select>
                     </div>
-                    {/* Player Count */}
                     <div className="settings-row">
                         <span className="label">명 수</span>
-                        <select value={playerCount} onChange={e => setPlayerCount(e.target.value)} className="select">
+                        <select value={playerCount} onChange={e => setPlayerCount(e.target.value)} className="select" disabled>
                             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => <option key={n} value={n}>{n}</option>)}
                         </select>
                     </div>
-                    {/* Question Count */}
                     <div className="settings-row">
                         <span className="label">문제수</span>
                         <select value={questionCount} onChange={e => setQuestionCount(e.target.value)} className="select">
                             {["5", "8", "10", "15", "20", "all"].map(n => <option key={n} value={n}>{n}</option>)}
                         </select>
                     </div>
-                    {/* Timer */}
                     <div className="settings-row">
                         <span className="label">타이머</span>
                         <select value={timer} onChange={e => setTimer(e.target.value)} className="select">

@@ -1,24 +1,33 @@
 import React from 'react';
 import './css/Main.css';
+import {Link} from "react-router-dom";
 
 const Main = () => {
     return (
         <div className="main-container">
-            {/* Hero Section */}
+
             <section className="hero-section">
                 <div className="hero-content">
                     <h1>📚 영단어 실력을 빠르게 향상하세요</h1>
                     <p>오늘의 학습 목표를 설정하고, 친구들과 함께 게임에 도전하세요!</p>
                     <div className="cta-buttons">
-                        <button className="cta-button">💡 학습하기</button>
-                        <button className="cta-button">🔄 연습하기</button>
-                        <button className="cta-button">📝 테스트하기</button>
-                        <button className="cta-button">🎮 게임 시작하기</button>
+                        <Link to="/study" className="cta-button">
+                            💡 학습하기
+                        </Link>
+                        <Link to="/make" className="cta-button">
+                            🛠️ 만들기
+                        </Link>
+                        <Link to="/game" className="cta-button">
+                            🎮 게임 시작하기
+                        </Link>
+                        <Link to="/subscribe" className="cta-button">
+                            💳 구독하기
+                        </Link>
                     </div>
                 </div>
             </section>
 
-            {/* Feature Explanation Section */}
+
             <section className="feature-section">
                 <h2>주요 기능 설명 ✨</h2>
                 <div className="feature-content">
@@ -45,7 +54,7 @@ const Main = () => {
                 </div>
             </section>
 
-            {/* Game Flow Section */}
+
             <section className="game-flow-section">
                 <h2>게임 진행 방식 🎮</h2>
                 <div className="timeline">
@@ -95,14 +104,14 @@ const Main = () => {
                 </div>
             </section>
 
-            {/* Challenge Section */}
+
             <section className="challenge-section">
                 <h2>이번 주 학습 챌린지 🔥</h2>
                 <p>주간 챌린지: 100개의 단어를 외우고 상을 받아보세요! 단어 암기 훈련을 통해 실력을 쌓아보세요.</p>
                 <button className="challenge-button">💪 챌린지 참여하기</button>
             </section>
 
-            {/* Testimonials Section */}
+
             <section className="testimonial-section">
                 <h2>사용자 후기 🌟</h2>
                 <div className="testimonial-content">
