@@ -26,6 +26,7 @@ function GameTrueOrFalse() {
     const [timer, setTimer] = useState(initialTimer); // 타이머 초기화
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
+    const [isSessionDeleted, setIsSessionDeleted] = useState(false); // 세션 중복 삭제 방지 상태
     const navigate = useNavigate();
 
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -96,7 +97,9 @@ function GameTrueOrFalse() {
 
     // 새로고침 시 게임 세션 정보 복원
     useEffect(() => {
+        console.log("Current gameSessionId:", gameSessionId);
         if (!gameSessionId) {
+            console.error("No valid game session ID found!");
             const savedSessionId = localStorage.getItem('gameSessionId');
             if (savedSessionId) {
                 setGameSessionId(savedSessionId);
@@ -107,20 +110,6 @@ function GameTrueOrFalse() {
             connectWebSocket();
         }
     }, [gameSessionId, webSocketConnected, connectWebSocket]);
-
-    // 참가자 정보 복원
-    useEffect(() => {
-        const savedParticipants = JSON.parse(localStorage.getItem('participants'));
-        if (savedParticipants && savedParticipants.length > 0) {
-            // 참가자 리스트 복원 로직 추가
-        }
-    }, []);
-
-    useEffect(() => {
-        if (participants.length > 0) {
-            localStorage.setItem('participants', JSON.stringify(participants)); // 참가자 저장
-        }
-    }, [participants]);
 
     const generateRandomQuestion = (items, usedEnglishWords) => {
         let englishWord;
@@ -213,42 +202,47 @@ function GameTrueOrFalse() {
             score: scores[nickname]
         })).sort((a, b) => b.score - a.score);
         setResults(resultsArray);
+    };
 
-        // 게임 종료 후 세션 삭제 요청
-        try {
-            await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
-            console.log("Game session deleted successfully.");
-        } catch (error) {
-            console.error("Error deleting game session:", error);
+    const handleSessionDelete = async () => {
+        if (!isSessionDeleted) {
+            try {
+                await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
+                console.log("Game session deleted successfully.");
+                setIsSessionDeleted(true); // 세션 삭제 완료로 설정
+            } catch (error) {
+                console.error("Error deleting game session:", error);
+            }
+        } else {
+            console.log("Game session already deleted.");
         }
     };
 
     const handleExit = async () => {
         try {
-            // 게임 세션 삭제 요청 (withCredentials로 인증 정보 포함)
-            if (gameSessionId) {
-                await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`, {
-                    withCredentials: true // 인증 정보를 포함
-                });
-                console.log("Game session deleted successfully.");
+            // 세션 삭제 API 호출 (POST 요청으로 gameSessionId 전송)
+            const response = await axios.post(`${apiUrl}/api/game-sessions/exit`, { gameSessionId });
+
+            if (response.status === 200) {
+                console.log("Exited game and session data cleaned up.");
+                // 클라이언트에서 참가자 정보 및 메시지 초기화
+                localStorage.removeItem('participants');
+                localStorage.removeItem('messages');
+                localStorage.removeItem('scores');
+
+                // 웹소켓 연결 종료 및 리다이렉트
+                publishMessage('/topic/game-end', { message: 'Game has ended' });
+                disconnectWebSocket();
+                navigate('/');
             } else {
-                console.error("Game session ID is undefined.");
+                console.error("Failed to exit the game.");
             }
         } catch (error) {
-            console.error("Error deleting game session:", error);
+            console.error("Error exiting game:", error);
         }
-
-        // 참가자 정보 및 메시지 초기화
-        localStorage.removeItem('participants');
-        localStorage.removeItem('messages');
-        localStorage.removeItem('scores');
-
-        // 웹소켓 연결 종료 및 리다이렉트
-        publishMessage('/topic/game-end', { message: 'Game has ended' });
-        disconnectWebSocket();
-        navigate('/');
-        window.location.reload();
     };
+
+
 
     if (gameEnded) {
         return (

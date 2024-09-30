@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import "./css/Home.css";
-import Card from "./card/Card";
-import UserCard from "./card/UserCard";
-import mainImg from "./../images/main_img.png";
+import "./trash/Home.css";
+import Card from "../card/Card";
+import UserCard from "../card/UserCard";
+import mainImg from "../../images/main_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // useNavigate 추가
 
 const Home = () => {
   const [popularCards, setPopularCards] = useState([]);
-  const [userCards, setUserCards] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate(); // useNavigate 훅 사용
 
@@ -25,31 +24,7 @@ const Home = () => {
       }
     };
 
-    const fetchUserCards = async () => {
-      setUserCards([
-        {
-          id: 1,
-          name: "테스터",
-          bio: "유저 1",
-          imageUrl: "https://via.placeholder.com/200",
-        },
-        {
-          id: 2,
-          name: "길동이",
-          bio: "유저 2",
-          imageUrl: "https://via.placeholder.com/200",
-        },
-        {
-          id: 3,
-          name: "홍길동",
-          bio: "유저 3",
-          imageUrl: "https://via.placeholder.com/200",
-        },
-      ]);
-    };
-
     fetchPopularCards();
-    fetchUserCards();
   }, [apiUrl]);
 
   const handleLearnClick = (card) => {
@@ -107,19 +82,6 @@ const Home = () => {
                     cardDate={card.writeDateTime}
                     initialViewCount={card.countView}
                     onLearnClick={() => handleLearnClick(card)} // Learn 버튼 클릭 시 handleLearnClick 호출
-                />
-            ))}
-          </Slider>
-        </div>
-        <div className="user-cards">
-          <h3>추천 유저 카드</h3>
-          <Slider {...settings}>
-            {userCards.map((user) => (
-                <UserCard
-                    key={user.id}
-                    nickname={user.name}
-                    profileImageUrl={user.imageUrl}
-                    recommendations={user.bio}
                 />
             ))}
           </Slider>

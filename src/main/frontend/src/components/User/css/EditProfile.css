@@ -37,3 +37,9 @@
 .edit-profile-form .submit-button:hover {
     background-color: #218838;
 }
+
+.readonly-input {
+    background-color: #f1f1f1;
+    color: #888;
+    cursor: not-allowed;
+}

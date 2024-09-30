@@ -1,46 +1,165 @@
-.study-section {
+/* 전체 레이아웃 */
+.study-section-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 800px;
-  margin: auto;
+  justify-content: center; /* 수직 정렬 */
+  align-items: center;     /* 수평 정렬 */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-}
-.study-cards-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 20px;
-  margin-bottom: 20px;
+  height: auto;            /* 부모 컨텐츠에 맞는 높이 */
 }
 
-.study
-.search-categories {
+/* 헤더 섹션 */
+.study-section-header {
   display: flex;
-  margin-bottom: 20px;
-  align-self: flex-start;
-}
-
-.search-categories button {
-  padding: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.study-tools {
-  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
 }
 
-.search-box {
+/* 카테고리 버튼 */
+.study-section-categories {
   display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 100%;
 }
 
-.search-box input,
-.search-box button {
-  padding: 10px;
-  margin-left: 5px;
+.study-section-tabs {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-bottom: none;
+}
+
+.study-section-tabs .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 30px;
+  margin: 0 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.study-section-tabs .nav-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.study-section-tabs .nav-link:hover {
+  background-color: #555;
+  color: white;
+}
+
+/* 검색창 */
+.study-section-tools {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.study-section-search-box {
+  display: flex;
+  align-items: center;
+}
+
+.study-section-search-box input {
+  padding: 12px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  margin-right: 10px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  transition: border-color 0.3s;
+  height: 48px; /* 버튼과 동일한 높이 */
+}
+
+.study-section-search-box input:focus {
+  border-color: #333;
+}
+
+.study-section-search-box button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 48px; /* 버튼과 동일한 높이 */
+}
+
+.study-section-search-box button:hover {
+  background-color: #555;
+}
+
+/* 카드 리스트 */
+.study-section-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.study-section-cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 그리드 레이아웃 유지 */
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.study-section-h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  text-align: left;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .study-section-wrapper {
+    padding: 20px;
+  }
+
+  .study-section-search-box input {
+    width: 200px;
+  }
+
+  .study-section-cards-list {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .study-section-tabs .nav-link {
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .study-section-wrapper {
+    padding: 15px;
+  }
+
+  .study-section-search-box input {
+    width: 150px;
+  }
+
+  .study-section-cards-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .study-section-tabs .nav-link {
+    padding: 8px 12px;
+  }
 }

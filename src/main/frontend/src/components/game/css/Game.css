@@ -236,3 +236,9 @@
         font-size: 0.9rem;
     }
 }
+
+.select:disabled {
+    background-color: lightgray;
+    color: darkgray;
+    cursor: not-allowed; /* 비활성화 상태일 때 커서 모양을 변경 */
+}

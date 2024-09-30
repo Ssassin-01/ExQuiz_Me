@@ -15,13 +15,13 @@ public interface UserRepository extends JpaRepository<User, String> {
 
    public User findByEmail(String email);
 
-    boolean existsById(String email);
-
-    User findByNickname(String nickname);
-
-    Optional<User> findOptionalByEmail(String email);
-
-    @Query("SELECT u FROM User u WHERE u.identity = :identity")
-    User findUserByIdentity(String identity);
+//    boolean existsById(String email);
+//
+//    User findByNickname(String nickname);
+//
+//    Optional<User> findOptionalByEmail(String email);
+//
+//    @Query("SELECT u FROM User u WHERE u.identity = :identity")
+//    User findUserByIdentity(String identity);
 
 }

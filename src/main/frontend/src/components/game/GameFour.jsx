@@ -9,7 +9,7 @@ function GameFour() {
     const location = useLocation();
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 10;
-    const initialTimer = location.state?.timer || 10;  // 타이머 값 전달
+    const initialTimer = location.state?.timer || 10;
 
     const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
     const [questions, setQuestions] = useState([]);
@@ -24,9 +24,11 @@ function GameFour() {
     const [timer, setTimer] = useState(initialTimer);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
+    const [isSessionDeleted, setIsSessionDeleted] = useState(false);
     const navigate = useNavigate();
 
     const apiUrl = process.env.REACT_APP_API_URL;
+    const gameSessionId = location.state?.gameSessionId;
 
     useEffect(() => {
         if (isTimerRunning && timer > 0) {
@@ -79,7 +81,7 @@ function GameFour() {
     };
 
     const checkAnswer = (nickname, optionIndex) => {
-        if (!currentQuestion) return;
+        if (!currentQuestion) return;  // 버튼 비활성화된 경우 정답 확인을 방지
         const selectedOption = options[optionIndex];
         const isCorrect = selectedOption === (languageToggle ? currentQuestion.koreanWord : currentQuestion.englishWord);
 
@@ -131,6 +133,7 @@ function GameFour() {
             setMessages({});
             setIsTimerRunning(true);
             setTimer(initialTimer);
+            publishMessage('/topic/new-question', { message: 'Next question' }); // 새로운 질문 전송
         } else {
             endGame();
         }
@@ -141,7 +144,7 @@ function GameFour() {
         setIsTimerRunning(false);
         setIsQuestionTransitioning(true);
         setTimeout(() => {
-            setFeedback(""); // 다음 문항으로 넘어가기 전에 feedback 초기화
+            setFeedback("");
             nextQuestion();
             setIsQuestionTransitioning(false);
         }, 1000);
@@ -154,11 +157,21 @@ function GameFour() {
             score: scores[nickname]
         })).sort((a, b) => b.score - a.score);
         setResults(resultsArray);
-        publishMessage('/app/end', { message: 'Game has ended', gameSessionId: 1 });
+        publishMessage('/app/end', { message: 'Game has ended', gameSessionId });
     };
 
-    const handleExit = () => {
-        publishMessage('/app/end', { message: 'Game has ended', gameSessionId: 1 });
+    const handleExit = async () => {
+        if (!isSessionDeleted) {
+            try {
+                await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
+                console.log("Game session deleted successfully.");
+                setIsSessionDeleted(true);
+            } catch (error) {
+                console.error("Error deleting game session:", error);
+            }
+        }
+
+        publishMessage('/app/end', { message: 'Game has ended', gameSessionId });
         disconnectWebSocket();
         navigate('/');
         window.location.reload();
@@ -171,7 +184,14 @@ function GameFour() {
                 <div className="gaming-results-container">
                     {results.map((result, index) => (
                         <div key={index} className="gaming-result-item">
-                            <span>{index + 1}등: {result.nickname}, 맞춘 갯수: {result.score}개</span>
+                            <div className="gaming-result-rank">
+                                {index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}등`}
+                            </div>
+                            <div className="gaming-result-profile">
+                                <span className="profile-emoji">👤</span>
+                                <span className="gaming-result-name">{result.nickname}</span>
+                            </div>
+                            <span className="gaming-result-score">맞춘 갯수: {result.score}개</span>
                         </div>
                     ))}
                 </div>

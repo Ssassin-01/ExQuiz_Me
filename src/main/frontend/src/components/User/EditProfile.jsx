@@ -98,6 +98,7 @@ const EditProfile = () => {
                         name="email"
                         value={userData.email}
                         readOnly // 이메일 수정 불가
+                        className="readonly-input"
                     />
                 </div>
                 <div className="form-group">
