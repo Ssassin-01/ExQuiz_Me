@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom
 import { HelmetProvider } from 'react-helmet-async';
 import { UserProvider } from './components/User/UserContext';
 
-import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import Home from "./components/Home";
 import Main from "./components/Main";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
@@ -80,7 +78,7 @@ function App() {
 function LayoutWithSidebar() {
     return (
         <div className="app">
-            <Sidebar />
+            {/*<Sidebar />*/}
             <main className="main-content">
                 <Header />
                 <Outlet />
