@@ -6,6 +6,7 @@ import { UserProvider } from './components/User/UserContext';
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Main from "./components/Main";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import StudySection from "./components/StudySection";
@@ -44,7 +45,8 @@ function App() {
                             <TimeTracker />
                             <Routes>
                                 <Route path="/" element={<LayoutWithSidebar />}>
-                                    <Route index element={<Home />} />
+                                    {/*<Route index element={<Home />} />*/}
+                                    <Route index element={<Main />} />
                                     <Route path="login" element={<Login />} />
                                     <Route path="signup" element={<SignUp />} />
                                     <Route path="study" element={<StudySection />} />
