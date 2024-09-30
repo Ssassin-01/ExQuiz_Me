@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import './css/Card.css';
+import './trash22/Card.css';
 import defaultLogoImage from '../../images/defaultLogoImage.png';
-import cardBack from './../../images/card_back.png';
+import cardBack from '../../images/card_back.png';
 import { GrView } from "react-icons/gr";
 import axios from "axios"; // 조회수 아이콘 추가
 

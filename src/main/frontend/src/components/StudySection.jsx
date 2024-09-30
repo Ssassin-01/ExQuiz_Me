@@ -3,7 +3,7 @@ import "./css/Study.css";
 import { Tabs, Tab } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import { useUser } from './User/UserContext';
-import CardItem from "./myPage/components/CardItem";
+import CardItem from "./card/CardItem";
 import { fetchUserCards, fetchRecentCards, fetchBookmarkedCards, fetchStudyCards } from './myPage/api/apiService'; // 전체 카드 불러오기 추가
 import { handleCardClick, handleBookmarkToggle, formatDate } from './myPage/utility/utility';
 
@@ -14,6 +14,7 @@ const StudySection = () => {
   const [userCards, setUserCards] = useState([]);
   const [recentCards, setRecentCards] = useState([]);
   const [bookmarkedCards, setBookmarkedCards] = useState([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // 검색창 토글 상태
   const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const { user } = useUser();
@@ -44,6 +45,10 @@ const StudySection = () => {
     e.preventDefault();
   };
 
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
   const getUpdatedCards = (cards) => {
     return cards.map(card => {
       const isBookmarked = bookmarkedCards.some(bookmarkedCard => bookmarkedCard.cardNumber === card.cardNumber);
@@ -53,7 +58,7 @@ const StudySection = () => {
 
   return (
       <div className="study-section-wrapper">
-        {/* 상단: 카테고리 버튼과 검색창 */}
+        {/* 상단: 카테고리 버튼 */}
         <div className="study-section-header">
           <div className="study-section-categories">
             <Tabs
@@ -67,17 +72,6 @@ const StudySection = () => {
               <Tab eventKey="studySet" title="학습 카드" />
               <Tab eventKey="user" title="내 카드" />
             </Tabs>
-          </div>
-          <div className="study-section-tools">
-            <form onSubmit={handleSearch} className="study-section-search-box">
-              <input
-                  type="text"
-                  placeholder="카드를 검색하세요..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <button type="submit">검색</button>
-            </form>
           </div>
         </div>
 
@@ -130,6 +124,24 @@ const StudySection = () => {
                 </div>
               </>
           ) : null}
+        </div>
+
+        {/* 플로팅 검색 버튼 */}
+        <div className="floating-search">
+          <button className="search-btn" onClick={toggleSearch}>
+            🔍
+          </button>
+          {isSearchOpen && (
+              <form onSubmit={handleSearch} className="floating-search-box">
+                <input
+                    type="text"
+                    placeholder="카드를 검색하세요..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button type="submit">검색</button>
+              </form>
+          )}
         </div>
       </div>
   );

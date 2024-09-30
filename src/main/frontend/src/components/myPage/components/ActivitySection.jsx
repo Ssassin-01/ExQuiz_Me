@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CardItem from "./CardItem";
+import CardItem from "../../card/CardItem";
 import Graph from "./Graph";
 import "./css/ActivitySection.css";
 import BadgeItem from "./BageItem";

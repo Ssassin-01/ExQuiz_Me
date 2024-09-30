@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { FaHome, FaBookReader, FaFolderPlus, FaGamepad, FaDonate, FaIdCard, FaCog, FaBars } from 'react-icons/fa';
 import logo from "../../images/logo.png";
-import "./trash/SideBar.css";
+import "./trash22/SideBar.css";
 
 const Sidebar = () => {
     const [isExpanded, setIsExpanded] = useState(false);

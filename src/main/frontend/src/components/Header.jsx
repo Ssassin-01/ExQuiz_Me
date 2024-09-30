@@ -36,7 +36,6 @@ const Header = () => {
 
             <nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/study">Learning</Link></li>
                     <li><Link to="/make">Make</Link></li> {/* Make 메뉴 추가 */}
                     <li><Link to="/game">Game</Link></li>

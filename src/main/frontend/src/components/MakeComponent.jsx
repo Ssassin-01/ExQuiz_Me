@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from './User/UserContext';
 import axios from 'axios';
-import "./css/Make.css";
+import "./css/MakeComponent.css";
 
 const MakeComponent = () => {
     const { user } = useUser();

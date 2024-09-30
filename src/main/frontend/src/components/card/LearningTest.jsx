@@ -157,7 +157,7 @@
 import React, { useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import '../card/css/LearningTest.css';
-import card from "./Card";
+import card from "../pra/Card";
 import { Modal } from 'react-bootstrap';
 
 const LearningTest = () => {
