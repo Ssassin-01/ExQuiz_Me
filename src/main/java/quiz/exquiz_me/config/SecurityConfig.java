@@ -37,16 +37,13 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/", "/login",
-                                "/join", "/joinProc",
-                                "/images/**", "/js/**",
-                                "/css/**", "/img/**",
-                                "/qrCodes/**", "/ws/**",
-                                "/gameroom/**", "/api/game-sessions/**",
-                                "/gaming", "/gameox",
-                                "/api/game/card/**", "/api/user/**"
+                        .requestMatchers("/", "/login", "/join", "/joinProc",
+                                "/images/**", "/js/**", "/css/**", "/img/**",
+                                "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions/**",
+                                "/gaming", "/gameox", "/api/game/card/**", "/api/user/**"
                                 , "/payment/**").permitAll()
-                        .requestMatchers("/api/cards/**").authenticated()
+//                        .requestMatchers("/api/cards/**").authenticated()
+                        .requestMatchers("/game/**", "/mypage/**", "/study/**", "/make/**").authenticated()  // 인증된 사용자만 접근 가능
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
