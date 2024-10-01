@@ -9,7 +9,7 @@ function GameShortAnswer() {
     const location = useLocation();
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 10;
-    const cardNumber = location.state?.cardNumber || 1;  // 기본값 1로 설정
+    const cardNumber = location.state?.cardNumber || 1;
     const initialTimer = location.state?.timer || 10;
 
     const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
@@ -31,6 +31,11 @@ function GameShortAnswer() {
     const apiUrl = process.env.REACT_APP_API_URL;
     const gameSessionId = location.state?.gameSessionId;
 
+    // 배열을 무작위로 섞는 함수
+    const shuffleArray = (array) => {
+        return array.sort(() => Math.random() - 0.5);
+    };
+
     // 타이머 관리
     useEffect(() => {
         if (isTimerRunning && timer > 0) {
@@ -45,8 +50,11 @@ function GameShortAnswer() {
 
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`); // cardNumber 사용
+            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`);
             let fetchedQuestions = response.data;
+
+            // 질문 목록을 무작위로 섞음
+            fetchedQuestions = shuffleArray(fetchedQuestions);
 
             if (fetchedQuestions.length > questionCount) {
                 fetchedQuestions = fetchedQuestions.slice(0, questionCount);
@@ -129,6 +137,9 @@ function GameShortAnswer() {
             setIsTimerRunning(true);
             setTimer(initialTimer);
             publishMessage('/topic/new-question', { message: 'Next question' });
+
+            // 콘솔 로그 추가
+            console.log(`Generated Question: ${languageToggle ? nextQ.englishWord : nextQ.koreanWord}, Correct Answer: ${languageToggle ? nextQ.koreanWord : nextQ.englishWord}`);
         } else {
             endGame();
         }

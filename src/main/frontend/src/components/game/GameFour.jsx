@@ -9,7 +9,7 @@ function GameFour() {
     const location = useLocation();
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 10;
-    const cardNumber = location.state?.cardNumber || 1;  // 기본값 1로 설정
+    const cardNumber = location.state?.cardNumber || 1;
     const initialTimer = location.state?.timer || 10;
 
     const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
@@ -42,10 +42,18 @@ function GameFour() {
         }
     }, [timer, isTimerRunning]);
 
+    // 배열을 무작위로 섞는 함수 추가
+    const shuffleArray = (array) => {
+        return array.sort(() => Math.random() - 0.5);
+    };
+
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`); // cardNumber 사용
+            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`);
             let fetchedQuestions = response.data;
+
+            // 문제 목록을 무작위로 섞음
+            fetchedQuestions = shuffleArray(fetchedQuestions);
 
             if (fetchedQuestions.length > questionCount) {
                 fetchedQuestions = fetchedQuestions.slice(0, questionCount);
@@ -78,11 +86,15 @@ function GameFour() {
             .slice(0, 3);
 
         const shuffledOptions = [correctOption, ...incorrectOptions].sort(() => 0.5 - Math.random());
+
+        // 콘솔 로그 추가
+        console.log(`Generated Question: ${languageToggle ? question.englishWord : question.koreanWord}, Correct Option: ${correctOption}, Options: ${shuffledOptions.join(', ')}`);
+
         return shuffledOptions;
     };
 
     const checkAnswer = (nickname, optionIndex) => {
-        if (!currentQuestion) return;  // 버튼 비활성화된 경우 정답 확인을 방지
+        if (!currentQuestion) return;
         const selectedOption = options[optionIndex];
         const isCorrect = selectedOption === (languageToggle ? currentQuestion.koreanWord : currentQuestion.englishWord);
 
@@ -134,7 +146,7 @@ function GameFour() {
             setMessages({});
             setIsTimerRunning(true);
             setTimer(initialTimer);
-            publishMessage('/topic/new-question', { message: 'Next question' }); // 새로운 질문 전송
+            publishMessage('/topic/new-question', { message: 'Next question' });
         } else {
             endGame();
         }

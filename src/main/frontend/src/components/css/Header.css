@@ -1,4 +1,3 @@
-/* 전체 헤더 스타일 */
 .header {
     display: flex;
     justify-content: space-between;
@@ -13,7 +12,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* 로고 스타일 */
 .logo-container {
     display: flex;
     align-items: center;
@@ -37,7 +35,6 @@
     margin: 0;
 }
 
-/* 메뉴 아이콘 */
 .menu-icon {
     font-size: 1.8rem;
     cursor: pointer;
@@ -47,13 +44,13 @@
 
 .nav-menu {
     display: flex;
-    gap: 40px; /* 간격을 40px로 넓힘 */
+    gap: 40px;
     align-items: center;
 }
 
 .nav-menu ul {
     display: flex;
-    gap: 40px; /* 간격을 40px로 넓힘 */
+    gap: 40px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -67,24 +64,23 @@
 }
 
 .nav-icon {
-    font-size: 2rem; /* 아이콘 크기 */
+    font-size: 2rem;
     color: white;
-    margin-right: 10px; /* 아이콘과 텍스트 사이 간격 */
+    margin-right: 10px;
     transition: color 0.3s ease;
 }
 
 .nav-text {
-    font-size: 1rem; /* 기본 텍스트 크기 */
+    font-size: 1rem;
     color: white;
     transition: color 0.3s ease;
 }
 
 .icon-link:hover .nav-icon,
 .icon-link:hover .nav-text {
-    color: #ff6347; /* hover 시 아이콘과 텍스트 색상 */
+    color: #ff6347;
 }
 
-/* 인증 버튼 및 사용자 정보 */
 .auth-buttons {
     display: flex;
     gap: 15px;
@@ -142,7 +138,7 @@
     background-color: #ff6347;
 }
 
-/* 반응형 처리 */
+
 @media (max-width: 768px) {
     .menu-icon {
         display: block;
