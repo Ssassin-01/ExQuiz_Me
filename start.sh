@@ -52,6 +52,11 @@ export HOST=$IP_ADDRESS
 npm start &
 FRONTEND_PID=$!
 
+
+# Handle script termination (Ctrl + C) to kill both processes
+trap "echo 'Terminating...'; kill $BACKEND_PID $FRONTEND_PID; exit 0" SIGINT
+
+
 # Wait for both processes to complete
 wait $BACKEND_PID
 wait $FRONTEND_PID

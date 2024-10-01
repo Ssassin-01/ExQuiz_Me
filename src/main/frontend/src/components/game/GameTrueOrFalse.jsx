@@ -8,6 +8,7 @@ import './css/Game1.css';
 function GameTrueOrFalse() {
     const location = useLocation();
     const initialGameSessionId = location.state?.gameSessionId || localStorage.getItem('gameSessionId'); // 로컬스토리지에서 가져오기
+    const cardNumber = location.state?.cardNumber || 1;  // 기본값 1로 설정
     const [gameSessionId, setGameSessionId] = useState(initialGameSessionId); // 초기값 설정
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 'all';
@@ -50,7 +51,7 @@ function GameTrueOrFalse() {
 
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/game/card/1/items`);
+            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`); // cardNumber 사용
             let items = response.data;
 
             if (questionCount !== 'all') {
@@ -72,7 +73,7 @@ function GameTrueOrFalse() {
 
     useEffect(() => {
         fetchQuestions();
-    }, []);
+    }, [cardNumber]);
 
     useEffect(() => {
         if (webSocketConnected) {

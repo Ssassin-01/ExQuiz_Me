@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import './trash22/Card.css';
-import defaultLogoImage from '../../images/defaultLogoImage.png';
-import cardBack from '../../images/card_back.png';
 import { GrView } from "react-icons/gr";
 import axios from "axios"; // 조회수 아이콘 추가
 
@@ -67,11 +65,9 @@ const Card = ({ cardNumber, cardTitle, cardWriter, cardDate, onLearnClick, initi
         <div className={`container__card ${isLoading ? 'loading' : ''}`}>
             <div className="card">
                 <div className="cardImg">
-                    <img src={cardBack} alt="Quiz Logo"/>
                 </div>
                 <div className="card__text"></div>
                 <div className="card__logo">
-                    <img src={defaultLogoImage} alt="Quiz Logo"/>
                 </div>
                 <div className="card__main-text">
                     <p className="card__main-text-f">{cardTitle}</p>

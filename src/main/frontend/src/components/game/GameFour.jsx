@@ -9,6 +9,7 @@ function GameFour() {
     const location = useLocation();
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 10;
+    const cardNumber = location.state?.cardNumber || 1;  // 기본값 1로 설정
     const initialTimer = location.state?.timer || 10;
 
     const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
@@ -43,7 +44,7 @@ function GameFour() {
 
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/game/card/1/items`);
+            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`); // cardNumber 사용
             let fetchedQuestions = response.data;
 
             if (fetchedQuestions.length > questionCount) {
@@ -67,7 +68,7 @@ function GameFour() {
 
     useEffect(() => {
         fetchQuestions();
-    }, []);
+    }, [cardNumber]);
 
     const generateOptions = (question, allQuestions) => {
         const correctOption = languageToggle ? question.koreanWord : question.englishWord;

@@ -5,8 +5,8 @@ import { UserProvider } from './components/User/UserContext';
 
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./components/User/Login";
+import SignUp from "./components/User/SignUp";
 import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 import SubScribe from "./components/subScribe/SubScribe";

@@ -3,10 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useWebSocket } from './context/WebSocketContext';
 import './css/Game.css';
-import {isDisabled} from "bootstrap/js/src/util";
+import GameCardPopup from "./components/GameCardPopup";
 
 function Game() {
     const [playerCount, setPlayerCount] = useState(6);
+    const [showCardPopup, setShowCardPopup] = useState(false);
     const [cardNumber, setCardNumber] = useState(1);
     const [questionCount, setQuestionCount] = useState('10');
     const [maxQuestions, setMaxQuestions] = useState(10);
@@ -14,7 +15,7 @@ function Game() {
     const [questionType, setQuestionType] = useState('ox');
     const [languageToggle, setLanguageToggle] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState("");
-    const [gameSessionId, setGameSessionId] = useState(null);  // 게임 세션 ID 상태
+    const [gameSessionId, setGameSessionId] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const { connectWebSocket, publishMessage, participants, webSocketConnected, resetParticipants } = useWebSocket();
@@ -33,6 +34,10 @@ function Game() {
         fetchMaxQuestions(cardNumber);
     }, [cardNumber]);
 
+    const handleSelectCard = (cardNumber) => {
+        setCardNumber(cardNumber);
+        setShowCardPopup(false);
+    };
     // 게임 세션 생성 및 QR 코드 생성
     const handleCreateGameSession = async () => {
         resetParticipants(); // 게임 세션 생성 전에 참가자 목록 초기화
@@ -86,7 +91,8 @@ function Game() {
                 languageToggle,
                 questionCount,
                 timer: parseInt(timer.split(':').reduce((acc, time) => (60 * acc) + +time)),
-                gameSessionId  // gameSessionId 추가하여 넘기기
+                gameSessionId,  // gameSessionId 추가하여 넘기기
+                cardNumber  // 선택한 카드 번호 추가
             }
         };
 
@@ -106,10 +112,18 @@ function Game() {
                 <div className="game-content game-content-left">
                     <div className="settings-row">
                         <span className="label">카드</span>
-                        <select value={cardNumber} onChange={e => setCardNumber(e.target.value)} className="select" disabled>
-                            {[...Array(10).keys()].map(n => <option key={n} value={n + 1}>{n + 1}</option>)}
-                        </select>
+                        <button onClick={() => setShowCardPopup(true)} className="select-button">
+                            카드 선택하기
+                        </button>
+                        <span>{cardNumber}</span> {/* 선택한 카드 번호 표시 */}
                     </div>
+                    {/* 팝업 표시 */}
+                    {showCardPopup && (
+                        <GameCardPopup
+                            onClose={() => setShowCardPopup(false)}
+                            onSelectCard={handleSelectCard}
+                        />
+                    )}
                     <div className="settings-row">
                         <span className="label">명 수</span>
                         <select value={playerCount} onChange={e => setPlayerCount(e.target.value)} className="select" disabled>
