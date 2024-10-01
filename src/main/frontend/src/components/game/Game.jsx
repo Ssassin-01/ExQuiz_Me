@@ -38,13 +38,12 @@ function Game() {
         setCardNumber(cardNumber);
         setShowCardPopup(false);
     };
-    // 게임 세션 생성 및 QR 코드 생성
+
     const handleCreateGameSession = async () => {
-        resetParticipants(); // 게임 세션 생성 전에 참가자 목록 초기화
+        resetParticipants();
 
         const [minutes, seconds] = timer.split(':').map(Number);
         const totalSeconds = (minutes * 60) + seconds;
-
         const questionsToAsk = questionCount === 'all' ? maxQuestions : parseInt(questionCount, 10);
 
         const config = {
@@ -59,16 +58,14 @@ function Game() {
         };
 
         try {
-            // QR 코드 생성하는 API 호출
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions`, config, {
                 withCredentials: true
             });
-            setQrCodeUrl(response.data.qrCode); // QR 코드 URL 설정
-            setGameSessionId(response.data.gameSessionId);  // 서버에서 받은 gameSessionId 저장
+            setQrCodeUrl(response.data.qrCode);
+            setGameSessionId(response.data.gameSessionId);
 
-            // WebSocket 연결
             if (!webSocketConnected) {
-                connectWebSocket();  // WebSocket 연결 시도
+                connectWebSocket();
             }
         } catch (error) {
             console.error('Error creating game session:', error.response ? error.response.data : error.message);
@@ -91,8 +88,8 @@ function Game() {
                 languageToggle,
                 questionCount,
                 timer: parseInt(timer.split(':').reduce((acc, time) => (60 * acc) + +time)),
-                gameSessionId,  // gameSessionId 추가하여 넘기기
-                cardNumber  // 선택한 카드 번호 추가
+                gameSessionId,
+                cardNumber
             }
         };
 
@@ -109,42 +106,40 @@ function Game() {
         <div className="game-container">
             <header className="game-header">Game - 설정</header>
             <div className="game-contents">
+                {/* 왼쪽 섹션: 카드 선택 영역 */}
                 <div className="game-content game-content-left">
-                    <div className="settings-row">
+                    <div className="card-section">
                         <span className="label">카드</span>
                         <button onClick={() => setShowCardPopup(true)} className="select-button">
                             카드 선택하기
                         </button>
-                        <span>{cardNumber}</span> {/* 선택한 카드 번호 표시 */}
-                    </div>
-                    {/* 팝업 표시 */}
-                    {showCardPopup && (
-                        <GameCardPopup
-                            onClose={() => setShowCardPopup(false)}
-                            onSelectCard={handleSelectCard}
-                        />
-                    )}
-                    <div className="settings-row">
-                        <span className="label">명 수</span>
-                        <select value={playerCount} onChange={e => setPlayerCount(e.target.value)} className="select" disabled>
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => <option key={n} value={n}>{n}</option>)}
-                        </select>
-                    </div>
-                    <div className="settings-row">
-                        <span className="label">문제수</span>
-                        <select value={questionCount} onChange={e => setQuestionCount(e.target.value)} className="select">
-                            {["5", "8", "10", "15", "20", "all"].map(n => <option key={n} value={n}>{n}</option>)}
-                        </select>
-                    </div>
-                    <div className="settings-row">
-                        <span className="label">타이머</span>
-                        <select value={timer} onChange={e => setTimer(e.target.value)} className="select">
-                            {["00:05", "00:08", "00:10", "00:15"].map(time => <option key={time} value={time}>{time}</option>)}
-                        </select>
+                        <span>{cardNumber}</span>
                     </div>
                 </div>
+                {showCardPopup && (
+                    <GameCardPopup
+                        onClose={() => setShowCardPopup(false)}
+                        onSelectCard={handleSelectCard}
+                    />
+                )}
 
-                <div className="game-content">
+                {/* 오른쪽 섹션: 문제 수와 타이머를 같은 줄에 배치 */}
+                <div className="game-content game-content-right">
+                    <div className="settings-row-inline">
+                        <div className="settings-inline">
+                            <span className="label">문제 수</span>
+                            <select value={questionCount} onChange={e => setQuestionCount(e.target.value)} className="select">
+                                {["5", "8", "10", "15", "20", "all"].map(n => <option key={n} value={n}>{n}</option>)}
+                            </select>
+                        </div>
+                        <div className="settings-inline">
+                            <span className="label">타이머</span>
+                            <select value={timer} onChange={e => setTimer(e.target.value)} className="select">
+                                {["00:05", "00:08", "00:10", "00:15"].map(time => <option key={time} value={time}>{time}</option>)}
+                            </select>
+                        </div>
+                    </div>
+
                     <div className="settings-row">
                         <span className="label">질문 유형</span>
                         <div className="radio-group">
