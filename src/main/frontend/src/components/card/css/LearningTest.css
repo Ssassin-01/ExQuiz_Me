@@ -56,44 +56,17 @@
     font-weight: bold;
     font-size: 18px;
 }
-/*.testBoxSize{*/
-/*    font-family: 'Arial', sans-serif;*/
-/*    background-color: #f1f1f1;*/
-/*    width: 80%;*/
-/*    max-width: 1000px;*/
-/*    margin: auto;*/
-/*    height: 80vh;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: flex-start; !* 변경된 부분: 중앙 정렬 대신 상단 정렬 *!*/
-/*    position: fixed; !* 변경된 부분 *!*/
-/*    top: 50%; !* 예시로 수직 가운데 정렬 *!*/
-/*    left: 50%; !* 예시로 수평 가운데 정렬 *!*/
-/*    transform: translate(-50%, -50%); !* 화면 중앙 정렬을 위한 트랜스폼 *!*/
-/*    overflow: auto; !* 추가: 전체 컨테이너의 오버플로우 숨기기 *!*/
-/*}*/
-/*.learning-test-container {*/
-/*    padding: 20px;*/
-/*    max-width: 600px;*/
-/*    margin: auto;*/
+/* LearningTestResult.css */
+.custom-hover-button {
+    background: transparent;
+    color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    transition: background 0.5s, color 0.5s;
+}
 
-/*}*/
-/*.test-options {*/
-/*    margin-bottom: 20px;*/
-/*}*/
-
-/*.word-list {*/
-/*    margin-bottom: 20px;*/
-/*}*/
-
-/*.word-item {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    margin: 10px 0;*/
-/*}*/
-
-/*.result {*/
-/*    margin-top: 20px;*/
-/*    font-weight: bold;*/
-/*    font-size: 18px;*/
-/*}*/
+.custom-hover-button:hover {
+    background: cornflowerblue;
+    color: white;
+    border: 2px solid cornflowerblue;
+    transition: background 0.5s, color 0.5s;
+}
