@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import '../card/css/LearningTest.css';
+import '../css/LearningTest.css';
 
 const LearningTest = () => {
     const location = useLocation();

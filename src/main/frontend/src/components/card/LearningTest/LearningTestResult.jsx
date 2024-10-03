@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import '../card/css/LearningTestResult.css';
+import '../css/LearningTestResult.css';
 
 const LearningTestResult = () => {
     const navigate = useNavigate();
@@ -79,9 +79,10 @@ const LearningTestResult = () => {
             {/* 버튼 그룹 */}
             <div>
                 <Button className="custom-hover-button" variant="outline-primary" onClick={handleRetake}>틀린 단어 학습</Button> {' '}
+                <Button className="custom-hover-button" variant="outline-primary" onClick={handleRandomTest}>전체 랜덤 테스트</Button>{' '}
                 <Button className="custom-hover-button" variant="outline-primary" onClick={handleLearningClick}>Learning으로 이동</Button>{' '}
                 <Button className="custom-hover-button" variant="outline-primary" onClick={handleLearnClick}>취소</Button>{' '}
-                <Button className="custom-hover-button" variant="outline-primary" onClick={handleRandomTest}>전체 랜덤 테스트</Button>{' '}
+
             </div>
         </div>
     );
