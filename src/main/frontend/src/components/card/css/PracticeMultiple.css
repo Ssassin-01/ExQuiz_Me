@@ -1,0 +1,186 @@
+.practice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.practice-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.practice-question {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.choice-button {
+    width: 180px;
+    height: 60px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.choice-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.2);
+}
+
+.choice-button.correct {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+.choice-button.incorrect {
+    background-color: #dc3545;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+.practice-footer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.practice-footer button {
+    width: 140px;
+    height: 50px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.practice-footer .next-word-btn {
+    background-color: #007bff;
+}
+
+.practice-footer .next-word-btn:hover {
+    background-color: #0056b3;
+}
+
+.practice-footer .cancel-button {
+    background-color: #6c757d;
+}
+
+.practice-footer .cancel-button:hover {
+    background-color: #5a6268;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .practice-container {
+        padding: 20px;
+    }
+
+    .choice-button {
+        width: 140px;
+        height: 50px;
+        font-size: 1rem;
+        margin: 8px;
+    }
+
+    .practice-footer button {
+        width: 120px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .practice-container {
+        padding: 15px;
+    }
+
+    .practice-header {
+        font-size: 1.5rem;
+    }
+
+    .practice-question {
+        font-size: 1.2rem;
+    }
+
+    .choice-button {
+        width: 120px;
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .practice-footer button {
+        width: 100px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 모달 스타일 추가 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-btn:hover {
+    background-color: #0056b3;
+}

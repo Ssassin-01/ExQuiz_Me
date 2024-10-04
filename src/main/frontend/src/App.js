@@ -11,8 +11,8 @@ import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 import SubScribe from "./components/subScribe/SubScribe";
 import MyPage from "./components/myPage/MyPage";
-import Learning from "./components/card/Learning";
-import WordLearn from "./components/card/WordLearn";
+import Learning from "./components/card/Learning/Learning";
+import WordLearn from "./components/card/Learning/WordLearn";
 import Game from "./components/game/Game";
 import GameRoom from "./components/game/GameRoom";
 import { WebSocketProvider } from './components/game/context/WebSocketContext';
@@ -30,11 +30,15 @@ import GameShortAnswer from "./components/game/GameShortAnswer";
 
 import EditProfile from "./components/User/EditProfile";
 import TimeTracker from "./components/utility/TimeTracker";
-import LearningTest from "./components/card/LearningTest";
+import LearningTest from "./components/card/LearningTest/LearningTest";
 import SuccessPage from "./components/subScribe/components/SuccessPage";
 import FailPage from "./components/subScribe/components/FailPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import LearningTestResult from "./components/card/LearningTestResult";
+import LearningTestResult from "./components/card/LearningTest/LearningTestResult";
+import Practice from "./components/card/Practice/PracticeOptions";
+import PracticeSubjective from "./components/card/Practice/PracticeSubjective";
+import PracticeOptions from "./components/card/Practice/PracticeOptions";
+import PracticeMultiple from "./components/card/Practice/PracticeMultiple";
 function App() {
     return (
         <HelmetProvider>
@@ -58,8 +62,11 @@ function App() {
                                     <Route path="/success" element={<SuccessPage />} />
                                     <Route path="/fail" element={<FailPage />} />
                                     <Route path="/edit-profile" element={<EditProfile />} />
-                                    <Route path="/learning/:cardNumber" element={<Learning />} /> {/* Learning 경로 추가 */}
-                                    <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
+                                    <Route path="/learning/:cardNumber" element={<Learning />} />
+                                    <Route path="/word-learn" element={<WordLearn />} />
+                                    <Route path="/practice-options" element={<PracticeOptions/>} />
+                                    <Route path="/practice-subjective" element={<PracticeSubjective />} />
+                                    <Route path="/practice-multiple" element={<PracticeMultiple/>} />
                                     <Route path="/learn-test" element={<LearningTest />} />
                                     <Route path="/learn-test-result" element={<LearningTestResult />} />
                                 </Route>
