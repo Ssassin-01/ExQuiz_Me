@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useUser } from './User/UserContext';
-import "./css/Login.css";
+import { useUser } from './UserContext';
+import "../css/Login.css";
 
 const Login = () => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });

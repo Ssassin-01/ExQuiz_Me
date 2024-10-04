@@ -1,0 +1,249 @@
+.make-component {
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  transition: all 0.3s ease;
+  border-top: 5px solid #ff7f50;
+}
+
+.make-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.volume-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.submit-button {
+  background-color: #ff7f50;
+  border: none;
+  padding: 12px 18px;
+  color: white;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #e5673d;
+}
+
+
+.input-group {
+  margin-bottom: 30px;
+}
+
+.input-feed,
+.input-description,
+.input-purpose,
+.entry-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  font-size: 1.1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-feed:focus,
+.input-description:focus,
+.input-purpose:focus,
+.entry-input:focus {
+  border-color: #ff7f50;
+  box-shadow: 0 0 5px rgba(255, 127, 80, 0.4);
+}
+
+.entry-input {
+  position: relative;
+  top: 11px;
+  width: 90%;
+}
+
+.input-description {
+  height: 120px;
+  resize: none;
+}
+
+.input-purpose {
+  width: 100%;
+  padding: 12px;
+  background-color: #fffaf0;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1.1em;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 10 6%27%3e%3cpath fill=%27%23999%27 d=%27M0 0l5 6 5-6H0z%27/%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 10px 10px;
+}
+
+.input-purpose:focus {
+  border-color: #ff7f50;
+  box-shadow: 0 0 5px rgba(255, 127, 80, 0.4);
+}
+
+
+.input-purpose option {
+  background-color: white;
+  color: #333;
+  padding: 10px;
+  border: none;
+}
+
+.input-purpose:hover,
+.input-purpose:active {
+  border-color: #ff7f50;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .input-purpose {
+    font-size: 1em;
+    padding: 10px;
+  }
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fffbf5;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.entry-number {
+  background-color: #ff7f50;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.entry-word,
+.entry-meaning {
+  flex: 1;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.entry-word:focus,
+.entry-meaning:focus {
+  border-color: #ff7f50;
+  box-shadow: 0 0 8px rgba(255, 127, 80, 0.3);
+}
+
+.entry-meaning {
+  margin-left: 15px;
+}
+
+.delete-button {
+  background-color: #ff6b6b;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  height: auto;
+  margin-left: 10px;
+}
+
+.delete-button:hover {
+  background-color: #e64c4c;
+}
+
+.add-button {
+  display: block;
+  background-color: #ffa07a;
+  border: none;
+  padding: 12px 18px;
+  color: white;
+  cursor: pointer;
+  border-radius: 25px;
+  margin: 20px 0;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.add-button:hover {
+  background-color: #ff7f50;
+}
+
+
+@media (max-width: 768px) {
+  .make-component {
+    width: 90%;
+  }
+
+  .submit-button,
+  .add-button {
+    padding: 12px 14px;
+    font-size: 1.1em;
+  }
+
+  .input-feed,
+  .input-description,
+  .input-purpose {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .make-component {
+    width: 100%;
+    margin: 40px auto;
+  }
+
+  .submit-button,
+  .add-button {
+    padding: 10px 12px;
+    font-size: 1em;
+  }
+
+  .entry-number {
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+  }
+
+  .entry-word,
+  .entry-meaning {
+    font-size: 1em;
+  }
+}

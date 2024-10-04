@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/signUp.css";
+import "../css/signUp.css";
 
 const SignUp = () => {
   const [userData, setUserData] = useState({
@@ -9,8 +9,8 @@ const SignUp = () => {
     nickname: "",
     telNumber: "",
     date: "",
-    identity: "", // 학년 선택 필드 수정
-    signupPurpose: "", // 가입목적 필드 수정
+    identity: "",
+    signupPurpose: "",
     gender: ""
   });
 
@@ -41,7 +41,7 @@ const SignUp = () => {
 
       if (response.ok) {
         console.log("Sign Up Successful");
-        navigate("/login"); // 회원가입 성공 후 로그인 페이지로 이동
+        navigate("/login");
       } else {
         const errorMessage = await response.text();
         alert(errorMessage); // 중복된 값에 대한 알림창 표시
@@ -123,7 +123,7 @@ const SignUp = () => {
             <label htmlFor="identity">학년 선택:</label>
             <select
                 id="identity"
-                name="identity" // identity로 이름 변경
+                name="identity"
                 value={userData.identity}
                 onChange={handleInputChange}
                 required
@@ -140,7 +140,7 @@ const SignUp = () => {
             <label htmlFor="signupPurpose">가입목적:</label>
             <select
                 id="signupPurpose"
-                name="signupPurpose" // signupPurpose로 이름 변경
+                name="signupPurpose"
                 value={userData.signupPurpose}
                 onChange={handleInputChange}
                 required

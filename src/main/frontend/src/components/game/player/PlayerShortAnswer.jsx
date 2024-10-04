@@ -68,7 +68,6 @@ function PlayerShortAnswer() {
             }
         };
     }, [apiUrl]);
-
     const handleSendAnswer = () => {
         if (!buttonDisabled) {
             sendMessage(answer);

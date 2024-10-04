@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import "../css/wordLearner.css";
+import "./css/wordLearner.css";
 
 export default function WordLearn() {
     const location = useLocation();

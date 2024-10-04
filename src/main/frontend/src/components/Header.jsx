@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaUserCircle, FaBook, FaPuzzlePiece, FaGamepad } from 'react-icons/fa'; // react-icons에서 아이콘 가져오기
 import { Button } from "react-bootstrap";
 import { useUser } from './User/UserContext';
-import logo from "../images/logo.png"; // 로고 이미지 추가
+import logo from "../images/logo.png";
 import "./css/Header.css";
 
 const Header = () => {
     const { user, login, logout } = useUser();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const toggleProfileMenu = () => {
+        setProfileMenuOpen(!profileMenuOpen);
     };
 
     useEffect(() => {
@@ -19,7 +24,24 @@ const Header = () => {
         if (email && !user) {
             login(email);
         }
+
+        if (user) {
+            setProfileMenuOpen(false);
+        }
     }, [user, login]);
+
+    // 드롭다운 외의 영역 클릭 시 닫기
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest(".profile-container")) {
+                setProfileMenuOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <header className="header">
@@ -36,21 +58,47 @@ const Header = () => {
 
             <nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/study">Learning</Link></li>
-                    <li><Link to="/make">Make</Link></li> {/* Make 메뉴 추가 */}
-                    <li><Link to="/game">Game</Link></li>
-                    <li><Link to="/subscribe">Subscribe</Link></li> {/* SubScribe 메뉴 추가 */}
-                    <li><Link to="/mypage">MyPage</Link></li>
+                    <li>
+                        <Link to="/study" className="icon-link">
+                            <FaBook className="nav-icon" />
+                            <span className="nav-text">Learning</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/make" className="icon-link">
+                            <FaPuzzlePiece className="nav-icon" />
+                            <span className="nav-text">Make</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/game" className="icon-link">
+                            <FaGamepad className="nav-icon" />
+                            <span className="nav-text">Game</span>
+                        </Link>
+                    </li>
                 </ul>
             </nav>
 
             <div className="auth-buttons">
                 {user ? (
-                    <>
-                        <span className="user-email">{user.email}</span>
-                        <Button variant="outline-light" onClick={logout}>Logout</Button>
-                    </>
+                    <div className="profile-container">
+                        <FaUserCircle className="profile-icon" onClick={toggleProfileMenu} />
+                        {profileMenuOpen && (
+                            <div className="profile-menu">
+                                <ul>
+                                    <li>
+                                        <Link to="/mypage" onClick={() => setProfileMenuOpen(false)}>내 정보 보기</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/subscribe" onClick={() => setProfileMenuOpen(false)}>구독하기</Link>
+                                    </li>
+                                    <li>
+                                        <button onClick={logout}>Logout</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
+                    </div>
                 ) : (
                     <>
                         <Link to="/login"><Button variant="outline-light">Login</Button></Link>

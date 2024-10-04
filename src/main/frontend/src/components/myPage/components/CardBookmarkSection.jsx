@@ -1,5 +1,5 @@
 import React from 'react';
-import CardItem from './CardItem';
+import CardItem from '../../card/CardItem';
 
 const CardBookmarkSection = ({ bookmarkedCards = [], handleCardClick, handleBookmarkToggle }) => {
 

@@ -5,8 +5,8 @@ import { UserProvider } from './components/User/UserContext';
 
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./components/User/Login";
+import SignUp from "./components/User/SignUp";
 import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
 import SubScribe from "./components/subScribe/SubScribe";
@@ -33,6 +33,8 @@ import TimeTracker from "./components/utility/TimeTracker";
 import LearningTest from "./components/card/LearningTest";
 import SuccessPage from "./components/subScribe/components/SuccessPage";
 import FailPage from "./components/subScribe/components/FailPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import LearningTestResult from "./components/card/LearningTestResult";
 function App() {
     return (
         <HelmetProvider>
@@ -43,22 +45,25 @@ function App() {
                             <TimeTracker />
                             <Routes>
                                 <Route path="/" element={<LayoutWithSidebar />}>
-                                    {/*<Route index element={<Home />} />*/}
                                     <Route index element={<Main />} />
                                     <Route path="login" element={<Login />} />
                                     <Route path="signup" element={<SignUp />} />
-                                    <Route path="study" element={<StudySection />} />
-                                    <Route path="make" element={<MakeComponent />} />
-                                    <Route path="game" element={<Game />} />
-                                    <Route path="subscribe" element={<SubScribe />} />
+
+                                    <Route path="study" element={<ProtectedRoute><StudySection /></ProtectedRoute>} />
+                                    <Route path="make" element={<ProtectedRoute><MakeComponent /></ProtectedRoute>} />
+                                    <Route path="game" element={<ProtectedRoute><Game /></ProtectedRoute>} />
+                                    <Route path="subscribe" element={<ProtectedRoute><SubScribe /></ProtectedRoute>} />
+                                    <Route path="mypage" element={<ProtectedRoute><MyPage /></ProtectedRoute>} />
+
                                     <Route path="/success" element={<SuccessPage />} />
                                     <Route path="/fail" element={<FailPage />} />
-                                    <Route path="/mypage" element={<MyPage />} />
                                     <Route path="/edit-profile" element={<EditProfile />} />
                                     <Route path="/learning/:cardNumber" element={<Learning />} /> {/* Learning 경로 추가 */}
                                     <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
                                     <Route path="/learn-test" element={<LearningTest />} />
+                                    <Route path="/learn-test-result" element={<LearningTestResult />} />
                                 </Route>
+
                                 <Route path="gameroom" element={<GameRoom />} />
                                 <Route path="/player/ox" element={<PlayerOX />} /> {/* OX 플레이어 */}
                                 <Route path="/player/four" element={<PlayerFour />} /> {/* 4지선다 플레이어 */}
@@ -78,7 +83,6 @@ function App() {
 function LayoutWithSidebar() {
     return (
         <div className="app">
-            {/*<Sidebar />*/}
             <main className="main-content">
                 <Header />
                 <Outlet />

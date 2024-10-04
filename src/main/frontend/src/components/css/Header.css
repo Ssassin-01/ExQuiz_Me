@@ -44,26 +44,40 @@
 
 .nav-menu {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     align-items: center;
 }
 
 .nav-menu ul {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.nav-menu ul li a {
+.icon-link {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: white;
-    font-weight: 600;
-    transition: color 0.3s;
 }
 
-.nav-menu ul li a:hover {
+.nav-icon {
+    font-size: 2rem;
+    color: white;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-text {
+    font-size: 1rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.icon-link:hover .nav-icon,
+.icon-link:hover .nav-text {
     color: #ff6347;
 }
 
@@ -73,19 +87,65 @@
     align-items: center;
 }
 
-.user-email {
-    font-size: 1rem;
-    margin-right: 10px;
+.profile-container {
+    position: relative;
 }
 
-/* 반응형 처리 */
+.profile-icon {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.profile-icon:hover {
+    color: #ff6347;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #343a40;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+}
+
+.profile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-menu ul li {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.profile-menu ul li a, .profile-menu ul li button {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.profile-menu ul li:hover {
+    background-color: #ff6347;
+}
+
+
 @media (max-width: 768px) {
     .menu-icon {
-        display: block;  /* 작은 화면에서는 햄버거 메뉴 보이기 */
+        display: block;
     }
 
     .nav-menu {
-        display: none;  /* 작은 화면에서는 기본적으로 메뉴 숨김 */
+        display: none;
     }
 
     .nav-menu.open {

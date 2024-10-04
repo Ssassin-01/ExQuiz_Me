@@ -12,7 +12,7 @@ body {
     margin: 0;
 }
 
-/* Hero Section */
+/* ---------------------  사진쪽 ---------------*/
 .hero-section {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../../resources/static/images/main_img2.png');
     background-size: cover;
@@ -61,7 +61,7 @@ body {
     background-color: #218838;
 }
 
-/* Feature Section */
+/* ---------------------  주요기능 ---------------*/
 .feature-section {
     padding: 50px 20px;
     text-align: center;
@@ -109,7 +109,7 @@ body {
     color: #6c757d;
 }
 
-/* Game Flow Section */
+/* ---------------------  게임 진행 방식 ---------------*/
 .game-flow-section {
     padding: 60px 20px;
     background-color: #f8f9fa;
@@ -197,7 +197,7 @@ body {
     color: #6c757d;
 }
 
-/* Testimonial Section */
+/* --------------------- 사용자 후기  -----------------------*/
 .testimonial-section {
     padding: 60px 20px;
     background-color: #f8f9fa;
@@ -258,7 +258,6 @@ body {
     margin-top: 15px;
 }
 
-/* Start Button */
 .start-button {
     text-align: center;
     margin-top: 20px;
@@ -272,7 +271,7 @@ body {
     background-color: #ff4500;
 }
 
-/* Challenge Section */
+/* --------------------- 챌린지  -----------------------*/
 .challenge-section {
     padding: 60px 20px;
     text-align: center;

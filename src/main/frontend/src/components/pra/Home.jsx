@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import "./trash/Home.css";
-import Card from "../card/Card";
-import UserCard from "../card/UserCard";
+import "./trash22/Home.css";
+import Card from "./Card";
+import UserCard from "./UserCard";
 import mainImg from "../../images/main_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // useNavigate 추가
