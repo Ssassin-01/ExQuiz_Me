@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap'; // 모달 컴포넌트 추가
 import '../card/css/LearningTest.css';
 import card from "../pra/Card";
-import { Modal } from 'react-bootstrap';
 
 // import card from './Card';
 
