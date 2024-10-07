@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../css/PracticeMultiple.css';
+import { ImExit } from "react-icons/im";
+
 
 const PracticeMultiple = () => {
     const location = useLocation();
@@ -9,6 +11,7 @@ const PracticeMultiple = () => {
     const [vocabularyItems, setVocabularyItems] = useState(initialVocabularyItems);
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [options, setOptions] = useState([]);
+    const [isOptionDisabled, setIsOptionDisabled] = useState(false); // 버튼 비활성화 상태 관리
     const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -18,12 +21,14 @@ const PracticeMultiple = () => {
     const currentWord = vocabularyItems[currentWordIndex];
     const correctAnswer = currentWord ? (selectedLanguage === 'english' ? currentWord.englishWord : currentWord.koreanWord) : '';
 
+    // 학습이 완료된 경우 모달 표시
     useEffect(() => {
         if (currentWordIndex >= vocabularyItems.length) {
             setShowModal(true);
         }
     }, [currentWordIndex, vocabularyItems.length]);
 
+    // 보기 항목 생성 함수
     const generateOptions = () => {
         if (currentWord) {
             const correctOption = correctAnswer;
@@ -41,21 +46,38 @@ const PracticeMultiple = () => {
         generateOptions();
     }, [currentWordIndex, currentWord]);
 
+    // 사용자가 정답을 선택했을 때 동작
     const handleOptionSelect = (option) => {
         setSelectedOption(option);
-        setIsCorrect(option === correctAnswer);
-        if (option !== correctAnswer) {
+        const isCorrectAnswer = option === correctAnswer;
+        setIsCorrect(isCorrectAnswer);
+
+        // 오답인 경우, 깜빡이기 효과를 추가하고 오답 단어 목록에 추가
+        if (!isCorrectAnswer) {
             setMissedWords((prev) => [...prev, currentWord]);
+
+            // 정답에 깜빡이기 효과 추가
+            const correctElement = document.querySelector(`button[data-option="${correctAnswer}"]`);
+            if (correctElement) {
+                correctElement.classList.add('blink-correct');
+            }
+
+            // 2초 후에 깜빡이기 효과 제거 및 다음 단어로 이동
+            setTimeout(() => {
+                if (correctElement) {
+                    correctElement.classList.remove('blink-correct');
+                }
+                handleNextWord();
+            }, 2000);
         } else {
             setOkWords((prev) => [...prev, currentWord]);
+            setTimeout(() => {
+                handleNextWord();
+            }, 2000);
         }
-
-        // 2초 후 다음 단어 이동
-        setTimeout(() => {
-            handleNextWord();
-        }, 2000);
     };
 
+    // 다음 단어로 이동하는 함수
     const handleNextWord = () => {
         if (currentWordIndex < vocabularyItems.length - 1) {
             setSelectedOption(null);
@@ -66,15 +88,22 @@ const PracticeMultiple = () => {
         }
     };
 
+    // 틀린 단어 다시 학습하기
     const handleRestartMissedWords = () => {
         setVocabularyItems(missedWords);
         setShowModal(false);
         setCurrentWordIndex(0);
         setOkWords([]);
-        setIsCorrect(null);
         setMissedWords([]);
+
+        // 상태 초기화
+        setSelectedOption(null);
+        setIsCorrect(null);
+        setIsOptionDisabled(false);
+        generateOptions(); // 옵션 초기화
     };
 
+    // 모달 창 닫기 및 학습 종료
     const handleCancel = () => {
         setShowModal(false);
         navigate('/study');
@@ -82,7 +111,9 @@ const PracticeMultiple = () => {
 
     return (
         <div className="practice-container">
-            <h2 className="practice-header">사지선다</h2>
+            <ImExit className="end-button" onClick={handleCancel}/>
+                <h2 className="practice-header">사지선다</h2>
+            <div className="learn__word-counter">{`${Math.min(currentWordIndex + 1, vocabularyItems.length)} / ${vocabularyItems.length}`}</div>
             <p className="practice-question">
                 {selectedLanguage === 'english' ? currentWord?.koreanWord : currentWord?.englishWord || '단어 없음'}
             </p>
@@ -90,9 +121,10 @@ const PracticeMultiple = () => {
                 {options.map((option, index) => (
                     <button
                         key={index}
+                        data-option={option} // 정답 버튼을 쉽게 찾기 위해 data-option 속성 추가
                         className={`choice-button ${selectedOption === option ? (isCorrect ? 'correct' : 'incorrect') : ''}`}
                         onClick={() => handleOptionSelect(option)}
-                        disabled={!!selectedOption}
+                        disabled={!!selectedOption} // 선택된 후에는 버튼 비활성화
                     >
                         {option}
                     </button>

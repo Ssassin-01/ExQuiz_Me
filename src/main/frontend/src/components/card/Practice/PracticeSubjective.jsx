@@ -5,7 +5,7 @@ import '../css/PracticeSubjective.css';
 const PracticeSubjective = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { vocabularyItems: initialVocabularyItems = [], selectedLanguage = 'english' } = location.state || {}; // 초기 단어 목록 및 선택된 언어 가져오기
+    const { vocabularyItems: initialVocabularyItems = [], selectedLanguage = 'english' } = location.state || {};
     const [vocabularyItems, setVocabularyItems] = useState(initialVocabularyItems);
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [userInputs, setUserInputs] = useState({});
@@ -14,16 +14,14 @@ const PracticeSubjective = () => {
     const [okWords, setOkWords] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
-    // 현재 학습 중인 단어
     const currentWord = vocabularyItems[currentWordIndex];
     const correctAnswer = currentWord ? (selectedLanguage === 'english' ? currentWord.englishWord : currentWord.koreanWord) : '';
-    // 종료 시 모달 띄우기
+
     useEffect(() => {
         if (currentWordIndex >= vocabularyItems.length) {
             setShowModal(true);
         }
     }, [currentWordIndex, vocabularyItems.length]);
-
 
     useEffect(() => {
         if (isCorrect === true) {
@@ -34,7 +32,6 @@ const PracticeSubjective = () => {
         }
     }, [isCorrect]);
 
-    // 단어 분할
     const splitWordToLetters = (word) => {
         return word ? word.split('') : [];
     };
@@ -46,28 +43,32 @@ const PracticeSubjective = () => {
             [index]: value,
         });
     };
-    // 정답 체점
+
     const handleSubmit = () => {
-        const userAnswer = Object.values(userInputs).join(''); // 사용자가 입력한 글자 조합
+        const userAnswer = Object.values(userInputs).join('');
         const isAllFieldsFilled = splitWordToLetters(correctAnswer).every((_, index) => userInputs[index] && userInputs[index].trim() !== "");
 
         if (!isAllFieldsFilled || userAnswer !== correctAnswer) {
             setIsCorrect(false);
-            setMissedWords((prevMissedWords) => [...prevMissedWords, currentWord]); // 오답 단어 추가
+            // 오답 단어가 이미 존재하는지 확인하고, 없을 때만 추가
+            const alreadyMissed = missedWords.some(
+                (word) => word.id === currentWord.id
+            );
+            if (!alreadyMissed) {
+                setMissedWords((prevMissedWords) => [...prevMissedWords, currentWord]);
+            }
         } else {
             setIsCorrect(true);
-            setOkWords((prevOkWords) => [...prevOkWords, currentWord]); // 정답 단어 추가
+            setOkWords((prevOkWords) => [...prevOkWords, currentWord]);
         }
     };
 
     const handleNextWord = () => {
         if (currentWordIndex < vocabularyItems.length - 1) {
-            // 마지막 단어가 아닐 때만 단어 인덱스를 증가시키고 다음 단어로 이동
-            setUserInputs({}); // 입력 초기화
-            setIsCorrect(null); // 정답 확인 초기화
+            setUserInputs({});
+            setIsCorrect(null);
             setCurrentWordIndex((prevIndex) => prevIndex + 1);
         } else {
-            // 마지막 단어일 경우 모달 표시
             setShowModal(true);
         }
     };
@@ -75,12 +76,13 @@ const PracticeSubjective = () => {
     const handleRestartMissedWords = () => {
         setVocabularyItems(missedWords);
         setShowModal(false);
-        setCurrentWordIndex(0); // 첫 번째 단어로 초기화
-        setOkWords([]); // 정답 단어 초기화
+        setCurrentWordIndex(0);
+        setOkWords([]);
         setUserInputs({});
         setIsCorrect(null);
         setMissedWords([]);
     };
+
     const handleCancel = () => {
         setShowModal(false);
         navigate('/study');
@@ -89,7 +91,8 @@ const PracticeSubjective = () => {
     return (
         <div className="practice-container">
             <h2>Practice - Subjective</h2>
-
+            <div
+                className="learn__word-counter">{`${Math.min(currentWordIndex + 1, vocabularyItems.length)} / ${vocabularyItems.length}`}</div>
             <p>
                 {selectedLanguage === 'english' ? currentWord?.koreanWord : currentWord?.englishWord || '단어 없음'}
             </p>
@@ -113,13 +116,12 @@ const PracticeSubjective = () => {
                     />
                 ))}
             </div>
-            {isCorrect === true && <p style={{ color: 'green' }}>정답입니다! 다음 단어로 이동합니다.</p>}
-            {isCorrect === false && <p style={{ color: 'red' }}>오답입니다! 다시 시도하세요.</p>}
+
+            {isCorrect === true && <p style={{color: 'green'}}>정답입니다! 다음 단어로 이동합니다.</p>}
+
+            {isCorrect === false && <button className="next-word-btn" onClick={handleNextWord}>다음 단어</button>}
 
             <button className="submit-btn" onClick={handleSubmit}>제출</button>
-            {isCorrect !== null && (
-                <button className="next-word-btn" onClick={handleNextWord}>다음 단어</button>
-            )}
 
             {showModal && (
                 <div className="modal">
