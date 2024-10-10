@@ -11,6 +11,9 @@
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.end-button{
+    margin-left: 100%;
+}
 
 .practice-header {
     font-size: 1.8rem;
@@ -55,6 +58,7 @@
     box-shadow: 0 6px 12px rgba(0, 86, 179, 0.2);
 }
 
+/* 정답 및 오답 버튼 스타일 */
 .choice-button.correct {
     background-color: #28a745;
     color: #fff;
@@ -65,6 +69,22 @@
     background-color: #dc3545;
     color: #fff;
     box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+/* 정답 깜빡임 효과 */
+.choice-button.blink-correct {
+    background-color: #28a745; /* 정답인 버튼의 초록색 배경 */
+    color: #fff;
+    animation: blink 1.0s ease-in-out infinite; /* 깜빡이기 애니메이션 추가 */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .practice-footer {
@@ -149,7 +169,7 @@
     }
 }
 
-/* 모달 스타일 추가 */
+/* 모달 스타일 */
 .modal {
     position: fixed;
     top: 0;
