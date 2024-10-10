@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../css/PracticeMultiple.css';
 import { ImExit } from "react-icons/im";
 
-
 const PracticeMultiple = () => {
     const location = useLocation();
     const navigate = useNavigate();
