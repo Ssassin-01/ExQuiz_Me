@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../css/PracticeSubjective.css';
+import {ImExit} from "react-icons/im";
 
 const PracticeSubjective = () => {
     const location = useLocation();
@@ -45,24 +46,18 @@ const PracticeSubjective = () => {
     };
 
     const handleSubmit = () => {
-        const userAnswer = Object.values(userInputs).join('');
+        const userAnswer = Object.values(userInputs).join('').toLowerCase();  // 사용자가 입력한 값 소문자로 변환
+        const normalizedAnswer = correctAnswer.toLowerCase();  // 정답도 소문자로 변환
         const isAllFieldsFilled = splitWordToLetters(correctAnswer).every((_, index) => userInputs[index] && userInputs[index].trim() !== "");
 
-        if (!isAllFieldsFilled || userAnswer !== correctAnswer) {
+        if (!isAllFieldsFilled || userAnswer !== normalizedAnswer) {
             setIsCorrect(false);
-            // 오답 단어가 이미 존재하는지 확인하고, 없을 때만 추가
-            const alreadyMissed = missedWords.some(
-                (word) => word.id === currentWord.id
-            );
-            if (!alreadyMissed) {
-                setMissedWords((prevMissedWords) => [...prevMissedWords, currentWord]);
-            }
+            setMissedWords((prevMissedWords) => [...prevMissedWords, currentWord]);
         } else {
             setIsCorrect(true);
             setOkWords((prevOkWords) => [...prevOkWords, currentWord]);
         }
     };
-
     const handleNextWord = () => {
         if (currentWordIndex < vocabularyItems.length - 1) {
             setUserInputs({});
@@ -90,6 +85,7 @@ const PracticeSubjective = () => {
 
     return (
         <div className="practice-container">
+            <ImExit className="end-button" onClick={handleCancel}/>
             <h2>Practice - Subjective</h2>
             <div
                 className="learn__word-counter">{`${Math.min(currentWordIndex + 1, vocabularyItems.length)} / ${vocabularyItems.length}`}</div>
@@ -97,30 +93,36 @@ const PracticeSubjective = () => {
                 {selectedLanguage === 'english' ? currentWord?.koreanWord : currentWord?.englishWord || '단어 없음'}
             </p>
             <div className="letter-input-container">
-                {splitWordToLetters(correctAnswer).map((letter, index) => (
-                    <input
-                        key={index}
-                        type="text"
-                        className="letter-input"
-                        maxLength="1"
-                        value={userInputs[index] || ''}
-                        onChange={(event) => handleInputChange(event, index)}
-                        style={{
-                            border:
-                                isCorrect === false && userInputs[index] !== letter
-                                    ? '2px solid red'
-                                    : isCorrect === true && userInputs[index] === letter
-                                        ? '2px solid green'
-                                        : '1px solid black',
-                        }}
-                    />
-                ))}
+                {splitWordToLetters(correctAnswer).map((letter, index) => {
+                    const userLetter = userInputs[index] || '';
+                    return (
+                        <input
+                            key={index}
+                            type="text"
+                            className="letter-input"
+                            maxLength="1"
+                            value={userLetter}
+                            onChange={(event) => handleInputChange(event, index)}
+                            style={{
+                                border:
+                                    isCorrect === false && userLetter.toLowerCase() !== letter.toLowerCase()
+                                        ? '2px solid red' // 오답일 때 빨간 테두리
+                                        : isCorrect === true && userLetter.toLowerCase() === letter.toLowerCase()
+                                            ? '2px solid green' // 정답일 때 초록 테두리
+                                            : '1px solid black', // 기본 테두리
+                            }}
+                        />
+                    );
+                })}
             </div>
 
+            {/* 정답을 맞췄을 때는 정답 메시지 표시, 다음 단어 버튼은 숨김 */}
             {isCorrect === true && <p style={{color: 'green'}}>정답입니다! 다음 단어로 이동합니다.</p>}
 
+            {/* 오답을 제출한 경우에만 다음 단어 버튼 표시 */}
             {isCorrect === false && <button className="next-word-btn" onClick={handleNextWord}>다음 단어</button>}
 
+            {/* 제출 버튼 */}
             <button className="submit-btn" onClick={handleSubmit}>제출</button>
 
             {showModal && (
