@@ -1,171 +1,121 @@
+/* 전체 컨테이너 스타일 */
 .practice-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 600px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.end-button{
-    margin-left: 100%;
+    margin: 40px auto;
+    padding: 40px;
+    max-width: 750px;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
 }
 
-.practice-header {
+/* 종료 버튼 스타일 */
+.end-button {
+    align-self: flex-end;
     font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
+    color: #b2bec3;
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
+.end-button:hover {
+    color: #636e72;
+}
+
+/* 헤더 스타일 */
+.practice-header {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #2d3436;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* 문제 카운터 스타일 */
+.learn__word-counter {
+    font-size: 1.4rem;
+    color: #636e72;
+    margin-bottom: 20px;
+}
+
+/* 문제 텍스트 스타일 */
+.practice-question {
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* 선택지 컨테이너 스타일 */
 .options-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    gap: 15px;
+    width: 100%;
 }
 
-.practice-question {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
+/* 선택지 버튼 스타일 */
 .choice-button {
-    width: 180px;
-    height: 60px;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
+    flex: 1 1 40%;
+    padding: 15px;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
-    background-color: #007bff;
+    background-color: #3498db;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.choice-button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.2);
+.choice-button:hover:not(:disabled) {
+    background-color: #2980b9;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
 }
 
-/* 정답 및 오답 버튼 스타일 */
+.choice-button:disabled {
+    cursor: not-allowed;
+}
+
+/* 정답 및 오답 스타일 */
 .choice-button.correct {
-    background-color: #28a745;
+    background-color: #2ecc71;
     color: #fff;
-    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
 }
 
 .choice-button.incorrect {
-    background-color: #dc3545;
+    background-color: #e74c3c;
     color: #fff;
-    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
 }
 
 /* 정답 깜빡임 효과 */
 .choice-button.blink-correct {
-    background-color: #28a745; /* 정답인 버튼의 초록색 배경 */
-    color: #fff;
-    animation: blink 1.0s ease-in-out infinite; /* 깜빡이기 애니메이션 추가 */
+    animation: blink 1s ease-in-out infinite;
 }
 
 @keyframes blink {
     0%, 100% {
-        opacity: 1;
+        background-color: #2ecc71;
     }
     50% {
-        opacity: 0.5;
-    }
-}
-
-.practice-footer {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.practice-footer button {
-    width: 140px;
-    height: 50px;
-    margin: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.practice-footer .next-word-btn {
-    background-color: #007bff;
-}
-
-.practice-footer .next-word-btn:hover {
-    background-color: #0056b3;
-}
-
-.practice-footer .cancel-button {
-    background-color: #6c757d;
-}
-
-.practice-footer .cancel-button:hover {
-    background-color: #5a6268;
-}
-
-/* 반응형 스타일 */
-@media (max-width: 768px) {
-    .practice-container {
-        padding: 20px;
-    }
-
-    .choice-button {
-        width: 140px;
-        height: 50px;
-        font-size: 1rem;
-        margin: 8px;
-    }
-
-    .practice-footer button {
-        width: 120px;
-        height: 40px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .practice-container {
-        padding: 15px;
-    }
-
-    .practice-header {
-        font-size: 1.5rem;
-    }
-
-    .practice-question {
-        font-size: 1.2rem;
-    }
-
-    .choice-button {
-        width: 120px;
-        height: 45px;
-        font-size: 0.9rem;
-    }
-
-    .practice-footer button {
-        width: 100px;
-        height: 40px;
-        font-size: 0.9rem;
+        background-color: #27ae60;
     }
 }
 
@@ -176,7 +126,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,23 +134,112 @@
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
     text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    width: 85%;
+    max-width: 400px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-content p {
+    font-size: 1.4rem;
+    color: #2d3436;
+    margin-bottom: 20px;
+}
+
+.modal-content .button-container {
+    display: flex;
+    justify-content: space-around; /* 버튼을 가로로 배치 */
+    margin-top: 20px;
 }
 
 .modal-btn {
-    background-color: #007bff;
+    background-color: #2ecc71;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1.2rem;
     transition: background-color 0.3s ease;
+    min-width: 100px; /* 버튼 최소 가로 크기 */
 }
 
 .modal-btn:hover {
-    background-color: #0056b3;
+    background-color: #27ae60;
+}
+
+.modal-btn.cancel-btn {
+    background-color: #e74c3c;
+}
+
+.modal-btn.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+@media (max-width: 480px) {
+    .modal-content p {
+        font-size: 1.2rem;
+    }
+
+    .modal-btn {
+        padding: 10px 18px;
+        font-size: 1.1rem;
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .practice-container {
+        padding: 20px;
+    }
+
+    .practice-header {
+        font-size: 2rem;
+    }
+
+    .practice-question {
+        font-size: 1.6rem;
+    }
+
+    .choice-button {
+        flex: 1 1 90%;
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    .modal-content p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .practice-container {
+        padding: 20px;
+    }
+
+    .practice-header {
+        font-size: 1.8rem;
+    }
+
+    .practice-question {
+        font-size: 1.4rem;
+    }
+
+    .choice-button {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .modal-content p {
+        font-size: 1.3rem;
+    }
+
+    .modal-btn {
+        padding: 10px 18px;
+        font-size: 1.1rem;
+    }
 }

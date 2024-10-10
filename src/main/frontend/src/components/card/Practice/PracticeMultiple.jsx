@@ -112,7 +112,7 @@ const PracticeMultiple = () => {
     return (
         <div className="practice-container">
             <ImExit className="end-button" onClick={handleCancel}/>
-                <h2 className="practice-header">사지선다</h2>
+
             <div className="learn__word-counter">{`${Math.min(currentWordIndex + 1, vocabularyItems.length)} / ${vocabularyItems.length}`}</div>
             <p className="practice-question">
                 {selectedLanguage === 'english' ? currentWord?.koreanWord : currentWord?.englishWord || '단어 없음'}
@@ -141,14 +141,18 @@ const PracticeMultiple = () => {
                         {missedWords.length === 0 ? (
                             <div>
                                 <p>학습이 끝났습니다. 수고하셨습니다! 😊</p>
-                                <button className="modal-btn" onClick={handleCancel}>확인</button>
+                                <div className="button-container">
+                                    <button className="modal-btn" onClick={handleCancel}>확인</button>
+                                </div>
                             </div>
                         ) : (
                             <>
                                 <p>정답: {okWords.length}개, 오답: {missedWords.length}개</p>
                                 <p>틀린 단어를 다시 학습하시겠습니까?</p>
-                                <button className="modal-btn" onClick={handleRestartMissedWords}>확인</button>
-                                <button className="modal-btn" onClick={handleCancel}>취소</button>
+                                <div className="button-container">
+                                    <button className="modal-btn" onClick={handleRestartMissedWords}>확인</button>
+                                    <button className="modal-btn cancel-btn" onClick={handleCancel}>취소</button>
+                                </div>
                             </>
                         )}
                     </div>
