@@ -50,8 +50,11 @@ const Learning = () => {
                 <div className="word-list">
                     {vocabularyItems.map((wordPair, index) => (
                         <div className="word-item" key={index}>
+                            {/* 번호 추가 */}
+                            <div className="word-number">{index + 1}</div>
                             <div className="word-text">
-                                {wordPair.englishWord} | {wordPair.koreanWord}
+                                <span className="english-word">{wordPair.englishWord}</span>
+                                <span className="korean-word">{wordPair.koreanWord}</span>
                             </div>
                         </div>
                     ))}
@@ -59,7 +62,6 @@ const Learning = () => {
             ) : (
                 <p>단어 목록이 없습니다.</p>
             )}
-
         </div>
     );
 };
