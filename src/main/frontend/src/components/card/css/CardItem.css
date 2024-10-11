@@ -190,3 +190,64 @@
         font-size: 12px;
     }
 }
+
+/* 카드 상단 햄버거 메뉴 아이콘 */
+.card-hamburger-menu {
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.card-hamburger-menu:hover {
+    color: #333;
+}
+
+/* 햄버거 메뉴 드롭다운 */
+.card-menu-dropdown {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 메뉴 버튼 스타일 */
+.card-menu-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.card-menu-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* 드롭다운 메뉴 닫기 시 애니메이션 */
+.card-menu-dropdown {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+

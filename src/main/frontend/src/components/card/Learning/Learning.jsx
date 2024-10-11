@@ -4,14 +4,22 @@ import '../css/Learning.css';
 import { Button } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import {FaStar} from "react-icons/fa";
 
 const Learning = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { vocabularyItems = [] } = location.state || {};
-
-
     const [testOption, setTestOption] = useState('korean'); // 한국어 기본 설정
+    const [favorites, setFavorites] = useState(vocabularyItems.map(() => false));
+
+
+    // 즐겨찾기 상태 토글 함수
+    const toggleFavorite = (index) => {
+        const newFavorites = [...favorites];
+        newFavorites[index] = !newFavorites[index]; // 클릭 시 상태 토글
+        setFavorites(newFavorites);
+    };
 
     const handleLearningClick = () => {
         navigate('/word-learn', { state: { vocabularyItems } });
@@ -50,12 +58,15 @@ const Learning = () => {
                 <div className="word-list">
                     {vocabularyItems.map((wordPair, index) => (
                         <div className="word-item" key={index}>
-                            {/* 번호 추가 */}
                             <div className="word-number">{index + 1}</div>
                             <div className="word-text">
                                 <span className="english-word">{wordPair.englishWord}</span>
                                 <span className="korean-word">{wordPair.koreanWord}</span>
                             </div>
+                            <FaStar
+                                className={`star-icon ${favorites[index] ? 'filled' : ''}`}
+                                onClick={() => toggleFavorite(index)} // 클릭 시 즐겨찾기 토글
+                            />
                         </div>
                     ))}
                 </div>
