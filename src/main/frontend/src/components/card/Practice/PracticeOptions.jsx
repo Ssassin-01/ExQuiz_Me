@@ -18,14 +18,14 @@ const PracticeOptions = () => {
 
     const handleStart = () => {
         if (selectedType === 'subjective') {
-            navigate('/practice-subjective', {
+            navigate('/learning/practice-subjective', {
                 state: {
                     selectedLanguage,
                     vocabularyItems: location.state.vocabularyItems || []
                 },
             });
         } else if (selectedType === 'multiple-choice') {
-            navigate('/practice-multiple', {
+            navigate('/learning/practice-multiple', {
                 state: {
                     selectedLanguage,
                     vocabularyItems: location.state.vocabularyItems || []

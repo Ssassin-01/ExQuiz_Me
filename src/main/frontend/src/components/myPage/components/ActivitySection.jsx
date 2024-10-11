@@ -4,6 +4,7 @@ import Graph from "./Graph";
 import "./css/ActivitySection.css";
 import BadgeItem from "./BageItem";
 import MyCardList from "./MyCardList";
+import LineGraph from "./LineGraph";
 
 
 const ActivitySection = ({
@@ -60,7 +61,7 @@ const ActivitySection = ({
                     ))}
                 </div>
             </div>
-            <Graph />
+            <LineGraph />
 
             {/* 모든 카드 리스트를 보여주는 MyCardList 모달 */}
             {isModalOpen && (

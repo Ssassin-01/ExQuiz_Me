@@ -58,6 +58,9 @@ public class UserService {
     }
 
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
     // 이메일 중복 확인
     public boolean emailExists(String email) {
         return userRepository.existsByEmail(email);
@@ -68,9 +71,14 @@ public class UserService {
         return userRepository.existsByTelNumber(telNumber);
     }
 
-    // User 삭제
+    // 유저 삭제 로직
     public void deleteUser(String email) {
-        userRepository.deleteById(email);
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            userRepository.delete(user);  // 연관된 데이터도 함께 삭제됨
+        } else {
+            throw new RuntimeException("User not found with email: " + email);
+        }
     }
 
     // 이메일로 사용자 찾기 (활동 기록 포함)

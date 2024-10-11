@@ -22,15 +22,15 @@ const Learning = () => {
     };
 
     const handleLearningClick = () => {
-        navigate('/word-learn', { state: { vocabularyItems } });
+        navigate('/learning/word-learn', { state: { vocabularyItems } });
     };
     const handlePracticeClick = () => {
-        navigate('/practice-options', { state: { vocabularyItems } });
+        navigate('/learning/practice-options', { state: { vocabularyItems } });
     };
 
     const handleTestClick = (selectedOption) => {
         setTestOption(selectedOption);
-        navigate('/learn-test', { state: { vocabularyItems, testOption: selectedOption } });
+        navigate(`/learning/learn-test`, { state: { vocabularyItems, testOption: selectedOption } });
     };
 
     return (

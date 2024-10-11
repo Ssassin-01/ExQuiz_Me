@@ -67,7 +67,7 @@ const LearningTest = () => {
         setMissedWords(missed);
         setGraded(gradeStatus);
 
-        navigate('/learn-test-result', {
+        navigate('/learning/learn-test-result', {
             state: {
                 title,
                 okWords: Object.values(correctAnswers),

@@ -78,7 +78,20 @@ hr {
     text-align: left;
 }
 
-.mypage-edit-btn {
+.mypage-button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.mypage-edit-btn, .mypage-delete-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mypage-edit-btn, .mypage-delete-btn{
     padding: 5px 10px;
     background-color: #fff;
     color: #333;
@@ -91,6 +104,18 @@ hr {
 .mypage-edit-btn:hover {
     background-color: #f0f0f0;
 }
+
+.mypage-delete-btn {
+    background-color: #f44336; /* 탈퇴 버튼 색상 */
+    color: white;
+}
+
+.mypage-delete-btn:hover {
+    background-color: #d32f2f; /* 탈퇴 버튼 hover 색상 */
+}
+
+
+
 
 
 /*-------스토리 색션------*/

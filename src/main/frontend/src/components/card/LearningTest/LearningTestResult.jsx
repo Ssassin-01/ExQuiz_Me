@@ -20,13 +20,13 @@ const LearningTestResult = () => {
 
     // "다시 테스트 하기" 버튼 클릭 시, 이전 graded 상태와 사용자 입력값을 함께 전달
     const handleRetake = () => {
-        navigate('/learn-test', { state: { title, vocabularyItems, testOption, graded, answers, isRandomized } });
+        navigate('/learning/learn-test', { state: { title, vocabularyItems, testOption, graded, answers, isRandomized } });
     };
 
     // "전체 랜덤 테스트" 버튼 클릭 시, 랜덤화된 항목과 초기 상태로 이동
     const handleRandomTest = () => {
         const shuffledVocabularyItems = shuffleArray(vocabularyItems); // 항목을 랜덤으로 섞음
-        navigate('/learn-test', {
+        navigate('/learning/learn-test', {
             state: {
                 title,
                 vocabularyItems: shuffledVocabularyItems,
@@ -39,11 +39,11 @@ const LearningTestResult = () => {
     };
 
     const handleLearningClick = () => {
-        navigate('/word-learn', { state: { vocabularyItems } });
+        navigate('/learning/word-learn', { state: { vocabularyItems } });
     };
 
     const handleLearnClick = () => {
-        navigate('/study', { state: { vocabularyItems } });
+        navigate('/learning/study', { state: { vocabularyItems } });
     };
 
     return (

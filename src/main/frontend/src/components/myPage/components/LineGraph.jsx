@@ -1,34 +1,24 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 
-Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const Graph = ({ data, options }) => {
-    const activityData = {
-        labels: ['월', '화', '수', '목', '금', '토', '일'],  // 1주일 단위
+const LineGraph = ({ data, options }) => {
+    const studyData = {
+        labels: ['월', '화', '수', '목', '금', '토', '일'], // 1주일 데이터
         datasets: [
             {
-                label: '공부량 (시간)',
-                data: [2, 3.5, 1, 4, 5, 3, 2.5],  // 임의의 공부 시간 값 (시간 단위)
-                backgroundColor: (context) => {
-                    const chart = context.chart;
-                    const { ctx, chartArea } = chart;
-                    if (!chartArea) {
-                        return null;
-                    }
-                    const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                    gradient.addColorStop(0, '#FFC107');  // 시작 색상 (노란색)
-                    gradient.addColorStop(1, '#FF5722');  // 끝 색상 (오렌지색)
-                    return gradient;
-                },
-                borderRadius: 10,
-                borderSkipped: false,
+                label: '나의 공부 시간 (시간)',
+                data: [2, 3.5, 1, 4, 3, 2.5, 5], // 임의의 공부 시간 데이터
+                fill: false, // 선 아래 채우기 없앰
+                borderColor: '#4caf50', // 선 색상
+                tension: 0.1, // 곡선의 휘어짐 정도
             },
         ],
     };
 
-    const activityOptions = {
+    const studyOptions = {
         responsive: true,
         plugins: {
             legend: {
@@ -61,8 +51,8 @@ const Graph = ({ data, options }) => {
                 },
                 ticks: {
                     color: '#666',
-                    callback: function(value) {
-                        return value + "시간";  // y축에 시간 단위 표시
+                    callback: function (value) {
+                        return value + '시간';
                     },
                 },
             },
@@ -83,10 +73,10 @@ const Graph = ({ data, options }) => {
 
     return (
         <div className="mypage-activity-graph">
-            <h4>공부량 그래프</h4>
-            <Bar data={activityData} options={activityOptions} />
+            <h4>주간 공부 시간 그래프</h4>
+            <Line data={studyData} options={studyOptions} />
         </div>
     );
 };
 
-export default Graph;
+export default LineGraph;
