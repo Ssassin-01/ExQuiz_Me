@@ -191,4 +191,12 @@ public class VocaCardService {
         }
     }
 
+    @Transactional
+    public void deleteCardByNumber(Long cardNumber) {
+        if (!cardRepository.existsById(cardNumber)) {
+            throw new IllegalArgumentException("Card with ID " + cardNumber + " not found.");
+        }
+        cardRepository.deleteById(cardNumber);
+    }
+
 }

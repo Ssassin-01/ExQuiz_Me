@@ -1,13 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './css/MyCardList.css';
-import CardItem from "../../card/CardItem"; // CardItem 불러오기
+import CardItem from "../../card/CardItem";
+import axios from "axios";
+import {useNavigate} from "react-router-dom"; // CardItem 불러오기
 
 const MyCardList = ({ children, closeModal, title, updatedUserCards }) => { // handleCardDelete 추가
+    const navigate = useNavigate(); // navigate 훅 사용
+    const apiUrl = process.env.REACT_APP_API_URL;
 
-    const handleCardDelete = (cardNumber) => {
-        console.log(`카드 삭제됨: 카드 번호 ${cardNumber}`);
-        // 실제 삭제 로직 추가
+    const handleCardDelete = async (cardNumber) => {
+        try {
+            const response = await axios.delete(`${apiUrl}/api/cards/${cardNumber}`, {
+                withCredentials: true // 세션 쿠키를 전송
+            });
+            if (response.status === 200) {
+                console.log(`Card ${cardNumber} deleted successfully`);
+                closeModal();
+                // 마이페이지로 리디렉션
+                window.location.reload();
+            } else {
+                console.error('Failed to delete card');
+            }
+        } catch (error) {
+            console.error('Error deleting card:', error);
+        }
     };
+
+
 
     // 카드 수정 기능 (수정 페이지로 이동하거나 수정 모달 열기)
     const handleEditCard = (cardNumber) => {

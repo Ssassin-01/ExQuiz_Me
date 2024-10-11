@@ -108,4 +108,15 @@ public class CardController {
         }
     }
 
+    @DeleteMapping("/{cardNumber}")
+    public ResponseEntity<?> deleteCard(@PathVariable Long cardNumber) {
+        try {
+            cardService.deleteCardByNumber(cardNumber);
+            return ResponseEntity.ok("Card deleted successfully");
+        } catch (Exception e) {
+            logger.error("Error deleting card: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting card");
+        }
+    }
+
 }
