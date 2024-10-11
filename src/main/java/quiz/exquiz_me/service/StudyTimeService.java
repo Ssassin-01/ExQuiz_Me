@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import quiz.exquiz_me.entity.learning.StudyTimeLog;
 import quiz.exquiz_me.repository.StudyTimeLogRepository;
 import quiz.exquiz_me.user.entity.User;
+import quiz.exquiz_me.user.repository.UserRepository;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -17,6 +18,8 @@ public class StudyTimeService {
     @Autowired
     private StudyTimeLogRepository studyTimeLogRepository;
 
+    @Autowired
+    private UserRepository userRepository;
 
     // 학습 시간 저장 (중복 날짜에 대해 시간 누적)
     // 학습 시간 저장 (중복 날짜에 대해 시간 누적)
@@ -54,6 +57,8 @@ public class StudyTimeService {
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(DayOfWeek.MONDAY);
         LocalDate endOfWeek = today.with(DayOfWeek.SUNDAY);
+
+        // 유저 이메일을 통해 기록 조회
         return studyTimeLogRepository.findStudyLogsByUserAndStudyDateBetween(userEmail, startOfWeek, endOfWeek);
     }
 

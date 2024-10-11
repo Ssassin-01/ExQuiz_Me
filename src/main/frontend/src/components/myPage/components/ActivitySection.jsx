@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import CardItem from "../../card/CardItem";
-import Graph from "./Graph";
 import "./css/ActivitySection.css";
 import BadgeItem from "./BageItem";
 import MyCardList from "./MyCardList";
 import LineGraph from "./LineGraph";
-
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const ActivitySection = ({
                              userCards = [],
@@ -21,10 +21,40 @@ const ActivitySection = ({
         return { ...card, isBookmarked };
     });
 
+    const navigate = useNavigate(); // navigate 훅 사용
+
     const [isModalOpen, setModalOpen] = useState(false); // 모달 상태 추가
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+
+    const handleCardDelete = async (cardNumber) => {
+        try {
+            const response = await axios.delete(`${apiUrl}/api/cards/${cardNumber}`, {
+                withCredentials: true // 세션 쿠키를 전송
+            });
+            if (response.status === 200) {
+                console.log(`Card ${cardNumber} deleted successfully`);
+                closeModal();
+                // 마이페이지로 리디렉션
+                window.location.reload();
+            } else {
+                console.error('Failed to delete card');
+            }
+        } catch (error) {
+            console.error('Error deleting card:', error);
+        }
+    };
+
+
+
+    // 카드 수정 기능 (수정 페이지로 이동하거나 수정 모달 열기)
+    const handleEditCard = (cardNumber) => {
+        // 수정 페이지로 이동, cardNumber를 URL 파라미터로 전달
+        navigate(`/edit-card/${cardNumber}`);
+    };
 
 
     return (
@@ -33,6 +63,7 @@ const ActivitySection = ({
                 <div className="mypage-activity-header">
                     <h4>내 게시물</h4>
                     <button className="mypage-add-btn" onClick={openModal}>+</button>  {/* + 버튼 추가 */}
+
                 </div>
                 <div className="mypage-post-items">
                     {updatedUserCards.slice(0, 3).map((card) => (  // 3개의 카드만 출력
@@ -49,6 +80,9 @@ const ActivitySection = ({
                             onBookmarkToggle={() => handleBookmarkToggle(card.cardNumber)}
                             purpose={card.purpose}
                             onCardClick={() => handleCardClick(card.cardNumber)}
+                            onEditClick={handleEditCard}
+                            onDeleteClick={handleCardDelete}
+                            showHamburgerMenu={true}
                         />
                     ))}
                 </div>

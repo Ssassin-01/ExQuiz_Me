@@ -1,26 +1,13 @@
 package quiz.exquiz_me.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudyTimeLogRequest {
     private String userEmail;
     private Long studyTime;
-
-    // 기본 생성자
-    public StudyTimeLogRequest() {}
-
-    // Getters and Setters
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public Long getStudyTime() {
-        return studyTime;
-    }
-
-    public void setStudyTime(Long studyTime) {
-        this.studyTime = studyTime;
-    }
 }

@@ -1,19 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import axios from 'axios';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const LineGraph = ({ data, options }) => {
+const LineGraph = () => {
+    const [studyTimeLogs, setStudyTimeLogs] = useState([]);
+
+    useEffect(() => {
+        const fetchStudyTimeLogs = async () => {
+            try {
+                const userEmail = sessionStorage.getItem('useremail');
+                const apiUrl = process.env.REACT_APP_API_URL;
+
+                console.log("Fetching study time logs for:", userEmail);
+
+                const response = await axios.get(`${apiUrl}/api/study-time/weekly`, {
+                    params: { userEmail },
+                    withCredentials: true,
+                });
+
+                // 초 단위 데이터를 분 단위로 변환
+                const studyTimesInMinutes = response.data.map(log => Math.floor(log.studyTime / 60));
+                console.log("Received study times (in minutes):", studyTimesInMinutes);
+
+                // 데이터를 길이 7로 맞추기 (주간 데이터를 위해)
+                const paddedStudyTimes = [...studyTimesInMinutes];
+                while (paddedStudyTimes.length < 7) {
+                    paddedStudyTimes.push(0); // 부족한 데이터를 0으로 채움
+                }
+
+                setStudyTimeLogs(paddedStudyTimes);
+            } catch (error) {
+                console.error("주간 학습 시간 데이터를 가져오는 데 실패했습니다:", error);
+            }
+        };
+
+        fetchStudyTimeLogs();
+    }, []);
+
     const studyData = {
         labels: ['월', '화', '수', '목', '금', '토', '일'], // 1주일 데이터
         datasets: [
             {
-                label: '나의 공부 시간 (시간)',
-                data: [2, 3.5, 1, 4, 3, 2.5, 5], // 임의의 공부 시간 데이터
-                fill: false, // 선 아래 채우기 없앰
-                borderColor: '#4caf50', // 선 색상
-                tension: 0.1, // 곡선의 휘어짐 정도
+                label: '나의 공부 시간 (분)',
+                data: studyTimeLogs, // 데이터 반영
+                fill: false,
+                borderColor: '#4caf50',
+                tension: 0.1,
             },
         ],
     };
@@ -38,7 +73,7 @@ const LineGraph = ({ data, options }) => {
                 bodyFont: { size: 12 },
                 callbacks: {
                     label: function (context) {
-                        return `${context.label}: ${context.raw} 시간`;
+                        return `${context.label}: ${context.raw} 분`;
                     },
                 },
             },
@@ -46,14 +81,16 @@ const LineGraph = ({ data, options }) => {
         scales: {
             y: {
                 beginAtZero: true,
+                max: Math.max(...studyTimeLogs, 60), // 최대값 설정
+                ticks: {
+                    stepSize: 10, // 10분 단위
+                    callback: function (value) {
+                        return value + '분';
+                    },
+                    color: '#666',
+                },
                 grid: {
                     color: '#e0e0e0',
-                },
-                ticks: {
-                    color: '#666',
-                    callback: function (value) {
-                        return value + '시간';
-                    },
                 },
             },
             x: {
