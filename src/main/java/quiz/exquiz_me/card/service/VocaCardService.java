@@ -199,4 +199,35 @@ public class VocaCardService {
         cardRepository.deleteById(cardNumber);
     }
 
+    @Transactional
+    public void updateCard(CardDTO cardDTO, Long cardNumber) {
+        // 카드 가져오기
+        Card card = cardRepository.findById(cardNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Card not found"));
+
+        // 기존 vocabularyItems 삭제
+        card.getVocabularyItems().clear();
+
+        // 새로운 vocabularyItems 추가
+        List<VocabularyItem> vocabularyItems = new ArrayList<>();
+        for (VocabularyItemDTO vocabularyItemDTO : cardDTO.getVocabularyItems()) {
+            VocabularyItem item = new VocabularyItem();
+            item.setCard(card);
+            item.setEnglishWord(vocabularyItemDTO.getEnglishWord());
+            item.setKoreanWord(vocabularyItemDTO.getKoreanWord());
+            vocabularyItems.add(item);
+        }
+
+        card.getVocabularyItems().addAll(vocabularyItems);
+
+        // 나머지 필드 업데이트
+        card.setTitle(cardDTO.getTitle());
+        card.setCardContent(cardDTO.getCardContent());
+        card.setPurpose(cardDTO.getPurpose());
+
+        // 카드 저장
+        cardRepository.save(card);
+    }
+
+
 }

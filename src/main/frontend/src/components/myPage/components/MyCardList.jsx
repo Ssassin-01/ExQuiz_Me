@@ -30,8 +30,8 @@ const MyCardList = ({ children, closeModal, title, updatedUserCards }) => { // h
 
     // 카드 수정 기능 (수정 페이지로 이동하거나 수정 모달 열기)
     const handleEditCard = (cardNumber) => {
-        alert(`수정할 카드 번호: ${cardNumber}`);
-        // 수정 로직 추가 (예: 수정 페이지로 이동하거나 모달을 열어 수정 폼을 보여줄 수 있음)
+        // 수정 페이지로 이동, cardNumber를 URL 파라미터로 전달
+        navigate(`/edit-card/${cardNumber}`);
     };
 
     return (

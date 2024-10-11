@@ -12,4 +12,5 @@ public interface CardRepository extends JpaRepository<Card, Long> {
     List<Card> findByTitleContaining(String title);
     void deleteByCardNumber(Long cardNumber);
 
+    Optional<Card> findByCardNumberAndUser_Email(Long cardNumber, String email);
 }

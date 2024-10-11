@@ -39,6 +39,7 @@ import Practice from "./components/card/Practice/PracticeOptions";
 import PracticeSubjective from "./components/card/Practice/PracticeSubjective";
 import PracticeOptions from "./components/card/Practice/PracticeOptions";
 import PracticeMultiple from "./components/card/Practice/PracticeMultiple";
+import EditComponent from "./components/card/EditComponent";
 function App() {
     return (
         <HelmetProvider>
@@ -59,6 +60,7 @@ function App() {
                                     <Route path="subscribe" element={<ProtectedRoute><SubScribe /></ProtectedRoute>} />
                                     <Route path="mypage" element={<ProtectedRoute><MyPage /></ProtectedRoute>} />
 
+                                    <Route path="/edit-card/:cardNumber" element={<EditComponent />} />
                                     <Route path="/success" element={<SuccessPage />} />
                                     <Route path="/fail" element={<FailPage />} />
                                     <Route path="/edit-profile" element={<EditProfile />} />

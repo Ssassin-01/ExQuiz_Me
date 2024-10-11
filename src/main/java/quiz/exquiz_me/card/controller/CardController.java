@@ -119,4 +119,26 @@ public class CardController {
         }
     }
 
+    @PutMapping("/{cardNumber}/edit")
+    public ResponseEntity<?> updateCard(@RequestBody CardDTO cardDTO, @PathVariable Long cardNumber) {
+        try {
+            cardService.updateCard(cardDTO, cardNumber);
+            return ResponseEntity.ok("Card updated successfully");
+        } catch (Exception e) {
+            logger.error("Error updating card: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating card");
+        }
+    }
+
+    @GetMapping("/{cardNumber}")
+    public ResponseEntity<CardDTO> getCardByNumber(@PathVariable Long cardNumber) {
+        try {
+            CardDTO cardDTO = cardService.getCardByNumber(cardNumber);
+            return ResponseEntity.ok(cardDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
 }
