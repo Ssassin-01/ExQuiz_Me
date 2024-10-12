@@ -47,8 +47,8 @@ const Subscribe = () => {
                     amount: plan.price,
                     orderId: 'ORDER_ID',
                     orderName: plan.name,
-                    successUrl: `${apiUrl}/success`,
-                    failUrl: `${apiUrl}/fail`,
+                    successUrl: `${window.location.origin}/success`,
+                    failUrl: `${window.location.origin}/fail`,
                 });
             } catch (error) {
                 console.error('Payment failed:', error);
