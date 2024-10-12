@@ -116,7 +116,7 @@
 
 .study-section-cards-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 그리드 레이아웃 유지 */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px)); /* 그리드 레이아웃 유지 */
   gap: 20px;
   margin-top: 20px;
   width: 100%;

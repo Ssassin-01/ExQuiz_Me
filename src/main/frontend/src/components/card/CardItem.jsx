@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/CardItem.css';
 import { FaEye, FaEllipsisV } from 'react-icons/fa'; // 햄버거 메뉴 아이콘 추가

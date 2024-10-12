@@ -56,7 +56,6 @@ const MyCardList = ({ children, closeModal, title, updatedUserCards }) => { // h
                             onBookmarkToggle={() => {}}
                             purpose={card.purpose}
                             onCardClick={() => {}}
-                            // 팝업 페이지에서만 삭제 버튼 표시를 위한 onDeleteClick prop 전달
                             onEditClick={handleEditCard}
                             onDeleteClick={handleCardDelete}
                             showHamburgerMenu={true}

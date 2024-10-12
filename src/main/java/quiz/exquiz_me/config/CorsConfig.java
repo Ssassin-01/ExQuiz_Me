@@ -23,8 +23,11 @@ public class CorsConfig {
         for (String origin : allowedOrigins.split(",")) {
             config.addAllowedOriginPattern(origin.trim());
         }
+        config.addAllowedOrigin("https://tosspayments.com");
+        //config.addAllowedOriginPattern("*"); // 모든 도메인 허용
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+
         config.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);

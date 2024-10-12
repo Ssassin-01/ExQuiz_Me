@@ -74,3 +74,14 @@ export const fetchBookmarkedCards = async (userEmail, apiUrl) => {
         return [];
     }
 };
+
+// 사용자 구독 상태 확인
+export const checkUserSubscription = async (userEmail, apiUrl) => {
+    try {
+        const response = await axios.get(`${apiUrl}/api/payment/checkSubscription?userEmail=${userEmail}`, { withCredentials: true });
+        return response.data && response.data !== "No active subscription found.";  // null이 아닌 경우 구독 중으로 판단
+    } catch (error) {
+        console.error('Error checking subscription:', error);
+        return false;  // 오류 시 기본적으로 구독하지 않은 상태로 설정
+    }
+};

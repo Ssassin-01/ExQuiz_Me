@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/Main.css';
 import {Link, useNavigate} from "react-router-dom";
+import {MainFooter} from "./MainFooter";
 
 const Main = () => {
     const navigate = useNavigate();
@@ -136,6 +137,7 @@ const Main = () => {
                     </div>
                 </div>
             </section>
+            <MainFooter />
         </div>
     );
 };

@@ -112,6 +112,40 @@
     background-color: #6c757d;
 }
 
+.subscription-info {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 600px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.subscription-info p {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.subscription-info p span {
+    font-weight: bold;
+    color: #ff7f50;
+    font-size: 1.6rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @media (max-width: 768px) {
     .pricing-plans-title {
         font-size: 2rem;
@@ -139,6 +173,15 @@
         padding: 10px 20px;
         font-size: 1rem;
     }
+
+    .subscription-info {
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+    .subscription-info p {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -153,5 +196,9 @@
     .choose-plan-button {
         font-size: 0.9rem;
         padding: 8px 15px;
+    }
+
+    .subscription-info p {
+        font-size: 1rem;
     }
 }
