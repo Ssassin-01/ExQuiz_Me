@@ -6,11 +6,11 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Graph = ({ data, options }) => {
     const activityData = {
-        labels: ['월', '화', '수', '목', '금', '토', '일'],
+        labels: ['월', '화', '수', '목', '금', '토', '일'],  // 1주일 단위
         datasets: [
             {
-                label: '나의 활동 (점수)',
-                data: [50, 70, 90, 100, 60, 80, 75],
+                label: '공부량 (시간)',
+                data: [2, 3.5, 1, 4, 5, 3, 2.5],  // 임의의 공부 시간 값 (시간 단위)
                 backgroundColor: (context) => {
                     const chart = context.chart;
                     const { ctx, chartArea } = chart;
@@ -18,8 +18,8 @@ const Graph = ({ data, options }) => {
                         return null;
                     }
                     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                    gradient.addColorStop(0, '#A6A6A6');
-                    gradient.addColorStop(1, '#8C8C8C');
+                    gradient.addColorStop(0, '#FFC107');  // 시작 색상 (노란색)
+                    gradient.addColorStop(1, '#FF5722');  // 끝 색상 (오렌지색)
                     return gradient;
                 },
                 borderRadius: 10,
@@ -48,7 +48,7 @@ const Graph = ({ data, options }) => {
                 bodyFont: { size: 12 },
                 callbacks: {
                     label: function (context) {
-                        return `${context.label}: ${context.raw} 점`;
+                        return `${context.label}: ${context.raw} 시간`;
                     },
                 },
             },
@@ -61,6 +61,9 @@ const Graph = ({ data, options }) => {
                 },
                 ticks: {
                     color: '#666',
+                    callback: function(value) {
+                        return value + "시간";  // y축에 시간 단위 표시
+                    },
                 },
             },
             x: {
@@ -80,7 +83,7 @@ const Graph = ({ data, options }) => {
 
     return (
         <div className="mypage-activity-graph">
-            <h4>그래프</h4>
+            <h4>공부량 그래프</h4>
             <Bar data={activityData} options={activityOptions} />
         </div>
     );

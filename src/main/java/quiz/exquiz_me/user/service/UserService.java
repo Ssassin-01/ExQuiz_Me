@@ -58,6 +58,9 @@ public class UserService {
     }
 
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
     // 이메일 중복 확인
     public boolean emailExists(String email) {
         return userRepository.existsByEmail(email);
@@ -68,9 +71,14 @@ public class UserService {
         return userRepository.existsByTelNumber(telNumber);
     }
 
-    // User 삭제
+    // 유저 삭제 로직
     public void deleteUser(String email) {
-        userRepository.deleteById(email);
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            userRepository.delete(user);  // 연관된 데이터도 함께 삭제됨
+        } else {
+            throw new RuntimeException("User not found with email: " + email);
+        }
     }
 
     // 이메일로 사용자 찾기 (활동 기록 포함)
@@ -128,5 +136,12 @@ public class UserService {
                         .map(activity -> new UserActivityDTO(activity.getLoginDate(), activity.getTimeSpent()))
                         .collect(Collectors.toList())  // 활동 기록을 DTO로 변환하여 반환
         );
+    }
+
+
+    //너 구독자니?
+    public boolean isUserSubscribed(String email) {
+        User user = userRepository.findByEmail(email);
+        return !user.getSubscriptions().isEmpty(); // 구독 내역이 있으면 구독자로 간주
     }
 }

@@ -7,9 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import quiz.exquiz_me.card.dto.CardAccessLogDTO;
 import quiz.exquiz_me.card.dto.CardDTO;
-import quiz.exquiz_me.card.service.VocaCardService;
+import quiz.exquiz_me.card.service.CardService;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class CardController {
     private final Logger logger = LoggerFactory.getLogger(CardController.class);
 
     @Autowired
-    private VocaCardService cardService;
+    private CardService cardService;
 
     @PostMapping
     public ResponseEntity<?> createCard(@RequestBody CardDTO cardDTO) {
@@ -71,7 +70,6 @@ public class CardController {
         }
     }
 
-
     @GetMapping("/user")
     public ResponseEntity<List<CardDTO>> getUserCards() {
         try {
@@ -107,5 +105,38 @@ public class CardController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    @DeleteMapping("/{cardNumber}")
+    public ResponseEntity<?> deleteCard(@PathVariable Long cardNumber) {
+        try {
+            cardService.deleteCardByNumber(cardNumber);
+            return ResponseEntity.ok("Card deleted successfully");
+        } catch (Exception e) {
+            logger.error("Error deleting card: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting card");
+        }
+    }
+
+    @PutMapping("/{cardNumber}/edit")
+    public ResponseEntity<?> updateCard(@RequestBody CardDTO cardDTO, @PathVariable Long cardNumber) {
+        try {
+            cardService.updateCard(cardDTO, cardNumber);
+            return ResponseEntity.ok("Card updated successfully");
+        } catch (Exception e) {
+            logger.error("Error updating card: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating card");
+        }
+    }
+
+    @GetMapping("/{cardNumber}")
+    public ResponseEntity<CardDTO> getCardByNumber(@PathVariable Long cardNumber) {
+        try {
+            CardDTO cardDTO = cardService.getCardByNumber(cardNumber);
+            return ResponseEntity.ok(cardDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
 
 }

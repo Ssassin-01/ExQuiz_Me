@@ -9,10 +9,8 @@ import java.util.Optional;
 public interface CardRepository extends JpaRepository<Card, Long> {
 
     List<Card> findByUser_Email(String email);
-
-
     List<Card> findByTitleContaining(String title);
+    void deleteByCardNumber(Long cardNumber);
 
-//    void deleteByUser_Email(String email);
-//    long countByUserEmail(String email);
+    Optional<Card> findByCardNumberAndUser_Email(Long cardNumber, String email);
 }

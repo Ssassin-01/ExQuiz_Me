@@ -37,7 +37,7 @@ const TimeTracker = () => {
                 setLoginTimeSpent(timeSpentInMinutes); // 업데이트된 시간 설정
             } catch (error) {
                 console.error("로그인 시간 업데이트 실패:", error);
-                setError("로그인 시간 업데이트에 실패했습니다.");
+                setError("로그인 시간 업데이트에 실패했습니다   .");
             }
         }, 60000); // 1분 간격으로 실행
 

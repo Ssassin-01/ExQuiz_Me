@@ -1,0 +1,196 @@
+.practice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    padding: 40px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    max-width: 1000px; /* 가로 길이 확대 */
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: max-width 0.3s ease; /* 유동적으로 늘어나도록 처리 */
+}
+
+/* 제목 스타일 */
+.practice-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+}
+
+/* 문항 스타일 */
+.practice-question {
+    font-size: 2.5rem;  /* 문항을 크게 표시 */
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* 입력 필드 컨테이너 */
+.letter-input-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* 입력 필드가 길어질 경우 줄바꿈 */
+}
+
+/* 입력 필드 */
+.letter-input {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #ced6e0;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.letter-input:focus {
+    border-color: #3498db;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.6);
+    outline: none;
+}
+
+/* 제출 및 다음 버튼 스타일 */
+.submit-btn, .next-word-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.submit-btn:hover, .next-word-btn:hover {
+    background-color: #1abc9c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:active, .next-word-btn:active {
+    background-color: #16a085;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 모달 버튼 스타일 */
+.modal-btn {
+    padding: 12px 30px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-btn:hover {
+    background-color: #1abc9c;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-btn.cancel {
+    background-color: #e74c3c;
+}
+
+.modal-btn.cancel:hover {
+    background-color: #c0392b;
+}
+
+/* 모달 창 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    width: 400px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-content p {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .practice-container {
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    .practice-header, .practice-question {
+        font-size: 2rem;
+        padding: 15px;
+    }
+
+    .letter-input {
+        width: 50px;
+        height: 50px;
+    }
+
+    .submit-btn, .next-word-btn {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .practice-container {
+        max-width: 90%;
+    }
+
+    .practice-header, .practice-question {
+        font-size: 1.8rem;
+    }
+
+    .letter-input {
+        width: 45px;
+        height: 45px;
+    }
+
+    .submit-btn, .next-word-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}

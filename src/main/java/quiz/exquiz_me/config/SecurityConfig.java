@@ -13,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import quiz.exquiz_me.user.service.UserActivityService;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -35,13 +37,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                //.cors(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
                         .requestMatchers("/", "/login", "/join", "/joinProc",
                                 "/images/**", "/js/**", "/css/**", "/img/**",
                                 "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions/**",
                                 "/gaming", "/gameox", "/api/game/card/**", "/api/user/**"
-                                , "/payment/**").permitAll()
+                                , "/payment/**", "/api/payment/pay", "/api/payment/checkSubscription").permitAll()
 //                        .requestMatchers("/api/cards/**").authenticated()
                         .requestMatchers("/game/**", "/mypage/**", "/study/**", "/make/**").authenticated()  // 인증된 사용자만 접근 가능
                         .anyRequest().authenticated()
