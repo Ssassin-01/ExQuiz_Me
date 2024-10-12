@@ -278,7 +278,7 @@
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
-    .modal-content {
+    .learning-container {
         width: 90%;
         padding: 20px;
     }
@@ -290,5 +290,27 @@
     .modal-btn {
         font-size: 1em;
         padding: 10px 20px;
+    }
+}
+
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .learning-container {
+        padding: 20px;
+    }
+
+    .learning-header {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .learning-container {
+        padding: 20px;
+    }
+
+    .learning-header {
+        font-size: 1.8rem;
     }
 }

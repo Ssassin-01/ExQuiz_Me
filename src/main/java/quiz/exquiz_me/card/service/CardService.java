@@ -2,7 +2,6 @@ package quiz.exquiz_me.card.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import quiz.exquiz_me.card.dto.CardAccessLogDTO;
 import quiz.exquiz_me.card.dto.CardDTO;
 import quiz.exquiz_me.card.dto.VocabularyItemDTO;
 import quiz.exquiz_me.card.entity.Card;
@@ -23,7 +22,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class VocaCardService {
+public class CardService {
     private final CardRepository cardRepository;
     private final UserRepository userRepository;
     private final CardAccessLogRepository cardAccessLogRepository;

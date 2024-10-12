@@ -7,9 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import quiz.exquiz_me.card.dto.CardAccessLogDTO;
 import quiz.exquiz_me.card.dto.CardDTO;
-import quiz.exquiz_me.card.service.VocaCardService;
+import quiz.exquiz_me.card.service.CardService;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class CardController {
     private final Logger logger = LoggerFactory.getLogger(CardController.class);
 
     @Autowired
-    private VocaCardService cardService;
+    private CardService cardService;
 
     @PostMapping
     public ResponseEntity<?> createCard(@RequestBody CardDTO cardDTO) {
@@ -70,7 +69,6 @@ public class CardController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
 
     @GetMapping("/user")
     public ResponseEntity<List<CardDTO>> getUserCards() {
