@@ -1,8 +1,12 @@
 import React from 'react';
 import './css/Main.css';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Main = () => {
+    const navigate = useNavigate();
+    const moveGame = () =>{
+        navigate('game');
+    }
     return (
         <div className="main-container">
 
@@ -100,7 +104,7 @@ const Main = () => {
                     </div>
                 </div>
                 <div className="start-button">
-                    <button className="cta-button start-cta">시작하기</button>
+                    <button className="cta-button start-cta" onClick={moveGame}>시작하기</button>
                 </div>
             </section>
 
