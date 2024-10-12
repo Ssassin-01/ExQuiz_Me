@@ -40,6 +40,7 @@ import PracticeSubjective from "./components/card/Practice/PracticeSubjective";
 import PracticeOptions from "./components/card/Practice/PracticeOptions";
 import PracticeMultiple from "./components/card/Practice/PracticeMultiple";
 import EditComponent from "./components/card/EditComponent";
+import {MainFooter} from "./components/MainFooter";
 function App() {
     return (
         <HelmetProvider>
@@ -95,6 +96,7 @@ function LayoutWithSidebar() {
             <main className="main-content">
                 <Header />
                 <Outlet />
+                <MainFooter />
             </main>
         </div>
     );
