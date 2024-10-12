@@ -1,9 +1,17 @@
 import React from "react";
-import "../components/css/MainFooter.css";  // 스타일 적용
+import "../components/css/MainFooter.css";
+import { useNavigate } from "react-router-dom";
 
 export const MainFooter = () => {
+    const navigate = useNavigate();
+
+    const moveTo = (path) => (e) => {
+        e.preventDefault(); // 기본 동작 방지
+        navigate(path);
+    };
+
     return (
-        <div className="footerScreen container-fluid py-5 text-light"> {/* container-fluid 사용 */}
+        <div className="footerScreen container-fluid py-5 text-light">
             <div className="row">
                 <div className="col-12 col-md mb-4 text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -18,29 +26,49 @@ export const MainFooter = () => {
                 <div className="col-6 col-md">
                     <h5>Learning</h5>
                     <ul className="list-unstyled text-small">
-                        <li><a className="link-secondary text-decoration-none" href="/">카드 목록</a></li>
+                        <li>
+                            <a className="link-secondary text-decoration-none" href="/" onClick={moveTo('/study')}>
+                                카드 목록
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div className="col-6 col-md">
                     <h5>Make</h5>
                     <ul className="list-unstyled text-small">
-                        <li><a className="link-secondary text-decoration-none" href="/">카드 만들</a></li>
+                        <li>
+                            <a className="link-secondary text-decoration-none" href="/" onClick={moveTo('/make')}>
+                                카드 만들기
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div className="col-6 col-md">
                     <h5>Game</h5>
                     <ul className="list-unstyled text-small">
-                        <li><a className="link-secondary text-decoration-none" href="/">게임 하기</a></li>
+                        <li>
+                            <a className="link-secondary text-decoration-none" href="/" onClick={moveTo('/game')}>
+                                게임 하기
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div className="col-6 col-md">
                     <h5>Mypage</h5>
                     <ul className="list-unstyled text-small">
-                        <li><a className="link-secondary text-decoration-none" href="/">내 정보 보기</a></li>
-                        <li><a className="link-secondary text-decoration-none" href="/">구독 하기</a></li>
+                        <li>
+                            <a className="link-secondary text-decoration-none" href="/" onClick={moveTo('/mypage')}>
+                                내 정보 보기
+                            </a>
+                        </li>
+                        <li>
+                            <a className="link-secondary text-decoration-none" href="/" onClick={moveTo('/subscribe')}>
+                                구독 하기
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
