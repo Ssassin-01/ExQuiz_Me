@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/SubScribe.css';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
+import { useUser } from '../User/UserContext'; // UserContext 사용
 
 const apiUrl = process.env.REACT_APP_SPRING_SECURITY_ALLOWED_ORIGINS;
 
@@ -9,7 +10,7 @@ const plans = [
     { id: 2, name: '유료', price: '1500', description: '유료 플랜입니다', features: ['더 많은 문제 풀기', '좋은 혜택', '등등등'] },
 ];
 
-const PlanCard = ({ plan }) => {
+const PlanCard = ({ plan, user }) => {
     const isFreePlan = plan.name === '무료';
     return (
         <div className="plan-card">
@@ -21,23 +22,23 @@ const PlanCard = ({ plan }) => {
                     <li key={index} className="feature">{feature}</li>
                 ))}
             </ul>
-            <button className={`choose-plan-button ${isFreePlan ? 'disabled' : ''}`} onClick={() => handlePayment(plan)}>
+            <button className={`choose-plan-button ${isFreePlan ? 'disabled' : ''}`} onClick={() => handlePayment(plan, user)}>
                 {isFreePlan ? '현재 선택된 플랜' : '결제하기'}
             </button>
         </div>
     );
 };
 
-const handlePayment = async (plan) => {
+const handlePayment = async (plan, user) => {
     if (plan.name === '유료') {
         try {
             const tossPayments = await loadTossPayments('test_ck_BX7zk2yd8yOONe00xvlQVx9POLqK');
             tossPayments.requestPayment('카드', {
                 amount: plan.price,
-                orderId: 'ORDER_ID', // 고유 주문 ID
+                orderId: 'ORDER_ID',
                 orderName: plan.name,
-                successUrl: `${apiUrl}/success`, // 결제 성공시 리다이렉트 URL
-                failUrl: `${apiUrl}/fail`, // 결제 실패시 리다이렉트 URL
+                successUrl: `${apiUrl}/success`,
+                failUrl: `${apiUrl}/fail`,
             });
         } catch (error) {
             console.error('Payment failed:', error);
@@ -48,12 +49,14 @@ const handlePayment = async (plan) => {
 };
 
 const Subscribe = () => {
+    const { user } = useUser(); // UserContext에서 사용자 정보 가져오기
+
     return (
         <div className="subscribe-container">
             <h2 className="pricing-plans-title">구독</h2>
             <div className="plans-container">
                 {plans.map(plan => (
-                    <PlanCard key={plan.id} plan={plan} />
+                    <PlanCard key={plan.id} plan={plan} user={user} />
                 ))}
             </div>
         </div>

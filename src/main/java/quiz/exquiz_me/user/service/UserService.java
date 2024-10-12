@@ -137,4 +137,11 @@ public class UserService {
                         .collect(Collectors.toList())  // 활동 기록을 DTO로 변환하여 반환
         );
     }
+
+
+    //너 구독자니?
+    public boolean isUserSubscribed(String email) {
+        User user = userRepository.findByEmail(email);
+        return !user.getSubscriptions().isEmpty(); // 구독 내역이 있으면 구독자로 간주
+    }
 }
