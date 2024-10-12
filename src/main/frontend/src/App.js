@@ -40,6 +40,7 @@ import PracticeSubjective from "./components/card/Practice/PracticeSubjective";
 import PracticeOptions from "./components/card/Practice/PracticeOptions";
 import PracticeMultiple from "./components/card/Practice/PracticeMultiple";
 import EditComponent from "./components/card/EditComponent";
+import {MainFooter} from "./components/MainFooter";
 import LearningContainer from "./components/utility/LearningContainer";
 function App() {
     return (
@@ -55,6 +56,7 @@ function App() {
                                     <Route path="login" element={<Login />} />
                                     <Route path="signup" element={<SignUp />} />
 
+                                    <Route path="footer" element={<MainFooter />} />
                                     <Route path="study" element={<ProtectedRoute><StudySection /></ProtectedRoute>} />
                                     <Route path="make" element={<ProtectedRoute><MakeComponent /></ProtectedRoute>} />
                                     <Route path="game" element={<ProtectedRoute><Game /></ProtectedRoute>} />
@@ -66,7 +68,6 @@ function App() {
                                     <Route path="/fail" element={<FailPage />} />
                                     <Route path="/edit-profile" element={<EditProfile />} />
 
-
                                     <Route path="learning" element={<LearningContainer />}>
                                         <Route path=":cardNumber" element={<Learning />} />
                                         <Route path="word-learn" element={<WordLearn />} />
@@ -76,15 +77,6 @@ function App() {
                                         <Route path="learn-test" element={<LearningTest />} />
                                         <Route path="learn-test-result" element={<LearningTestResult />} />
                                     </Route>
-                                    {/*<Route path="/learning/:cardNumber" element={<Learning />} />*/}
-                                    {/*<Route path="/word-learn" element={<WordLearn />} />*/}
-                                    {/*<Route path="/practice-options" element={<PracticeOptions/>} />*/}
-                                    {/*<Route path="/practice-subjective" element={<PracticeSubjective />} />*/}
-                                    {/*<Route path="/practice-multiple" element={<PracticeMultiple/>} />*/}
-                                    {/*<Route path="/learn-test" element={<LearningTest />} />*/}
-                                    {/*<Route path="/learn-test-result" element={<LearningTestResult />} />*/}
-
-
                                 </Route>
 
                                 <Route path="gameroom" element={<GameRoom />} />
@@ -109,6 +101,7 @@ function LayoutWithSidebar() {
             <main className="main-content">
                 <Header />
                 <Outlet />
+
             </main>
         </div>
     );
