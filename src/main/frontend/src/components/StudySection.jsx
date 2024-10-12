@@ -142,6 +142,7 @@ const StudySection = () => {
           <button className="search-btn" onClick={toggleSearch}>
             🔍
           </button>
+
           {isSearchOpen && (
               <form onSubmit={handleSearch} className="floating-search-box">
                 <input

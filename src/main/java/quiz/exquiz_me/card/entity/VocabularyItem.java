@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import quiz.exquiz_me.card.entity.Card;
 
 @Entity
 @Getter
@@ -30,5 +29,4 @@ public class VocabularyItem {
     @Column(name = "korean_word")
     private String koreanWord;
 
-    // Getters and setters
 }

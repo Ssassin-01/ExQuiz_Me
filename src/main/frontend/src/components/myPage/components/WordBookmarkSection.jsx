@@ -1,32 +1,50 @@
-import React, { useState } from 'react';
-import TableItem from './TableItem';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useUser } from '../../User/UserContext';
+import TableItem from '../../myPage/components/TableItem';
 
 const WordBookmarkSection = () => {
-    // bookmarks 상태를 컴포넌트 안으로 이동
-    const [bookmarks, setBookmarks] = useState([
-        { id: 1, english: 'apple', meaning: '사과', isBookmarked: true },
-        { id: 2, english: 'banana', meaning: '바나나', isBookmarked: false },
-        { id: 3, english: 'cherry', meaning: '체리', isBookmarked: true },
-        { id: 4, english: 'date', meaning: '대추', isBookmarked: false },
-        { id: 5, english: 'eggplant', meaning: '가지', isBookmarked: true },
-    ]);
+    const { user } = useUser();
+    const [bookmarks, setBookmarks] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
-    // 북마크 토글 기능
-    const toggleBookmark = (id) => {
-        setBookmarks((prevBookmarks) =>
-            prevBookmarks.map((bookmark) =>
-                bookmark.id === id
-                    ? { ...bookmark, isBookmarked: !bookmark.isBookmarked }
-                    : bookmark
-            )
-        );
-    };
+    // 북마크된 단어 가져오기
+    useEffect(() => {
+        const fetchBookmarks = async () => {
+            if (!user || !user.email) return;
+            try {
+                const response = await axios.get(`${apiUrl}/api/word-bookmarks/user/${user.email}`, {
+                    withCredentials: true,
+                });
+                const fetchedBookmarks = response.data.map(bookmark => ({
+                    ...bookmark,
+                    isBookmarked: true, // 북마크된 단어 표시
+                }));
+                setBookmarks(fetchedBookmarks);
+            } catch (error) {
+                console.error('Failed to fetch word bookmarks:', error);
+            }
+        };
 
-    // 단어 삭제 기능
-    const removeWord = (id) => {
-        setBookmarks((prevBookmarks) =>
-            prevBookmarks.filter((bookmark) => bookmark.id !== id)
-        );
+        fetchBookmarks();
+    }, [user, apiUrl]);
+
+    // 북마크 토글 (추가/삭제)
+    const toggleBookmark = async (itemId) => {
+        try {
+            const response = await axios.post(
+                `${apiUrl}/api/word-bookmarks/toggle?email=${user.email}&itemId=${itemId}`,
+                {},
+                { withCredentials: true }
+            );
+
+            // 북마크 상태 반전
+            setBookmarks((prev) =>
+                prev.filter((bookmark) => bookmark.itemId !== itemId) // 삭제 시 목록에서 제거
+            );
+        } catch (error) {
+            console.error('Failed to toggle bookmark:', error);
+        }
     };
 
     return (
@@ -39,19 +57,17 @@ const WordBookmarkSection = () => {
                     <th>영어</th>
                     <th>뜻</th>
                     <th>북마크</th>
-                    <th>삭제</th>
                 </tr>
                 </thead>
                 <tbody>
                 {bookmarks.map((bookmark, index) => (
                     <TableItem
-                        key={bookmark.id}
+                        key={bookmark.itemId}
                         index={index + 1}
-                        english={bookmark.english}
-                        meaning={bookmark.meaning}
+                        english={bookmark.englishWord}
+                        meaning={bookmark.koreanWord}
                         isBookmarked={bookmark.isBookmarked}
-                        onBookmarkToggle={() => toggleBookmark(bookmark.id)}
-                        onRemove={() => removeWord(bookmark.id)}
+                        onBookmarkToggle={() => toggleBookmark(bookmark.itemId)}
                     />
                 ))}
                 </tbody>

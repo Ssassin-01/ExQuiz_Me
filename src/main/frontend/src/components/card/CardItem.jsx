@@ -24,6 +24,7 @@ const CardItem = ({
                       showHamburgerMenu = false
                   }) => {
     const [bookmarked, setBookmarked] = useState(isBookmarked);
+    const [wordBookmark, setWordBookmark] = useState()
     const [isLoading, setIsLoading] = useState(false);
     const [viewCount, setViewCount] = useState(initialViewCount);
     const [isMenuOpen, setIsMenuOpen] = useState(false)

@@ -278,7 +278,7 @@
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
-    .modal-content {
+    .learning-container {
         width: 90%;
         padding: 20px;
     }
@@ -291,4 +291,145 @@
         font-size: 1em;
         padding: 10px 20px;
     }
+}
+
+
+/* 반응형 스타일 */
+@media (max-width: 1024px) {
+    .learning-container {
+        width: 80%;
+        height: 85vh;
+    }
+    .volume-title {
+        font-size: 1.8em;
+    }
+    .word-text .english-word {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .learning-container {
+        width: 95%;
+        height: 85vh;
+    }
+    .header-buttons button,
+    .dropdown-toggle {
+        padding: 8px 12px;
+        font-size: 1em;
+    }
+    .word-item {
+        padding: 0.8em;
+    }
+    .word-text {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .learning-container {
+        width: 90%;
+        height: 90vh;
+    }
+    .volume-title {
+        font-size: 1.5em;
+    }
+    .word-text .english-word {
+        font-size: 1em;
+    }
+    .word-text .korean-word {
+        font-size: 0.9em;
+    }
+}
+
+/* 스크롤바 스타일 */
+.word-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.word-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.word-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 모달 창 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.4s ease-in-out;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-btn:hover {
+    background-color: #2ecc71;
+}
+
+.modal-btn.cancel-btn {
+    background-color: #e74c3c;
+}
+
+.modal-btn.cancel-btn:hover {
+    background-color: #c0392b;
 }
