@@ -117,6 +117,7 @@ const ActivitySection = ({
                 <MyCardList
                     closeModal={closeModal}
                     title="전체 카드 목록"
+                    handleBookmarkToggle={handleBookmarkToggle}
                     updatedUserCards={updatedUserCards}
                 />
 
