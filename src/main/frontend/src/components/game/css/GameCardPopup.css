@@ -1,0 +1,246 @@
+/* 팝업 오버레이 */
+.game-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease;
+}
+
+/* 팝업 창 */
+.game-popup {
+    background-color: #fefefe;
+    width: 80%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: transform 0.3s ease-out, opacity 0.3s ease;
+    opacity: 1;
+}
+
+/* 팝업 애니메이션 */
+@keyframes popup-show {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 팝업 헤더 */
+.game-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.game-popup-header h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.game-popup-close-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.game-popup-close-button:hover {
+    color: #555;
+}
+
+/* 검색과 필터 스타일 */
+.game-popup-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.game-search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-search-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* 필터 셀렉트 박스 스타일 */
+.game-filter-select {
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px 8px;
+}
+
+.game-filter-select:hover {
+    border-color: #3498db;
+}
+
+/* 카드 그리드 */
+.game-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+/* 카드 아이템 */
+.game-card-item {
+    background-color: #fafafa;
+    width: 100%;
+    max-width: 220px;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #eee;
+}
+
+.game-card-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);  /* 기존 효과를 줄여서 자연스럽게 변경 */
+}
+
+/* 카드 아이템의 제목 */
+.game-card-item-header h5 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 카드 설명 */
+.game-card-item p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 10px 0;
+}
+
+/* 작성자와 조회수 */
+.game-card-item-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.game-card-item-views {
+    display: flex;
+    align-items: center;
+}
+
+.game-card-item-views svg {
+    margin-right: 5px;
+    color: #3498db;
+}
+
+/* 태그 스타일 */
+.game-card-item-bottom-row {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Purpose colors */
+.game-card-purpose-elementary {
+    background-color: #81C784;
+}
+
+.game-card-purpose-middle {
+    background-color: #FFD54F;
+}
+
+.game-card-purpose-high {
+    background-color: #FFB74D;
+}
+
+.game-card-purpose-exam {
+    background-color: #E57373;
+}
+
+.game-card-purpose-toeic {
+    background-color: #64B5F6;
+}
+
+.game-card-purpose-default {
+    background-color: #BDBDBD;
+}
+
+/* 반응형 추가 */
+@media (max-width: 768px) {
+    .game-popup {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .game-card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .game-popup {
+        padding: 15px;
+    }
+
+    .game-search-input {
+        padding: 10px;
+    }
+
+    .game-card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .game-card-item {
+        padding: 15px;
+    }
+}

@@ -3,6 +3,7 @@ package quiz.exquiz_me.game.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import quiz.exquiz_me.card.entity.Card;
+import quiz.exquiz_me.game.dto.GameParticipantDTO;
 import quiz.exquiz_me.user.entity.User;
 
 import java.util.Date;
@@ -59,16 +60,23 @@ public class GameSessions {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @OneToMany(mappedBy = "gameSessions", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<GameParticipant> participants = new HashSet<>();
+    // 이 필드는 JPA에서 관리되지 않으며, 메모리에서만 관리됩니다.
+    @Transient // JPA가 관리하지 않는 필드임을 명시
+    private Set<GameParticipantDTO> participants = new HashSet<>();
 
-    public void addParticipant(GameParticipant participant) {
+    // 참가자 추가 메서드
+    public void addParticipant(GameParticipantDTO participant) {
         participants.add(participant);
-        participant.setGameSessions(this);
     }
 
-    public void removeParticipant(GameParticipant participant) {
+    // 참가자 삭제 메서드
+    public void removeParticipant(GameParticipantDTO participant) {
         participants.remove(participant);
-        participant.setGameSessions(null);
+    }
+
+    // 참가자 수 반환
+    public int getParticipantCount() {
+        return participants.size();
     }
 }
+

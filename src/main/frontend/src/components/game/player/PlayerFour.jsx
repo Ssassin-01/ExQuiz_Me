@@ -5,12 +5,12 @@ import './css/GameOX.css';
 import { useNickname } from '../context/NicknameContext';
 
 function PlayerFour() {
-    const [message, setMessage] = useState("");
     const { nickname } = useNickname();
     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
     const clientRef = useRef(null);
     const [options, setOptions] = useState([]);
     const [gameEnded, setGameEnded] = useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(false);  // 버튼 연속 클릭 방지
 
     const sendMessage = (text) => {
         if (clientRef.current && clientRef.current.connected) {
@@ -38,11 +38,21 @@ function PlayerFour() {
                 heartbeatOutgoing: 4000,
                 onConnect: () => {
                     console.log('Connected to WebSocket');
+
+                    // 새로운 문제가 나왔을 때 버튼 다시 활성화
+                    client.subscribe('/topic/new-question', () => {
+                        console.log("New question received, enabling buttons.");
+                        setButtonDisabled(false);  // 새로운 질문에서 버튼 다시 활성화
+                    });
+
+                    // 선택지를 받아서 설정
                     client.subscribe('/topic/options', (message) => {
                         const receivedOptions = JSON.parse(message.body);
                         console.log('Received options:', receivedOptions);
                         setOptions(receivedOptions);
+                        setButtonDisabled(false);  // 새로운 선택지가 오면 버튼 다시 활성화
                     });
+
                     client.subscribe('/topic/game-end', () => {
                         setGameEnded(true);
                         client.deactivate(() => {
@@ -72,7 +82,10 @@ function PlayerFour() {
     }, [apiUrl]);
 
     const handleOptionSend = (index) => {
-        sendMessage(index + 1);  // 클릭한 버튼의 인덱스를 전송 (1부터 시작)
+        if (!buttonDisabled) {  // 버튼이 활성화된 상태에서만 동작
+            sendMessage(index);  // 클릭한 버튼의 인덱스를 전송 (0부터 시작)
+            setButtonDisabled(true);  // 클릭 후 버튼 비활성화
+        }
     };
 
     if (gameEnded) {
@@ -86,26 +99,18 @@ function PlayerFour() {
     return (
         <div className="game-ox-container">
             <div className="game-ox-content">
-                <input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="정답 날리기"
-                    className="message-input"
-                />
-                <button onClick={handleOptionSend} className="send-button">보내기</button>
                 <div className="button-group">
                     {[1, 2, 3, 4].map(num => (
-                        <button key={num} onClick={() => handleOptionSend(num - 1)} className="option-button">
+                        <button
+                            key={num}
+                            onClick={() => handleOptionSend(num - 1)}
+                            className="option-button"
+                            disabled={buttonDisabled}  // 비활성화 상태에 따라 버튼 동작 제어
+                        >
                             {num}
                         </button>
                     ))}
                 </div>
-                {gameEnded && (
-                    <div className="game-ended-overlay">
-                        <div className="game-ended-message">게임이 종료되었습니다.</div>
-                    </div>
-                )}
             </div>
         </div>
     );

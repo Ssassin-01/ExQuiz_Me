@@ -1,0 +1,301 @@
+/* Global Styles */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------------------  사진쪽 ---------------*/
+.hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../../resources/static/images/main_img2.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #218838;
+}
+
+/* ---------------------  주요기능 ---------------*/
+.feature-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f0f8ff;
+}
+
+.feature-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #343a40;
+}
+
+.feature-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.feature-item {
+    width: 220px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-emoji {
+    font-size: 4rem;
+}
+
+.feature-item h3 {
+    margin: 20px 0;
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* ---------------------  게임 진행 방식 ---------------*/
+.game-flow-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.game-flow-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #495057;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #dcdcdc;
+    transform: translateX(-50%);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    position: absolute;
+    top: 50%;
+    left: calc(116.8% - 20px);
+    width: 20px;
+    height: 20px;
+    background-color: #6c757d;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    position: absolute;
+    top: 50%;
+    left: calc(-16.6% + 20px);
+    width: 20px;
+    height: 20px;
+    background-color: #6c757d;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 45%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 55%;
+}
+
+.timeline-emoji {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.timeline-item h3 {
+    font-size: 1.5rem;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+/* --------------------- 사용자 후기  -----------------------*/
+.testimonial-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.testimonial-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #495057;
+}
+
+.testimonial-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.testimonial-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-item .testimonial-emoji {
+    font-size: 2.5rem;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item p {
+    font-size: 1.1rem;
+    color: #495057;
+    margin-top: 20px;
+}
+
+.testimonial-item .testimonial-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #343a40;
+    margin-top: 15px;
+}
+
+.start-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.start-cta {
+    background-color: #ff6347;
+}
+
+.start-cta:hover {
+    background-color: #ff4500;
+}
+
+/* --------------------- 챌린지  -----------------------*/
+.challenge-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #ffefd5;
+}
+
+.challenge-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #dc3545;
+}
+
+.challenge-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.challenge-button:hover {
+    background-color: #0056b3;
+}
+

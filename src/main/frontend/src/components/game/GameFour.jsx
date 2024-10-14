@@ -9,7 +9,8 @@ function GameFour() {
     const location = useLocation();
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 10;
-    const initialTimer = location.state?.timer || 10;  // 타이머 값 전달
+    const cardNumber = location.state?.cardNumber || 1;
+    const initialTimer = location.state?.timer || 10;
 
     const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
     const [questions, setQuestions] = useState([]);
@@ -24,9 +25,11 @@ function GameFour() {
     const [timer, setTimer] = useState(initialTimer);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
+    const [isSessionDeleted, setIsSessionDeleted] = useState(false);
     const navigate = useNavigate();
 
     const apiUrl = process.env.REACT_APP_API_URL;
+    const gameSessionId = location.state?.gameSessionId;
 
     useEffect(() => {
         if (isTimerRunning && timer > 0) {
@@ -39,10 +42,18 @@ function GameFour() {
         }
     }, [timer, isTimerRunning]);
 
+    // 배열을 무작위로 섞는 함수 추가
+    const shuffleArray = (array) => {
+        return array.sort(() => Math.random() - 0.5);
+    };
+
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/game/card/1/items`);
+            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`);
             let fetchedQuestions = response.data;
+
+            // 문제 목록을 무작위로 섞음
+            fetchedQuestions = shuffleArray(fetchedQuestions);
 
             if (fetchedQuestions.length > questionCount) {
                 fetchedQuestions = fetchedQuestions.slice(0, questionCount);
@@ -65,7 +76,7 @@ function GameFour() {
 
     useEffect(() => {
         fetchQuestions();
-    }, []);
+    }, [cardNumber]);
 
     const generateOptions = (question, allQuestions) => {
         const correctOption = languageToggle ? question.koreanWord : question.englishWord;
@@ -75,6 +86,10 @@ function GameFour() {
             .slice(0, 3);
 
         const shuffledOptions = [correctOption, ...incorrectOptions].sort(() => 0.5 - Math.random());
+
+        // 콘솔 로그 추가
+        console.log(`Generated Question: ${languageToggle ? question.englishWord : question.koreanWord}, Correct Option: ${correctOption}, Options: ${shuffledOptions.join(', ')}`);
+
         return shuffledOptions;
     };
 
@@ -108,6 +123,19 @@ function GameFour() {
         }
     };
 
+    useEffect(() => {
+        if (webSocketConnected) {
+            const subscription = subscribeToChannel('/topic/answers', (message) => {
+                const receivedMessage = JSON.parse(message.body);
+                checkAnswer(receivedMessage.nickname, parseInt(receivedMessage.text));
+            });
+
+            return () => {
+                if (subscription) subscription.unsubscribe();
+            };
+        }
+    }, [webSocketConnected, subscribeToChannel, currentQuestion]);
+
     const nextQuestion = () => {
         if (currentQuestionIndex.current < questions.length - 1) {
             currentQuestionIndex.current++;
@@ -118,6 +146,7 @@ function GameFour() {
             setMessages({});
             setIsTimerRunning(true);
             setTimer(initialTimer);
+            publishMessage('/topic/new-question', { message: 'Next question' });
         } else {
             endGame();
         }
@@ -128,12 +157,11 @@ function GameFour() {
         setIsTimerRunning(false);
         setIsQuestionTransitioning(true);
         setTimeout(() => {
-            setFeedback(""); // 다음 문항으로 넘어가기 전에 feedback 초기화
+            setFeedback("");
             nextQuestion();
             setIsQuestionTransitioning(false);
         }, 1000);
     };
-
 
     const endGame = () => {
         setGameEnded(true);
@@ -142,11 +170,21 @@ function GameFour() {
             score: scores[nickname]
         })).sort((a, b) => b.score - a.score);
         setResults(resultsArray);
-        publishMessage('/app/end', { message: 'Game has ended', gameSessionId: 1 });
+        publishMessage('/app/end', { message: 'Game has ended', gameSessionId });
     };
 
-    const handleExit = () => {
-        publishMessage('/app/end', { message: 'Game has ended', gameSessionId: 1 });
+    const handleExit = async () => {
+        if (!isSessionDeleted) {
+            try {
+                await axios.delete(`${apiUrl}/api/game-sessions/${gameSessionId}`);
+                console.log("Game session deleted successfully.");
+                setIsSessionDeleted(true);
+            } catch (error) {
+                console.error("Error deleting game session:", error);
+            }
+        }
+
+        publishMessage('/app/end', { message: 'Game has ended', gameSessionId });
         disconnectWebSocket();
         navigate('/');
         window.location.reload();
@@ -159,7 +197,14 @@ function GameFour() {
                 <div className="gaming-results-container">
                     {results.map((result, index) => (
                         <div key={index} className="gaming-result-item">
-                            <span>{index + 1}등: {result.nickname}, 맞춘 갯수: {result.score}개</span>
+                            <div className="gaming-result-rank">
+                                {index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}등`}
+                            </div>
+                            <div className="gaming-result-profile">
+                                <span className="profile-emoji">👤</span>
+                                <span className="gaming-result-name">{result.nickname}</span>
+                            </div>
+                            <span className="gaming-result-score">맞춘 갯수: {result.score}개</span>
                         </div>
                     ))}
                 </div>

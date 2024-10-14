@@ -1,0 +1,435 @@
+/* 전체 컨테이너 */
+.learning-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f1f1;
+    width: 40%;
+    max-width: 900px;
+    margin: auto;
+    height: 80vh; /* 전체 높이를 vh 단위로 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 상단 정렬 */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%; /* 화면 중앙 정렬 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden; /* 컨테이너 내부에서 오버플로우 숨기기 */
+}
+
+/* 헤더 스타일 */
+.learning-header {
+    background-color: #8fafdc;
+    color: white;
+    padding: 1.5em 2em;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+}
+
+.volume-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.word-count {
+    font-size: 1.2em;
+    color: #f0f0f0;
+}
+
+/* 버튼 섹션 */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.header-buttons button,
+.dropdown-toggle {
+    background-color: #6f95cb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header-buttons button:hover,
+.dropdown-toggle:hover {
+    background-color: #3d5e8d;
+}
+
+/* 단어 리스트 */
+.word-list-container {
+    margin-top: 1em;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.word-list {
+    flex-grow: 1; /* 남은 공간을 모두 차지 */
+    overflow-y: auto; /* Y축 스크롤 활성화 */
+    height: 100%;
+    padding: 1em 2em;
+
+
+}
+
+.word-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.word-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.word-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 단어 항목 */
+.word-item {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+}
+
+.word-item:hover {
+    background-color: #ecf0f1;
+}
+
+.word-text {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: #34495e;
+    width: 100%;
+}
+
+.word-text .english-word {
+    font-size: 1.4em;
+    font-weight: bold;
+    min-width: 200px; /* 영어 단어의 최소 너비를 설정 */
+    margin-right: 2em;
+    white-space: nowrap; /* 단어가 줄바꿈되지 않도록 */
+}
+
+.word-text .korean-word {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    white-space: nowrap;
+    text-align: left; /* 항상 같은 위치에서 시작 */
+}
+
+
+.word-number {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #8fafdc;
+    margin-right: 1em;
+    width: 40px;  /* 번호 영역을 충분히 확보 */
+    text-align: center; /* 번호 가운데 정렬 */
+}
+.share-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* 별 모양 아이콘 */
+.star-icon {
+    font-size: 2em;
+    color: #ccc; /* 기본 회색 */
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-right: .5em;
+}
+
+.star-icon.filled {
+    color: #f1c40f; /* 클릭 시 채워진 노란색 */
+}
+
+.star-icon:hover {
+    color: #f39c12; /* 호버 시 색상 변화 */
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .learning-container {
+        width: 95%;
+        height: 85vh;
+    }
+
+    .word-item {
+        padding: 0.8em;
+    }
+
+    .word-text .english-word,
+    .word-text .korean-word {
+        font-size: 1.1em;
+    }
+}
+
+
+/* 모달 창 스타일 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: white;
+    width: 350px;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.4s ease-in-out;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-content p {
+    font-size: 1.4em;
+    color: #34495e;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* 버튼 정렬 및 색상 */
+.modal-btn-container {
+    display: flex;
+    justify-content: center; /* 버튼을 가운데 정렬 */
+    gap: 10px; /* 버튼 간격 추가 */
+    margin-top: 20px;
+}
+
+.modal-btn {
+    flex: 1; /* 버튼이 동일한 너비를 가지도록 설정 */
+    padding: 12px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-btn:hover {
+    background-color: #2ecc71;
+}
+
+.modal-btn.cancel-btn {
+    background-color: #e74c3c;
+}
+
+.modal-btn.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .learning-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .modal-content p {
+        font-size: 1.2em;
+    }
+
+    .modal-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
+
+
+/* 반응형 스타일 */
+@media (max-width: 1024px) {
+    .learning-container {
+        width: 80%;
+        height: 85vh;
+    }
+    .volume-title {
+        font-size: 1.8em;
+    }
+    .word-text .english-word {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .learning-container {
+        width: 95%;
+        height: 85vh;
+    }
+    .header-buttons button,
+    .dropdown-toggle {
+        padding: 8px 12px;
+        font-size: 1em;
+    }
+    .word-item {
+        padding: 0.8em;
+    }
+    .word-text {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .learning-container {
+        width: 90%;
+        height: 90vh;
+    }
+    .volume-title {
+        font-size: 1.5em;
+    }
+    .word-text .english-word {
+        font-size: 1em;
+    }
+    .word-text .korean-word {
+        font-size: 0.9em;
+    }
+}
+
+/* 스크롤바 스타일 */
+.word-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.word-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.word-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 모달 창 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.4s ease-in-out;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-btn:hover {
+    background-color: #2ecc71;
+}
+
+.modal-btn.cancel-btn {
+    background-color: #e74c3c;
+}
+
+.modal-btn.cancel-btn:hover {
+    background-color: #c0392b;
+}

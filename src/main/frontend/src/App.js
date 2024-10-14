@@ -3,22 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom
 import { HelmetProvider } from 'react-helmet-async';
 import { UserProvider } from './components/User/UserContext';
 
-import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Main from "./components/Main";
+import Login from "./components/User/Login";
+import SignUp from "./components/User/SignUp";
 import StudySection from "./components/StudySection";
 import MakeComponent from "./components/MakeComponent";
-import SubScribe from "./components/SubScribe";
+import SubScribe from "./components/subScribe/SubScribe";
 import MyPage from "./components/myPage/MyPage";
-import Learning from "./components/Learning";
-import WordLearn from "./components/card/WordLearn";
-import Settings from "./components/Settings";
+import Learning from "./components/card/Learning/Learning";
+import WordLearn from "./components/card/Learning/WordLearn";
 import Game from "./components/game/Game";
 import GameRoom from "./components/game/GameRoom";
-import Gaming from "./components/game/Gaming";
-import GameOX from "./components/game/GameOX";
 import { WebSocketProvider } from './components/game/context/WebSocketContext';
 import { NicknameProvider } from './components/game/context/NicknameContext';
 
@@ -27,15 +23,25 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GameTrueOrFalse from "./components/game/GameTrueOrFalse";
 import GameFour from "./components/game/GameFour";
-import GameQuestion from "./components/game/GameQuestion";
 import PlayerOX from "./components/game/player/PlayerOX";
 import PlayerFour from "./components/game/player/PlayerFour";
 import PlayerShortAnswer from "./components/game/player/PlayerShortAnswer";
 import GameShortAnswer from "./components/game/GameShortAnswer";
-import SuccessPage from "./components/SuccessPage";
-import FailPage from "./components/FailPage";
+
 import EditProfile from "./components/User/EditProfile";
 import TimeTracker from "./components/utility/TimeTracker";
+import LearningTest from "./components/card/LearningTest/LearningTest";
+import SuccessPage from "./components/subScribe/components/SuccessPage";
+import FailPage from "./components/subScribe/components/FailPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import LearningTestResult from "./components/card/LearningTest/LearningTestResult";
+import Practice from "./components/card/Practice/PracticeOptions";
+import PracticeSubjective from "./components/card/Practice/PracticeSubjective";
+import PracticeOptions from "./components/card/Practice/PracticeOptions";
+import PracticeMultiple from "./components/card/Practice/PracticeMultiple";
+import EditComponent from "./components/card/EditComponent";
+import {MainFooter} from "./components/MainFooter";
+import LearningContainer from "./components/utility/LearningContainer";
 function App() {
     return (
         <HelmetProvider>
@@ -46,31 +52,40 @@ function App() {
                             <TimeTracker />
                             <Routes>
                                 <Route path="/" element={<LayoutWithSidebar />}>
-                                    <Route index element={<Home />} />
+                                    <Route index element={<Main />} />
                                     <Route path="login" element={<Login />} />
                                     <Route path="signup" element={<SignUp />} />
-                                    <Route path="study" element={<StudySection />} />
-                                    <Route path="make" element={<MakeComponent />} />
-                                    <Route path="game" element={<Game />} />
-                                    <Route path="subscribe" element={<SubScribe />} />
+
+                                    <Route path="footer" element={<MainFooter />} />
+                                    <Route path="study" element={<ProtectedRoute><StudySection /></ProtectedRoute>} />
+                                    <Route path="make" element={<ProtectedRoute><MakeComponent /></ProtectedRoute>} />
+                                    <Route path="game" element={<ProtectedRoute><Game /></ProtectedRoute>} />
+                                    <Route path="subscribe" element={<ProtectedRoute><SubScribe /></ProtectedRoute>} />
+                                    <Route path="mypage" element={<ProtectedRoute><MyPage /></ProtectedRoute>} />
+
+                                    <Route path="/edit-card/:cardNumber" element={<EditComponent />} />
                                     <Route path="/success" element={<SuccessPage />} />
                                     <Route path="/fail" element={<FailPage />} />
-                                    <Route path="profile" element={<MyPage />} />
-                                    <Route path="/mypage" element={<MyPage />} />
                                     <Route path="/edit-profile" element={<EditProfile />} />
-                                    <Route path="settings" element={<Settings />} />
-                                    <Route path="learn" element={<Learning />} />
-                                    <Route path="/word-learn" element={<WordLearn />} /> {/* WordLearn 경로 추가 */}
+
+                                    <Route path="learning" element={<LearningContainer />}>
+                                        <Route path=":cardNumber" element={<Learning />} />
+                                        <Route path="word-learn" element={<WordLearn />} />
+                                        <Route path="practice-options" element={<PracticeOptions />} />
+                                        <Route path="practice-subjective" element={<PracticeSubjective />} />
+                                        <Route path="practice-multiple" element={<PracticeMultiple />} />
+                                        <Route path="learn-test" element={<LearningTest />} />
+                                        <Route path="learn-test-result" element={<LearningTestResult />} />
+                                    </Route>
                                 </Route>
+
                                 <Route path="gameroom" element={<GameRoom />} />
-                                <Route path="gaming" element={<Gaming />} />
-                                <Route path="gameox" element={<GameOX />} />
                                 <Route path="/player/ox" element={<PlayerOX />} /> {/* OX 플레이어 */}
                                 <Route path="/player/four" element={<PlayerFour />} /> {/* 4지선다 플레이어 */}
                                 <Route path="/player/short-answer" element={<PlayerShortAnswer />} /> {/* 주관식 플레이어 */}
-                                <Route path="game/true-or-false" element={<GameTrueOrFalse />} />
-                                <Route path="game/four" element={<GameFour />} />
-                                <Route path="game/question" element={<GameShortAnswer />} />
+                                <Route path="game/true-or-false" element={<GameTrueOrFalse />} /> {/* 게임화면 O / X */}
+                                <Route path="game/four" element={<GameFour />} /> {/* 게임화면 4지선단 */}
+                                <Route path="game/question" element={<GameShortAnswer />} /> {/* 게임화면 단답형 */}
                             </Routes>
                         </Router>
                     </NicknameProvider>
@@ -83,10 +98,10 @@ function App() {
 function LayoutWithSidebar() {
     return (
         <div className="app">
-            <Sidebar />
             <main className="main-content">
                 <Header />
                 <Outlet />
+
             </main>
         </div>
     );

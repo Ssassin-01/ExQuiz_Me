@@ -7,9 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import quiz.exquiz_me.card.dto.CardAccessLogDTO;
 import quiz.exquiz_me.card.dto.CardDTO;
-import quiz.exquiz_me.card.service.VocaCardService;
+import quiz.exquiz_me.card.service.CardService;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class CardController {
     private final Logger logger = LoggerFactory.getLogger(CardController.class);
 
     @Autowired
-    private VocaCardService cardService;
+    private CardService cardService;
 
     @PostMapping
     public ResponseEntity<?> createCard(@RequestBody CardDTO cardDTO) {
@@ -50,7 +49,10 @@ public class CardController {
             String email = getCurrentUserEmail(); // 현재 사용자 이메일 가져오기
             cardService.incrementCardView(cardNumber); // 조회수 증가
             cardService.logCardAccess(email, cardNumber); // 카드 열람 기록 저장
-            return ResponseEntity.ok().build();
+
+            // 증가된 조회수와 최신 카드 데이터 반환
+            CardDTO updatedCard = cardService.getCardByNumber(cardNumber); // 조회수 업데이트 후 카드 정보 가져오기
+            return ResponseEntity.ok(updatedCard); // 최신 카드 정보 반환
         } catch (Exception e) {
             logger.error("Error increasing view count or logging card access: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error increasing view count or logging card access");
@@ -67,7 +69,6 @@ public class CardController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
 
     @GetMapping("/user")
     public ResponseEntity<List<CardDTO>> getUserCards() {
@@ -93,14 +94,49 @@ public class CardController {
 
     //최근학습
     @GetMapping("/recent")
-    public ResponseEntity<List<CardAccessLogDTO>> getRecentAccessedCards() {
+    public ResponseEntity<List<CardDTO>> getRecentAccessedCards() {
         try {
             String email = getCurrentUserEmail();
-            List<CardAccessLogDTO> recentCards = cardService.getRecentAccessedCardsByUserEmail(email);
+            // CardAccessLogDTO 대신 CardDTO로 변경하여 최근 카드 데이터를 반환
+            List<CardDTO> recentCards = cardService.getRecentAccessedCardsByUserEmail(email);
             return ResponseEntity.ok(recentCards);
         } catch (Exception e) {
             logger.error("Error retrieving recent accessed cards: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    @DeleteMapping("/{cardNumber}")
+    public ResponseEntity<?> deleteCard(@PathVariable Long cardNumber) {
+        try {
+            cardService.deleteCardByNumber(cardNumber);
+            return ResponseEntity.ok("Card deleted successfully");
+        } catch (Exception e) {
+            logger.error("Error deleting card: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting card");
+        }
+    }
+
+    @PutMapping("/{cardNumber}/edit")
+    public ResponseEntity<?> updateCard(@RequestBody CardDTO cardDTO, @PathVariable Long cardNumber) {
+        try {
+            cardService.updateCard(cardDTO, cardNumber);
+            return ResponseEntity.ok("Card updated successfully");
+        } catch (Exception e) {
+            logger.error("Error updating card: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating card");
+        }
+    }
+
+    @GetMapping("/{cardNumber}")
+    public ResponseEntity<CardDTO> getCardByNumber(@PathVariable Long cardNumber) {
+        try {
+            CardDTO cardDTO = cardService.getCardByNumber(cardNumber);
+            return ResponseEntity.ok(cardDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
 }

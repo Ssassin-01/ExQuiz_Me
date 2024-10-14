@@ -1,0 +1,60 @@
+/*.profile-container {*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+
+/*.profile-header {*/
+/*    background-color: #8a2be2;*/
+/*    color: white;*/
+/*    padding: 10px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.user-info {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    padding: 20px;*/
+/*    background-color: #f3f3f3;*/
+/*}*/
+
+/*.user-info .avatar {*/
+/*    !* Add styles for avatar *!*/
+/*}*/
+
+/*.user-info .user-details h2 {*/
+/*    margin: 0;*/
+/*}*/
+
+/*.user-info .user-details p {*/
+/*    margin: 0;*/
+/*}*/
+
+/*.edit-button {*/
+/*    !* Style your button *!*/
+/*}*/
+
+/*.user-actions {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    padding: 20px;*/
+/*}*/
+
+/*.user-actions button {*/
+/*    padding: 10px;*/
+/*    background-color: #4caf50;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.user-actions button:hover {*/
+/*    opacity: 0.8;*/
+/*}*/
+
+/*.user-content {*/
+/*    !* Style your content section *!*/
+/*}*/
+
+/*.profile-footer {*/
+/*    !* Style your footer *!*/
+/*}*/

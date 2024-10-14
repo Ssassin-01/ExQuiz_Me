@@ -2,19 +2,19 @@ package quiz.exquiz_me.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import quiz.exquiz_me.card.entity.Card;
+import quiz.exquiz_me.entity.learning.StudyTimeLog;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 // User.java
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Getter
 @Setter
@@ -49,15 +49,23 @@ public class User {
     private String oneLineResolution = "";
 
     @Column(name = "permission")
-    private String permission = "ROLE_ADMIN";
+    private String permission = "ROLE_USER";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<UserActivity> activities; // 활동 기록 필드 추가
 
-    @OneToMany(mappedBy = "user")
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Card> cards;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StudyTimeLog> studyLogs = new ArrayList<>();  // StudyTimeLog와의 관계
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Subscription> subscriptions = new ArrayList<>();
 
     // 필요한 필드를 포함한 생성자 (activities 포함)
 
@@ -74,6 +82,6 @@ public class User {
         this.permission = roleUser;
         this.activities = Collections.emptyList();  // activities 필드를 빈 리스트로 초기화
         this.cards = Collections.emptyList();  // cards 필드를 빈 리스트로 초기화
+        this.subscriptions = Collections.emptyList(); // subscriptions 필드를 빈 리스트로 초기화
     }
-
 }

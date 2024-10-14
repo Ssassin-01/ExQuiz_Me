@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "./UserContext"; // UserContext 사용
+import { useUser } from "./UserContext";
 import "./css/EditProfile.css";
 
 const EditProfile = () => {
@@ -9,8 +9,8 @@ const EditProfile = () => {
         nickname: "",
         telNumber: "",
         date: "",
-        identity: "", // 학년 선택 필드 추가
-        signupPurpose: "", // 가입목적 필드 추가
+        identity: "",
+        signupPurpose: "",
         gender: ""
     });
     const { user } = useUser(); // 로그인된 사용자 정보 가져오기
@@ -76,7 +76,7 @@ const EditProfile = () => {
 
             if (response.ok) {
                 console.log("Profile updated successfully");
-                navigate("/mypage"); // 프로필 수정 후 마이페이지로 이동
+                navigate("/mypage");
             } else {
                 const errorMessage = await response.text();
                 alert(errorMessage);
@@ -98,6 +98,7 @@ const EditProfile = () => {
                         name="email"
                         value={userData.email}
                         readOnly // 이메일 수정 불가
+                        className="readonly-input"
                     />
                 </div>
                 <div className="form-group">

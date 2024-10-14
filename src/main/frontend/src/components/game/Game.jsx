@@ -3,20 +3,24 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useWebSocket } from './context/WebSocketContext';
 import './css/Game.css';
+import GameCardPopup from "./components/GameCardPopup";
 
 function Game() {
     const [playerCount, setPlayerCount] = useState(6);
+    const [showCardPopup, setShowCardPopup] = useState(false);
     const [cardNumber, setCardNumber] = useState(1);
     const [questionCount, setQuestionCount] = useState('10');
-    const [maxQuestions, setMaxQuestions] = useState(10); // 카드에 포함된 최대 문제 수
-    const [timer, setTimer] = useState("00:10");
+    const [maxQuestions, setMaxQuestions] = useState(10);
+    const [timer, setTimer] = useState("00:05");
     const [questionType, setQuestionType] = useState('ox');
-    const [languageToggle, setLanguageToggle] = useState(false); // false = English, true = Korean
+    const [languageToggle, setLanguageToggle] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState("");
+    const [gameSessionId, setGameSessionId] = useState(null);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
     const { connectWebSocket, publishMessage, participants, webSocketConnected, resetParticipants } = useWebSocket();
 
-    // 카드에 포함된 문제 수 가져오기
+    // 카드 번호에 따라 최대 문제 수를 가져오는 함수
     const fetchMaxQuestions = async (cardId) => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/game/card/${cardId}/items`);
@@ -27,29 +31,30 @@ function Game() {
     };
 
     useEffect(() => {
-        fetchMaxQuestions(cardNumber); // 카드 번호가 바뀔 때마다 최대 문제 수를 가져옴
+        fetchMaxQuestions(cardNumber);
     }, [cardNumber]);
 
-    // Game.jsx
+    const handleSelectCard = (cardNumber) => {
+        setCardNumber(cardNumber);
+        setShowCardPopup(false);
+    };
+
     const handleCreateGameSession = async () => {
         resetParticipants();
 
         const [minutes, seconds] = timer.split(':').map(Number);
         const totalSeconds = (minutes * 60) + seconds;
-
-        // "all"을 카드에 있는 최대 문제 수로 변환
         const questionsToAsk = questionCount === 'all' ? maxQuestions : parseInt(questionCount, 10);
 
         const config = {
             playerCount: parseInt(playerCount, 10),
             cardNumber: parseInt(cardNumber, 10),
-            questionCount: questionsToAsk,  // 여기서 "all"을 숫자로 변환
+            questionCount: questionsToAsk,
             timer: totalSeconds,
             includeTf: questionType === 'ox',
             includeMc: questionType === 'four',
             includeSa: questionType === 'shortAnswer',
-            language: languageToggle ? "Korean" : "English",
-            maxPlayerCount: playerCount // 최대 참가자 수 설정
+            language: languageToggle ? "Korean" : "English"
         };
 
         try {
@@ -57,6 +62,7 @@ function Game() {
                 withCredentials: true
             });
             setQrCodeUrl(response.data.qrCode);
+            setGameSessionId(response.data.gameSessionId);
 
             if (!webSocketConnected) {
                 connectWebSocket();
@@ -64,10 +70,9 @@ function Game() {
         } catch (error) {
             console.error('Error creating game session:', error.response ? error.response.data : error.message);
             setQrCodeUrl("");
+            setError('게임 방을 생성하는 데 실패했습니다.');
         }
     };
-
-
 
     const handleStartGame = () => {
         if (webSocketConnected) {
@@ -79,7 +84,13 @@ function Game() {
         }
 
         const gameOptions = {
-            state: { languageToggle, questionCount, timer: parseInt(timer.split(':').reduce((acc, time) => (60 * acc) + +time)) }  // 타이머 값을 초 단위로 전달
+            state: {
+                languageToggle,
+                questionCount,
+                timer: parseInt(timer.split(':').reduce((acc, time) => (60 * acc) + +time)),
+                gameSessionId,
+                cardNumber
+            }
         };
 
         if (questionType === 'ox') {
@@ -95,33 +106,40 @@ function Game() {
         <div className="game-container">
             <header className="game-header">Game - 설정</header>
             <div className="game-contents">
+                {/* 왼쪽 섹션: 카드 선택 영역 */}
                 <div className="game-content game-content-left">
-                    <div className="settings-row">
+                    <div className="card-section">
                         <span className="label">카드</span>
-                        <select value={cardNumber} onChange={e => setCardNumber(e.target.value)} className="select">
-                            {[...Array(10).keys()].map(n => <option key={n} value={n + 1}>{n + 1}</option>)}
-                        </select>
-                    </div>
-                    <div className="settings-row">
-                        <span className="label">명 수</span>
-                        <select value={playerCount} onChange={e => setPlayerCount(e.target.value)} className="select">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => <option key={n} value={n}>{n}</option>)}
-                        </select>
-                    </div>
-                    <div className="settings-row">
-                        <span className="label">문제수</span>
-                        <select value={questionCount} onChange={e => setQuestionCount(e.target.value)} className="select">
-                            {["5", "8", "10", "15", "20", "all"].map(n => <option key={n} value={n}>{n}</option>)}
-                        </select>
-                    </div>
-                    <div className="settings-row">
-                        <span className="label">타이머</span>
-                        <select value={timer} onChange={e => setTimer(e.target.value)} className="select">
-                            {["00:05", "00:08", "00:10", "00:15"].map(time => <option key={time} value={time}>{time}</option>)}
-                        </select>
+                        <button onClick={() => setShowCardPopup(true)} className="select-button">
+                            카드 선택하기
+                        </button>
+                        <span>{cardNumber}</span>
                     </div>
                 </div>
-                <div className="game-content">
+                {showCardPopup && (
+                    <GameCardPopup
+                        onClose={() => setShowCardPopup(false)}
+                        onSelectCard={handleSelectCard}
+                    />
+                )}
+
+                {/* 오른쪽 섹션: 문제 수와 타이머를 같은 줄에 배치 */}
+                <div className="game-content game-content-right">
+                    <div className="settings-row-inline">
+                        <div className="settings-inline">
+                            <span className="label">문제 수</span>
+                            <select value={questionCount} onChange={e => setQuestionCount(e.target.value)} className="select">
+                                {["5", "8", "10", "15", "20", "all"].map(n => <option key={n} value={n}>{n}</option>)}
+                            </select>
+                        </div>
+                        <div className="settings-inline">
+                            <span className="label">타이머</span>
+                            <select value={timer} onChange={e => setTimer(e.target.value)} className="select">
+                                {["00:05", "00:08", "00:10", "00:15"].map(time => <option key={time} value={time}>{time}</option>)}
+                            </select>
+                        </div>
+                    </div>
+
                     <div className="settings-row">
                         <span className="label">질문 유형</span>
                         <div className="radio-group">
@@ -157,6 +175,7 @@ function Game() {
                             </label>
                         </div>
                     </div>
+
                     <div className="settings-row">
                         <span className="label">언어</span>
                         <div className="toggle-switch">
@@ -172,6 +191,7 @@ function Game() {
                     </div>
                 </div>
             </div>
+
             <div className="qr-section">
                 <button className="qr-code-button" onClick={handleCreateGameSession}>방 만들기</button>
                 {qrCodeUrl ? (
@@ -184,8 +204,9 @@ function Game() {
                     <p>QR 코드가 생성되지 않았습니다.</p>
                 )}
             </div>
+
             <div className="participants-section">
-                <h2>참가자 목록</h2>
+                <h2>참가자 목록 ({participants.length}/10)</h2>
                 <ul className="participants-list">
                     {participants.map((participant, index) => (
                         <li key={index} className="participant-item">{participant}</li>

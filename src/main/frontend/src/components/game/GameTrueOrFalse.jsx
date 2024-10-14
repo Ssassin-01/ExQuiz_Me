@@ -1,31 +1,39 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useWebSocket } from './context/WebSocketContext';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import './css/Game1.css';
 
 function GameTrueOrFalse() {
     const location = useLocation();
+    const initialGameSessionId = location.state?.gameSessionId || localStorage.getItem('gameSessionId');
+    const cardNumber = location.state?.cardNumber || 1;
+    const [gameSessionId, setGameSessionId] = useState(initialGameSessionId);
     const languageToggle = location.state?.languageToggle || false;
     const questionCount = location.state?.questionCount || 'all';
     const initialTimer = location.state?.timer || 10;
-    const { subscribeToChannel, webSocketConnected, participants, publishMessage, disconnectWebSocket } = useWebSocket();
+    const {
+        subscribeToChannel,
+        webSocketConnected,
+        participants,
+        publishMessage,
+        disconnectWebSocket,
+        connectWebSocket,
+    } = useWebSocket();
 
     const [questions, setQuestions] = useState([]);
-    const currentQuestionIndex = useRef(0);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // useState로 변경
     const [currentQuestion, setCurrentQuestion] = useState(null);
-    const [usedEnglishWords, setUsedEnglishWords] = useState(new Set());
-    const [messages, setMessages] = useState({});
+    const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || {});
     const [feedback, setFeedback] = useState("");
-    const [scores, setScores] = useState({});
+    const [scores, setScores] = useState(JSON.parse(localStorage.getItem('scores')) || {});
     const [gameEnded, setGameEnded] = useState(false);
     const [results, setResults] = useState([]);
-    const [timer, setTimer] = useState(initialTimer); // 타이머 초기화
+    const [timer, setTimer] = useState(initialTimer);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
+    const [isSessionDeleted, setIsSessionDeleted] = useState(false);
     const navigate = useNavigate();
-
     const apiUrl = process.env.REACT_APP_API_URL;
 
     // 타이머 관리
@@ -41,14 +49,20 @@ function GameTrueOrFalse() {
         }
 
         return () => {
-            clearInterval(intervalId); // 컴포넌트 언마운트 시 타이머 클리어
+            clearInterval(intervalId);
         };
     }, [timer, isTimerRunning]);
 
+    const shuffleArray = (array) => {
+        return array.sort(() => Math.random() - 0.5);
+    };
+
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/game/card/1/items`);
+            const response = await axios.get(`${apiUrl}/api/game/card/${cardNumber}/items`);
             let items = response.data;
+
+            items = shuffleArray(items);
 
             if (questionCount !== 'all') {
                 const limitedItems = items.slice(0, Math.min(parseInt(questionCount), items.length));
@@ -59,8 +73,8 @@ function GameTrueOrFalse() {
 
             if (items.length > 0) {
                 setCurrentQuestion(generateRandomQuestion(items, new Set()));
-                setTimer(initialTimer);  // 타이머 초기화
-                setIsTimerRunning(true);  // 타이머 시작
+                setTimer(initialTimer);
+                setIsTimerRunning(true);
             }
         } catch (error) {
             console.error('Error fetching questions:', error);
@@ -69,17 +83,21 @@ function GameTrueOrFalse() {
 
     useEffect(() => {
         fetchQuestions();
-    }, []);
+    }, [cardNumber]);
 
     useEffect(() => {
         if (webSocketConnected) {
             const subscription = subscribeToChannel('/topic/answers', (message) => {
                 const receivedMessage = JSON.parse(message.body);
                 checkAnswer(receivedMessage.nickname, receivedMessage.text);
-                setMessages((prevMessages) => ({
-                    ...prevMessages,
-                    [receivedMessage.nickname]: receivedMessage.text
-                }));
+                setMessages((prevMessages) => {
+                    const updatedMessages = {
+                        ...prevMessages,
+                        [receivedMessage.nickname]: receivedMessage.text
+                    };
+                    localStorage.setItem('messages', JSON.stringify(updatedMessages));
+                    return updatedMessages;
+                });
             });
 
             return () => {
@@ -88,24 +106,45 @@ function GameTrueOrFalse() {
         }
     }, [webSocketConnected, subscribeToChannel, currentQuestion]);
 
+    useEffect(() => {
+        console.log("Current gameSessionId:", gameSessionId);
+        if (!gameSessionId) {
+            console.error("No valid game session ID found!");
+            const savedSessionId = localStorage.getItem('gameSessionId');
+            if (savedSessionId) {
+                setGameSessionId(savedSessionId);
+            }
+        }
+
+        if (gameSessionId && !webSocketConnected) {
+            connectWebSocket();
+        }
+    }, [gameSessionId, webSocketConnected, connectWebSocket]);
+
     const generateRandomQuestion = (items, usedEnglishWords) => {
         let englishWord;
+        let correctPairItem;
+        let isCorrectPair = Math.random() < 0.5;
+
         do {
-            englishWord = items[Math.floor(Math.random() * items.length)].englishWord;
+            correctPairItem = items[Math.floor(Math.random() * items.length)];
+            englishWord = correctPairItem.englishWord;
         } while (usedEnglishWords.has(englishWord));
 
         usedEnglishWords.add(englishWord);
 
         let koreanWord;
-        const isCorrectPair = Math.random() < 0.6;
-
         if (isCorrectPair) {
-            koreanWord = items.find(item => item.englishWord === englishWord).koreanWord;
+            koreanWord = correctPairItem.koreanWord;
         } else {
+            let incorrectPairItem;
             do {
-                koreanWord = items[Math.floor(Math.random() * items.length)].koreanWord;
-            } while (koreanWord === items.find(item => item.englishWord === englishWord).koreanWord);
+                incorrectPairItem = items[Math.floor(Math.random() * items.length)];
+                koreanWord = incorrectPairItem.koreanWord;
+            } while (koreanWord === correctPairItem.koreanWord);
         }
+
+        console.log(`Generated Question: ${englishWord} - ${koreanWord}, Correct: ${isCorrectPair}`);
 
         return {
             englishWord,
@@ -122,10 +161,14 @@ function GameTrueOrFalse() {
 
         if (isCorrect) {
             setFeedback("정답!");
-            setScores((prevScores) => ({
-                ...prevScores,
-                [nickname]: (prevScores[nickname] || 0) + 1
-            }));
+            setScores((prevScores) => {
+                const updatedScores = {
+                    ...prevScores,
+                    [nickname]: (prevScores[nickname] || 0) + 1
+                };
+                localStorage.setItem('scores', JSON.stringify(updatedScores));
+                return updatedScores;
+            });
             setTimeout(() => {
                 setFeedback("");
                 nextQuestion();
@@ -139,34 +182,33 @@ function GameTrueOrFalse() {
     };
 
     const nextQuestion = () => {
-        if (currentQuestionIndex.current < questions.length - 1) {
-            currentQuestionIndex.current++;
-            setCurrentQuestion(questions[currentQuestionIndex.current]);  // 다음 질문 설정
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);  // useState로 설정
+            const newQuestion = generateRandomQuestion(questions, new Set());
+            setCurrentQuestion(newQuestion);
             setMessages({});
-            setTimer(initialTimer);  // 타이머 초기화
-            setIsTimerRunning(true);  // 타이머 재시작
-            setFeedback(""); // 피드백 초기화
+            setTimer(initialTimer);
+            setIsTimerRunning(true);
+            setFeedback("");
+
+            publishMessage('/topic/new-question', { questionIndex: currentQuestionIndex });
         } else {
-            endGame();  // 마지막 질문이면 게임 종료
+            endGame();
         }
     };
-
 
     const handleTimeOver = () => {
         if (!isQuestionTransitioning) {
             setFeedback("시간초과!");
-            setIsTimerRunning(false);  // 타이머 멈춤
-            setIsQuestionTransitioning(true);  // 질문 전환 상태 설정
+            setIsTimerRunning(false);
 
             setTimeout(() => {
-                nextQuestion();  // 1초 후에 다음 문제로 이동
-                setIsQuestionTransitioning(false);  // 질문 전환 상태 해제
-            }, 1000);  // 1초 후에 다음 문제로 이동
+                nextQuestion();
+            }, 1000);
         }
     };
 
-
-    const endGame = () => {
+    const endGame = async () => {
         setGameEnded(true);
         const resultsArray = Object.keys(scores).map(nickname => ({
             nickname,
@@ -175,11 +217,24 @@ function GameTrueOrFalse() {
         setResults(resultsArray);
     };
 
-    const handleExit = () => {
-        publishMessage('/topic/game-end', { message: 'Game has ended' });
-        disconnectWebSocket();
-        navigate('/');
-        window.location.reload();
+    const handleExit = async () => {
+        try {
+            const response = await axios.post(`${apiUrl}/api/game-sessions/exit`, { gameSessionId });
+
+            if (response.status === 200) {
+                localStorage.removeItem('participants');
+                localStorage.removeItem('messages');
+                localStorage.removeItem('scores');
+
+                publishMessage('/topic/game-end', { message: 'Game has ended' });
+                disconnectWebSocket();
+                navigate('/');
+            } else {
+                console.error("Failed to exit the game.");
+            }
+        } catch (error) {
+            console.error("Error exiting game:", error);
+        }
     };
 
     if (gameEnded) {
@@ -189,16 +244,13 @@ function GameTrueOrFalse() {
                 <div className="gaming-results-container">
                     {results.map((result, index) => (
                         <div key={index} className="gaming-result-item">
-                            {/* 순위 트로피 표시 */}
                             <div className="gaming-result-rank">
                                 {index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}등`}
                             </div>
-                            {/* 프로필 이모지 및 닉네임 표시 */}
                             <div className="gaming-result-profile">
                                 <span className="profile-emoji">👤</span>
                                 <span className="gaming-result-name">{result.nickname}</span>
                             </div>
-                            {/* 맞춘 갯수 표시 */}
                             <span className="gaming-result-score">맞춘 갯수: {result.score}개</span>
                         </div>
                     ))}
@@ -208,17 +260,16 @@ function GameTrueOrFalse() {
         );
     }
 
-
     return (
         <div className="gaming-container">
             <h1 className="gaming-h1">O/X 문제</h1>
 
             <div className="gaming-progress-container">
-                <div className="gaming-progress-text">{`${currentQuestionIndex.current + 1} / ${questions.length}`}</div>
+                <div className="gaming-progress-text">{`${currentQuestionIndex + 1} / ${questions.length}`}</div>
                 <div className="gaming-progress-bar-container">
                     <div
                         className="gaming-progress-bar-fill"
-                        style={{ width: `${((currentQuestionIndex.current + 1) / questions.length) * 100}%` }}
+                        style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
                     ></div>
                 </div>
             </div>

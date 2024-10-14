@@ -1,14 +1,20 @@
 package quiz.exquiz_me.card.entity;
 
 import jakarta.persistence.*;
-import quiz.exquiz_me.card.entity.VocabularyItem;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import quiz.exquiz_me.user.entity.User;
 
-import java.util.Date;
-
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "word_bookmarks")
 public class WordBookmark {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bookmark_id")
@@ -22,9 +28,8 @@ public class WordBookmark {
     @JoinColumn(name = "item_id", referencedColumnName = "item_id")
     private VocabularyItem vocabularyItem;
 
-    @Column(name = "bookmark_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date bookmarkDate;
-
-    // Getters and setters
+    public WordBookmark(User user, VocabularyItem vocabularyItem) {
+        this.user = user;
+        this.vocabularyItem = vocabularyItem;
+    }
 }
