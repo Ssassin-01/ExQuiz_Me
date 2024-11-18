@@ -3,12 +3,15 @@ package quiz.exquiz_me.card.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import quiz.exquiz_me.card.dto.CardDTO;
+import quiz.exquiz_me.card.dto.ReportRequestDTO;
 import quiz.exquiz_me.card.dto.VocabularyItemDTO;
 import quiz.exquiz_me.card.entity.Card;
 import quiz.exquiz_me.card.entity.CardAccessLog;
+import quiz.exquiz_me.card.entity.ReportLog;
 import quiz.exquiz_me.card.entity.VocabularyItem;
 import quiz.exquiz_me.card.repository.CardAccessLogRepository;
 import quiz.exquiz_me.card.repository.CardRepository;
+import quiz.exquiz_me.card.repository.ReportLogRepository;
 import quiz.exquiz_me.user.entity.User;
 import quiz.exquiz_me.user.repository.UserRepository;
 
@@ -26,7 +29,7 @@ public class CardService {
     private final CardRepository cardRepository;
     private final UserRepository userRepository;
     private final CardAccessLogRepository cardAccessLogRepository;
-
+    private final ReportLogRepository reportLogRepository;
     private CardDTO convertToCardDTO(Card card) {
         List<VocabularyItemDTO> vocabDTOs = card.getVocabularyItems().stream()
                 .map(vi -> new VocabularyItemDTO(
@@ -226,6 +229,22 @@ public class CardService {
 
         // 카드 저장
         cardRepository.save(card);
+    }
+
+    @Transactional
+    public void reportCard(ReportRequestDTO reportRequest) {
+        // 카드 번호로 카드 조회
+        Card card = cardRepository.findById(reportRequest.getCardNumber())
+                .orElseThrow(() -> new IllegalArgumentException("Card not found"));
+
+        // 신고 로그 생성 및 저장
+        ReportLog reportLog = new ReportLog();
+        reportLog.setCard(card);
+        reportLog.setReason(reportRequest.getReason());
+        reportLog.setDetails(reportRequest.getDetails());
+        reportLog.setReportedAt(new Date());
+
+        reportLogRepository.save(reportLog);
     }
 
 
