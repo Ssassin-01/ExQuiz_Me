@@ -42,6 +42,7 @@ import PracticeMultiple from "./components/card/Practice/PracticeMultiple";
 import EditComponent from "./components/card/EditComponent";
 import {MainFooter} from "./components/MainFooter";
 import LearningContainer from "./components/utility/LearningContainer";
+import ReportPage from "./components/card/Learning/ReportPage";
 function App() {
     return (
         <HelmetProvider>
@@ -62,6 +63,7 @@ function App() {
                                     <Route path="game" element={<ProtectedRoute><Game /></ProtectedRoute>} />
                                     <Route path="subscribe" element={<ProtectedRoute><SubScribe /></ProtectedRoute>} />
                                     <Route path="mypage" element={<ProtectedRoute><MyPage /></ProtectedRoute>} />
+                                    <Route path="learning/:cardNumber/report" element={<ProtectedRoute><ReportPage /></ProtectedRoute>} />
 
                                     <Route path="/edit-card/:cardNumber" element={<EditComponent />} />
                                     <Route path="/success" element={<SuccessPage />} />
