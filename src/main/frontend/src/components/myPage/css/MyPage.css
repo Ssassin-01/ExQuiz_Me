@@ -302,14 +302,18 @@ hr {
     background-color: #fff;
     font-size: 13px;
     white-space: nowrap;
+    text-align: center; /* 모든 셀의 텍스트를 중앙 정렬 */
+    vertical-align: middle; /* 세로 중앙 정렬 */
 }
 
+/* 북마크 아이콘 스타일 */
 .word-bookmark-icon {
     cursor: pointer;
     font-size: 20px;
     color: #FFD700;
     transition: color 0.3s ease;
     display: inline-block;
+    margin: 0 auto; /* 자동 중앙 정렬 */
 }
 
 .word-bookmark-icon.bookmarked {
@@ -319,6 +323,38 @@ hr {
 .word-bookmark-icon:hover {
     color: #FFCC00;
 }
+
+
+/* 테이블 셀 정렬 */
+.mypage-word-table td {
+    text-align: center; /* 수평 중앙 정렬 */
+    vertical-align: middle; /* 수직 중앙 정렬 */
+    position: relative; /* 아이콘 위치 정렬 기준 */
+}
+
+
+/* 북마크 아이콘 스타일 */
+.star-icon {
+    font-size: 20px; /* 아이콘 크기 */
+    color: #FFD700; /* 기본 색상 */
+    cursor: pointer; /* 클릭 가능 */
+    display: inline-block; /* 인라인 블록으로 설정 */
+    position: relative; /* 정렬 기본값 */
+    margin: 0 auto; /* 셀 안에서 중앙 정렬 */
+    text-align: center; /* 텍스트 중심 정렬 */
+}
+
+.star-icon.filled {
+    color: #FFD700; /* 북마크 상태 색상 */
+}
+
+.star-icon:hover {
+    color: #FFCC00; /* 호버 시 색상 */
+}
+
+
+
+
 
 
 .delete-btn {
@@ -407,8 +443,6 @@ hr {
 }
 
 
-
-/*------------------------------- LineGraph.css ---------------------------------------*/
 
 
 
