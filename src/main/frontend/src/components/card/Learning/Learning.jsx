@@ -78,6 +78,7 @@ const Learning = () => {
         navigate(`/learning/${cardNumber}/report`);
     };
 
+
     return (
         <div className="learning-container">
             <div className="learning-header">

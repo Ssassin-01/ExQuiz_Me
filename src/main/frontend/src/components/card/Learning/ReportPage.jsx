@@ -41,6 +41,8 @@ const ReportPage = () => {
         }
     };
 
+
+
     return (
         <div className="report-page-container" style={styles.container}>
             <Card style={styles.card}>

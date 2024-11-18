@@ -231,7 +231,6 @@ public class CardService {
         cardRepository.save(card);
     }
 
-
     @Transactional
     public void reportCard(ReportRequestDTO reportRequest) {
         // 카드 번호로 카드 조회

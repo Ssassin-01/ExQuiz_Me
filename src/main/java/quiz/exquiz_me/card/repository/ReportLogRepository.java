@@ -6,4 +6,5 @@ import quiz.exquiz_me.card.entity.ReportLog;
 
 @Repository
 public interface ReportLogRepository extends JpaRepository<ReportLog, Long> {
+
 }

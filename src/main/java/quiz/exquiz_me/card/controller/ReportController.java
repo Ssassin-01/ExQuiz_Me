@@ -16,7 +16,6 @@ public class ReportController {
 
     @Autowired
     private CardService cardService;
-
     @PostMapping
     public ResponseEntity<?> reportCard(@RequestBody ReportRequestDTO reportRequest) {
         try {
