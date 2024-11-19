@@ -1,307 +1,93 @@
-frontend 파일 안에다 config.env파일 생성하고
-IP_ADDRESS=10.1.16.44
-이런식으로 작성해주세요!!! 
- - cmd에 ipconfig입력 
- - ipv4 주소입니다!
+# 🚀 **Exquiz Me - Vocabulary Learning Platform**
+
+**Exquiz Me**는 영어 학습자를 위한 단어 학습 플랫폼입니다. 이 프로젝트는 사용자가 자신만의 단어 카드를 만들고 학습할 수 있도록 도와주며, 테스트 기능을 통해 학습 성과를 점검할 수 있도록 설계되었습니다.
+
+## 📖 **프로젝트 개요**
+### 기획 배경
+- 단어 학습의 반복과 지루함을 해결하기 위해 설계된 맞춤형 학습 플랫폼입니다.
+- 게임 요소를 결합하여 학습 동기 부여를 높이고, 사용자가 재미있게 학습할 수 있도록 기획되었습니다.
+- 실시간으로 다른 사용자와 경쟁하거나 협력하는 기능을 통해 흥미를 유지하고 학습 효율을 극대화합니다.
+
+### 프로젝트 진행 기간
+- **2024/06 ~ 2024/11**
+
+## ✨ **주요 기능**
+1. **단어 카드 생성 및 학습**: 사용자가 단어 카드를 생성하고 학습할 수 있습니다.
+2. **OX, 사지선다, 단답형 유형으로 연습하기**: 다양한 형식으로 단어를 연습하며 학습 성과를 높입니다.
+3. **단어 테스트**: 학습한 단어를 퀴즈로 테스트하여 이해도를 점검할 수 있습니다.
+4. **실시간 다른 사람들과 영단어 게임**: 실시간으로 다른 사용자와 단어 게임을 통해 경쟁하며 재미있게 학습합니다.
+5. **신고 시스템**: 잘못된 단어나 부적절한 내용을 신고할 수 있는 기능을 통해 콘텐츠 품질 관리.
+6. **구독 시스템**: 프리미엄 구독을 통해 추가적인 학습 자료나 기능을 이용할 수 있습니다.
+7. **출석량 확인 시스템**: GitHub의 잔디밭처럼 학습 출석량을 시각적으로 확인할 수 있는 기능을 제공합니다.
+8. **학습량 체크 그래프**: 사용자가 자신의 학습 진행 상황을 한눈에 파악할 수 있도록 시각화된 그래프를 제공합니다.
+
+## 🔧 **설치 방법**
+
+1. **레포지토리 클론**:
+    ```bash
+    git clone https://github.com/username/exquiz-me.git
+    cd exquiz-me
+    ```
+
+2. **실행 스크립트 사용**:
+   - 프로젝트는 `start.sh` 스크립트를 사용하여 실행됩니다. 이 스크립트는 로컬 IP를 자동으로 감지하고, 필요한 환경 변수를 설정한 뒤 프론트엔드와 백엔드를 동시에 실행합니다.
+   - **스크립트 실행**:
+     ```bash
+     ./start.sh
+     ```
+
+3. **환경 변수 설정**:
+   - `start.sh` 스크립트에서 자동으로 환경 변수를 설정하며, React와 Spring Boot 모두 로컬 네트워크 IP에 맞게 설정됩니다.
+
+## 🛠️ **기술 스택**
+
+### 프론트엔드
+- **React**: 사용자 인터페이스 구성 (v18.2.0)
+- **React Router**: 페이지 라우팅 관리 (v6.22.3)
+- **Bootstrap & Tailwind CSS**: 스타일링과 레이아웃
+- **Axios**: HTTP 통신을 위한 라이브러리 (v1.6.8)
+- **Socket.io & SockJS**: 실시간 통신 (v4.7.5)
+- **Chart.js**: 데이터 시각화 (v5.2.0)
+- **React Quill**: 리치 텍스트 편집기
+
+### 백엔드
+- **Spring Boot**: 백엔드 프레임워크 (v3.2.4)
+- **Spring Security**: 인증 및 권한 관리
+- **Spring Data JPA**: 데이터베이스 연동
+- **Java 17**: 애플리케이션 소스 코드
+- **Gradle**: 빌드 도구
+- **IntelliJ IDEA**: 개발 환경
+
+### 데이터베이스
+- **MySQL**: 관계형 데이터베이스
+
+### 협업 및 커뮤니케이션
+- **Jira**: 프로젝트 관리
+- **Notion**: 문서 관리 및 협업
+- **Discord**: 팀 커뮤니케이션
+
+## 🌍 **개발 및 협업 환경**
+<p align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white" alt="Spring Security">
+  <img src="https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring Data JPA">
+  <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" alt="Java">
+  <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle">
+  <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IntelliJ IDEA">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira">
+  <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt="Notion">
+  <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
+</p>
+
+## 🚀 **사용 방법**
+
+1. **단어 카드 학습**: 사용자는 학습할 단어 카드 목록을 선택하고, 단어와 그 번역을 학습할 수 있습니다.
+2. **단어 테스트**: 학습한 단어에 대해 여러 가지 형식(영어 단어 맞추기, 단어 뜻 맞추기 등)으로 테스트를 진행할 수 있습니다.
+3. **북마크 추가**: 중요하다고 생각되는 단어는 북마크하여, 나중에 쉽게 복습할 수 있습니다.
+4. **부적절한 콘텐츠 신고**: 잘못된 단어 정보나 부적절한 콘텐츠는 신고 기능을 통해 관리자가 확인하고 수정할 수 있습니다.
 
-### 버전 및 의존성
 
-- Spring Boot 3.2.1.
-- Security 6.2.1
-- Lombok
-- Spring Data JPA - MySQL
-- Gradle - Groovy
-- Intelij Ultimate
 
-- node v20.12.1
-- npm 10.5.1
-- react-router-dom
-- tailwind css
-
-- npm install @stomp/stompjs@7.0.0
-- npm install @testing-library/jest-dom@5.17.0
-- npm install @testing-library/react@13.4.0
-- npm install @testing-library/user-event@13.5.0
-- npm install axios@1.6.8
--  npm install bootstrap@5.3.3
-- npm install cross-env@7.0.3
-- npm install dotenv@16.4.5
-- npm install http-proxy-middleware@3.0.0
-- npm install react-bootstrap@2.10.2
-- npm install react-dom@18.2.0
-- npm install react-helmet-async@2.0.4
-- npm install react-icons@5.1.0
-- npm install react-quill@2.0.0
-- npm install react-router-dom@6.22.3
-- npm install react-scripts@5.0.1
-- npm install react-slick@0.30.2
-- npm install react@18.2.0
-- npm install slick-carousel@1.8.1
-- npm install socket.io-client@4.7.5
-- npm install sockjs-client@1.6.1
-- npm install tailwindcss@3.4.3
-- npm install web-vitals@2.1.4
-- npm install websocket@1.0.35
-
----
-
-### start.sh 스크립트와 관련 환경 설정 설명
-
-### 목적
-
-`start.sh` 스크립트는 프로젝트의 프론트엔드와 백엔드를 시작하는 데 필요한 환경 변수를 설정하고, 두 애플리케이션을 동시에 실행시키는 역할을 합니다. 이는 환경 설정을 자동화하여 개발자가 쉽게 프로젝트를 실행할 수 있도록 돕습니다
-
-방화벽설정
-
-1. Windows Defender 방화벽 접근
-시작 메뉴에서 "방화벽"을 검색하고, "Windows Defender 방화벽"을 엽니다.
-2. 고급 설정
-왼쪽 메뉴에서 "고급 설정"을 클릭합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/9aadcbc1-94d7-4f2e-8294-5cd7b26f10aa/Untitled.png)
-
-1. 인바운드 규칙 설정
-"인바운드 규칙"을 선택하고, 오른쪽 메뉴에서 "새 규칙"을 클릭합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/51a381b4-5943-4424-b2a4-83c2579bf4ac/Untitled.png)
-
-1. 포트 규칙 구성
-"규칙 유형"에서 "포트"를 선택합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/c3bdb1e2-cf99-4b20-afe9-8c98b742f1c5/Untitled.png)
-
-1. "TCP"를 선택하고, "특정 로컬 포트"에 3000을 입력합니다.
-동일한 방법으로 8080번도 설정합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/9ebdc8fd-b908-420f-9d4d-81e0ca7182d4/Untitled.png)
-
-1. 연결 허용
-"연결 허용"을 선택하고, 다음 버튼을 클릭합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/3143f075-bf7f-4ef1-a3a1-60331176cbf7/Untitled.png)
-
-1. 프로필 설정
-적용할 네트워크 유형(도메인, 개인, 공용)을 선택합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/a0e448f2-c3c8-4b51-8f8d-2cf038e5501c/Untitled.png)
-
-1. 규칙 이름 설정
-규칙에 이름(예: "React Development Port" 및 "Spring Boot Port")과 설명을 입력합니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/0b70b91a-8f17-4cb9-a751-520b21070150/Untitled.png)
-
-1. 이러한 설정을 통해 해당 컴퓨터가 연결된 로컬 네트워크 내의 다른 디바이스에서도 React 개발 서버와 Spring Boot 서버에 접근할 수 있게 됩니다. 방화벽 설정을 조정할 때는 보안을 항상 고려해야 하며, 개발이 끝난 후 불필요한 포트는 다시 닫는 것이 좋습니다.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c81aa8cc-3b01-4365-8734-dd180cf942e7/be733943-4fbf-4561-b8f2-d2749cfc6a6d/Untitled.png)
-
----
-
-### `config.env`
-
-```
-IP_ADDRESS=10.202.36.72
-```
-
-- **`IP_ADDRESS`**: 서버의 IP 주소를 설정합니다.
-
----
-
-### start.sh
-
-```bash
-#!/bin/bash
-
-# Load environment variables from src/main/frontend/config.env
-source ./src/main/frontend/config.env
-
-# Ensure IP_ADDRESS is set
-if [ -z "$IP_ADDRESS" ]; then
-  echo "IP_ADDRESS is not set in config.env"
-  exit 1
-fi
-
-# Set environment variables for React
-export REACT_APP_API_URL="http://$IP_ADDRESS:8080"
-
-# Set environment variables for Backend
-export SPRING_SERVER_ADDRESS=$IP_ADDRESS
-export SPRING_SECURITY_ALLOWED_ORIGINS="http://$IP_ADDRESS:3000"
-
-# Verify that environment variables are set
-echo "SPRING_SERVER_ADDRESS=$SPRING_SERVER_ADDRESS"
-echo "SPRING_SECURITY_ALLOWED_ORIGINS=$SPRING_SECURITY_ALLOWED_ORIGINS"
-echo "REACT_APP_API_URL=$REACT_APP_API_URL"
-
-# Start Backend app
-./gradlew bootRun &
-BACKEND_PID=$!
-
-# Start React app
-cd src/main/frontend
-# Ensure React starts with the correct IP address
-export HOST=$IP_ADDRESS
-npm start &
-FRONTEND_PID=$!
-
-# Wait for both processes to complete
-wait $BACKEND_PID
-wait $FRONTEND_PID
-```
-
-### 스크립트의 각 부분 설명
-
-1. **시작 부분**
-
-```bash
-#!/bin/bash
-```
-
-- **`#!/bin/bash`**: 이 스크립트가 bash 셸에서 실행됨을 명시합니다.
-
-1. **환경 변수 로드**
-
-```bash
-# Load environment variables from src/main/frontend/config.env
-source ./src/main/frontend/config.env
-```
-
-- **`source`**: 다른 스크립트 파일을 현재 스크립트로 가져와 실행합니다. `config.env` 파일에서 환경 변수를 로드합니다.
-
-1. **IP_ADDRESS 설정 확인**
-
-```bash
-# Ensure IP_ADDRESS is set
-if [ -z "$IP_ADDRESS" ]; then
-  echo "IP_ADDRESS is not set in config.env"
-  exit 1
-fi
-```
-
-- **`if [ -z "$IP_ADDRESS" ]`**: `IP_ADDRESS` 변수가 설정되지 않았는지 확인합니다.
-- **`echo`**: 메시지를 출력합니다.
-- **`exit 1`**: 오류가 발생했을 때 스크립트를 종료합니다.
-
-1. **React와 백엔드의 환경 변수 설정**
-
-```bash
-# Set environment variables for React
-export REACT_APP_API_URL="http://$IP_ADDRESS:8080"
-
-# Set environment variables for Backend
-export SPRING_SERVER_ADDRESS=$IP_ADDRESS
-export SPRING_SECURITY_ALLOWED_ORIGINS="http://$IP_ADDRESS:3000"
-```
-
-- **`export`**: 환경 변수를 설정합니다.
-- **`REACT_APP_API_URL`**: 프론트엔드에서 사용할 백엔드 API의 URL을 설정합니다.
-- **`SPRING_SERVER_ADDRESS`**: 백엔드 서버의 IP 주소를 설정합니다.
-- **`SPRING_SECURITY_ALLOWED_ORIGINS`**: CORS 설정을 위해 허용할 오리진(출처) URL을 설정합니다.
-
-1. **환경 변수 확인**
-
-```bash
-# Verify that environment variables are set
-echo "SPRING_SERVER_ADDRESS=$SPRING_SERVER_ADDRESS"
-echo "SPRING_SECURITY_ALLOWED_ORIGINS=$SPRING_SECURITY_ALLOWED_ORIGINS"
-echo "REACT_APP_API_URL=$REACT_APP_API_URL"
-```
-
-- 설정된 환경 변수를 출력하여 올바르게 설정되었는지 확인합니다.
-1. **백엔드 애플리케이션 시작**
-
-```bash
-# Start Backend app
-./gradlew bootRun &
-BACKEND_PID=$!
-```
-
-- **`./gradlew bootRun`**: Gradle을 사용하여 Spring Boot 애플리케이션을 시작합니다.
-- **`&`**: 이 명령어를 백그라운드에서 실행합니다.
-- **`$!`**: 마지막으로 실행된 백그라운드 프로세스의 PID를 저장합니다.
-
-1. **프론트엔드 애플리케이션 시작**
-
-```bash
-# Start React app
-cd src/main/frontend
-# Ensure React starts with the correct IP address
-export HOST=$IP_ADDRESS
-npm start &
-FRONTEND_PID=$!
-```
-
-- **`cd src/main/frontend`**: 프론트엔드 디렉터리로 이동합니다.
-- **`export HOST=$IP_ADDRESS`**: React 애플리케이션의 호스트를 설정합니다.
-- **`npm start`**: React 애플리케이션을 시작합니다.
-- **`&`**: 이 명령어를 백그라운드에서 실행합니다.
-- **`$!`**: 마지막으로 실행된 백그라운드 프로세스의 PID를 저장합니다.
-1. **두 프로세스가 완료될 때까지 대기**
-
-```bash
-# Wait for both processes to complete
-wait $BACKEND_PID
-wait $FRONTEND_PID
-```
-
-- **`wait`**: 지정된 PID의 프로세스가 종료될 때까지 기다립니다.
-
----
-
-### `application.yml`
-
-```yaml
-server:
-  address: ${SPRING_SERVER_ADDRESS}
-  servlet:
-    session:
-      timeout: 90m
-
-security:
-  cors:
-    allowed-origins: "${SPRING_SECURITY_ALLOWED_ORIGINS}"
-
-spring:
-  web:
-    resources:
-      static-locations: classpath:/static/
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC
-    username: root
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-logging:
-  level:
-    org:
-      springframework:
-        web: DEBUG
-        security: DEBUG
-
-    quiz:
-      exquiz_me:
-        card: DEBUG
-
-```
-
-- **`server`**: 서버 설정.
-    - **`address`**: 서버의 IP 주소를 환경 변수로 설정합니다.
-    - **`servlet.session.timeout`**: 세션 타임아웃 설정입니다.
-- **`security.cors.allowed-origins`**: CORS 설정에서 허용할 오리진을 환경 변수로 설정합니다.
-- **`spring.datasource`**: 데이터베이스 설정입니다.
-- **`spring.jpa`**: JPA 설정입니다.
-    - **`hibernate.ddl-auto`**: 데이터베이스 스키마 자동 업데이트 설정입니다.
-    - **`show-sql`**: SQL 쿼리 로깅 설정입니다.
-- **`logging`**: 로깅 설정입니다.
-
-이렇게 `start.sh` 스크립트와 관련 환경 설정 파일들은 전체 프로젝트의 환경 변수를 관리하고, 프론트엔드와 백엔드 애플리케이션을 동시에 실행시키는 데 사용됩니다.
