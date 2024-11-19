@@ -10,7 +10,7 @@ const TableItem = ({ index, english, meaning, isBookmarked, onBookmarkToggle }) 
             <td>
                 <FaStar
                     className={`star-icon ${isBookmarked ? 'filled' : ''}`}
-                    onClick={onBookmarkToggle} // 북마크 토글 클릭 시 호출
+                    onClick={onBookmarkToggle}
                 />
             </td>
         </tr>
