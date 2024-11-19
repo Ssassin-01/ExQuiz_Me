@@ -9,7 +9,6 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -33,4 +32,7 @@ public class ReportLog {
     @Column(name = "reported_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date reportedAt;  // 신고 시간
+
+    @Column(name = "reporter_email")
+    private String reporterEmail;  // 신고자 이메일
 }

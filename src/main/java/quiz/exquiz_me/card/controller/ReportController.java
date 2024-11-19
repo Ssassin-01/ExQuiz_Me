@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import quiz.exquiz_me.card.dto.ReportRequestDTO;
 import quiz.exquiz_me.card.service.CardService;
 
+
 @RestController
 @RequestMapping("/api/report")
 public class ReportController {

@@ -243,9 +243,11 @@ public class CardService {
         reportLog.setReason(reportRequest.getReason());
         reportLog.setDetails(reportRequest.getDetails());
         reportLog.setReportedAt(new Date());
+        reportLog.setReporterEmail(reportRequest.getReporterEmail());  // 신고자 이메일 설정
 
         reportLogRepository.save(reportLog);
     }
+
 
 
 }
