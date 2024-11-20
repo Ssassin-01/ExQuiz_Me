@@ -61,4 +61,7 @@ public class Card {
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CardAccessLog> cardAccessLogs = new ArrayList<>();
 
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReportLog> reportLogs = new ArrayList<>();
+
 }

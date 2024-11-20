@@ -110,13 +110,6 @@ const Main = () => {
             </section>
 
 
-            <section className="challenge-section">
-                <h2>이번 주 학습 챌린지 🔥</h2>
-                <p>주간 챌린지: 100개의 단어를 외우고 상을 받아보세요! 단어 암기 훈련을 통해 실력을 쌓아보세요.</p>
-                <button className="challenge-button">💪 챌린지 참여하기</button>
-            </section>
-
-
             <section className="testimonial-section">
                 <h2>사용자 후기 🌟</h2>
                 <div className="testimonial-content">

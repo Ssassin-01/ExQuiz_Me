@@ -181,9 +181,23 @@ function GameTrueOrFalse() {
         }
     };
 
+    const handleTimeOver = () => {
+        if (!isQuestionTransitioning) {
+            setIsQuestionTransitioning(true); // 문제 전환 중임을 표시
+            setFeedback("시간초과!");
+            setIsTimerRunning(false);
+
+            setTimeout(() => {
+                nextQuestion();
+                setIsQuestionTransitioning(false); // 문제 전환 완료
+            }, 1000); // 1초 대기 후 다음 문제로 이동
+        }
+    };
+
     const nextQuestion = () => {
         if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);  // useState로 설정
+            const nextIndex = currentQuestionIndex + 1;
+            setCurrentQuestionIndex(nextIndex); // 인덱스를 업데이트
             const newQuestion = generateRandomQuestion(questions, new Set());
             setCurrentQuestion(newQuestion);
             setMessages({});
@@ -191,20 +205,9 @@ function GameTrueOrFalse() {
             setIsTimerRunning(true);
             setFeedback("");
 
-            publishMessage('/topic/new-question', { questionIndex: currentQuestionIndex });
+            publishMessage('/topic/new-question', { questionIndex: nextIndex });
         } else {
             endGame();
-        }
-    };
-
-    const handleTimeOver = () => {
-        if (!isQuestionTransitioning) {
-            setFeedback("시간초과!");
-            setIsTimerRunning(false);
-
-            setTimeout(() => {
-                nextQuestion();
-            }, 1000);
         }
     };
 
