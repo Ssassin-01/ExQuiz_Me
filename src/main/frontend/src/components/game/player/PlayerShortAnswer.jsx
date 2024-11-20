@@ -7,7 +7,7 @@ import { useNickname } from '../context/NicknameContext';
 function PlayerShortAnswer() {
     const [answer, setAnswer] = useState("");
     const { nickname } = useNickname();
-    const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
+    const apiUrl = `${window.location.origin}`.replace(/^ws/, 'http');
     const clientRef = useRef(null);
     const [gameEnded, setGameEnded] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(false);

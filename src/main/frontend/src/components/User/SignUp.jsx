@@ -25,7 +25,7 @@ const SignUp = () => {
     event.preventDefault();
 
     const genderValue = userData.gender === "male" ? 0 : userData.gender === "female" ? 1 : -1;
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     try {
       const response = await fetch(`${apiUrl}/joinProc`, {

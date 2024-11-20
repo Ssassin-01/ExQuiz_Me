@@ -7,7 +7,7 @@ import axios from 'axios';  // Axios 추가
 
 function PlayerOX() {
     const { nickname } = useNickname();
-    const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
+    const apiUrl = `${window.location.origin}`.replace(/^ws/, 'http');
     const clientRef = useRef(null);
     const [gameEnded, setGameEnded] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(false); // 버튼 비활성화 상태 추가

@@ -4,7 +4,7 @@ import { loadTossPayments } from '@tosspayments/payment-sdk';
 import axios from 'axios';
 import { useUser } from '../User/UserContext';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = `${window.location.origin}`;
 
 const plans = [
     { id: 1, name: '무료', price: '0', description: '무료 플랜입니다', features: ['하루 제한 20문제', '덜 좋은 혜택', '등등등'] },

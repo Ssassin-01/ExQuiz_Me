@@ -13,7 +13,7 @@ const EditComponent = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     // 카드 데이터 불러오기
     useEffect(() => {

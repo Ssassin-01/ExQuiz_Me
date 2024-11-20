@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useUser } from './UserContext';
+import React, {useState} from "react";
+import {useNavigate, Link} from "react-router-dom";
+import {useUser} from './UserContext';
 import "../css/Login.css";
 
 const Login = () => {
-    const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const [credentials, setCredentials] = useState({email: "", password: ""});
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
-    const { login } = useUser();
+    const {login} = useUser();
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setCredentials({ ...credentials, [name]: value });
+        const {name, value} = event.target;
+        setCredentials({...credentials, [name]: value});
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new URLSearchParams();
-        const apiUrl = process.env.REACT_APP_API_URL;
+        const apiUrl = `${window.location.origin}`;
         formData.append('username', credentials.email);
         formData.append('password', credentials.password);
 
@@ -50,11 +50,13 @@ const Login = () => {
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="email">이메일:</label>
-                    <input type="email" id="email" name="email" value={credentials.email} onChange={handleChange} required />
+                    <input type="email" id="email" name="email" value={credentials.email} onChange={handleChange}
+                           required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">패스워드:</label>
-                    <input type="password" id="password" name="password" value={credentials.password} onChange={handleChange} required />
+                    <input type="password" id="password" name="password" value={credentials.password}
+                           onChange={handleChange} required/>
                 </div>
                 <button type="submit" className="login-button">Login</button>
                 {loginError && <div className="login-error-message">{loginError}</div>}

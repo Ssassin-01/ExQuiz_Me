@@ -73,7 +73,7 @@ function GameRoom() {
     const joinGame = async () => {
         if (nicknameInput.trim() !== "") {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/game-sessions/${gameSessionId}/participants`);
+                const response = await axios.get(`${`${window.location.origin}`}/api/game-sessions/${gameSessionId}/participants`);
                 const participants = response.data;
 
                 if (participants.includes(nicknameInput)) {
@@ -81,7 +81,7 @@ function GameRoom() {
                 } else if (participants.length < 10) {
                     setNickname(nicknameInput);
 
-                    await axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions/${gameSessionId}/add-participant`, {
+                    await axios.post(`${`${window.location.origin}`}/api/game-sessions/${gameSessionId}/add-participant`, {
                         nickname: nicknameInput
                     });
 

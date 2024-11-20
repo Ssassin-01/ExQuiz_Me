@@ -34,7 +34,7 @@ function GameTrueOrFalse() {
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
     const [isSessionDeleted, setIsSessionDeleted] = useState(false);
     const navigate = useNavigate();
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     // 타이머 관리
     useEffect(() => {

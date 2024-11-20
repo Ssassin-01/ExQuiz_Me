@@ -15,7 +15,7 @@ const Learning = () => {
     const [testOption, setTestOption] = useState('korean');
     const [favorites, setFavorites] = useState([]);
     const { user } = useUser();
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     // 카드 데이터 불러오기
     const fetchCardData = async () => {

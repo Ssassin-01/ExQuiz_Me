@@ -28,7 +28,7 @@ function GameShortAnswer() {
     const [isSessionDeleted, setIsSessionDeleted] = useState(false);
     const navigate = useNavigate();
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
     const gameSessionId = location.state?.gameSessionId;
 
     // 배열을 무작위로 섞는 함수

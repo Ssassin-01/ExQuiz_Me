@@ -12,7 +12,7 @@ const GameCardPopup = ({ onClose, onSelectCard }) => {
     useEffect(() => {
         const fetchCards = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cards`, {
+                const response = await axios.get(`${`${window.location.origin}`}/api/cards`, {
                     withCredentials: true  // 쿠키를 전송하도록 설정
                 });
                 setCards(response.data);

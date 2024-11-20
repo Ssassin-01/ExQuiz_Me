@@ -15,7 +15,7 @@ const StudySection = () => {
   const [recentCards, setRecentCards] = useState([]);
   const [bookmarkedCards, setBookmarkedCards] = useState([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = `${window.location.origin}`;
   const navigate = useNavigate();
   const { user } = useUser();
 

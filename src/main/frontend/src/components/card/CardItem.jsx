@@ -28,7 +28,7 @@ const CardItem = ({
     const [isLoading, setIsLoading] = useState(false);
     const [viewCount, setViewCount] = useState(initialViewCount);
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
     const navigate = useNavigate();
 
     useEffect(() => {

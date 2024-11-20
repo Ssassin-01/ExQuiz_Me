@@ -6,7 +6,7 @@ import TableItem from '../../myPage/components/TableItem';
 const WordBookmarkSection = () => {
     const { user } = useUser();
     const [bookmarks, setBookmarks] = useState([]);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     // 북마크된 단어 가져오기
     useEffect(() => {

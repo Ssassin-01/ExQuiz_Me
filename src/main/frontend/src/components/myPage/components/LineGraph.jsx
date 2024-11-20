@@ -12,7 +12,7 @@ const LineGraph = () => {
         const fetchStudyTimeLogs = async () => {
             try {
                 const userEmail = sessionStorage.getItem('useremail');
-                const apiUrl = process.env.REACT_APP_API_URL;
+                const apiUrl = `${window.location.origin}`;
 
                 console.log("Fetching study time logs for:", userEmail);
 

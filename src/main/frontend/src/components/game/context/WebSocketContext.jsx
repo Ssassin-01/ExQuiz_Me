@@ -8,7 +8,7 @@ export const WebSocketProvider = ({ children }) => {
     const clientRef = useRef(null);
     const [participants, setParticipants] = useState([]);
     const [webSocketConnected, setWebSocketConnected] = useState(false);
-    const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
+    const apiUrl = `${window.location.origin}`.replace(/^ws/, 'http');
     const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
 
     // 웹소켓 연결 함수

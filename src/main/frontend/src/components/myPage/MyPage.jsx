@@ -19,7 +19,7 @@ const MyPage = () => {
     const [profileData, setProfileData] = useState({ nickname: '', email: '', oneLineResolution: '' });
     const [userCards, setUserCards] = useState([]);
     const [loading, setLoading] = useState(true);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
     const navigate = useNavigate();
 
     // 북마크 목록을 갱신하는 함수

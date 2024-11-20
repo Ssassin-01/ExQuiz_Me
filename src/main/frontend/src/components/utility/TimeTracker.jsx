@@ -6,7 +6,7 @@ const TimeTracker = () => {
     const { user } = useUser(); // 로그인 사용자 정보
     const [loginTimeSpent, setLoginTimeSpent] = useState(0); // 기존 로그인 유지 시간
     const [error, setError] = useState(null); // 에러 상태 추가
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     useEffect(() => {
         if (!user) return; // 사용자가 없을 경우 로직 종료
