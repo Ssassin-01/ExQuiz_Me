@@ -39,7 +39,7 @@ const ProfileSection = ({ profileData }) => {
                         <hr/>
                         <div className="mypage-profile-extra">
                             <p>닉네임 | {profileData.nickname}</p>
-                            <p>목표 | {profileData.oneLineResolution}</p>
+
                             <p>최근 활동 | 9월 21일 - 단어 10개 암기</p>
                         </div>
                     </div>

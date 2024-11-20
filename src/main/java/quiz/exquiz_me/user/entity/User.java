@@ -30,7 +30,7 @@ public class User {
     @Column(name = "nickname")
     private String nickname;
 
-    @Column(unique = true)
+    @Column(name = "tel_number", unique = true)
     private String telNumber;
 
     @Column(name = "date")
