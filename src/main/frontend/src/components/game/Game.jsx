@@ -23,7 +23,7 @@ function Game() {
     // 카드 번호에 따라 최대 문제 수를 가져오는 함수
     const fetchMaxQuestions = async (cardId) => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/game/card/${cardId}/items`);
+            const response = await axios.get(`${`${window.location.origin}`}/api/game/card/${cardId}/items`);
             setMaxQuestions(response.data.length);
         } catch (error) {
             console.error('Error fetching max questions:', error);
@@ -54,11 +54,12 @@ function Game() {
             includeTf: questionType === 'ox',
             includeMc: questionType === 'four',
             includeSa: questionType === 'shortAnswer',
-            language: languageToggle ? "Korean" : "English"
+            language: languageToggle ? "Korean" : "English",
+            origin: window.location.origin
         };
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/game-sessions`, config, {
+            const response = await axios.post(`${window.location.origin}/api/game-sessions`, config, {
                 withCredentials: true
             });
             setQrCodeUrl(response.data.qrCode);

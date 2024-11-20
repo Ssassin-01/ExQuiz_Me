@@ -44,7 +44,10 @@ public class SecurityConfig {
                                 "/images/**", "/js/**", "/css/**", "/img/**",
                                 "/qrCodes/**", "/ws/**", "/gameroom/**", "/api/game-sessions/**",
                                 "/gaming", "/gameox", "/api/game/card/**", "/api/user/**"
-                                , "/payment/**", "/api/payment/pay", "/api/payment/checkSubscription").permitAll()
+                                , "/payment/**", "/api/payment/pay", "/api/payment/checkSubscription"
+                                , "/index.html", "/static/**", "/favicon.ico", "/manifest.json"
+                                , "/logo192.png", "/logo512.png", "/images/**"
+                        ).permitAll()
 //                        .requestMatchers("/api/cards/**").authenticated()
                         .requestMatchers("/game/**", "/mypage/**", "/study/**", "/make/**").authenticated()  // 인증된 사용자만 접근 가능
                         .anyRequest().authenticated()

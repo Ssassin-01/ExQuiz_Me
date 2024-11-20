@@ -13,7 +13,7 @@ const ReportPage = () => {
     const [reportDetails, setReportDetails] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
     const { user } = useUser(); // UserContext에서 유저 정보 가져오기
 
     const handleReportSubmit = async (e) => {

@@ -7,7 +7,7 @@
 // function GameOX() {
 //     const [message, setMessage] = useState("");
 //     const { nickname } = useNickname();
-//     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
+//     const apiUrl = `${window.location.origin}`.replace(/^ws/, 'http');
 //     const clientRef = useRef(null);
 //     const [options, setOptions] = useState([]);
 //     const [gameEnded, setGameEnded] = useState(false);

@@ -23,7 +23,7 @@ const SuccessPage = () => {
 
             if (user && user.email) {
                 try {
-                    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/payment/pay`, {
+                    const response = await axios.post(`${`${window.location.origin}`}/api/payment/pay`, {
                         planName: '유료',
                         amount,
                         userEmail: user.email,

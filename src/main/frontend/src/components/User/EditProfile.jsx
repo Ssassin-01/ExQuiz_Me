@@ -20,7 +20,7 @@ const EditProfile = () => {
         const fetchUserProfile = async () => {
             if (user && user.email) {
                 try {
-                    const apiUrl = process.env.REACT_APP_API_URL;
+                    const apiUrl = `${window.location.origin}`;
                     const response = await fetch(`${apiUrl}/api/user/profile/${user.email}`);
                     const contentType = response.headers.get("content-type");
 
@@ -60,7 +60,7 @@ const EditProfile = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const genderValue = userData.gender === "male" ? 0 : userData.gender === "female" ? 1 : -1;
-        const apiUrl = process.env.REACT_APP_API_URL;
+        const apiUrl = `${window.location.origin}`;
 
         try {
             const response = await fetch(`${apiUrl}/api/user/updateProfile`, {

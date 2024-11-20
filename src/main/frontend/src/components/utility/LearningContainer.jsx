@@ -9,7 +9,7 @@ const LearningContainer = () => {
     const handleSaveTime = async (timeSpent) => {
         try {
             const userEmail = sessionStorage.getItem('useremail'); // 세션에서 이메일 가져오기
-            const apiUrl = process.env.REACT_APP_API_URL; // API URL 가져오기
+            const apiUrl = `${window.location.origin}`; // API URL 가져오기
 
             console.log('저장할 학습 시간:', timeSpent);
             console.log('사용자 이메일:', userEmail);

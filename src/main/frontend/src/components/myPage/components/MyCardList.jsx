@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom"; // CardItem 불러오기
 
 const MyCardList = ({ children, closeModal, title, updatedUserCards, handleBookmarkToggle  }) => { // handleCardDelete 추가
     const navigate = useNavigate(); // navigate 훅 사용
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     const handleCardDelete = async (cardNumber) => {
         try {

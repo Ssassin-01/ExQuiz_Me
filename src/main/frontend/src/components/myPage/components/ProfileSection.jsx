@@ -6,7 +6,7 @@ import { useUser } from "../../User/UserContext";
 const ProfileSection = ({ profileData }) => {
     const navigate = useNavigate();
     const { user, logout } = useUser();
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     const handleDeleteAccount = async () => {
         const confirmed = window.confirm("정말로 회원 탈퇴를 하시겠습니까?");

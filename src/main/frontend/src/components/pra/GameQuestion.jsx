@@ -9,7 +9,7 @@
 //     const [gameEnded, setGameEnded] = useState(false);
 //     const { nickname } = useNickname();
 //     const clientRef = useRef(null);
-//     const apiUrl = process.env.REACT_APP_API_URL.replace(/^ws/, 'http');
+//     const apiUrl = `${window.location.origin}`.replace(/^ws/, 'http');
 //
 //     const sendMessage = () => {
 //         if (clientRef.current && clientRef.current.connected) {

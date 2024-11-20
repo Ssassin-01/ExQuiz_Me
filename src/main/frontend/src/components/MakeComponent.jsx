@@ -37,7 +37,7 @@ const MakeComponent = () => {
     const handleSubmit = async () => {
         const cardTitle = document.querySelector('.input-feed').value;
         const cardContent = document.querySelector('.input-description').value;
-        const apiUrl = process.env.REACT_APP_API_URL;
+        const apiUrl = `${window.location.origin}`;
 
         const cardDTO = {
             userEmail: user?.email,

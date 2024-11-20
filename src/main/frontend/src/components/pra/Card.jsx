@@ -7,7 +7,7 @@
 //     const [viewCount, setViewCount] = useState(initialViewCount); // 초기 조회수 설정
 //     const [bookmarked, setBookmarked] = useState(initialBookmarked); // 초기 북마크 상태 설정
 //     const [isLoading, setIsLoading] = useState(false); // 서버 요청 중 상태 관리
-//     const apiUrl = process.env.REACT_APP_API_URL;
+//     const apiUrl = `${window.location.origin}`;
 //
 //     // 조회수 증가 함수
 //     const handleCardClick = async () => {

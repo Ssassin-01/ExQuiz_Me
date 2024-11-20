@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"; // useNavigate 추가
 
 const Home = () => {
   const [popularCards, setPopularCards] = useState([]);
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = `${window.location.origin}`;
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {

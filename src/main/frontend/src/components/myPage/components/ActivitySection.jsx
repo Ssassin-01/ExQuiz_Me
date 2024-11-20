@@ -31,7 +31,7 @@ const ActivitySection = ({
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     useEffect(() => {
         const fetchSubscriptionStatus = async () => {

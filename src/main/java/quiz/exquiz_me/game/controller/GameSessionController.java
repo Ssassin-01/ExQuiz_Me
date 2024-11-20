@@ -20,9 +20,10 @@ public class GameSessionController {
     private GameSessionService gameSessionService;
 
     @PostMapping
-    public ResponseEntity<GameSessionDTO> createSession(@RequestBody GameSessionDTO gameSessionDto) {
+    public ResponseEntity<GameSessionDTO> createSession(@RequestBody GameSessionDTO gameSessionDto, @RequestHeader("Origin") String origin) {
         try {
-            GameSessionDTO createdGameSessionDto = gameSessionService.createGameSession(gameSessionDto);
+            GameSessionDTO createdGameSessionDto = gameSessionService.createGameSession(gameSessionDto, origin);
+            System.out.println("GameSessionDTO received: " + gameSessionDto);
             return ResponseEntity.ok(createdGameSessionDto);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);

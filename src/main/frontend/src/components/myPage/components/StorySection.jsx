@@ -8,7 +8,7 @@ const StorySection = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1); // 현재 월
     const [currentYear] = useState(new Date().getFullYear()); // 현재 연도
     const [streak, setStreak] = useState(0); // 연속 출석 일수
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = `${window.location.origin}`;
 
     // 월별 활동 기록 가져오기
     useEffect(() => {

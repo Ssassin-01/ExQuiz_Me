@@ -31,14 +31,11 @@ public class GameSessionService {
     @Autowired
     private QRCodeGenerator qrCodeGenerator;
 
-    @Value("${security.cors.allowed-origins}")
-    private String gameRoomUrl;
-
     private Map<Long, Set<GameParticipantDTO>> sessionParticipants = new HashMap<>();
     private static final int MAX_PARTICIPANTS = 10;
 
     @Transactional
-      public GameSessionDTO createGameSession(GameSessionDTO gameSessionDto) throws Exception {
+    public GameSessionDTO createGameSession(GameSessionDTO gameSessionDto, String origin) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         User user = userDetails.getUser();
@@ -46,9 +43,9 @@ public class GameSessionService {
         Card card = cardRepository.findById(gameSessionDto.getCardNumber())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid card number: " + gameSessionDto.getCardNumber()));
 
-        GameSessions gameSession = mapDtoToEntity(gameSessionDto);
+        GameSessions gameSession = mapDtoToEntity(gameSessionDto, card);
         gameSession.setUser(user);
-        gameSession.setCard(card);
+//        gameSession.setCard(card);
         gameSession.setIsActive(true);
         gameSession.setCreatedAt(new Date());
 
@@ -60,7 +57,7 @@ public class GameSessionService {
 
         // Generate QR Code and update the game session
         String qrCodeUrl = qrCodeGenerator.generateQRCodeBase64(
-                gameRoomUrl + "/gameroom?roomId=" + gameSession.getGameSessionId(), 300, 300
+                origin + "/gameroom?roomId=" + gameSession.getGameSessionId(), 300, 300
         );
         if (qrCodeUrl == null) {
             throw new RuntimeException("Failed to generate QR code");
@@ -103,7 +100,6 @@ public class GameSessionService {
 
         return participantDTO;
     }
-
 
 
     public int getParticipantCount(Long gameSessionId) {
@@ -162,7 +158,7 @@ public class GameSessionService {
     }
 
 
-    private GameSessions mapDtoToEntity(GameSessionDTO dto) {
+    private GameSessions mapDtoToEntity(GameSessionDTO dto, Card card) {
         GameSessions entity = new GameSessions();
         entity.setPlayerCount(dto.getPlayerCount());
         entity.setQuestionCount(dto.getQuestionCount());
@@ -171,8 +167,10 @@ public class GameSessionService {
         entity.setIncludeMc(dto.getIncludeMc());
         entity.setIncludeSa(dto.getIncludeSa());
         entity.setLanguage(dto.getLanguage());
+        entity.setCard(card);
         return entity;
     }
+
 
     private GameSessionDTO mapEntityToDto(GameSessions entity) {
         GameSessionDTO dto = new GameSessionDTO();
@@ -187,6 +185,7 @@ public class GameSessionService {
         dto.setQrCode(entity.getQrCode());
         dto.setIsActive(entity.getIsActive());
         dto.setCreatedAt(entity.getCreatedAt());
+        dto.setCardNumber(entity.getCard().getCardNumber());
         return dto;
     }
 }
