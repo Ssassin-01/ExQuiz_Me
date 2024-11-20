@@ -23,7 +23,7 @@ public class SubscriptionService {
 
 
     @Transactional
-    public void createSubscription(String email, String planName) {
+    public void createSubscription(String email, String planName, String paymentKey) {
         try {
             User user = userRepository.findByEmail(email);
             if (user == null) {
@@ -35,6 +35,7 @@ public class SubscriptionService {
             subscription.setSubscriptionPlan(planName);
             subscription.setPurchaseDate(LocalDate.now());
             subscription.setExpirationDate(LocalDate.now().plusMonths(1));
+            subscription.setPaymentKey(paymentKey);
 
             subscriptionRepository.save(subscription);
 
