@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-
-
 @Entity
 @Getter
 @Setter
@@ -41,5 +39,4 @@ public class Subscription {
     @Column(name = "paymentKey")
     private String paymentKey;
 
-    // Getters and setters
 }

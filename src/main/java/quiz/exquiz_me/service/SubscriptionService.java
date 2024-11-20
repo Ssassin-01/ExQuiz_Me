@@ -57,12 +57,26 @@ public class SubscriptionService {
     public List<Subscription> getSubscriptionsByEmail(String email) {
         return subscriptionRepository.findByUser_Email(email);
     }
-
     @Transactional(readOnly = true)
     public Optional<Subscription> getActiveSubscriptionByEmail(String email) {
         List<Subscription> subscriptions = subscriptionRepository.findByUser_Email(email);
         return subscriptions.stream()
                 .filter(subscription -> subscription.getExpirationDate().isAfter(LocalDate.now()))
                 .findFirst();
+    }
+    @Transactional
+    public boolean cancelSubscription(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new RuntimeException("User not found: " + email);
+        }
+
+        Optional<Subscription> activeSubscription = getActiveSubscriptionByEmail(email);
+        if (activeSubscription.isPresent()) {
+            subscriptionRepository.delete(activeSubscription.get()); // 데이터 삭제
+            return true;
+        } else {
+            return false;
+        }
     }
 }
