@@ -28,35 +28,36 @@ public class SubscribeController {
 
     @PostMapping("/pay")
     public ResponseEntity<Map<String, Object>> pay(@RequestBody Map<String, String> request) {
+        String paymentKey = request.get("paymentKey");
         String planName = request.get("planName");
         String amount = request.get("amount");
-        String userEmail = request.get("userEmail"); // 현재 사용자의 이메일
+        String userEmail = request.get("userEmail");
 
         Map<String, Object> response = new HashMap<>();
 
         try {
             User user = userService.findByEmail(userEmail);
             if (user == null) {
-                throw new RuntimeException("User not found: " + userEmail);
+                throw new RuntimeException("사용자를 찾을 수 없습니다: " + userEmail);
             }
 
             // 이미 구독 중인지 확인
             if (subscriptionService.isUserSubscribed(user)) {
                 response.put("status", "fail");
-                response.put("message", "User is already subscribed");
+                response.put("message", "사용자는 이미 구독 중입니다.");
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
             }
 
             // 결제 성공 시 구독 정보 저장
-            subscriptionService.createSubscription(userEmail, planName);
+            subscriptionService.createSubscription(userEmail, planName, paymentKey);
 
             response.put("status", "success");
-            response.put("message", "Payment successful for plan: " + planName);
+            response.put("message", "결제가 성공적으로 처리되었습니다 : " + planName);
             return ResponseEntity.ok(response);
 
         } catch (Exception e) {
             response.put("status", "fail");
-            response.put("message", "Payment failed: " + e.getMessage());
+            response.put("message", "결제 처리 중 오류가 발생했습니다 : " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

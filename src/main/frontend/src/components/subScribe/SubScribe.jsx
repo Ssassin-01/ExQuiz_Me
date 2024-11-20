@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './css/SubScribe.css';
-import { loadTossPayments } from '@tosspayments/payment-sdk';
+import {loadTossPayments} from '@tosspayments/payment-sdk';
 import axios from 'axios';
-import { useUser } from '../User/UserContext';
+import {useUser} from '../User/UserContext';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const plans = [
-    { id: 1, name: '무료', price: '0', description: '무료 플랜입니다', features: ['하루 제한 20문제', '덜 좋은 혜택', '등등등'] },
-    { id: 2, name: '유료', price: '1500', description: '유료 플랜입니다', features: ['더 많은 문제 풀기', '좋은 혜택', '등등등'] },
+    {id: 1, name: '무료', price: '0', description: '무료 플랜입니다', features: ['하루 제한 20문제', '덜 좋은 혜택', '등등등']},
+    {id: 2, name: '유료', price: '1500', description: '유료 플랜입니다', features: ['더 많은 문제 풀기', '좋은 혜택', '등등등']},
 ];
 
 const Subscribe = () => {
-    const { user } = useUser();
+    const {user} = useUser();
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [subscriptionInfo, setSubscriptionInfo] = useState(null);
 
@@ -21,7 +21,7 @@ const Subscribe = () => {
             if (user && user.email) {
                 try {
                     const response = await axios.get(`${apiUrl}/api/payment/checkSubscription`, {
-                        params: { userEmail: user.email },
+                        params: {userEmail: user.email},
                         withCredentials: true,  // 세션 쿠키를 함께 전송합니다.
                     });
 
@@ -45,7 +45,7 @@ const Subscribe = () => {
                 const tossPayments = await loadTossPayments('test_ck_BX7zk2yd8yOONe00xvlQVx9POLqK');
                 tossPayments.requestPayment('카드', {
                     amount: plan.price,
-                    orderId: 'ORDER_ID',
+                    orderId: `ORDER_${new Date().getTime()}`,
                     orderName: plan.name,
                     successUrl: `${window.location.origin}/success`,
                     failUrl: `${window.location.origin}/fail`,
