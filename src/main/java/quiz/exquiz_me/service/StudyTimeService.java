@@ -22,7 +22,6 @@ public class StudyTimeService {
     private UserRepository userRepository;
 
     // 학습 시간 저장 (중복 날짜에 대해 시간 누적)
-    // 학습 시간 저장 (중복 날짜에 대해 시간 누적)
     public void saveStudyTime(User user, Long studyTime) {
         LocalDate today = LocalDate.now();
 
