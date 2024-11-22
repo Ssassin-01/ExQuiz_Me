@@ -3,11 +3,15 @@ package quiz.exquiz_me.user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import quiz.exquiz_me.card.repository.CardAccessLogRepository;
+import quiz.exquiz_me.card.repository.CardBookmarkRepository;
+import quiz.exquiz_me.card.repository.WordBookmarkRepository;
 import quiz.exquiz_me.dto.UserDTO;
 import quiz.exquiz_me.user.dto.UserActivityDTO;
 import quiz.exquiz_me.user.entity.User;
-import quiz.exquiz_me.user.entity.UserActivity;
 import quiz.exquiz_me.user.repository.UserRepository;
+
 
 import java.util.Collections;
 import java.util.List;
@@ -20,10 +24,20 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private WordBookmarkRepository wordBookmarkRepository; // 외래키 관련 데이터 삭제를 위해 추가
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private CardAccessLogRepository cardAccessLogRepository;
+
+    @Autowired
+    private CardBookmarkRepository cardBookmarkRepository;
+
+
+
     // User 추가하기
-    // UserService.java
     public UserDTO addUser(UserDTO userDTO) {
         User user = new User(
                 userDTO.getEmail(),
@@ -57,10 +71,10 @@ public class UserService {
         );
     }
 
-
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
     // 이메일 중복 확인
     public boolean emailExists(String email) {
         return userRepository.existsByEmail(email);
@@ -72,13 +86,23 @@ public class UserService {
     }
 
     // 유저 삭제 로직
+    @Transactional
     public void deleteUser(String email) {
-        User user = userRepository.findByEmail(email);
-        if (user != null) {
-            userRepository.delete(user);  // 연관된 데이터도 함께 삭제됨
-        } else {
-            throw new RuntimeException("User not found with email: " + email);
-        }
+        User user = userRepository.findById(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        System.out.println("Deleting related word bookmarks...");
+        wordBookmarkRepository.deleteByUserEmail(email);
+
+        System.out.println("Deleting related card access logs...");
+        cardAccessLogRepository.deleteByUserEmail(email);
+
+        System.out.println("Deleting related card bookmarks...");
+        cardBookmarkRepository.deleteByUserEmail(email);
+
+        System.out.println("Deleting user...");
+        userRepository.delete(user);
+        System.out.println("User deletion completed.");
     }
 
     // 이메일로 사용자 찾기 (활동 기록 포함)
@@ -138,8 +162,7 @@ public class UserService {
         );
     }
 
-
-    //너 구독자니?
+    // 너 구독자니?
     public boolean isUserSubscribed(String email) {
         User user = userRepository.findByEmail(email);
         return !user.getSubscriptions().isEmpty(); // 구독 내역이 있으면 구독자로 간주

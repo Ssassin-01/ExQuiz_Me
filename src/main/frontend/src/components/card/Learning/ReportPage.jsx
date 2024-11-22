@@ -85,6 +85,7 @@ const ReportPage = () => {
                                 <option value="잘못된 정보">잘못된 정보</option>
                                 <option value="부적절한 단어">부적절한 단어</option>
                                 <option value="불쾌감을 주는 표현">불쾌감을 주는 표현</option>
+                                <option value="스팸 내용">스팸 내용</option>
                                 <option value="기타">기타</option>
                             </Form.Control>
                         </Form.Group>
